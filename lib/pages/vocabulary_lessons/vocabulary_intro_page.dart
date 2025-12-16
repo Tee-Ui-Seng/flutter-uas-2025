@@ -1,0 +1,195 @@
+// Part 1
+import 'package:flutter/material.dart';
+import 'numbers_page.dart';
+
+class VocabularyIntroPage extends StatefulWidget {
+  const VocabularyIntroPage({super.key});
+
+  @override
+  State<VocabularyIntroPage> createState() => _VocabularyIntroPageState();
+}
+
+class _VocabularyIntroPageState extends State<VocabularyIntroPage> {
+  final PageController _pageController = PageController();
+  int _currentPage = 0;
+
+  final List<Map<String, dynamic>> _pages = [
+    {
+      'title': 'Persian Vocabulary - Level 1',
+      'subtitle': 'Essential Words and Numbers',
+      'content': 'In this level, you will learn:\n\n'
+          '• Persian numbers from 0 to 1000\n'
+          '• How to form complex numbers\n'
+          '• Adverbs of place and time\n'
+          '• Essential everyday vocabulary\n'
+          '• Interactive games and quizzes',
+      'icon': Icons.translate,
+    },
+    {
+      'title': 'What You\'ll Learn',
+      'subtitle': 'By the end of Level 1, you will be able to:',
+      'content': '✓ Count from 0 to 1000 in Persian\n'
+          '✓ Form any number using Persian numerals\n'
+          '✓ Use adverbs of place and time correctly\n'
+          '✓ Build basic sentences with new vocabulary\n'
+          '✓ Pass the vocabulary quiz',
+      'icon': Icons.school,
+    },
+    {
+      'title': 'Course Structure',
+      'subtitle': 'Level 1 contains 8 main sections:',
+      'content': '1. **Numbers 0-9** - Basic numerals\n'
+          '2. **Numbers 10-19** - Teens\n'
+          '3. **Numbers 20-1000** - Tens and hundreds\n'
+          '4. **Number Formation** - Building complex numbers\n'
+          '5. **Drag & Drop Game** - Interactive practice\n'
+          '6. **Adverbs of Place** - Location words\n'
+          '7. **Adverbs of Time** - Temporal words\n'
+          '8. **Additional Vocabulary** - Essential words\n'
+          '9. **Final Quiz** - Test your knowledge',
+      'icon': Icons.list,
+    },
+  ];
+
+  @override
+  Widget build(BuildContext context) {
+    return Scaffold(
+      appBar: AppBar(
+        title: const Text('Vocabulary - Level 1'),
+        backgroundColor: Colors.amber,
+      ),
+      body: Column(
+        children: [
+          Expanded(
+            child: PageView.builder(
+              controller: _pageController,
+              itemCount: _pages.length,
+              onPageChanged: (index) {
+                setState(() {
+                  _currentPage = index;
+                });
+              },
+              itemBuilder: (context, index) {
+                return _buildPage(_pages[index]);
+              },
+            ),
+          ),
+          Padding(
+            padding: const EdgeInsets.all(16.0),
+            child: Row(
+              mainAxisAlignment: MainAxisAlignment.spaceBetween,
+              children: [
+                // Previous button
+                ElevatedButton(
+                  onPressed: _currentPage > 0
+                      ? () {
+                          _pageController.previousPage(
+                            duration: const Duration(milliseconds: 300),
+                            curve: Curves.easeInOut,
+                          );
+                        }
+                      : null,
+                  style: ElevatedButton.styleFrom(
+                    backgroundColor: Colors.grey,
+                  ),
+                  child: const Text('Previous'),
+                ),
+                
+                // Page indicator
+                Row(
+                  children: List.generate(
+                    _pages.length,
+                    (index) => Container(
+                      width: 8,
+                      height: 8,
+                      margin: const EdgeInsets.symmetric(horizontal: 4),
+                      decoration: BoxDecoration(
+                        shape: BoxShape.circle,
+                        color: _currentPage == index 
+                            ? Colors.amber 
+                            : Colors.grey,
+                      ),
+                    ),
+                  ),
+                ),
+                
+                // Next/Start button
+                ElevatedButton(
+                  onPressed: () {
+                    if (_currentPage < _pages.length - 1) {
+                      _pageController.nextPage(
+                        duration: const Duration(milliseconds: 300),
+                        curve: Curves.easeInOut,
+                      );
+                    } else {
+                      Navigator.push(
+                        context,
+                        MaterialPageRoute(
+                          builder: (context) => const NumbersPage(),
+                        ),
+                      );
+                    }
+                  },
+                  style: ElevatedButton.styleFrom(
+                    backgroundColor: Colors.amber,
+                  ),
+                  child: Text(
+                    _currentPage < _pages.length - 1 ? 'Next' : 'Start Lessons',
+                  ),
+                ),
+              ],
+            ),
+          ),
+        ],
+      ),
+    );
+  }
+
+  Widget _buildPage(Map<String, dynamic> pageData) {
+    return Padding(
+      padding: const EdgeInsets.all(24.0),
+      child: Column(
+        mainAxisAlignment: MainAxisAlignment.center,
+        children: [
+          Icon(
+            pageData['icon'],
+            size: 80,
+            color: Colors.amber,
+          ),
+          const SizedBox(height: 32),
+          Text(
+            pageData['title'],
+            style: const TextStyle(
+              fontSize: 28,
+              fontWeight: FontWeight.bold,
+              color: Colors.amber,
+            ),
+            textAlign: TextAlign.center,
+          ),
+          const SizedBox(height: 12),
+          Text(
+            pageData['subtitle'],
+            style: const TextStyle(
+              fontSize: 18,
+              color: Colors.grey,
+            ),
+            textAlign: TextAlign.center,
+          ),
+          const SizedBox(height: 32),
+          Expanded(
+            child: SingleChildScrollView(
+              child: Text(
+                pageData['content'],
+                style: const TextStyle(
+                  fontSize: 16,
+                  height: 1.6,
+                ),
+                textAlign: TextAlign.center,
+              ),
+            ),
+          ),
+        ],
+      ),
+    );
+  }
+}

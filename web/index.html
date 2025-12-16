@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <base href="$FLUTTER_BASE_HREF">
+
+  <meta charset="UTF-8">
+  <meta content="IE=Edge" http-equiv="X-UA-Compatible">
+  <meta name="description" content="A new Flutter project.">
+
+  <!-- iOS meta tags & icons -->
+  <meta name="mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-status-bar-style" content="black">
+  <meta name="apple-mobile-web-app-title" content="flutter_application_uas">
+  <link rel="apple-touch-icon" href="icons/Icon-192.png">
+
+  <!-- Favicon -->
+  <link rel="icon" type="image/png" href="favicon.png"/>
+
+  <title>flutter_application_uas</title>
+  <link rel="manifest" href="manifest.json">
+</head>
+<body>
+  <!-- Firebase SDK scripts - ADD THESE -->
+  <script src="https://www.gstatic.com/firebasejs/10.7.0/firebase-app-compat.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/10.7.0/firebase-auth-compat.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/10.7.0/firebase-firestore-compat.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/10.7.0/firebase-analytics-compat.js"></script>
+  
+  <!-- Firebase configuration -->
+  <script>
+    const firebaseConfig = {
+      apiKey: "AIzaSyDKoC9ivUN2tgMV_AQr5rTAkeZ_nk-GrV4",
+      authDomain: "uas-project-2eecb.firebaseapp.com",
+      projectId: "uas-project-2eecb",
+      storageBucket: "uas-project-2eecb.firebasestorage.app",
+      messagingSenderId: "942655850840",
+      appId: "1:942655850840:web:7386fe8c73dd83201efd2d",
+      measurementId: "G-F6R8VLXV6W"
+    };
+    firebase.initializeApp(firebaseConfig);
+  </script>
+  
+  <script src="flutter_bootstrap.js" async></script>
+</body>
+</html>

@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "942655850840",
+    "project_id": "uas-project-2eecb",
+    "storage_bucket": "uas-project-2eecb.firebasestorage.app"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:942655850840:android:6a0bdba6fda2a8f01efd2d",
+        "android_client_info": {
+          "package_name": "com.example.flutter_application_uas"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCHKb3bQrdaWqeiBs4jl6sCbgm_Fyf38PU"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
