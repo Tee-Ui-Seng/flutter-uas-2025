@@ -19,19 +19,19 @@ class _VocabularyQuizPageState extends State<VocabularyQuizPage> {
   final List<Map<String, dynamic>> _questions = [
     {
       'question': 'What is the Persian word for "5"?',
-      'options': ['panj', 'čaš', 'haft', 'noh'],
+      'options': ['panj', 'šaš', 'haft', 'noh'],
       'correctAnswer': 0,
       'explanation': '5 in Persian is "panj" (پنج).',
     },
     {
       'question': 'How do you say "15" in Persian?',
-      'options': ['pânzdah', 'panjâh', 'panjdah', 'pânjâh'],
-      'correctAnswer': 0,
+      'options': ['pânjdah', 'panjâh', 'panjdah', 'pânzdah'],
+      'correctAnswer': 3,
       'explanation': '15 is "pânzdah" (پانزده) - note the modification from "panj" to "pânz".',
     },
     {
       'question': 'What does "bîst u yak" mean?',
-      'options': ['12', '21', '30', '31'],
+      'options': ['12', '21', '31', '41'],
       'correctAnswer': 1,
       'explanation': '"bîst" means 20, "u" means and, "yak" means 1. So "bîst u yak" = 21.',
     },
@@ -48,13 +48,13 @@ class _VocabularyQuizPageState extends State<VocabularyQuizPage> {
     },
     {
       'question': 'What is the adverb of place for "here"?',
-      'options': ['ânjâ', 'injâ', 'harjâ', 'jâyî'],
+      'options': ['ânjâ', 'înjâ', 'harjâ', 'jâyî'],
       'correctAnswer': 1,
-      'explanation': '"Here" is "injâ" (اینجا) in Persian.',
+      'explanation': '"Here" is "înjâ" (اینجا) in Persian.',
     },
     {
       'question': 'How do you say "tomorrow" in Persian?',
-      'options': ['emrûz', 'dîrûz', 'fardâ', 'aknûn'],
+      'options': ['imroz', 'dîroz', 'fardâ', 'aknûn'],
       'correctAnswer': 2,
       'explanation': '"Tomorrow" is "fardâ" (فردا) in Persian.',
     },
@@ -66,21 +66,21 @@ class _VocabularyQuizPageState extends State<VocabularyQuizPage> {
     },
     {
       'question': 'What is the Persian word for "red"?',
-      'options': ['sabz', 'sorx', 'zard', 'âbî'],
+      'options': ['sabz', 'surx', 'zard', 'âbî'],
       'correctAnswer': 1,
-      'explanation': '"Red" is "sorx" (سرخ) in Persian.',
+      'explanation': '"Red" is "surx" (سرخ) in Persian.',
     },
     {
       'question': 'How do you say "father" in Persian?',
-      'options': ['mâdar', 'pedar', 'barâdar', 'xâhar'],
+      'options': ['mâdar', 'padar', 'barâdar', 'xâhar'],
       'correctAnswer': 1,
-      'explanation': '"Father" is "pedar" (پدر) in Persian.',
+      'explanation': '"Father" is "padar" (پدر) in Persian.',
     },
     {
       'question': 'What does "nân" mean in Persian?',
       'options': ['water', 'rice', 'bread', 'meat'],
       'correctAnswer': 2,
-      'explanation': '"Nân" (نان) means "bread" in Persian.',
+      'explanation': '"Nân" (نان) means "bread" in Persian. In Afghanistan, this word is colloquially used to refer to "food".',
     },
   ];
 
@@ -293,7 +293,10 @@ class _VocabularyQuizPageState extends State<VocabularyQuizPage> {
                       backgroundColor: Colors.amber,
                       minimumSize: const Size(double.infinity, 48),
                     ),
-                    child: const Text('Back to Home'),
+                    child: const Text(
+                      'Back to Home',
+                      style: TextStyle(color: Colors.white),
+                  ),
                   ),
                 ],
               )
@@ -308,6 +311,7 @@ class _VocabularyQuizPageState extends State<VocabularyQuizPage> {
                   _currentQuestion < _questions.length - 1
                       ? 'Next Question'
                       : 'Finish Quiz',
+                  style: TextStyle(color: Colors.white),
                 ),
               ),
           ],

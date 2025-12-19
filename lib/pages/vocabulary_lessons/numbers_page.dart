@@ -62,18 +62,18 @@ class _NumbersPageState extends State<NumbersPage> {
       'numbers': [
         {'digit': '10', 'persian': 'dah', 'script': 'ده'},
         {'digit': '11', 'persian': 'yâzdah', 'script': 'یازده'},
-        {'digit': '12', 'persian': 'duâzdah', 'script': 'دوازده'},
+        {'digit': '12', 'persian': 'duvâzdah', 'script': 'دوازده'},
         {'digit': '13', 'persian': 'sezdah', 'script': 'سیزده'},
         {'digit': '14', 'persian': 'cahârdah', 'script': 'چهارده'},
         {'digit': '15', 'persian': 'pânzdah', 'script': 'پانزده'},
         {'digit': '16', 'persian': 'šânzdah', 'script': 'شانزده'},
         {'digit': '17', 'persian': 'hafdah', 'script': 'هفده'},
         {'digit': '18', 'persian': 'haždah', 'script': 'هجده'},
-        {'digit': '19', 'persian': 'nozdah', 'script': 'نوزده'},
+        {'digit': '19', 'persian': 'nuzdah', 'script': 'نوزده'},
       ],
       'practiceTips': 'Practice Tips:\n'
           '• Notice the pattern: most numbers add "-dah" or "-zdah"\n'
-          '• Pay attention to irregular forms (yâzdah, duâzdah)\n'
+          '• Pay attention to irregular forms (yâzdah, šânzdah, haždah)\n'
           '• Practice counting from 10 to 19 in sequence\n'
           '• Compare with the 0-9 numbers you already know',
       'examples': [
@@ -106,8 +106,8 @@ class _NumbersPageState extends State<NumbersPage> {
         {'digit': '50', 'persian': 'panjâh', 'script': 'پنجاه'},
         {'digit': '60', 'persian': 'šast', 'script': 'شصت'},
         {'digit': '70', 'persian': 'haftâd', 'script': 'هفتاد'},
-        {'digit': '80', 'persian': 'hastâd', 'script': 'هشتاد'},
-        {'digit': '90', 'persian': 'nawad', 'script': 'نود'},
+        {'digit': '80', 'persian': 'haštâd', 'script': 'هشتاد'},
+        {'digit': '90', 'persian': 'navad', 'script': 'نود'},
         {'digit': '100', 'persian': 'sad', 'script': 'صد'},
         {'digit': '1000', 'persian': 'hazâr', 'script': 'هزار'},
       ],
@@ -116,21 +116,21 @@ class _NumbersPageState extends State<NumbersPage> {
           '• Note the irregular forms: "bîst" (20), "sî" (30), "cihil" (40)\n'
           '• Practice combining tens and units (e.g., 25 = "bîst o panj")\n'
           '• Remember "sad" (100) and "hazâr" (1000) for larger numbers',
-      'examples': [ // fix this immediately
+      'examples': [
         {
-          'persian': 'dah nafar dar sinemâ hastand',
-          'script': 'ده نفر در سینما هستند',
-          'english': 'Ten people are in the cinema',
+          'persian': 'in kitâb cihil safha dârad',
+          'script': 'این کتاب چهل صفحه دارد',
+          'english': 'This book has forty pages',
         },
         {
-          'persian': 'man yâzdah sâl dâram',
-          'script': 'من یازده سال دارم',
-          'english': 'I am eleven years old',
+          'persian': 'o panjâh afğânî pardâzad',
+          'script': 'او پنجاه افغانی می‌دهد',
+          'english': 'She pays fifty Afghani',
         },
         {
-          'persian': 'u haždah ketâb dârad',
-          'script': 'او هجده کتاب دارد',
-          'english': 'He/She has eighteen books',
+          'persian': 'hazâr ketâb dar in kitâbxâna hast',
+          'script': 'هزار کتاب در این کتابخانه هست',
+          'english': 'There are one thousand books in this library',
         },
       ],
     },
@@ -176,7 +176,7 @@ class _NumbersPageState extends State<NumbersPage> {
               '• 21 = "bîst o yak" (بیست و یک)\n'
               '• 35 = "sî o panj" (سی و پنج)\n'
               '• 48 = "cihil o hašt" (چهل و هشت)\n'
-              '• 99 = "nawad o noh" (نود و نه)',
+              '• 99 = "navad o noh" (نود و نه)',
               style: TextStyle(fontSize: 14, height: 1.4),
             ),
           ],
@@ -435,8 +435,8 @@ class _NumbersPageState extends State<NumbersPage> {
                               Text(
                                 example['persian']!,
                                 style: TextStyle(
-                                  color: Colors.grey.shade600,
-                                  fontSize: 14,
+                                  color: Colors.grey.shade700,
+                                  fontSize: 15,
                                   fontStyle: FontStyle.italic,
                                   height: 1.3,
                                 ),
@@ -445,8 +445,8 @@ class _NumbersPageState extends State<NumbersPage> {
                               Text(
                                 example['english']!,
                                 style: TextStyle(
-                                  color: Colors.grey.shade600,
-                                  fontSize: 14,
+                                  color: Colors.black,
+                                  fontSize: 15,
                                   height: 1.3,
                                 ),
                               ),
@@ -525,26 +525,48 @@ class _NumbersPageState extends State<NumbersPage> {
             Row(
               mainAxisAlignment: MainAxisAlignment.spaceBetween,
               children: [
-                ElevatedButton(
-                  style: ElevatedButton.styleFrom(backgroundColor: Colors.grey),
+                OutlinedButton(
                   onPressed: () => Navigator.pop(context),
-                  child: const Text('Back'),
+                  style: OutlinedButton.styleFrom(
+                    padding: const EdgeInsets.symmetric(horizontal: 24, vertical: 12),
+                    side: BorderSide(color: Colors.amber),
+                    shape: RoundedRectangleBorder(
+                      borderRadius: BorderRadius.circular(12),
+                    ),
+                  ),
+                  child: const Text(
+                    'Back',
+                    style: TextStyle(color: Colors.amber),
+                  ),
                 ),
                 ElevatedButton(
-                  style: ElevatedButton.styleFrom(backgroundColor: Colors.amber),
                   onPressed: () {
                     Navigator.push(
                       context,
-                      MaterialPageRoute(
-                        builder: (_) => const NumbersFormationPage(),
-                      ),
+                      MaterialPageRoute(builder: (context) => const NumbersFormationPage()),
                     );
                   },
-                  child: const Text('Next: Number Formation'),
+                  style: ElevatedButton.styleFrom(
+                    backgroundColor: Colors.amber,
+                    padding: const EdgeInsets.symmetric(horizontal: 24, vertical: 12),
+                    shape: RoundedRectangleBorder(
+                      borderRadius: BorderRadius.circular(12),
+                    ),
+                    elevation: 0,
+                  ),
+                  child: const Row(
+                    children: [
+                      Text(
+                        'Next: Number Formation',
+                        style: TextStyle(color: Colors.white),
+                      ),
+                      SizedBox(width: 8),
+                      Icon(Icons.arrow_forward_rounded, size: 16, color: Colors.white),
+                    ],
+                  ),
                 ),
               ],
             ),
-
             // const SizedBox(height: 30),
           ],
         ),

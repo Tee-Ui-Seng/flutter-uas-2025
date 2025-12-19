@@ -129,7 +129,7 @@ class NegativeVerbPage extends StatelessWidget {
                   ),
                   const SizedBox(height: 12),
                   const Text(
-                    'In nastaliq, only add nun before the entire verb to negate it. '
+                    'In nastaliq, only add ن before the entire verb to negate it. '
                     'In this course, "na" will be spelled separately instead of being treated as a prefix. '
                     'In Tajik, the entire verb is spelled in one word without spaces.',
                     textAlign: TextAlign.center,
@@ -1041,7 +1041,7 @@ class NegativeVerbPage extends StatelessWidget {
             Container(
               padding: const EdgeInsets.all(16),
               decoration: BoxDecoration(
-                color: Colors.orange[300]!,
+                color: Colors.orange[100]!,
                 borderRadius: BorderRadius.circular(12),
                 border: Border.all(color: Colors.orange[300]!),
               ),
@@ -1101,28 +1101,44 @@ class NegativeVerbPage extends StatelessWidget {
             Row(
               mainAxisAlignment: MainAxisAlignment.spaceBetween,
               children: [
-                ElevatedButton.icon(
+                OutlinedButton(
                   onPressed: () => Navigator.pop(context),
-                  icon: const Icon(Icons.arrow_back),
-                  label: const Text('Back'),
-                  style: ElevatedButton.styleFrom(
-                    padding: const EdgeInsets.symmetric(horizontal: 20, vertical: 12),
+                  style: OutlinedButton.styleFrom(
+                    padding: const EdgeInsets.symmetric(horizontal: 24, vertical: 12),
+                    side: BorderSide(color: Colors.deepPurple),
+                    shape: RoundedRectangleBorder(
+                      borderRadius: BorderRadius.circular(12),
+                    ),
+                  ),
+                  child: const Text(
+                    'Back',
+                    style: TextStyle(color: Colors.deepPurple),
                   ),
                 ),
-                ElevatedButton.icon(
+                ElevatedButton(
                   onPressed: () {
                     Navigator.push(
                       context,
-                      MaterialPageRoute(
-                        builder: (context) => const VerbPracticePage(),
-                      ),
+                      MaterialPageRoute(builder: (_) => const VerbPracticePage()),
                     );
                   },
-                  icon: const Icon(Icons.arrow_forward),
-                  label: const Text('Practice Quiz'),
                   style: ElevatedButton.styleFrom(
                     backgroundColor: Colors.deepPurple,
-                    padding: const EdgeInsets.symmetric(horizontal: 20, vertical: 12),
+                    padding: const EdgeInsets.symmetric(horizontal: 24, vertical: 12),
+                    shape: RoundedRectangleBorder(
+                      borderRadius: BorderRadius.circular(12),
+                    ),
+                    elevation: 0,
+                  ),
+                  child: const Row(
+                    children: [
+                      Text(
+                        'Practice Quiz',
+                        style: TextStyle(color: Colors.white),
+                      ),
+                      SizedBox(width: 8),
+                      Icon(Icons.quiz, size: 16, color: Colors.white),
+                    ],
                   ),
                 ),
               ],

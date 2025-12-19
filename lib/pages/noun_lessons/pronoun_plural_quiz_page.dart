@@ -18,22 +18,22 @@ class _PronounPluralQuizPageState extends State<PronounPluralQuizPage> {
 
   final List<Map<String, dynamic>> _questions = [
     {
-      'question': 'What is the plural of "ketâb" (book)?',
-      'options': ['ketâbhâ', 'ketâbân', 'ketâbât', 'ketâb'],
+      'question': 'What is the plural of "kitâb" (book)?',
+      'options': ['kitâb-hâ', 'kitâbân', 'kitâbât', 'kitâb'],
       'correctAnswer': 0,
       'explanation': 'Use "-hâ" for most inanimate objects like books.',
     },
     {
-      'question': 'How do you say "students" in Persian?',
-      'options': ['dânešjuhâ', 'dânešjuyân', 'dânešjuyât', 'dânešju'],
+      'question': 'How do you say "mothers" in Persian?',
+      'options': ['mâdar-hâ', 'mâdarân', 'mâdarât', 'mâdaryân'],
       'correctAnswer': 1,
       'explanation': 'Use "-ân" for animate beings like students.',
     },
     {
-      'question': 'What is the correct plural of "mard" (man)?',
-      'options': ['mardhâ', 'mardân', 'mardât', 'mard'],
+      'question': 'What is the correct plural of "daraxt" (tree)?',
+      'options': ['daraxt-hâ', 'daraxtân', 'daraxtât', 'daraxt'],
       'correctAnswer': 1,
-      'explanation': '"Mard" has an irregular plural: "mardân".',
+      'explanation': 'Use "-ân" for some animate beings like trees.',
     },
     {
       'question': 'Which suffix is used for Arabic loanwords?',
@@ -45,7 +45,7 @@ class _PronounPluralQuizPageState extends State<PronounPluralQuizPage> {
       'question': 'How do you pluralize "zan" (woman)?',
       'options': ['zanhâ', 'zanân', 'zanât', 'zanin'],
       'correctAnswer': 1,
-      'explanation': '"Zan" uses regular "-hâ" suffix.',
+      'explanation': '"Zan" uses "-ân" suffix.',
     },
   ];
 
@@ -238,7 +238,10 @@ class _PronounPluralQuizPageState extends State<PronounPluralQuizPage> {
                       backgroundColor: Colors.teal,
                       minimumSize: const Size(double.infinity, 48),
                     ),
-                    child: const Text('Next: Using "râ"'),
+                    child: const Text(
+                      'Next: Using "râ"',
+                      style: TextStyle(color: Colors.white),
+                    ),
                   ),
                 ],
               )
@@ -253,6 +256,7 @@ class _PronounPluralQuizPageState extends State<PronounPluralQuizPage> {
                   _currentQuestion < _questions.length - 1
                       ? 'Next Question'
                       : 'Finish Quiz',
+                  style: TextStyle(color: Colors.white),
                 ),
               ),
           ],

@@ -19,9 +19,9 @@ class _ConversationPracticePageState extends State<ConversationPracticePage> {
       'lines': [
         {'role': 'You', 'text': 'Salâm!', 'english': 'Hello!'},
         {'role': 'Friend', 'text': 'Salâm!', 'english': 'Hello!'},
-        {'role': 'You', 'text': 'ism-e šumâ ci ast?', 'english': 'What is your name?'},
-        {'role': 'Friend', 'text': 'ism man Sara ast.', 'english': 'My name is Sara.'},
-        {'role': 'You', 'text': 'az dîdan-e tân xošhâl astam.', 'english': 'Nice to meet you.'},
+        {'role': 'You', 'text': 'nâm-i šumâ ci ast?', 'english': 'What is your name?'},
+        {'role': 'Friend', 'text': 'nâm man Sara ast.', 'english': 'My name is Sara.'},
+        {'role': 'You', 'text': 'az dîdan-i-tân xušhâl astam.', 'english': 'Nice to meet you.'},
       ]
     },
     {
@@ -30,24 +30,24 @@ class _ConversationPracticePageState extends State<ConversationPracticePage> {
       'lines': [
         {'role': 'You', 'text': 'subh baxair!', 'english': 'Good morning!'},
         {'role': 'Colleague', 'text': 'subh baxair!', 'english': 'Good morning!'},
-        {'role': 'You', 'text': 'ciṭûrî?', 'english': 'How are you?'},
-        {'role': 'Colleague', 'text': 'xub astam, tašakur.', 'english': 'I\'m good, thank you.'},
-        {'role': 'Colleague', 'text': 'šumâ ciṭûr hasted?', 'english': 'How about you?'},
-        {'role': 'You', 'text': 'man ham xub astam.', 'english': 'I\'m also good.'},
+        {'role': 'You', 'text': 'ci xabar?', 'english': 'How are you?'},
+        {'role': 'Colleague', 'text': 'xub astam, tašakur.', 'english': 'I’m good, thank you.'},
+        {'role': 'Colleague', 'text': 'šumâ ci tawr asted?', 'english': 'How about you?'},
+        {'role': 'You', 'text': 'man ham xub astam.', 'english': 'I’m also good.'},
       ]
     },
     {
       'title': 'Asking for Help',
       'description': 'You need directions and need to be polite',
       'lines': [
-        {'role': 'You', 'text': 'bebaxšîn!', 'english': 'Excuse me!'},
+        {'role': 'You', 'text': 'me-baxšen!', 'english': 'Excuse me!'},
         {'role': 'Stranger', 'text': 'bale?', 'english': 'Yes?'},
-        {'role': 'You', 'text': 'lotfan, mîtoned komakam koned?', 'english': 'Please, can you help me?'},
-        {'role': 'Stranger', 'text': 'bale, ci mîxâhîn?', 'english': 'Yes, what do you need?'},
-        {'role': 'You', 'text': 'mîxâham be dukân beravam.', 'english': 'I want to go to the shop.'},
-        {'role': 'Stranger', 'text': 'ânjâ ast.', 'english': 'It\'s there.'},
-        {'role': 'You', 'text': 'besyâr tašakur!', 'english': 'Thank you very much!'},
-        {'role': 'Stranger', 'text': 'qâbel nîst.', 'english': 'You\'re welcome.'},
+        {'role': 'You', 'text': 'lutfan, mi-toned kumak-am kuned?', 'english': 'Please, can you help me?'},
+        {'role': 'Stranger', 'text': 'bale, ci me-xâhî?', 'english': 'Yes, what do you need?'},
+        {'role': 'You', 'text': 'me-xâham ba dukân biravam.', 'english': 'I want to go to the shop.'},
+        {'role': 'Stranger', 'text': 'ânjâ ast.', 'english': 'It’s there.'},
+        {'role': 'You', 'text': 'bisyâr tašakur!', 'english': 'Thank you very much!'},
+        {'role': 'Stranger', 'text': 'qâbil-î na dârad.', 'english': 'You’re welcome.'},
       ]
     },
   ];
@@ -177,20 +177,45 @@ class _ConversationPracticePageState extends State<ConversationPracticePage> {
             Row(
               mainAxisAlignment: MainAxisAlignment.spaceBetween,
               children: [
-                ElevatedButton(
-                  style: ElevatedButton.styleFrom(backgroundColor: Colors.grey),
+                OutlinedButton(
                   onPressed: () => Navigator.pop(context),
-                  child: const Text('Back'),
+                  style: OutlinedButton.styleFrom(
+                    padding: const EdgeInsets.symmetric(horizontal: 24, vertical: 12),
+                    side: BorderSide(color: Colors.blue),
+                    shape: RoundedRectangleBorder(
+                      borderRadius: BorderRadius.circular(12),
+                    ),
+                  ),
+                  child: const Text(
+                    'Back',
+                    style: TextStyle(color: Colors.blue),
+                  ),
                 ),
                 ElevatedButton(
-                  style: ElevatedButton.styleFrom(backgroundColor: Colors.blue),
                   onPressed: () {
                     Navigator.push(
                       context,
                       MaterialPageRoute(builder: (context) => const ConversationQuizPage()),
                     );
                   },
-                  child: const Text('Take Quiz'),
+                  style: ElevatedButton.styleFrom(
+                    backgroundColor: Colors.blue,
+                    padding: const EdgeInsets.symmetric(horizontal: 24, vertical: 12),
+                    shape: RoundedRectangleBorder(
+                      borderRadius: BorderRadius.circular(12),
+                    ),
+                    elevation: 0,
+                  ),
+                  child: const Row(
+                    children: [
+                      Text(
+                        'Take Quiz',
+                        style: TextStyle(color: Colors.white),
+                      ),
+                      SizedBox(width: 8),
+                      Icon(Icons.quiz, size: 16, color: Colors.white),
+                    ],
+                  ),
                 ),
               ],
             ),

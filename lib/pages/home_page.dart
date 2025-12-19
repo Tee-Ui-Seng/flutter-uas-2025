@@ -35,7 +35,7 @@ class HomePage extends StatelessWidget {
           'level': 2,
           'title': 'Level 2: Past Tense',
           'subtitle': 'Master past tense conjugations',
-          'color': Colors.orange,
+          'color': Colors.lime,
         },
         {
           'level': 3,

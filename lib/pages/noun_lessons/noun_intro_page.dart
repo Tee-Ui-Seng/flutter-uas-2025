@@ -62,7 +62,7 @@ class _NounIntroPageState extends State<NounIntroPage> {
               mainAxisAlignment: MainAxisAlignment.spaceBetween,
               children: [
                 // Previous button
-                ElevatedButton(
+                OutlinedButton(
                   onPressed: _currentPage > 0
                       ? () {
                           _pageController.previousPage(
@@ -70,11 +70,22 @@ class _NounIntroPageState extends State<NounIntroPage> {
                             curve: Curves.easeInOut,
                           );
                         }
-                      : null,
-                  style: ElevatedButton.styleFrom(
-                    backgroundColor: Colors.grey,
+                      : null, // disables button when inactive
+                  style: OutlinedButton.styleFrom(
+                    padding: const EdgeInsets.symmetric(horizontal: 24, vertical: 12),
+                    side: BorderSide(
+                      color: _currentPage > 0 ? Colors.teal : Colors.grey,
+                    ),
+                    shape: RoundedRectangleBorder(
+                      borderRadius: BorderRadius.circular(12),
+                    ),
                   ),
-                  child: const Text('Previous'),
+                  child: Text(
+                    'Previous',
+                    style: TextStyle(
+                      color: _currentPage > 0 ? Colors.teal : Colors.grey,
+                    ),
+                  ),
                 ),
                 
                 // Page indicator
@@ -114,9 +125,23 @@ class _NounIntroPageState extends State<NounIntroPage> {
                   },
                   style: ElevatedButton.styleFrom(
                     backgroundColor: Colors.teal,
+                    padding: const EdgeInsets.symmetric(horizontal: 24, vertical: 12),
+                    shape: RoundedRectangleBorder(
+                      borderRadius: BorderRadius.circular(12),
+                    ),
+                    elevation: 0,
                   ),
-                  child: Text(
-                    _currentPage < _pages.length - 1 ? 'Next' : 'Start Lessons',
+                  child: Row(
+                    mainAxisSize: MainAxisSize.min,
+                    children: [
+                      Text(
+                        _currentPage < _pages.length - 1 ? 'Next' : 'Start Lessons',
+                        style: const TextStyle(color: Colors.white),
+                      ),
+                      if (_currentPage < _pages.length - 1) const SizedBox(width: 8),
+                      if (_currentPage < _pages.length - 1)
+                        const Icon(Icons.arrow_forward_rounded, size: 16, color: Colors.white),
+                    ],
                   ),
                 ),
               ],

@@ -11,6 +11,7 @@ class PrepositionsPage extends StatelessWidget {
       'pronunciation': 'dar',
       'english': 'in/at',
       'example': 'dar xâna',
+      'script': 'در خانه',
       'meaning': 'at home',
     },
     {
@@ -18,6 +19,7 @@ class PrepositionsPage extends StatelessWidget {
       'pronunciation': 'bâ',
       'english': 'with',
       'example': 'bâ dost',
+      'script': 'با دوست',
       'meaning': 'with friend',
     },
     {
@@ -25,6 +27,7 @@ class PrepositionsPage extends StatelessWidget {
       'pronunciation': 'az',
       'english': 'from',
       'example': 'az tehrân',
+      'script': 'از تهران',
       'meaning': 'from Tehran',
     },
     {
@@ -32,6 +35,7 @@ class PrepositionsPage extends StatelessWidget {
       'pronunciation': 'ba',
       'english': 'to',
       'example': 'be madrasaeh',
+      'script': 'به مدرسه',
       'meaning': 'to school',
     },
     {
@@ -39,6 +43,7 @@ class PrepositionsPage extends StatelessWidget {
       'pronunciation': 'barâyi',
       'english': 'for',
       'example': 'barâyi tu',
+      'script': 'برای تو',
       'meaning': 'for you',
     },
     {
@@ -46,6 +51,7 @@ class PrepositionsPage extends StatelessWidget {
       'pronunciation': 'royi',
       'english': 'on',
       'example': 'royi mez',
+      'script': 'روی میز',
       'meaning': 'on the table',
     },
     {
@@ -53,6 +59,7 @@ class PrepositionsPage extends StatelessWidget {
       'pronunciation': 'zer',
       'english': 'under',
       'example': 'zer mez',
+      'script': 'زیر میز',
       'meaning': 'under the table',
     },
     {
@@ -60,7 +67,31 @@ class PrepositionsPage extends StatelessWidget {
       'pronunciation': 'kanâr',
       'english': 'next to',
       'example': 'kanâr daraxt',
+      'script': 'کنار درخت',
       'meaning': 'next to the tree',
+    },
+  ];
+
+  final List<Map<String, String>> examples = const [
+    {
+      'english': 'I am at the office',
+      'persian': 'man dar kâr xâna astam', 
+      'script': 'من در کار خانه هستم',
+    },
+    {
+      'english': 'He is going with his father',
+      'persian': 'o bâ padar-aš me-ravad',
+      'script': 'او با پدرش می‌رود',
+    },
+    {
+      'english': 'This book is from Tehran',
+      'persian': 'in kitâb az tehrân ast', 
+      'script': 'این کتاب از تهران است',
+    },
+    {
+      'english': 'We go to school',
+      'persian': 'mâ ba madrasa me-ravem',
+      'script': 'ما به مدرسه می‌رویم',
     },
   ];
 
@@ -104,61 +135,55 @@ class PrepositionsPage extends StatelessWidget {
 
             // USAGE TIPS (unchanged)
             Container(
-              padding: const EdgeInsets.all(12),
+              padding: const EdgeInsets.all(16),
+              margin: const EdgeInsets.only(bottom: 20),
               decoration: BoxDecoration(
-                color: Colors.red.shade50,
-                borderRadius: BorderRadius.circular(8),
-                border: Border.all(color: Colors.red),
+                color: Colors.amber.shade50,
+                borderRadius: BorderRadius.circular(12),
+                border: Border.all(color: Colors.amber),
               ),
-              child: const Column(
+              child: Column(
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
-                  Text(
-                    'Usage Tips:',
-                    style: TextStyle(
-                      fontWeight: FontWeight.bold,
-                      color: Colors.red,
-                    ),
+                  Row(
+                    children: [
+                      Icon(Icons.tips_and_updates, color: Colors.amber, size: 20),
+                      const SizedBox(width: 8),
+                      Text(
+                        'Usage Tips',
+                        style: TextStyle(
+                          fontSize: 18,
+                          fontWeight: FontWeight.bold,
+                          color: Colors.amber,
+                        ),
+                      ),
+                    ],
                   ),
-                  SizedBox(height: 4),
+                  const SizedBox(height: 8),
                   Text(
                     '• Prepositions usually come before the noun they modify\n'
                     '• barâye + man = barâye man (for me)\n'
                     '• "در" can mean "in" or "at"\n'
                     '• "از" is used for origin, material, or cause',
-                    style: TextStyle(fontSize: 14),
+                    style: const TextStyle(fontSize: 14, height: 1.5),
                   ),
                 ],
               ),
             ),
 
-            const SizedBox(height: 24),
+            const SizedBox(height: 16),
 
             // EXAMPLE SENTENCES
             Container(
-              padding: const EdgeInsets.all(12),
+              padding: const EdgeInsets.all(16),
+              margin: const EdgeInsets.only(bottom: 20),
               decoration: BoxDecoration(
                 color: Colors.green.shade50,
-                borderRadius: BorderRadius.circular(8),
+                borderRadius: BorderRadius.circular(12),
                 border: Border.all(color: Colors.green),
               ),
-              child: Column(
-                crossAxisAlignment: CrossAxisAlignment.start,
-                children: [
-                  const Text(
-                    'Example Sentences:',
-                    style: TextStyle(
-                      fontWeight: FontWeight.bold,
-                      color: Colors.green,
-                    ),
-                  ),
-                  const SizedBox(height: 8),
-                  _buildSentence('man dar kâr xâna astam', 'I am at the office'),
-                  _buildSentence('o bâ padaraš me-ravad', 'He is going with his father'),
-                  _buildSentence('in kitâb az tehrân ast', 'This book is from Tehran'),
-                  _buildSentence('mâ ba madrasaeh me-ravem', 'We go to school'),
-                ],
-              ),
+              child:
+                _buildExampleTable(),
             ),
 
             const SizedBox(height: 24),
@@ -167,10 +192,19 @@ class PrepositionsPage extends StatelessWidget {
             Row(
               mainAxisAlignment: MainAxisAlignment.spaceBetween,
               children: [
-                ElevatedButton(
+                OutlinedButton(
                   onPressed: () => Navigator.pop(context),
-                  style: ElevatedButton.styleFrom(backgroundColor: Colors.grey),
-                  child: const Text('Back'),
+                  style: OutlinedButton.styleFrom(
+                    padding: const EdgeInsets.symmetric(horizontal: 24, vertical: 12),
+                    side: BorderSide(color: Colors.red),
+                    shape: RoundedRectangleBorder(
+                      borderRadius: BorderRadius.circular(12),
+                    ),
+                  ),
+                  child: const Text(
+                    'Back',
+                    style: TextStyle(color: Colors.red),
+                  ),
                 ),
                 ElevatedButton(
                   onPressed: () {
@@ -179,8 +213,24 @@ class PrepositionsPage extends StatelessWidget {
                       MaterialPageRoute(builder: (context) => const GrammarQuizPage()),
                     );
                   },
-                  style: ElevatedButton.styleFrom(backgroundColor: Colors.red),
-                  child: const Text('Take Quiz'),
+                  style: ElevatedButton.styleFrom(
+                    backgroundColor: Colors.red,
+                    padding: const EdgeInsets.symmetric(horizontal: 24, vertical: 12),
+                    shape: RoundedRectangleBorder(
+                      borderRadius: BorderRadius.circular(12),
+                    ),
+                    elevation: 0,
+                  ),
+                  child: const Row(
+                    children: [
+                      Text(
+                        'Take Quiz',
+                        style: TextStyle(color: Colors.white),
+                      ),
+                      SizedBox(width: 8),
+                      Icon(Icons.quiz, size: 16, color: Colors.white),
+                    ],
+                  ),
                 ),
               ],
             ),
@@ -248,8 +298,27 @@ class PrepositionsPage extends StatelessWidget {
               child: Column(
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
-                  Text('Example: ${p['example']}',
-                      style: const TextStyle(fontStyle: FontStyle.italic)),
+                  // Persian (Nastaliq)
+                  Text(
+                    p['script']!,
+                    style: const TextStyle(
+                      fontFamily: 'NotoNastaliqUrdu',
+                      fontSize: 18,
+                    ),
+                    textDirection: TextDirection.rtl,
+                  ),
+
+                  // Transliteration
+                  Text(
+                    '(${p['example']})',
+                    style: const TextStyle(
+                      fontStyle: FontStyle.italic,
+                      color: Colors.red,
+                    ),
+                  ),
+
+                  const SizedBox(height: 4),
+
                   Text('Meaning: ${p['meaning']}'),
                 ],
               ),
@@ -260,16 +329,73 @@ class PrepositionsPage extends StatelessWidget {
     );
   }
 
-  Widget _buildSentence(String persian, String english) {
-    return Padding(
-      padding: const EdgeInsets.only(bottom: 4),
-      child: Column(
-        crossAxisAlignment: CrossAxisAlignment.start,
+  Widget _buildExampleTable() {
+    return  Column(
+    crossAxisAlignment: CrossAxisAlignment.start,
+    children: [
+      Row(
         children: [
-          Text(persian, style: const TextStyle(fontStyle: FontStyle.italic)),
-          Text(english, style: const TextStyle(color: Colors.grey, fontSize: 12)),
+          Icon(Icons.translate, color: Colors.green, size: 20),
+          const SizedBox(width: 8),
+          Text(
+            'Example Sentences',
+            style: TextStyle(
+              fontSize: 18,
+              fontWeight: FontWeight.bold,
+              color: Colors.green.shade700,
+            ),
+          ),
         ],
       ),
+      const SizedBox(height: 12),
+
+      Column(
+        children: List.generate(examples.length, (index) {
+          final example = examples[index];
+          final isLast = index == examples.length - 1;
+
+          return Padding(
+            padding: EdgeInsets.only(bottom: isLast ? 0 : 12),
+            child: SizedBox(
+              width: double.infinity,
+              child: Column(
+                crossAxisAlignment: CrossAxisAlignment.start,
+                children: [
+                  Text(
+                    example['script']!,
+                    textDirection: TextDirection.rtl,
+                    style: const TextStyle(
+                      fontSize: 20,
+                      fontFamily: 'NotoNastaliqUrdu',
+                      height: 1.6,
+                    ),
+                  ),
+                  const SizedBox(height: 4),
+                  Text(
+                    example['persian']!,
+                    style: TextStyle(
+                      color: Colors.grey.shade700,
+                      fontSize: 15,
+                      fontStyle: FontStyle.italic,
+                      height: 1.3,
+                    ),
+                  ),
+                  const SizedBox(height: 4),
+                  Text(
+                    example['english']!,
+                    style: TextStyle(
+                      color: Colors.black,
+                      fontSize: 15,
+                      height: 1.3,
+                    ),
+                  ),
+                ],
+              ),
+            ),
+          );
+        }),
+      ),
+    ],
     );
   }
 }

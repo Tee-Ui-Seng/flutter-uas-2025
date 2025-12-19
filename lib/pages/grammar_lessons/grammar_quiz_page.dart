@@ -31,27 +31,27 @@ class _GrammarQuizPageState extends State<GrammarQuizPage> {
     },
     {
       'question': 'How do you say "I am" in Persian using the copula?',
-      'options': ['man astam', 'man hastam', 'man hast', 'man ast'],
-      'correctAnswer': 0,
+      'options': ['man nestam', 'man budam', 'man astam', 'man ast'],
+      'correctAnswer': 2,
       'explanation': 'The correct form is "man astam" using the "astan" form.',
     },
     {
       'question': 'How do you form the negative of "astam"?',
-      'options': ['Replace "a-" with "nî-"', 'Add "na-" at the beginning', 'Add "nî-" at the end', 'Remove "a-"'],
+      'options': ['Replace "a-" with "ne-"', 'Add "na" at the beginning', 'Add "ne" at the end', 'Remove "a-"'],
       'correctAnswer': 0,
-      'explanation': 'To form negative, replace the beginning "a-" with "nî-": astam → nîstam.',
+      'explanation': 'To form negative, replace the beginning "a-" with "ne-": astam → nestam.',
     },
     {
       'question': 'What does "va" mean in Persian?',
-      'options': ['and', 'but', 'or', 'because'],
-      'correctAnswer': 0,
+      'options': ['but', 'or', 'because', 'and'],
+      'correctAnswer': 3,
       'explanation': '"Va" (و) means "and" and connects words or sentences.',
     },
     {
       'question': 'Which conjunction means "because" in Persian?',
-      'options': ['agar', 'ammâ', 'čunke', 'pas'],
+      'options': ['agar', 'amâ', 'cûnki', 'pas'],
       'correctAnswer': 2,
-      'explanation': '"Čunke" (چونکه) or "zirâ" (زیرا) both mean "because".',
+      'explanation': '"Cûnki" (چونکه) or "zerâ" (زیرا) both mean "because".',
     },
     {
       'question': 'What does the preposition "dar" mean?',
@@ -61,15 +61,15 @@ class _GrammarQuizPageState extends State<GrammarQuizPage> {
     },
     {
       'question': 'How do you say "with friend" in Persian?',
-      'options': ['dar dust', 'bâ dust', 'az dust', 'be dust'],
+      'options': ['dar dost', 'bâ dost', 'az dost', 'ba dost'],
       'correctAnswer': 1,
-      'explanation': '"Bâ" (با) means "with", so "bâ dust" means "with friend".',
+      'explanation': '"Bâ" (با) means "with", so "bâ dost" means "with friend".',
     },
     {
-      'question': 'What is the colloquial form of "šumâ asted"?',
-      'options': ['šumâ asten', 'šumâ astî', 'šumâ ast', 'šumâ astem'],
-      'correctAnswer': 0,
-      'explanation': 'Colloquially, people say "šumâ asten" instead of "šumâ asted".',
+      'question': 'imroz barâdar kitâb ...',
+      'options': ['xânand', 'xânî', 'xâned', 'xânad'],
+      'correctAnswer': 3,
+      'explanation': 'The sentence translates to "Today brother reads book".',
     },
   ];
 
@@ -282,7 +282,10 @@ class _GrammarQuizPageState extends State<GrammarQuizPage> {
                       backgroundColor: Colors.red,
                       minimumSize: const Size(double.infinity, 48),
                     ),
-                    child: const Text('Back to Home'),
+                    child: const Text(
+                      'Back to Home',
+                      style: TextStyle(color: Colors.white),
+                    ),
                   ),
                 ],
               )
@@ -297,6 +300,7 @@ class _GrammarQuizPageState extends State<GrammarQuizPage> {
                   _currentQuestion < _questions.length - 1
                       ? 'Next Question'
                       : 'Finish Quiz',
+                  style: TextStyle(color: Colors.white),
                 ),
               ),
           ],

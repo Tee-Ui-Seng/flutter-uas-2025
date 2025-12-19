@@ -16,14 +16,22 @@ class GreetingsPage extends StatelessWidget {
     },
     {
       'english': 'How are you?',
-      'persian': 'Xub asti?',
+      'persian': 'Ci tawr astî?',
+      'script': 'چطور استی؟',
+      'responseEng': 'I’m fine.',
+      'response': 'Xub astam.',
+      'responseScript': 'خوب استم.'
+    },
+    {
+      'english': 'Are you alright?',
+      'persian': 'Xub astî?',
       'script': 'خوب استی؟',
       'responseEng': 'I’m fine, thanks.',
       'response': 'Xub astam, tašakur.',
       'responseScript': 'خوب استم، تشکر.'
     },
     {
-      'english': 'How are you? (formal)',
+      'english': 'Are you alright? (formal)',
       'persian': 'Xub asted?',
       'script': 'خوب استید؟',
       'responseEng': 'I’m fine, thank you.',
@@ -31,16 +39,16 @@ class GreetingsPage extends StatelessWidget {
       'responseScript': 'خوب استم، ممنون.'
     },
     {
-      'english': 'What\'s up? (casual)',
+      'english': 'What’s up? (casual)',
       'persian': 'Ci xabar?',
       'script': 'چه خبر؟',
       'responseEng': 'Nothing much.',
-      'response': 'Xabarî nîst.',
+      'response': 'Xabarî nest.',
       'responseScript': 'خبری نیست.'
     },
     {
-      'english': 'How\'s it going?',
-      'persian': 'Ciṭûrî?',
+      'english': 'How’s it going?',
+      'persian': 'Ci tawr me-guzarad?',
       'script': 'چطور میگذرد؟',
       'responseEng': 'Good, thanks.',
       'response': 'Xub, tašakur.',
@@ -185,56 +193,85 @@ class GreetingsPage extends StatelessWidget {
 
             // ===== PRONUNCIATION TIPS (also scrollable now!) =====
             Container(
-              padding: const EdgeInsets.all(14),
+              padding: const EdgeInsets.all(16),
+              margin: const EdgeInsets.only(bottom: 20),
               decoration: BoxDecoration(
                 color: Colors.blue.shade50,
-                borderRadius: BorderRadius.circular(10),
+                borderRadius: BorderRadius.circular(12),
                 border: Border.all(color: Colors.blue),
               ),
-              child: const Column(
+              child: Column(
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
-                  Text(
-                    'Pronunciation Tips:',
-                    style: TextStyle(
-                      fontWeight: FontWeight.bold,
-                      color: Colors.blue,
-                    ),
+                  Row(
+                    children: [
+                      Icon(Icons.mic, color: Colors.blue, size: 20),
+                      const SizedBox(width: 8),
+                      Text(
+                        'Pronunciation Tips',
+                        style: TextStyle(
+                          fontSize: 18,
+                          fontWeight: FontWeight.bold,
+                          color: Colors.blue,
+                        ),
+                      ),
+                    ],
                   ),
-                  SizedBox(height: 6),
+                  const SizedBox(height: 8),
                   Text(
-                    '• "Salâm" has stress on the second syllable: sa-LAM\n'
-                    '• "Xub" is pronounced like "khub" (خوب)\n'
-                    '• "Cixabar" is usually said quickly as one word\n'
-                    '• "Ciṭûrî" has stress on the last syllable',
-                    style: TextStyle(fontSize: 14),
+                    '• "Ci tawr me-guzarad?" (چطور میگذرد؟) is pronounced more like "Citor megzarad"\n'
+                    '• "Ci tawr astî?" (چطور استی؟) can be shortened into "Ci tawr-î" (چطوری)',
+                    style: const TextStyle(fontSize: 14, height: 1.5),
                   ),
                 ],
               ),
             ),
 
-            const SizedBox(height: 30),
+            const SizedBox(height: 12),
 
             // ===== NAVIGATION =====
             Row(
               mainAxisAlignment: MainAxisAlignment.spaceBetween,
               children: [
-                ElevatedButton(
+                OutlinedButton(
                   onPressed: () => Navigator.pop(context),
-                  style: ElevatedButton.styleFrom(backgroundColor: Colors.grey),
-                  child: const Text('Back'),
+                  style: OutlinedButton.styleFrom(
+                    padding: const EdgeInsets.symmetric(horizontal: 24, vertical: 12),
+                    side: BorderSide(color: Colors.blue),
+                    shape: RoundedRectangleBorder(
+                      borderRadius: BorderRadius.circular(12),
+                    ),
+                  ),
+                  child: const Text(
+                    'Back',
+                    style: TextStyle(color: Colors.blue),
+                  ),
                 ),
                 ElevatedButton(
                   onPressed: () {
                     Navigator.push(
                       context,
-                      MaterialPageRoute(
-                        builder: (context) => const IntroductionsPage(),
-                      ),
+                      MaterialPageRoute(builder: (context) => const IntroductionsPage()),
                     );
                   },
-                  style: ElevatedButton.styleFrom(backgroundColor: Colors.blue),
-                  child: const Text('Next: Introductions'),
+                  style: ElevatedButton.styleFrom(
+                    backgroundColor: Colors.blue,
+                    padding: const EdgeInsets.symmetric(horizontal: 24, vertical: 12),
+                    shape: RoundedRectangleBorder(
+                      borderRadius: BorderRadius.circular(12),
+                    ),
+                    elevation: 0,
+                  ),
+                  child: const Row(
+                    children: [
+                      Text(
+                        'Next: Introductions',
+                        style: TextStyle(color: Colors.white),
+                      ),
+                      SizedBox(width: 8),
+                      Icon(Icons.arrow_forward_rounded, size: 16, color: Colors.white),
+                    ],
+                  ),
                 ),
               ],
             ),

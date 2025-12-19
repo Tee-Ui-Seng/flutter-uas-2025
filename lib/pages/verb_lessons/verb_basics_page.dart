@@ -403,9 +403,9 @@ class VerbBasicsPage extends StatelessWidget {
             Container(
               padding: const EdgeInsets.all(16),
               decoration: BoxDecoration(
-                color: Colors.green[200]!,
+                color: Colors.lime[200]!,
                 borderRadius: BorderRadius.circular(12),
-                border: Border.all(color: Colors.green[300]!),
+                border: Border.all(color: Colors.lime[500]!),
               ),
               child: Column(
                 crossAxisAlignment: CrossAxisAlignment.start,
@@ -632,9 +632,9 @@ class VerbBasicsPage extends StatelessWidget {
             Container(
               padding: const EdgeInsets.all(16),
               decoration: BoxDecoration(
-                color: Colors.green[300]!,
+                color: Colors.lime[500]!,
                 borderRadius: BorderRadius.circular(12),
-                border: Border.all(color: Colors.green[300]!),
+                border: Border.all(color: Colors.lime[700]!),
               ),
               child: Column(
                 crossAxisAlignment: CrossAxisAlignment.start,
@@ -896,10 +896,10 @@ class VerbBasicsPage extends StatelessWidget {
                   ),
                   SizedBox(height: 8),
                   Text(
-                    '1. Remove "-dan" from infinitive to get the stem\n'
-                    '2. Add "me-" prefix to indicate present tense\n'
-                    '3. Add appropriate pronoun suffix (-am, -i, -ad, -im, -id, -and)\n'
-                    '4. Remove extra vowels when necessary',
+                    '1. Remove "-dan" from infinitive (if whatever remains ends in a vowel, remove it also) to get the stem.\n'
+                    '2. Add "me-" prefix to indicate present tense.\n'
+                    '3. Add appropriate pronoun suffix (-am, -î, -ad, -em, -ed, -and).\n'
+                    '4. Some common verbs have irregular stems that must be memorized.',
                     style: TextStyle(fontSize: 16),
                   ),
                 ],
@@ -911,28 +911,44 @@ class VerbBasicsPage extends StatelessWidget {
             Row(
               mainAxisAlignment: MainAxisAlignment.spaceBetween,
               children: [
-                ElevatedButton.icon(
+                OutlinedButton(
                   onPressed: () => Navigator.pop(context),
-                  icon: const Icon(Icons.arrow_back),
-                  label: const Text('Back'),
-                  style: ElevatedButton.styleFrom(
-                    padding: const EdgeInsets.symmetric(horizontal: 20, vertical: 12),
+                  style: OutlinedButton.styleFrom(
+                    padding: const EdgeInsets.symmetric(horizontal: 24, vertical: 12),
+                    side: BorderSide(color: Colors.green),
+                    shape: RoundedRectangleBorder(
+                      borderRadius: BorderRadius.circular(12),
+                    ),
+                  ),
+                  child: const Text(
+                    'Back',
+                    style: TextStyle(color: Colors.green),
                   ),
                 ),
-                ElevatedButton.icon(
+                ElevatedButton(
                   onPressed: () {
                     Navigator.push(
                       context,
-                      MaterialPageRoute(
-                        builder: (context) => const VerbConjugationPage(),
-                      ),
+                      MaterialPageRoute(builder: (_) => const VerbConjugationPage()),
                     );
                   },
-                  icon: const Icon(Icons.arrow_forward),
-                  label: const Text('Next: Conjugation Table'),
                   style: ElevatedButton.styleFrom(
                     backgroundColor: Colors.green,
-                    padding: const EdgeInsets.symmetric(horizontal: 20, vertical: 12),
+                    padding: const EdgeInsets.symmetric(horizontal: 24, vertical: 12),
+                    shape: RoundedRectangleBorder(
+                      borderRadius: BorderRadius.circular(12),
+                    ),
+                    elevation: 0,
+                  ),
+                  child: const Row(
+                    children: [
+                      Text(
+                        'Next: Conjugation Table',
+                        style: TextStyle(color: Colors.white),
+                      ),
+                      SizedBox(width: 8),
+                      Icon(Icons.arrow_forward_rounded, size: 16, color: Colors.white),
+                    ],
                   ),
                 ),
               ],

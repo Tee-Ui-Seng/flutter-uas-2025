@@ -13,33 +13,58 @@ class _RaQuizPageState extends State<RaQuizPage> {
   int _currentQuestion = 0;
   int _score = 0;
   bool _quizCompleted = false;
-  List<bool?> _userAnswers = List.filled(5, null);
+  List<bool?> _userAnswers = List.filled(10, null);
 
   final List<Map<String, dynamic>> _questions = [
     {
-      'question': 'Does this sentence require "râ"?\n"man ketâb (râ) mixâham" (I want a book)',
+      'question': 'man kitâb (râ) me-xâham\nمن کتاب (را) می‌خواهم\nI want a book',
       'correctAnswer': false,
       'explanation': 'No, because "a book" is indefinite (not specific).',
     },
     {
-      'question': 'Does this sentence require "râ"?\n"u ostâd (râ) did" (He saw the teacher)',
+      'question': 'o ustâd (râ) dîd\nاو استاد (را) دید\nHe saw the teacher',
       'correctAnswer': true,
-      'explanation': 'Yes, because "the teacher" is definite (specific person).',
+      'explanation': 'Yes, because "the teacher" is definite.',
     },
     {
-      'question': 'Does this sentence require "râ"?\n"mâ sib (râ) xaridim" (We bought apples)',
+      'question': 'mâ seb (râ) xarîdem\nما سیب (را) خریدیم\nWe bought apples',
       'correctAnswer': false,
-      'explanation': 'No, because "apples" is indefinite (some apples, not specific ones).',
+      'explanation': 'No, because "apples" is indefinite (some apples).',
     },
     {
-      'question': 'Does this sentence require "râ"?\n"šumâ in ketâb (râ) xândid" (You read this book)',
+      'question': 'šumâ în kitâb (râ) xândîd\nشما این کتاب (را) خواندید\nYou read this book',
       'correctAnswer': true,
-      'explanation': 'Yes, because "this book" is definite (specific book).',
+      'explanation': 'Yes, because "this book" is definite.',
     },
     {
-      'question': 'Does this sentence require "râ"?\n"ân pesar âb (râ) mixâhad" (That boy wants water)',
+      'question': 'ân pisar âb (râ) me-xâhad\nآن پسر آب (را) می‌خواهد\nThat boy wants water',
       'correctAnswer': false,
-      'explanation': 'No, because "water" is general/indefinite here.',
+      'explanation': 'No, because "water" is a general mass noun.',
+    },
+    {
+      'question': 'man dost-am (râ) dîdam\nمن دوستم (را) دیدم\nI saw my friend',
+      'correctAnswer': true,
+      'explanation': 'Yes, because "my friend" is definite.',
+    },
+    {
+      'question': 'o film (râ) dîd\nاو فیلم (را) دید\nShe watched a movie',
+      'correctAnswer': false,
+      'explanation': 'No, because "a movie" is indefinite.',
+    },
+    {
+      'question': 'mâ în mâšîn (râ) xarîdem\nما این ماشین (را) خریدیم\nWe bought this car',
+      'correctAnswer': true,
+      'explanation': 'Yes, because "this car" is definite.',
+    },
+    {
+      'question': 'man nân (râ) xordam\nمن نان (را) خوردم\nI ate bread',
+      'correctAnswer': false,
+      'explanation': 'No, because "bread" is a general mass noun.',
+    },
+    {
+      'question': 'o kitâb-hâ-yi jadîd (râ) xarîd\nاو کتاب‌های جدید (را) خرید\nHe bought the new books',
+      'correctAnswer': true,
+      'explanation': 'Yes, because the books are specific.',
     },
   ];
 
@@ -110,7 +135,7 @@ class _RaQuizPageState extends State<RaQuizPage> {
               color: Colors.teal,
             ),
             const SizedBox(height: 16),
-            
+
             Row(
               mainAxisAlignment: MainAxisAlignment.spaceBetween,
               children: [
@@ -134,22 +159,27 @@ class _RaQuizPageState extends State<RaQuizPage> {
             
             const SizedBox(height: 24),
             
+
+            const Text(
+              'Does this sentence require “râ”?',
+              style: TextStyle(
+                fontSize: 20,
+                fontWeight: FontWeight.bold,
+                color: Colors.teal,
+              ),
+            ),
+            const SizedBox(height: 12),
+            
             // Question
             Container(
+              width: double.infinity,
               padding: const EdgeInsets.all(16),
               decoration: BoxDecoration(
                 color: Colors.teal.shade50,
                 borderRadius: BorderRadius.circular(8),
                 border: Border.all(color: Colors.teal),
               ),
-              child: Text(
-                question['question'],
-                style: const TextStyle(
-                  fontSize: 18,
-                  fontWeight: FontWeight.bold,
-                ),
-                textAlign: TextAlign.center,
-              ),
+              child: _buildFormattedQuestion(question['question']),
             ),
             
             const SizedBox(height: 32),
@@ -247,7 +277,10 @@ class _RaQuizPageState extends State<RaQuizPage> {
                       backgroundColor: Colors.teal,
                       minimumSize: const Size(double.infinity, 48),
                     ),
-                    child: const Text('Back to Home'),
+                    child: const Text(
+                      'Back to Home',
+                      style: TextStyle(color: Colors.white),
+                    ),
                   ),
                 ],
               )
@@ -262,11 +295,56 @@ class _RaQuizPageState extends State<RaQuizPage> {
                   _currentQuestion < _questions.length - 1
                       ? 'Next Question'
                       : 'Finish Quiz',
+                  style: TextStyle(color: Colors.white),
                 ),
               ),
           ],
         ),
       ),
+    );
+  }
+
+  Widget _buildFormattedQuestion(String text) {
+    final parts = text.split('\n');
+
+    return Column(
+      children: [
+        // Romanization
+        Text(
+          parts[0],
+          style: const TextStyle(
+            fontFamily: 'Courier',
+            fontSize: 16,
+            fontWeight: FontWeight.bold,
+          ),
+          textAlign: TextAlign.center,
+        ),
+        const SizedBox(height: 8),
+
+        // Nastaliq (RTL)
+        Text(
+          parts[1],
+          style: const TextStyle(
+            fontFamily: 'NotoNastaliqUrdu',
+            fontSize: 26,
+            fontWeight: FontWeight.bold,
+          ),
+          textDirection: TextDirection.rtl,
+          textAlign: TextAlign.center,
+        ),
+        const SizedBox(height: 8),
+
+        // English
+        Text(
+          parts[2],
+          style: TextStyle(
+            fontSize: 16,
+            fontStyle: FontStyle.italic,
+            color: Colors.grey[700],
+          ),
+          textAlign: TextAlign.center,
+        ),
+      ],
     );
   }
 
@@ -276,7 +354,7 @@ class _RaQuizPageState extends State<RaQuizPage> {
     required bool isSelected,
     required bool isCorrect,
   }) {
-    Color backgroundColor = Colors.transparent;
+    Color backgroundColor = Colors.teal;
     Color borderColor = Colors.grey;
     
     if (isSelected) {
@@ -294,7 +372,7 @@ class _RaQuizPageState extends State<RaQuizPage> {
         backgroundColor: backgroundColor,
         foregroundColor: isSelected 
             ? (isCorrect ? Colors.green : Colors.red)
-            : Colors.teal,
+            : Colors.white,
         side: BorderSide(color: borderColor, width: 2),
         padding: const EdgeInsets.symmetric(vertical: 20),
         shape: RoundedRectangleBorder(

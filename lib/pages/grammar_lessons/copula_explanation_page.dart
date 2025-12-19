@@ -5,6 +5,19 @@ import 'positive_copula_page.dart';
 class CopulaExplanationPage extends StatelessWidget {
   const CopulaExplanationPage({super.key});
 
+  final List<Map<String, String>> examples = const [
+    {
+      'english': 'These houses are big',
+      'persian': 'in xâna-hâ buzurg astand',
+      'script': 'این خانه ها بزرگ استند',
+    },
+    {
+      'english': 'This is a book',
+      'persian': 'in yak kitâb ast',
+      'script': 'این یک کتاب است',
+    },
+  ];
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -74,7 +87,7 @@ class CopulaExplanationPage extends StatelessWidget {
                           crossAxisAlignment: CrossAxisAlignment.start,
                           children: [
                             const Text(
-                              'Persian Copula: "astan/hastan"',
+                              'Persian Copula',
                               style: TextStyle(
                                 fontSize: 18,
                                 fontWeight: FontWeight.bold,
@@ -131,7 +144,7 @@ class CopulaExplanationPage extends StatelessWidget {
                             ),
                             const SizedBox(height: 12),
                             _buildWritingExample(
-                              'he docašmaeh "ه"',
+                              'he docašma "ه"',
                               'Used for "hastan"',
                               'ه',
                             ),
@@ -146,40 +159,18 @@ class CopulaExplanationPage extends StatelessWidget {
                       ),
                     ),
                     
-                    // Example sentences (TABLE)
+                    // Example sentences 
                     const SizedBox(height: 16),
                     Container(
-                      padding: const EdgeInsets.all(12),
+                      padding: const EdgeInsets.all(16),
+                      margin: const EdgeInsets.only(bottom: 20),
                       decoration: BoxDecoration(
                         color: Colors.red.shade50,
-                        borderRadius: BorderRadius.circular(8),
+                        borderRadius: BorderRadius.circular(12),
                         border: Border.all(color: Colors.red),
                       ),
-                      child: Column(
-                        crossAxisAlignment: CrossAxisAlignment.start,
-                        children: [
-                          const Text(
-                            'Example Sentences:',
-                            style: TextStyle(
-                              fontWeight: FontWeight.bold,
-                              color: Colors.red,
-                            ),
-                          ),
-                          const SizedBox(height: 12),
-                          _buildExampleTable([
-                            {
-                              'english': 'I am a student',
-                              'pronunciation': 'man yak dânišjû astam',
-                              'persian': 'من یک دانشجو استم',
-                            },
-                            {
-                              'english': 'This is a book',
-                              'pronunciation': 'in yak kitâb ast',
-                              'persian': 'این یک کتاب است',
-                            },
-                          ]),
-                        ],
-                      ),
+                      child:
+                        _buildExampleTable(),
                     ),
                   ],
                 ),
@@ -192,28 +183,45 @@ class CopulaExplanationPage extends StatelessWidget {
             Row(
               mainAxisAlignment: MainAxisAlignment.spaceBetween,
               children: [
-                ElevatedButton(
-                  onPressed: () {
-                    Navigator.pop(context);
-                  },
-                  style: ElevatedButton.styleFrom(
-                    backgroundColor: Colors.grey,
+                OutlinedButton(
+                  onPressed: () => Navigator.pop(context),
+                  style: OutlinedButton.styleFrom(
+                    padding: const EdgeInsets.symmetric(horizontal: 24, vertical: 12),
+                    side: BorderSide(color: Colors.red),
+                    shape: RoundedRectangleBorder(
+                      borderRadius: BorderRadius.circular(12),
+                    ),
                   ),
-                  child: const Text('Back'),
+                  child: const Text(
+                    'Back',
+                    style: TextStyle(color: Colors.red),
+                  ),
                 ),
                 ElevatedButton(
                   onPressed: () {
                     Navigator.push(
                       context,
-                      MaterialPageRoute(
-                        builder: (context) => const PositiveCopulaPage(),
-                      ),
+                      MaterialPageRoute(builder: (context) => const PositiveCopulaPage()),
                     );
                   },
                   style: ElevatedButton.styleFrom(
                     backgroundColor: Colors.red,
+                    padding: const EdgeInsets.symmetric(horizontal: 24, vertical: 12),
+                    shape: RoundedRectangleBorder(
+                      borderRadius: BorderRadius.circular(12),
+                    ),
+                    elevation: 0,
                   ),
-                  child: const Text('Next: Positive Forms'),
+                  child: const Row(
+                    children: [
+                      Text(
+                        'Next: Positive Forms',
+                        style: TextStyle(color: Colors.white),
+                      ),
+                      SizedBox(width: 8),
+                      Icon(Icons.arrow_forward_rounded, size: 16, color: Colors.white),
+                    ],
+                  ),
                 ),
               ],
             ),
@@ -285,6 +293,76 @@ class CopulaExplanationPage extends StatelessWidget {
     );
   }
 
+  Widget _buildExampleTable() {
+    return  Column(
+    crossAxisAlignment: CrossAxisAlignment.start,
+    children: [
+      Row(
+        children: [
+          Icon(Icons.translate, color: Colors.red, size: 20),
+          const SizedBox(width: 8),
+          Text(
+            'Example Sentences',
+            style: TextStyle(
+              fontSize: 18,
+              fontWeight: FontWeight.bold,
+              color: Colors.red.shade700,
+            ),
+          ),
+        ],
+      ),
+      const SizedBox(height: 12),
+
+      Column(
+        children: List.generate(examples.length, (index) {
+          final example = examples[index];
+          final isLast = index == examples.length - 1;
+
+          return Padding(
+            padding: EdgeInsets.only(bottom: isLast ? 0 : 12),
+            child: SizedBox(
+              width: double.infinity,
+              child: Column(
+                crossAxisAlignment: CrossAxisAlignment.start,
+                children: [
+                  Text(
+                    example['script']!,
+                    textDirection: TextDirection.rtl,
+                    style: const TextStyle(
+                      fontSize: 20,
+                      fontFamily: 'NotoNastaliqUrdu',
+                      height: 1.6,
+                    ),
+                  ),
+                  const SizedBox(height: 4),
+                  Text(
+                    example['persian']!,
+                    style: TextStyle(
+                      color: Colors.grey.shade700,
+                      fontSize: 15,
+                      fontStyle: FontStyle.italic,
+                      height: 1.3,
+                    ),
+                  ),
+                  const SizedBox(height: 4),
+                  Text(
+                    example['english']!,
+                    style: TextStyle(
+                      color: Colors.black,
+                      fontSize: 15,
+                      height: 1.3,
+                    ),
+                  ),
+                ],
+              ),
+            ),
+          );
+        }),
+      ),
+    ],
+    );
+  }
+
   // Widget _buildExample(String english, String pronunciation, String persian) {
   //   return Column(
   //     crossAxisAlignment: CrossAxisAlignment.start,
@@ -303,81 +381,81 @@ class CopulaExplanationPage extends StatelessWidget {
   //   );
   // }
 
-  Widget _buildExampleTable(List<Map<String, String>> examples) {
-    return Table(
-      border: TableBorder.all(color: Colors.red),
-      columnWidths: const {
-        0: FlexColumnWidth(1.2),
-        1: FlexColumnWidth(1.2),
-        2: FlexColumnWidth(1),
-      },
-      children: [
-        // Header row
-        const TableRow(
-          decoration: BoxDecoration(color: Color(0xFFE0E6EA)),
-          children: [
-            Padding(
-              padding: EdgeInsets.all(8.0),
-              child: Text(
-                'English',
-                style: TextStyle(
-                  fontWeight: FontWeight.bold,
-                  color: Colors.red,
-                ),
-              ),
-            ),
-            Padding(
-              padding: EdgeInsets.all(8.0),
-              child: Text(
-                'Pronunciation',
-                style: TextStyle(
-                  fontWeight: FontWeight.bold,
-                  color: Colors.red,
-                ),
-              ),
-            ),
-            Padding(
-              padding: EdgeInsets.all(8.0),
-              child: Text(
-                'Persian',
-                style: TextStyle(
-                  fontWeight: FontWeight.bold,
-                  color: Colors.red,
-                ),
-              ),
-            ),
-          ],
-        ),
+  // Widget _buildExampleTable(List<Map<String, String>> examples) {
+  //   return Table(
+  //     border: TableBorder.all(color: Colors.red),
+  //     columnWidths: const {
+  //       0: FlexColumnWidth(1.2),
+  //       1: FlexColumnWidth(1.2),
+  //       2: FlexColumnWidth(1),
+  //     },
+  //     children: [
+  //       // Header row
+  //       const TableRow(
+  //         decoration: BoxDecoration(color: Color(0xFFE0E6EA)),
+  //         children: [
+  //           Padding(
+  //             padding: EdgeInsets.all(8.0),
+  //             child: Text(
+  //               'English',
+  //               style: TextStyle(
+  //                 fontWeight: FontWeight.bold,
+  //                 color: Colors.red,
+  //               ),
+  //             ),
+  //           ),
+  //           Padding(
+  //             padding: EdgeInsets.all(8.0),
+  //             child: Text(
+  //               'Pronunciation',
+  //               style: TextStyle(
+  //                 fontWeight: FontWeight.bold,
+  //                 color: Colors.red,
+  //               ),
+  //             ),
+  //           ),
+  //           Padding(
+  //             padding: EdgeInsets.all(8.0),
+  //             child: Text(
+  //               'Persian',
+  //               style: TextStyle(
+  //                 fontWeight: FontWeight.bold,
+  //                 color: Colors.red,
+  //               ),
+  //             ),
+  //           ),
+  //         ],
+  //       ),
 
-        // Dynamic rows
-        for (final ex in examples)
-          TableRow(
-            children: [
-              Padding(
-                padding: const EdgeInsets.all(8.0),
-                child: Text(ex['english']!),
-              ),
-              Padding(
-                padding: const EdgeInsets.all(8.0),
-                child: Text(
-                  ex['pronunciation']!,
-                  style: const TextStyle(fontStyle: FontStyle.italic),
-                ),
-              ),
-              Padding(
-                padding: const EdgeInsets.all(8.0),
-                child: Text(
-                  ex['persian']!,
-                  textDirection: TextDirection.rtl,
-                  style: const TextStyle(
-                    fontSize: 18,
-                    fontFamily: 'NotoNastaliqUrdu',
-                  ),
-                ),
-              ),
-            ],
-          ),
-      ],
-    );
-  }
+  //       // Dynamic rows
+  //       for (final ex in examples)
+  //         TableRow(
+  //           children: [
+  //             Padding(
+  //               padding: const EdgeInsets.all(8.0),
+  //               child: Text(ex['english']!),
+  //             ),
+  //             Padding(
+  //               padding: const EdgeInsets.all(8.0),
+  //               child: Text(
+  //                 ex['pronunciation']!,
+  //                 style: const TextStyle(fontStyle: FontStyle.italic),
+  //               ),
+  //             ),
+  //             Padding(
+  //               padding: const EdgeInsets.all(8.0),
+  //               child: Text(
+  //                 ex['persian']!,
+  //                 textDirection: TextDirection.rtl,
+  //                 style: const TextStyle(
+  //                   fontSize: 18,
+  //                   fontFamily: 'NotoNastaliqUrdu',
+  //                 ),
+  //               ),
+  //             ),
+  //           ],
+  //         ),
+  //     ],
+  //   );
+  // }
 }

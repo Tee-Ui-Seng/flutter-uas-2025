@@ -10,8 +10,8 @@ class ConjunctionsPage extends StatelessWidget {
       'persian': 'و',
       'pronunciation': 'va',
       'english': 'and',
-      // 'script': 'من و تو',
       'example': 'man va tu',
+      'script': 'من و تو',
       'meaning': 'I and you',
     },
     {
@@ -19,7 +19,7 @@ class ConjunctionsPage extends StatelessWidget {
       'pronunciation': 'yâ',
       'english': 'or',
       'example': 'seb yâ mâlta',
-      // 'script': 'سیب یا مالته',
+      'script': 'سیب یا مالته',
       'meaning': 'apple or orange',
     },
     {
@@ -27,15 +27,15 @@ class ConjunctionsPage extends StatelessWidget {
       'pronunciation': 'amâ',
       'english': 'but',
       'example': 'man me-xâham, amâ na me-tavânam',
-      // 'script': 'من می‌خواهم، اما نمی‌توانم',
+      'script': 'من می‌خواهم، اما نمی‌توانم',
       'meaning': 'I want, but I cannot',
     },
     {
       'persian': 'چونکه / زیرا',
-      'pronunciation': 'zerâ / čunki',
+      'pronunciation': 'zerâ / čûnki',
       'english': 'because',
       'example': 'na me-ravam čunki bemâram',
-      // 'script': 'نمی‌روم چونکه بیمارم',
+      'script': 'نمی‌روم چونکه بیمارم',
       'meaning': 'I am not going because I am sick',
     },
     {
@@ -43,7 +43,7 @@ class ConjunctionsPage extends StatelessWidget {
       'pronunciation': 'agar',
       'english': 'if',
       'example': 'agar mexâhî, biraw!',
-      // 'script': '!اگر میخواهی برو',
+      'script': '!اگر میخواهی برو',
       'meaning': 'If you want, go!',
     },
     {
@@ -51,7 +51,7 @@ class ConjunctionsPage extends StatelessWidget {
       'pronunciation': 'pas',
       'english': 'so / then',
       'example': 'bârân me-bârad, pas mâ dar xâna me-mânem',
-      // 'script': 'باران می‌بارد، پس ما در خانه می‌مانیم',
+      'script': 'باران می‌بارد، پس ما در خانه می‌مانیم',
       'meaning': 'It is raining, so we stay at home',
     },
   ];
@@ -91,27 +91,46 @@ class ConjunctionsPage extends StatelessWidget {
             const SizedBox(height: 24),
 
             // USAGE TIPS
-            _buildSectionTitle('Usage Tips'),
             Container(
-              padding: const EdgeInsets.all(12),
+              padding: const EdgeInsets.all(16),
+              margin: const EdgeInsets.only(bottom: 20),
               decoration: BoxDecoration(
-                color: Colors.red.shade50,
-                borderRadius: BorderRadius.circular(8),
-                border: Border.all(color: Colors.red),
+                color: Colors.amber.shade50,
+                borderRadius: BorderRadius.circular(12),
+                border: Border.all(color: Colors.amber),
               ),
-              child: const Text(
-                '• Conjunctions usually come between the words or clauses they connect.\n'
-                '• "و" (va) can connect nouns, verbs, or entire sentences.\n'
-                '• "اگر" (agar) is often used at the beginning of conditional sentences.\n'
-                '• "چونکه" and "زیرا" are interchangeable for "because".',
-                style: TextStyle(fontSize: 14),
+              child: Column(
+                crossAxisAlignment: CrossAxisAlignment.start,
+                children: [
+                  Row(
+                    children: [
+                      Icon(Icons.tips_and_updates, color: Colors.amber, size: 20),
+                      const SizedBox(width: 8),
+                      Text(
+                        'Usage Tips',
+                        style: TextStyle(
+                          fontSize: 18,
+                          fontWeight: FontWeight.bold,
+                          color: Colors.amber,
+                        ),
+                      ),
+                    ],
+                  ),
+                  const SizedBox(height: 8),
+                  Text(
+                    '• Conjunctions usually come between the words or clauses they connect.\n'
+                    '• "و" (va) can connect nouns, verbs, or entire sentences.\n'
+                    '• "اگر" (agar) is often used at the beginning of conditional sentences.\n'
+                    '• "چونکه" and "زیرا" are interchangeable for "because".',
+                    style: const TextStyle(fontSize: 14, height: 1.5),
+                  ),
+                ],
               ),
             ),
 
-            const SizedBox(height: 24),
+            const SizedBox(height: 12),
 
             // EXAMPLE CONVERSATION
-            _buildSectionTitle('Example Conversation'),
             Container(
               padding: const EdgeInsets.all(12),
               decoration: BoxDecoration(
@@ -122,10 +141,45 @@ class ConjunctionsPage extends StatelessWidget {
               child: Column(
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
-                  _buildDialogLine('A:', 'mixâhî beravî sinemâ?', 'Do you want to go to cinema?'),
-                  _buildDialogLine('B:', 'mixâham, amâ nemitavânam', 'I want, but I cannot'),
-                  _buildDialogLine('A:', 'čerâ?', 'Why?'),
-                  _buildDialogLine('B:', 'čunki kâr dâram', 'Because I have work'),
+                  Row(
+                    children: [
+                      Icon(Icons.message, color: Colors.green, size: 20),
+                      const SizedBox(width: 8),
+                      Text(
+                        'Example Conversation',
+                        style: TextStyle(
+                          fontSize: 18,
+                          fontWeight: FontWeight.bold,
+                          color: Colors.green.shade700,
+                        ),
+                      ),
+                    ],
+                  ),
+                  const SizedBox(height: 12),
+                  _buildDialogLine(
+                    'A:',
+                    'me-xâhî biravî sînemâ?',
+                    'می‌خواهی بروی سینما؟',
+                    'Do you want to go to cinema?',
+                  ),
+                  _buildDialogLine(
+                    'B:',
+                    'me-xâham, amâ na me-tavânam',
+                    'می‌خواهم، اما نمی‌توانم',
+                    'I want, but I cannot',
+                  ),
+                  _buildDialogLine(
+                    'A:',
+                    'čarâ?',
+                    'چرا؟',
+                    'Why?',
+                  ),
+                  _buildDialogLine(
+                    'B:',
+                    'čûnki kâr dâram',
+                    'چونکه کار دارم',
+                    'Because I have work',
+                  ),
                 ],
               ),
             ),
@@ -136,10 +190,19 @@ class ConjunctionsPage extends StatelessWidget {
             Row(
               mainAxisAlignment: MainAxisAlignment.spaceBetween,
               children: [
-                ElevatedButton(
+                OutlinedButton(
                   onPressed: () => Navigator.pop(context),
-                  style: ElevatedButton.styleFrom(backgroundColor: Colors.grey),
-                  child: const Text('Back'),
+                  style: OutlinedButton.styleFrom(
+                    padding: const EdgeInsets.symmetric(horizontal: 24, vertical: 12),
+                    side: BorderSide(color: Colors.red),
+                    shape: RoundedRectangleBorder(
+                      borderRadius: BorderRadius.circular(12),
+                    ),
+                  ),
+                  child: const Text(
+                    'Back',
+                    style: TextStyle(color: Colors.red),
+                  ),
                 ),
                 ElevatedButton(
                   onPressed: () {
@@ -148,8 +211,24 @@ class ConjunctionsPage extends StatelessWidget {
                       MaterialPageRoute(builder: (context) => const PrepositionsPage()),
                     );
                   },
-                  style: ElevatedButton.styleFrom(backgroundColor: Colors.red),
-                  child: const Text('Next: Prepositions'),
+                  style: ElevatedButton.styleFrom(
+                    backgroundColor: Colors.red,
+                    padding: const EdgeInsets.symmetric(horizontal: 24, vertical: 12),
+                    shape: RoundedRectangleBorder(
+                      borderRadius: BorderRadius.circular(12),
+                    ),
+                    elevation: 0,
+                  ),
+                  child: const Row(
+                    children: [
+                      Text(
+                        'Next: Prepositions',
+                        style: TextStyle(color: Colors.white),
+                      ),
+                      SizedBox(width: 8),
+                      Icon(Icons.arrow_forward_rounded, size: 16, color: Colors.white),
+                    ],
+                  ),
                 ),
               ],
             ),
@@ -229,7 +308,25 @@ class ConjunctionsPage extends StatelessWidget {
               child: Column(
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
-                  Text('Example: ${cj['example']}', style: const TextStyle(fontStyle: FontStyle.italic)),
+                  Text(
+                    cj['script'],
+                    style: const TextStyle(
+                      fontFamily: 'NotoNastaliqUrdu',
+                      fontSize: 18,
+                    ),
+                    textDirection: TextDirection.rtl,
+                  ),
+
+                  Text(
+                    '(${cj['example']})',
+                    style: const TextStyle(
+                      fontStyle: FontStyle.italic,
+                      color: Colors.red,
+                    ),
+                  ),
+                  
+                  const SizedBox(height: 4),
+
                   Text('Meaning: ${cj['meaning']}'),
                 ],
               ),
@@ -241,19 +338,61 @@ class ConjunctionsPage extends StatelessWidget {
   }
 
   // DIALOG LINES
-  Widget _buildDialogLine(String speaker, String persian, String english) {
+  Widget _buildDialogLine(
+    String speaker,
+    String persian,
+    String script,
+    String english,
+  ) {
     return Padding(
-      padding: const EdgeInsets.only(bottom: 6),
-      child: Column(
+      padding: const EdgeInsets.only(bottom: 8),
+      child: Row(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
-          Text(speaker, style: const TextStyle(fontWeight: FontWeight.bold)),
-          Row(
-            children: [
-              Expanded(child: Text(persian, style: const TextStyle(fontStyle: FontStyle.italic))),
-              const SizedBox(width: 8),
-              Expanded(child: Text(english, style: const TextStyle(color: Colors.grey))),
-            ],
+          SizedBox(
+            width: 30,
+            child: Text(
+              speaker,
+              style: const TextStyle(fontWeight: FontWeight.bold),
+            ),
+          ),
+
+          Expanded(
+            child: Column(
+              crossAxisAlignment: CrossAxisAlignment.start,
+              children: [
+                // Nastaliq
+                Text(
+                  script,
+                  style: const TextStyle(
+                    fontSize: 20,
+                    fontFamily: 'NotoNastaliqUrdu',
+                  ),
+                  textDirection: TextDirection.rtl,
+                ),
+
+                // Romanization
+                Text(
+                  persian,
+                  style: TextStyle(
+                    color: Colors.grey.shade700,
+                    fontSize: 15,
+                    fontStyle: FontStyle.italic,
+                    height: 1.3,
+                  ),
+                ),
+
+                // English
+                Text(
+                  english,
+                  style: TextStyle(
+                    color: Colors.black,
+                    fontSize: 15,
+                    height: 1.3,
+                  ),
+                ),
+              ],
+            ),
           ),
         ],
       ),

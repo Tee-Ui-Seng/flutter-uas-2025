@@ -15,10 +15,10 @@ class PluralizationPage extends StatelessWidget {
       'scriptTo': 'کتاب‌ها',
     },
     {
-      'rule': 'For words pertaining to humans',
-      'suffix': '-ân',
-      'exampleFrom': 'dânešju',
-      'exampleTo': 'dânešjuyân',
+      'rule': 'Some animate words',
+      'suffix': '-ân / -yân (after a vowel)',
+      'exampleFrom': 'dânišjû',
+      'exampleTo': 'dânišjûyân',
       'meaning': 'student → students',
       'scriptFrom': 'دانشجو',
       'scriptTo': 'دانشجویان',
@@ -31,17 +31,17 @@ class PluralizationPage extends StatelessWidget {
       'meaning': 'word → words',
       'scriptFrom': 'کلمه',
       'scriptTo': 'کلمات',
-      'notes': 'Note: The form kalima-hā (کلمه‌ها) can also be found mostly in Tajik.',
+      'notes': 'Note: The form kalima-hâ (کلمه‌ها) can also be found mostly in Tajik.',
     },
     {
       'rule': 'Irregular plurals',
       'suffix': '(irregular)',
-      'exampleFrom': 'šay\'',
-      'exampleTo': 'ašyo\'',
+      'exampleFrom': 'šay’',
+      'exampleTo': 'ašyo’',
       'meaning': 'object → objects',
       'scriptFrom': 'شیء',
       'scriptTo': 'اشیاء',
-      'notes': 'Note: The form šay\'-hā (شیءها) can also be found mostly in Tajik.',
+      'notes': 'Note: The form šay’-hâ (شیءها) can also be found mostly in Tajik.',
     },
   ];
 
@@ -86,7 +86,8 @@ class PluralizationPage extends StatelessWidget {
               child: Padding(
                 padding: const EdgeInsets.all(16.0),
                 child: Column(
-                  children: rules.map((rule) {
+                  children: [
+                    ...rules.map((rule) {
                     final hasNotes = rule['notes'] != null;
                     
                     return Card(
@@ -120,107 +121,105 @@ class PluralizationPage extends StatelessWidget {
                             const SizedBox(height: 16),
 
                             // ⭐ COMPARISON TABLE ⭐
-                            Table(
-                              border: TableBorder.all(
-                                color: Colors.grey.shade300,
+                            Container(
+                              padding: const EdgeInsets.all(12),
+                              margin: const EdgeInsets.only(bottom: 12),
+                              decoration: BoxDecoration(
+                                color: Colors.white,
+                                borderRadius: BorderRadius.circular(8),
+                                boxShadow: [
+                                  BoxShadow(
+                                    color: Colors.black.withValues(alpha: 0.1),
+                                    blurRadius: 4,
+                                    offset: const Offset(0, 2),
+                                  ),
+                                ],
                               ),
-                              columnWidths: const {
-                                0: FlexColumnWidth(1),
-                                1: FlexColumnWidth(1),
-                              },
-                              children: [
-                                const TableRow(
-                                  decoration:
-                                      BoxDecoration(color: Color(0xFFE0F2F1)),
-                                  children: [
-                                    Padding(
-                                      padding: EdgeInsets.all(8.0),
-                                      child: Text(
-                                        'Singular',
-                                        textAlign: TextAlign.center,
-                                        style: TextStyle(
+                              child: Column(
+                                children: [
+                                  // Latin script transformation
+                                  Row(
+                                    mainAxisAlignment: MainAxisAlignment.center,
+                                    children: [
+                                      Text(
+                                        rule['exampleFrom'],
+                                        style: const TextStyle(
+                                          fontFamily: 'Courier',
+                                          fontSize: 16,
                                           fontWeight: FontWeight.bold,
+                                          color: Colors.teal,
                                         ),
                                       ),
-                                    ),
-                                    Padding(
-                                      padding: EdgeInsets.all(8.0),
-                                      child: Text(
-                                        'Plural',
-                                        textAlign: TextAlign.center,
-                                        style: TextStyle(
+                                      const SizedBox(width: 8),
+                                      const Icon(Icons.arrow_forward, size: 16, color: Colors.grey),
+                                      const SizedBox(width: 8),
+                                      Text(
+                                        rule['exampleTo'],
+                                        style: const TextStyle(
+                                          fontFamily: 'Courier',
+                                          fontSize: 16,
                                           fontWeight: FontWeight.bold,
+                                          color: Colors.teal,
                                         ),
                                       ),
-                                    ),
-                                  ],
-                                ),
-                                TableRow(
-                                  children: [
-                                    // LEFT CELL - Singular
-                                    Padding(
-                                      padding: const EdgeInsets.all(8.0),
-                                      child: Column(
-                                        children: [
-                                          Text(
-                                            rule['exampleFrom'],
-                                            style: const TextStyle(
-                                              fontSize: 16,
-                                              fontWeight: FontWeight.bold,
-                                            ),
-                                          ),
-                                          const SizedBox(height: 4),
-                                          Text(
-                                            rule['scriptFrom'],
-                                            style: const TextStyle(
-                                              fontSize: 18,
-                                              fontFamily: 'NotoNastaliqUrdu',
-                                            ),
-                                            textDirection: TextDirection.rtl,
-                                          ),
-                                        ],
+                                    ],
+                                  ),
+
+                                  const SizedBox(height: 8),
+
+                                  // Persian script transformation
+                                  Row(
+                                    mainAxisAlignment: MainAxisAlignment.center,
+                                    children: [
+                                      Text(
+                                        rule['scriptFrom'],
+                                        style: const TextStyle(
+                                          fontSize: 24,
+                                          fontWeight: FontWeight.bold,
+                                          fontFamily: 'NotoNastaliqUrdu',
+                                        ),
+                                        textDirection: TextDirection.rtl,
                                       ),
-                                    ),
-
-                                    // RIGHT CELL - Plural
-                                    Padding(
-                                      padding: const EdgeInsets.all(8.0),
-                                      child: Column(
-                                        children: [
-                                          Text(
-                                            rule['exampleTo'],
-                                            style: const TextStyle(
-                                              fontSize: 16,
-                                              fontWeight: FontWeight.bold,
-                                            ),
-                                          ),
-                                          const SizedBox(height: 4),
-                                          Text(
-                                            rule['scriptTo'],
-                                            style: const TextStyle(
-                                              fontSize: 18,
-                                              fontFamily: 'NotoNastaliqUrdu',
-                                            ),
-                                            textDirection: TextDirection.rtl,
-                                          ),
-                                        ],
+                                      const SizedBox(width: 8),
+                                      const Icon(Icons.arrow_forward, size: 16, color: Colors.grey),
+                                      const SizedBox(width: 8),
+                                      Text(
+                                        rule['scriptTo'],
+                                        style: const TextStyle(
+                                          fontSize: 24,
+                                          fontWeight: FontWeight.bold,
+                                          fontFamily: 'NotoNastaliqUrdu',
+                                        ),
+                                        textDirection: TextDirection.rtl,
                                       ),
+                                    ],
+                                  ),
+
+                                  const SizedBox(height: 6),
+
+                                  // Meaning
+                                  Text(
+                                    rule['meaning'],
+                                    style: TextStyle(
+                                      fontSize: 16,
+                                      color: Colors.grey[700],
+                                      fontStyle: FontStyle.italic,
                                     ),
-                                  ],
-                                ),
-                              ],
-                            ),
-
-                            const SizedBox(height: 8),
-
-                            // English meaning
-                            Text(
-                              rule['meaning'],
-                              style: const TextStyle(
-                                fontStyle: FontStyle.italic,
-                                color: Colors.grey,
+                                  ),
+                                ],
                               ),
                             ),
+
+                            // const SizedBox(height: 8),
+
+                            // // English meaning
+                            // Text(
+                            //   rule['meaning'],
+                            //   style: const TextStyle(
+                            //     fontStyle: FontStyle.italic,
+                            //     color: Colors.grey,
+                            //   ),
+                            // ),
 
                             // ⭐ CONDITIONAL NOTES SECTION ⭐
                             if (hasNotes) ...[
@@ -247,65 +246,104 @@ class PluralizationPage extends StatelessWidget {
                       ),
                     );
                   }).toList(),
+
+                  // PRACTICE TIPS (now scrollable)
+                  Container(
+                    margin: const EdgeInsets.symmetric(horizontal: 15, vertical: 16),
+                    padding: const EdgeInsets.all(16),
+                    decoration: BoxDecoration(
+                      borderRadius: BorderRadius.circular(12),
+                      border: Border.all(color: Colors.amber),
+                      color: Colors.amber.shade50,
+                    ),
+                    child: Column(
+                      crossAxisAlignment: CrossAxisAlignment.start,
+                      children: [
+                        Row(
+                          children: [
+                            const Icon(Icons.tips_and_updates,
+                                color: Colors.amber, size: 20),
+                            const SizedBox(width: 8),
+                            Text(
+                              'Practice Tips',
+                              style: TextStyle(
+                                fontSize: 18,
+                                fontWeight: FontWeight.bold,
+                                color: Colors.amber[800],
+                              ),
+                            ),
+                          ],
+                        ),
+                        const SizedBox(height: 8),
+                        const Text(
+                          '• Use "-hâ" for most inanimate objects\n'
+                          '• Use "-ân" for animate beings & people\n'
+                          '• Some nouns have irregular plurals\n'
+                          '• Do NOT pluralize a noun if the number is specified',
+                          style: TextStyle(fontSize: 14, height: 1.5),
+                        ),
+                      ],
+                    ),
+                  ),
+                  ],                  
                 ),
               ),
             ),
           ),
 
-          // IMPORTANT NOTE
-          Container(
-            width: double.infinity,
-            margin: const EdgeInsets.symmetric(horizontal: 16),
-            padding: const EdgeInsets.all(12),
-            decoration: BoxDecoration(
-              color: Colors.amber.shade50,
-              borderRadius: BorderRadius.circular(8),
-              border: Border.all(color: Colors.amber),
-            ),
-            child: const Text(
-              'Important:\n'
-              '- Use "-hâ" for most inanimate objects\n'
-              '- Use "-ân" for animate beings & people\n'
-              '- Some nouns have irregular plurals',
-              style: TextStyle(fontSize: 14),
-            ),
-          ),
+          const SizedBox(height: 8),
 
-          const SizedBox(height: 16),
-
-          // NAV BUTTONS
+          // NAVIGATION BUTTONS
           Padding(
-            padding: const EdgeInsets.symmetric(horizontal: 16),
+            padding: const EdgeInsets.all(16.0),
             child: Row(
               mainAxisAlignment: MainAxisAlignment.spaceBetween,
               children: [
-                ElevatedButton(
+                OutlinedButton(
                   onPressed: () => Navigator.pop(context),
-                  style: ElevatedButton.styleFrom(
-                    backgroundColor: Colors.grey,
+                  style: OutlinedButton.styleFrom(
+                    padding: const EdgeInsets.symmetric(horizontal: 24, vertical: 12),
+                    side: BorderSide(color: Colors.teal),
+                    shape: RoundedRectangleBorder(
+                      borderRadius: BorderRadius.circular(12),
+                    ),
                   ),
-                  child: const Text('Back'),
+                  child: const Text(
+                    'Back',
+                    style: TextStyle(color: Colors.teal),
+                  ),
                 ),
                 ElevatedButton(
                   onPressed: () {
                     Navigator.push(
                       context,
-                      MaterialPageRoute(
-                        builder: (context) =>
-                            const PronounPluralQuizPage(),
-                      ),
+                      MaterialPageRoute(builder: (context) => const PronounPluralQuizPage()),
                     );
                   },
                   style: ElevatedButton.styleFrom(
                     backgroundColor: Colors.teal,
+                    padding: const EdgeInsets.symmetric(horizontal: 24, vertical: 12),
+                    shape: RoundedRectangleBorder(
+                      borderRadius: BorderRadius.circular(12),
+                    ),
+                    elevation: 0,
                   ),
-                  child: const Text('Practice Quiz'),
+                  child: const Row(
+                    children: [
+                      Text(
+                        'Next: Practice Quiz',
+                        style: TextStyle(color: Colors.white),
+                      ),
+                      SizedBox(width: 8),
+                      Icon(Icons.quiz, size: 16, color: Colors.white),
+                    ],
+                  ),
                 ),
               ],
             ),
           ),
 
-          const SizedBox(height: 16),
+          // const SizedBox(height: 16),
         ],
       ),
     );

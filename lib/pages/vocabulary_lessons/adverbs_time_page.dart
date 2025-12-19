@@ -15,17 +15,18 @@ class _AdverbsTimePageState extends State<AdverbsTimePage> {
   final List<Map<String, String>> adverbs = const [
     {'english': 'now', 'persian': 'aknûn', 'script': 'اکنون'},
     {'english': 'then', 'persian': 'pas', 'script': 'پس'},
-    {'english': 'today', 'persian': 'emrûz', 'script': 'امروز'},
+    {'english': 'yesterday', 'persian': 'dîroz', 'script': 'دیروز'},
+    {'english': 'today', 'persian': 'imroz', 'script': 'امروز'},
     {'english': 'tomorrow', 'persian': 'fardâ', 'script': 'فردا'},
-    {'english': 'yesterday', 'persian': 'dîrûz', 'script': 'دیروز'},
     {'english': 'always', 'persian': 'hameša', 'script': 'همیشه'},
-    {'english': 'never', 'persian': 'hargez', 'script': 'هرگز'},
-    {'english': 'often', 'persian': 'aksar(an)', 'script': 'اکثر(ا)'},
-    {'english': 'sometimes', 'persian': 'gâhî', 'script': 'گاهی'},
-    {'english': 'soon', 'persian': 'bezûdî', 'script': 'بزودی'},
-    {'english': 'late', 'persian': 'dir', 'script': 'دیر'},
+    {'english': 'never', 'persian': 'hargiz', 'script': 'هرگز'},
+    {'english': 'often', 'persian': 'aksar awqât', 'script': 'اکثر اوقات'},
+    {'english': 'often (Iran)', 'persian': 'ağlab', 'script': 'اغلب'},
+    {'english': 'sometimes', 'persian': 'gâhe', 'script': 'گاهی'},
+    {'english': 'soon', 'persian': 'ba zûdî', 'script': 'به زودی'},
+    {'english': 'late', 'persian': 'der', 'script': 'دیر'},
     {'english': 'early', 'persian': 'zûd', 'script': 'زود'},
-    {'english': 'already', 'persian': 'qablan', 'script': 'قبلاً'},
+    {'english': 'already', 'persian': 'qablan', 'script': 'قبلا'},
     {'english': 'yet/still', 'persian': 'hanûz', 'script': 'هنوز'},
   ];
 
@@ -148,10 +149,10 @@ class _AdverbsTimePageState extends State<AdverbsTimePage> {
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
                     _buildExpression('right now', 'hamîn aknûn', 'همین اکنون'),
-                    _buildExpression('every day', 'har rûz', 'هر روز'),
-                    _buildExpression('next week', 'hafta-ye āyanda', 'هفتهٔ آینده'),
-                    _buildExpression('last year', 'sâl-e gozašta', 'سال گذشته'),
-                    _buildExpression('in the morning', 'sob', 'صبح'),
+                    _buildExpression('every day', 'har roz', 'هر روز'),
+                    _buildExpression('next week', 'hafta-yi âyanda', 'هفته آینده'),
+                    _buildExpression('last year', 'sâl-i guzašta', 'سال گذشته'),
+                    _buildExpression('in the morning', 'subh', 'صبح'),
                     _buildExpression('in the evening', 'šab', 'شب'),
                   ],
                 ),
@@ -164,22 +165,45 @@ class _AdverbsTimePageState extends State<AdverbsTimePage> {
             Row(
               mainAxisAlignment: MainAxisAlignment.spaceBetween,
               children: [
-                ElevatedButton(
+                OutlinedButton(
                   onPressed: () => Navigator.pop(context),
-                  style: ElevatedButton.styleFrom(backgroundColor: Colors.grey),
-                  child: const Text('Back'),
+                  style: OutlinedButton.styleFrom(
+                    padding: const EdgeInsets.symmetric(horizontal: 24, vertical: 12),
+                    side: BorderSide(color: Colors.amber),
+                    shape: RoundedRectangleBorder(
+                      borderRadius: BorderRadius.circular(12),
+                    ),
+                  ),
+                  child: const Text(
+                    'Back',
+                    style: TextStyle(color: Colors.amber),
+                  ),
                 ),
                 ElevatedButton(
                   onPressed: () {
                     Navigator.push(
                       context,
-                      MaterialPageRoute(
-                        builder: (context) => const MoreVocabularyPage(),
-                      ),
+                      MaterialPageRoute(builder: (_) => const MoreVocabularyPage()),
                     );
                   },
-                  style: ElevatedButton.styleFrom(backgroundColor: Colors.amber),
-                  child: const Text('Next: More Vocabulary'),
+                  style: ElevatedButton.styleFrom(
+                    backgroundColor: Colors.amber,
+                    padding: const EdgeInsets.symmetric(horizontal: 24, vertical: 12),
+                    shape: RoundedRectangleBorder(
+                      borderRadius: BorderRadius.circular(12),
+                    ),
+                    elevation: 0,
+                  ),
+                  child: const Row(
+                    children: [
+                      Text(
+                        'Next: More Vocabulary',
+                        style: TextStyle(color: Colors.white),
+                      ),
+                      SizedBox(width: 8),
+                      Icon(Icons.arrow_forward_rounded, size: 16, color: Colors.white),
+                    ],
+                  ),
                 ),
               ],
             ),

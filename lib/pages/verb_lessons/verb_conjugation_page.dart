@@ -231,87 +231,125 @@ class VerbConjugationPage extends StatelessWidget {
             const SizedBox(height: 30),
 
             // Key Points
-            Card(
-              elevation: 3,
-              shape: RoundedRectangleBorder(
+            Container(
+              padding: const EdgeInsets.all(16),
+              margin: const EdgeInsets.only(bottom: 20),
+              decoration: BoxDecoration(
+                color: Colors.amber.shade50,
                 borderRadius: BorderRadius.circular(12),
+                border: Border.all(color: Colors.amber),
               ),
-              child: Padding(
-                padding: const EdgeInsets.all(16),
-                child: Column(
-                  crossAxisAlignment: CrossAxisAlignment.start,
-                  children: [
-                    const Row(
-                      children: [
-                        Icon(Icons.lightbulb_outline, color: Colors.orange),
-                        SizedBox(width: 8),
-                        Text(
-                          'Key Points to Remember:',
-                          style: TextStyle(
-                            fontWeight: FontWeight.bold,
-                            fontSize: 18,
-                            color: Colors.orange,
-                          ),
+              child: Column(
+                crossAxisAlignment: CrossAxisAlignment.start,
+                children: [
+                  Row(
+                    children: [
+                      Icon(Icons.tips_and_updates, color: Colors.amber, size: 20),
+                      const SizedBox(width: 8),
+                      Text(
+                        'Key Points to Remember:',
+                        style: TextStyle(
+                          fontSize: 18,
+                          fontWeight: FontWeight.bold,
+                          color: Colors.amber,
                         ),
-                      ],
-                    ),
-                    const SizedBox(height: 12),
-                    _buildKeyPoint('The "me-" prefix is often pronounced as "mi-" in speech'),
-                    _buildKeyPoint('The verb stem (without -dan) is called "riz" (ریشه)'),
-                    _buildKeyPoint('Some verbs have irregular stems that need to be memorized'),
-                    _buildKeyPoint('Negative form uses "ne-" before "me-" (نمی‌خورم = ne-me-xor-am)'),
-                    _buildKeyPoint('The stem determines the conjugation pattern'),
-                  ],
-                ),
+                      ),
+                    ],
+                  ),
+                  const SizedBox(height: 8),
+                  Text(
+                    '• The verb stem (without -dan) is called "reša" (ریشه).\n'
+                    '• Some verbs have irregular stems that need to be memorized.\n'
+                    '• The pronoun determines the conjugation pattern.\n'
+                    '• Negative form uses "na" before "me-" (نمی‌خورم = na me-xoram).',
+                    style: const TextStyle(fontSize: 14, height: 1.5),
+                  ),
+                ],
               ),
             ),
-            const SizedBox(height: 30),
+
+            // Card(
+            //   elevation: 3,
+            //   shape: RoundedRectangleBorder(
+            //     borderRadius: BorderRadius.circular(12),
+            //   ),
+            //   child: Padding(
+            //     padding: const EdgeInsets.all(16),
+            //     child: Column(
+            //       crossAxisAlignment: CrossAxisAlignment.start,
+            //       children: [
+            //         const Row(
+            //           children: [
+            //             Icon(Icons.lightbulb_outline, color: Colors.orange),
+            //             SizedBox(width: 8),
+            //             Text(
+            //               'Key Points to Remember:',
+            //               style: TextStyle(
+            //                 fontWeight: FontWeight.bold,
+            //                 fontSize: 18,
+            //                 color: Colors.orange,
+            //               ),
+            //             ),
+            //           ],
+            //         ),
+            //         const SizedBox(height: 12),
+            //         _buildKeyPoint('The verb stem (without -dan) is called "reša" (ریشه)'),
+            //         _buildKeyPoint('Some verbs have irregular stems that need to be memorized'),
+            //         _buildKeyPoint('The pronoun determines the conjugation pattern'),
+            //         _buildKeyPoint('Negative form uses "na" before "me-" (نمی‌خورم = na me-xoram)'),
+            //       ],
+            //     ),
+            //   ),
+            // ),
+            const SizedBox(height: 8),
 
             // Navigation Buttons
             Row(
               mainAxisAlignment: MainAxisAlignment.spaceBetween,
               children: [
-                ElevatedButton.icon(
-                  onPressed: () => Navigator.pushReplacement(
-                    context,
-                    MaterialPageRoute(
-                      builder: (context) => const VerbBasicsPage(),
+                OutlinedButton(
+                  onPressed: () => Navigator.pop(context),
+                  style: OutlinedButton.styleFrom(
+                    padding: const EdgeInsets.symmetric(horizontal: 24, vertical: 12),
+                    side: BorderSide(color: Colors.green),
+                    shape: RoundedRectangleBorder(
+                      borderRadius: BorderRadius.circular(12),
                     ),
                   ),
-                  icon: const Icon(Icons.arrow_back),
-                  label: const Text('Back to Basics'),
-                  style: ElevatedButton.styleFrom(
-                    backgroundColor: Colors.grey,
-                    foregroundColor: Colors.white,
-                    padding: const EdgeInsets.symmetric(horizontal: 20, vertical: 12),
-                    shape: RoundedRectangleBorder(
-                      borderRadius: BorderRadius.circular(8),
-                    ),
+                  child: const Text(
+                    'Back',
+                    style: TextStyle(color: Colors.green),
                   ),
                 ),
-                ElevatedButton.icon(
+                ElevatedButton(
                   onPressed: () {
                     Navigator.push(
                       context,
-                      MaterialPageRoute(
-                        builder: (context) => const ConjugationPracticePage(),
-                      ),
+                      MaterialPageRoute(builder: (_) => const ConjugationPracticePage()),
                     );
                   },
-                  icon: const Icon(Icons.quiz),
-                  label: const Text('Start Practice'),
                   style: ElevatedButton.styleFrom(
                     backgroundColor: Colors.green,
-                    foregroundColor: Colors.white,
-                    padding: const EdgeInsets.symmetric(horizontal: 20, vertical: 12),
+                    padding: const EdgeInsets.symmetric(horizontal: 24, vertical: 12),
                     shape: RoundedRectangleBorder(
-                      borderRadius: BorderRadius.circular(8),
+                      borderRadius: BorderRadius.circular(12),
                     ),
+                    elevation: 0,
+                  ),
+                  child: const Row(
+                    children: [
+                      Text(
+                        'Practice Conjugation',
+                        style: TextStyle(color: Colors.white),
+                      ),
+                      SizedBox(width: 8),
+                      Icon(Icons.quiz, size: 16, color: Colors.white),
+                    ],
                   ),
                 ),
               ],
             ),
-            const SizedBox(height: 20),
+            // const SizedBox(height: 20),
           ],
         ),
       ),

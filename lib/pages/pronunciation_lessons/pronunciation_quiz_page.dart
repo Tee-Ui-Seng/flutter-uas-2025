@@ -281,7 +281,7 @@ class _PronunciationQuizPageState extends State<PronunciationQuizPage> {
                       backgroundColor: Colors.deepPurple,
                       minimumSize: const Size(double.infinity, 48),
                     ),
-                    child: const Text('Back to Home'),
+                    child: const Text('Back to Home', style: TextStyle(color: Colors.white),),
                   ),
                 ],
               )
@@ -296,6 +296,7 @@ class _PronunciationQuizPageState extends State<PronunciationQuizPage> {
                   _currentQuestion < _questions.length - 1
                       ? 'Next Question'
                       : 'Finish Quiz',
+                  style: TextStyle(color: Colors.white),
                 ),
               ),
           ],

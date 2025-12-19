@@ -552,7 +552,7 @@ class _ConjugationPracticePageState extends State<ConjugationPracticePage> {
                       backgroundColor: Colors.grey.shade800,
                       foregroundColor: Colors.white,
                       shape: RoundedRectangleBorder(
-                        borderRadius: BorderRadius.circular(8),
+                        borderRadius: BorderRadius.circular(12),
                       ),
                       padding:
                           const EdgeInsets.symmetric(horizontal: 16, vertical: 12),
@@ -573,7 +573,7 @@ class _ConjugationPracticePageState extends State<ConjugationPracticePage> {
                       backgroundColor: Colors.deepPurple,
                       foregroundColor: Colors.white,
                       shape: RoundedRectangleBorder(
-                        borderRadius: BorderRadius.circular(8),
+                        borderRadius: BorderRadius.circular(12),
                       ),
                       padding:
                           const EdgeInsets.symmetric(horizontal: 16, vertical: 12),
@@ -582,7 +582,7 @@ class _ConjugationPracticePageState extends State<ConjugationPracticePage> {
                 ],
               ),
 
-              const SizedBox(height: 40),
+              // const SizedBox(height: 20),
             ],
           ),
         ),

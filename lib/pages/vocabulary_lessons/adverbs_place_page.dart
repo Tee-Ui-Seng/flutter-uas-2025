@@ -126,9 +126,9 @@ class AdverbsPlacePage extends StatelessWidget {
                     ),
                   ),
                   const SizedBox(height: 8),
-                  _buildExample('I am here', 'man injâ hastam', 'من اینجا هستم'),
+                  _buildExample('I am here', 'man înjâ astam', 'من اینجا استم'),
                   _buildExample('It is there', 'ânjâ ast', 'آنجا است'),
-                  _buildExample('Go outside', 'bîrûn berav', 'بیرون برو'),
+                  _buildExample('Go outside', 'berûn buro', 'بیرون برو'),
                   _buildExample('Come near', 'nazdîk bîyâ', 'نزدیک بیا'),
                 ],
               ),
@@ -140,26 +140,45 @@ class AdverbsPlacePage extends StatelessWidget {
             Row(
               mainAxisAlignment: MainAxisAlignment.spaceBetween,
               children: [
-                ElevatedButton(
+                OutlinedButton(
                   onPressed: () => Navigator.pop(context),
-                  style: ElevatedButton.styleFrom(
-                    backgroundColor: Colors.grey,
+                  style: OutlinedButton.styleFrom(
+                    padding: const EdgeInsets.symmetric(horizontal: 24, vertical: 12),
+                    side: BorderSide(color: Colors.amber),
+                    shape: RoundedRectangleBorder(
+                      borderRadius: BorderRadius.circular(12),
+                    ),
                   ),
-                  child: const Text('Back'),
+                  child: const Text(
+                    'Back',
+                    style: TextStyle(color: Colors.amber),
+                  ),
                 ),
                 ElevatedButton(
                   onPressed: () {
                     Navigator.push(
                       context,
-                      MaterialPageRoute(
-                        builder: (context) => const AdverbsTimePage(),
-                      ),
+                      MaterialPageRoute(builder: (_) => const AdverbsTimePage()),
                     );
                   },
                   style: ElevatedButton.styleFrom(
                     backgroundColor: Colors.amber,
+                    padding: const EdgeInsets.symmetric(horizontal: 24, vertical: 12),
+                    shape: RoundedRectangleBorder(
+                      borderRadius: BorderRadius.circular(12),
+                    ),
+                    elevation: 0,
                   ),
-                  child: const Text('Next: Adverbs of Time'),
+                  child: const Row(
+                    children: [
+                      Text(
+                        'Next: Adverbs of Time',
+                        style: TextStyle(color: Colors.white),
+                      ),
+                      SizedBox(width: 8),
+                      Icon(Icons.arrow_forward_rounded, size: 16, color: Colors.white),
+                    ],
+                  ),
                 ),
               ],
             ),

@@ -6,12 +6,14 @@ class PolitePhrasesPage extends StatelessWidget {
   const PolitePhrasesPage({super.key});
 
   final List<Map<String, String>> phrases = const [
-    {'english': 'You\'re welcome', 'persian': 'qâbel nîst', 'script': 'قابل تان را ندارد', 'usage': 'Response to thank you'},
-    {'english': 'Excuse me / Sorry', 'persian': 'bebaxšîn', 'script': 'ببخشین', 'usage': 'To get attention or apologize'},
-    {'english': 'Please', 'persian': 'lotfan', 'script': 'لطفاً', 'usage': 'When making a request'},
-    {'english': 'I understand', 'persian': 'mîfahmam', 'script': 'می‌فهمم', 'usage': 'Showing comprehension'},
-    {'english': 'I don\'t understand', 'persian': 'namîfahmam', 'script': 'نمی‌فهمم', 'usage': 'When confused'},
-    {'english': 'Could you repeat?', 'persian': 'mîtoned tekrâr koned?', 'script': 'می‌توانید تکرار کنید؟', 'usage': 'Asking to repeat'},
+    {'english': 'You’re welcome', 'persian': 'xâhiš me-kunam', 'script': 'خواهش می‌کنم', 'usage': 'Response to thank you'},
+    {'english': 'Don’t mention it', 'persian': 'qâbil-î na dârad', 'script': 'قابلی ندارد', 'usage': 'Response to thank you'},
+    {'english': 'Excuse me / Sorry', 'persian': 'me-baxšen / \nme-baxšed', 'script': 'می‌بخشین / \nمی‌بخشید', 'usage': 'To get attention or apologize'},
+    {'english': 'Sorry', 'persian': 'bibaxšed', 'script': 'ببخشید', 'usage': 'To get attention or apologize'},
+    {'english': 'Please', 'persian': 'lutfan', 'script': 'لطفا', 'usage': 'When making a request'},
+    {'english': 'I understand', 'persian': 'me-fahmam', 'script': 'می‌فهمم', 'usage': 'Showing comprehension'},
+    {'english': 'I don’t understand', 'persian': 'na me-fahmam', 'script': 'نمی‌فهمم', 'usage': 'When confused'},
+    {'english': 'Could you repeat?', 'persian': 'me-tavâned takrâr kuned?', 'script': 'می‌توانید تکرار کنید؟', 'usage': 'Asking to repeat'},
   ];
 
   @override
@@ -52,7 +54,7 @@ class PolitePhrasesPage extends StatelessWidget {
 
             _subsectionCard(
               title: 'Yes (Affirmation)',
-              pronunciation: 'bale / âre',
+              pronunciation: 'âre / bale',
               persianIran: 'بله  /  آره',
               persianDari: 'بلی  /  آری',
               notes: [
@@ -80,20 +82,13 @@ class PolitePhrasesPage extends StatelessWidget {
 
             _subsectionCard(
               title: 'Thank you',
-              pronunciation: 'tašakur',
-              persianIran: 'تشکر',
+              pronunciation: 'tašakkur',
+              persianIran: 'تشکر / مرسی',
               persianDari: 'تشکر',
-              notes: [],
-            ),
-
-            const SizedBox(height: 12),
-
-            _subsectionCard(
-              title: 'Thank you (Iranian informal)',
-              pronunciation: 'mersî',
-              persianIran: 'ممنون',
-              persianDari: '—', // No strong Dari equivalent
-              notes: [],
+              notes: [
+                'In Iran you can say "mersî" (مرسی) informally.',
+                'In Tajik you can say "rahmat"'
+              ],
             ),
 
             const SizedBox(height: 32),
@@ -171,30 +166,36 @@ class PolitePhrasesPage extends StatelessWidget {
             // CULTURAL NOTES
             // ------------------------------------------------
             Container(
-              padding: const EdgeInsets.all(12),
+              padding: const EdgeInsets.all(16),
+              margin: const EdgeInsets.only(bottom: 20),
               decoration: BoxDecoration(
                 color: Colors.orange.shade50,
-                borderRadius: BorderRadius.circular(8),
+                borderRadius: BorderRadius.circular(12),
                 border: Border.all(color: Colors.orange),
               ),
-              child: const Column(
+              child: Column(
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
-                  Text(
-                    'Cultural Notes:',
-                    style: TextStyle(
-                      fontWeight: FontWeight.bold,
-                      color: Colors.orange,
-                    ),
+                  Row(
+                    children: [
+                      Icon(Icons.star, color: Colors.orange, size: 20),
+                      const SizedBox(width: 8),
+                      Text(
+                        'Cultural Notes',
+                        style: TextStyle(
+                          fontSize: 18,
+                          fontWeight: FontWeight.bold,
+                          color: Colors.orange,
+                        ),
+                      ),
+                    ],
                   ),
-                  SizedBox(height: 4),
+                  const SizedBox(height: 8),
                   Text(
                     '• Persians are generally very polite in conversation\n'
-                    '• "tašakur" can be shortened to "mersî" (ممنون) in casual speech\n'
-                    '• "bebaxšîn" is used for both "excuse me" and "sorry"\n'
-                    '• Always use "lotfan" when making requests\n'
-                    '• "bale" is more formal than "are"',
-                    style: TextStyle(fontSize: 14),
+                    '• "me-baxšen" and "me-baxšed" are used for both "excuse me" and "sorry"\n'
+                    '• Always use "lutfan" when making requests',
+                    style: const TextStyle(fontSize: 14, height: 1.5),
                   ),
                 ],
               ),
@@ -208,22 +209,45 @@ class PolitePhrasesPage extends StatelessWidget {
             Row(
               mainAxisAlignment: MainAxisAlignment.spaceBetween,
               children: [
-                ElevatedButton(
-                  style: ElevatedButton.styleFrom(backgroundColor: Colors.grey),
+                OutlinedButton(
                   onPressed: () => Navigator.pop(context),
-                  child: const Text('Back'),
+                  style: OutlinedButton.styleFrom(
+                    padding: const EdgeInsets.symmetric(horizontal: 24, vertical: 12),
+                    side: BorderSide(color: Colors.blue),
+                    shape: RoundedRectangleBorder(
+                      borderRadius: BorderRadius.circular(12),
+                    ),
+                  ),
+                  child: const Text(
+                    'Back',
+                    style: TextStyle(color: Colors.blue),
+                  ),
                 ),
                 ElevatedButton(
-                  style: ElevatedButton.styleFrom(backgroundColor: Colors.blue),
                   onPressed: () {
                     Navigator.push(
                       context,
-                      MaterialPageRoute(
-                        builder: (context) => const TimeGreetingsPage(),
-                      ),
+                      MaterialPageRoute(builder: (context) => const TimeGreetingsPage()),
                     );
                   },
-                  child: const Text('Next: Time Greetings'),
+                  style: ElevatedButton.styleFrom(
+                    backgroundColor: Colors.blue,
+                    padding: const EdgeInsets.symmetric(horizontal: 24, vertical: 12),
+                    shape: RoundedRectangleBorder(
+                      borderRadius: BorderRadius.circular(12),
+                    ),
+                    elevation: 0,
+                  ),
+                  child: const Row(
+                    children: [
+                      Text(
+                        'Next: Time Greetings',
+                        style: TextStyle(color: Colors.white),
+                      ),
+                      SizedBox(width: 8),
+                      Icon(Icons.arrow_forward_rounded, size: 16, color: Colors.white),
+                    ],
+                  ),
                 ),
               ],
             ),
@@ -282,40 +306,67 @@ class PolitePhrasesPage extends StatelessWidget {
               ),
             ),
 
-            const SizedBox(height: 6),
-
-            const Text('Iran:', style: TextStyle(fontWeight: FontWeight.bold)),
-            Text(
-              persianIran,
-              textDirection: TextDirection.rtl,
-              style: const TextStyle(
-                fontSize: 20,
-                fontFamily: 'NotoNastaliqUrdu',
-              ),
-            ),
-
-            const SizedBox(height: 6),
-
-            const Text('Dari:', style: TextStyle(fontWeight: FontWeight.bold)),
-            Text(
-              persianDari,
-              textDirection: TextDirection.rtl,
-              style: const TextStyle(
-                fontSize: 20,
-                fontFamily: 'NotoNastaliqUrdu',
-              ),
+            Row(
+              children: [
+                Expanded(
+                  child: Column(
+                    children: [
+                      const SizedBox(height: 6),
+                      const Text('Iran:', style: TextStyle(fontWeight: FontWeight.bold)),
+                      Text(
+                        persianIran,
+                        textDirection: TextDirection.rtl,
+                        style: const TextStyle(
+                          fontSize: 20,
+                          fontFamily: 'NotoNastaliqUrdu',
+                        ),
+                      ),
+                    ],
+                  ),
+                ),
+                Expanded(
+                  child: Column(
+                    children: [
+                      const SizedBox(height: 6),
+                      const Text('Dari:', style: TextStyle(fontWeight: FontWeight.bold)),
+                      Text(
+                        persianDari,
+                        textDirection: TextDirection.rtl,
+                        style: const TextStyle(
+                          fontSize: 20,
+                          fontFamily: 'NotoNastaliqUrdu',
+                        ),
+                      ),
+                    ],
+                  ),
+                ),
+              ],
             ),
 
             if (notes.isNotEmpty) ...[
               const SizedBox(height: 12),
-              const Text(
-                'Notes:',
-                style: TextStyle(
-                  fontWeight: FontWeight.bold,
+              Container(
+                padding: const EdgeInsets.all(8),
+                decoration: BoxDecoration(
+                  color: Colors.orange[50],
+                  borderRadius: BorderRadius.circular(6),
+                  border: Border.all(color: Colors.orange),
+                ),
+                child: Column(
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  children: [
+                    Text(
+                      'Notes:',
+                      style: TextStyle(
+                        fontWeight: FontWeight.bold,
+                        color: Colors.orange
+                      ),
+                    ),
+                    const SizedBox(height: 4),
+                    ...notes.map((n) => Text('• $n')),
+                  ],
                 ),
               ),
-              const SizedBox(height: 4),
-              ...notes.map((n) => Text('• $n')),
             ],
           ],
         ),

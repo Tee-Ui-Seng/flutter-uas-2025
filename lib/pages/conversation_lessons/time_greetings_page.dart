@@ -16,36 +16,45 @@ class TimeGreetingsPage extends StatelessWidget {
       'responseScript': 'صبح بخیر!'
     },
     {
+      'time': 'Noon',
+      'english': 'Good noon!',
+      'persian': 'câšt baxair!',
+      'script': 'چاشت بخیر!',
+      'responseEnglish': 'Good noon',
+      'response': 'câšt baxair!',
+      'responseScript': 'چاشت بخیر!'
+    },
+    {
       'time': 'Afternoon',
       'english': 'Good afternoon!',
-      'persian': 'bad az zohr baxair!',
+      'persian': 'ba’d az zohr baxair!',
       'script': 'بعد از ظهر بخیر!',
       'responseEnglish': 'Good afternoon!',
-      'response': 'bad az zohr baxair!',
+      'response': 'ba’d az zohr baxair!',
       'responseScript': 'بعد از ظهر بخیر!'
     },
     {
-      'time': 'Evening',
-      'english': 'Good evening!',
+      'time': 'Evening / Nighttime',
+      'english': 'Good evening / night!',
       'persian': 'šab baxair!',
       'script': 'شب بخیر!',
-      'responseEnglish': 'Good evening!',
+      'responseEnglish': 'Good evening!/Good night!',
       'response': 'šab baxair!',
       'responseScript': 'شب بخیر!'
     },
     {
-      'time': 'Night',
-      'english': 'Good night!',
-      'persian': 'šab baxair!',
-      'script': 'شب بخیر!',
-      'responseEnglish': 'Good night!',
-      'response': 'šab baxair!',
-      'responseScript': 'شب بخیر!'
+      'time': 'Daytime',
+      'english': 'Good day!',
+      'persian': 'roz baxair!',
+      'script': 'روز بخیر!',
+      'responseEnglish': 'Good day!',
+      'response': 'roz baxair!',
+      'responseScript': 'روز بخیر!'
     },
     {
       'time': 'Any time',
       'english': 'Have a good day!',
-      'persian': 'rûz-e xubî dâšte bâšîn!',
+      'persian': 'roz-i xubî dâšta bâšed!',
       'script': 'روز خوبی داشته باشید!',
       'responseEnglish': 'Thanks, you too!',
       'response': 'mersî, šumâ ham!',
@@ -54,8 +63,8 @@ class TimeGreetingsPage extends StatelessWidget {
     {
       'time': 'Weekend',
       'english': 'Have a good weekend!',
-      'persian': 'taṭîlât-e xubî dâšte bâšîn!',
-      'script': 'تعطیلات خوبی داشته باشید!',
+      'persian': 'âxir-i hafta xubî dâšta bâšed!',
+      'script': 'آخر هفته خوبی داشته باشید!',
       'responseEnglish': 'You too!',
       'response': 'šumâ ham!',
       'responseScript': 'شما هم!'
@@ -101,102 +110,115 @@ class TimeGreetingsPage extends StatelessWidget {
               // GREETING CARDS
               Column(
                 children: greetings.map((greeting) {
-                  return Card(
-                    margin: const EdgeInsets.only(bottom: 12),
-                    child: Padding(
-                      padding: const EdgeInsets.all(16.0),
-                      child: Column(
-                        crossAxisAlignment: CrossAxisAlignment.start,
-                        children: [
+                  final bool isDuplicateResponse =
+                      greeting['persian'] == greeting['response'] &&
+                      greeting['script'] == greeting['responseScript'];
 
-                          // Time label
-                          Container(
-                            padding: const EdgeInsets.symmetric(
-                              horizontal: 12,
-                              vertical: 4,
-                            ),
-                            decoration: BoxDecoration(
-                              color: Colors.blue.shade100,
-                              borderRadius: BorderRadius.circular(12),
-                            ),
-                            child: Text(
-                              greeting['time']!,
-                              style: const TextStyle(
-                                fontWeight: FontWeight.bold,
-                                color: Colors.blue,
+                  return SizedBox(
+                    width: double.infinity, // ✅ FULL WIDTH
+                    child: Card(
+                      margin: const EdgeInsets.only(bottom: 12),
+                      child: Padding(
+                        padding: const EdgeInsets.all(16.0),
+                        child: Column(
+                          crossAxisAlignment: CrossAxisAlignment.start,
+                          children: [
+
+                            // Time label
+                            Container(
+                              padding: const EdgeInsets.symmetric(
+                                horizontal: 12,
+                                vertical: 4,
+                              ),
+                              decoration: BoxDecoration(
+                                color: Colors.blue.shade100,
+                                borderRadius: BorderRadius.circular(12),
+                              ),
+                              child: Text(
+                                greeting['time']!,
+                                style: const TextStyle(
+                                  fontWeight: FontWeight.bold,
+                                  color: Colors.blue,
+                                ),
                               ),
                             ),
-                          ),
 
-                          const SizedBox(height: 12),
+                            const SizedBox(height: 12),
 
-                          // English + Persian + Nastaliq
-                          Text(
-                            greeting['english']!,
-                            style: const TextStyle(
-                              fontWeight: FontWeight.bold,
-                              fontSize: 16,
+                            // English
+                            Text(
+                              greeting['english']!,
+                              style: const TextStyle(
+                                fontWeight: FontWeight.bold,
+                                fontSize: 16,
+                              ),
                             ),
-                          ),
-                          const SizedBox(height: 6),
 
-                          Text(
-                            greeting['persian']!,
-                            style: const TextStyle(
-                              fontSize: 14,
-                              fontWeight: FontWeight.bold,
-                              color: Colors.green,
-                            ),
-                          ),
-                          Text(
-                            greeting['script']!,
-                            style: const TextStyle(
-                              fontSize: 18,
-                              fontFamily: 'NotoNastaliqUrdu',
-                            ),
-                            textDirection: TextDirection.rtl,
-                          ),
+                            const SizedBox(height: 6),
 
-                          const SizedBox(height: 12),
-
-                          // Response block
-                          Container(
-                            padding: const EdgeInsets.all(8),
-                            decoration: BoxDecoration(
-                              color: Colors.green.shade50,
-                              border: Border.all(color: Colors.green),
-                              borderRadius: BorderRadius.circular(8),
+                            // Persian (Latin)
+                            Text(
+                              greeting['persian']!,
+                              style: const TextStyle(
+                                fontSize: 14,
+                                fontWeight: FontWeight.bold,
+                                color: Colors.green,
+                              ),
                             ),
-                            child: Column(
-                              crossAxisAlignment: CrossAxisAlignment.start,
-                              children: [
-                                Text(
-                                  greeting['responseEnglish']!,
-                                  style: const TextStyle(
-                                    fontSize: 12,
-                                    color: Colors.black87,
-                                  ),
+
+                            // Nastaliq
+                            Text(
+                              greeting['script']!,
+                              style: const TextStyle(
+                                fontSize: 18,
+                                fontFamily: 'NotoNastaliqUrdu',
+                              ),
+                              textDirection: TextDirection.rtl,
+                            ),
+
+                            // ✅ ONLY show response if NOT duplicate
+                            if (!isDuplicateResponse) ...[
+                              const SizedBox(height: 12),
+
+                              Container(
+                                padding: const EdgeInsets.all(8),
+                                decoration: BoxDecoration(
+                                  color: Colors.green.shade50,
+                                  border: Border.all(color: Colors.green),
+                                  borderRadius: BorderRadius.circular(8),
                                 ),
-                                Text(
-                                  greeting['response']!,
-                                  style: const TextStyle(
-                                    fontSize: 14,
-                                    fontWeight: FontWeight.bold,
-                                    color: Colors.green,
-                                  ),
+                                child: Column(
+                                  crossAxisAlignment: CrossAxisAlignment.start,
+                                  children: [
+                                    Text(
+                                      greeting['responseEnglish']!,
+                                      style: const TextStyle(
+                                        fontSize: 12,
+                                        color: Colors.black87,
+                                      ),
+                                    ),
+                                    Text(
+                                      greeting['response']!,
+                                      style: const TextStyle(
+                                        fontSize: 14,
+                                        fontWeight: FontWeight.bold,
+                                        color: Colors.green,
+                                      ),
+                                    ),
+                                    Text(
+                                      greeting['responseScript']!,
+                                      style: const TextStyle(
+                                        fontSize: 18,
+                                        fontFamily: 'NotoNastaliqUrdu',
+                                      ),
+                                      textDirection: TextDirection.rtl,
+                                    ),
+                                  ],
                                 ),
-                                Text(
-                                  greeting['responseScript']!,
-                                  style: const TextStyle(
-                                    fontSize: 18,
-                                    fontFamily: 'NotoNastaliqUrdu',
-                                  ),
-                                  textDirection: TextDirection.rtl,
-                                ),
-                              ],
-                            ),
-                          ),
-                        ],
+                              ),
+                            ],
+                          ],
+                        ),
                       ),
                     ),
                   );
@@ -226,10 +248,10 @@ class TimeGreetingsPage extends StatelessWidget {
                     SizedBox(height: 4),
                     Text(
                       '• "subh baxair" — sunrise to noon\n'
-                      '• "ba\'d az zohr baxair" — noon to sunset\n'
+                      '• "câšt baxair" — close to noon\n'
+                      '• "ba’d az zohr baxair" — noon to sunset\n'
                       '• "šab baxair" — evening + night\n'
-                      '• "rûz-e xubî" — any time of day\n'
-                      '• Using time-specific greetings shows cultural awareness',
+                      '• "roz-i xubî" — any time of day',
                       style: TextStyle(fontSize: 14),
                     ),
                   ],
@@ -242,26 +264,45 @@ class TimeGreetingsPage extends StatelessWidget {
               Row(
                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
                 children: [
-                  ElevatedButton(
+                  OutlinedButton(
                     onPressed: () => Navigator.pop(context),
-                    style: ElevatedButton.styleFrom(
-                      backgroundColor: Colors.grey,
+                    style: OutlinedButton.styleFrom(
+                      padding: const EdgeInsets.symmetric(horizontal: 24, vertical: 12),
+                      side: BorderSide(color: Colors.blue),
+                      shape: RoundedRectangleBorder(
+                        borderRadius: BorderRadius.circular(12),
+                      ),
                     ),
-                    child: const Text('Back'),
+                    child: const Text(
+                      'Back',
+                      style: TextStyle(color: Colors.blue),
+                    ),
                   ),
                   ElevatedButton(
                     onPressed: () {
                       Navigator.push(
                         context,
-                        MaterialPageRoute(
-                          builder: (context) => const FarewellsPage(),
-                        ),
+                        MaterialPageRoute(builder: (context) => const FarewellsPage()),
                       );
                     },
                     style: ElevatedButton.styleFrom(
                       backgroundColor: Colors.blue,
+                      padding: const EdgeInsets.symmetric(horizontal: 24, vertical: 12),
+                      shape: RoundedRectangleBorder(
+                        borderRadius: BorderRadius.circular(12),
+                      ),
+                      elevation: 0,
                     ),
-                    child: const Text('Next: Farewells'),
+                    child: const Row(
+                      children: [
+                        Text(
+                          'Next: Farewells',
+                          style: TextStyle(color: Colors.white),
+                        ),
+                        SizedBox(width: 8),
+                        Icon(Icons.arrow_forward_rounded, size: 16, color: Colors.white),
+                      ],
+                    ),
                   ),
                 ],
               ),

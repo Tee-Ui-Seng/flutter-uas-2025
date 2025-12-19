@@ -23,31 +23,31 @@ class _VerbPracticePageState extends State<VerbPracticePage> {
       'question': 'What is the infinitive form of "to eat" in Persian?',
       'options': ['می‌خورم', 'خور', 'خوردن', 'خورده'],
       'correctAnswer': 2,
-      'explanation': 'The infinitive form is "خوردن" (xurdan) which ends with "-dan".',
+      'explanation': 'The infinitive form is "خوردن" (xordan) which ends with "-dan".',
     },
     {
-      'question': 'What prefix indicates present tense in Persian?',
-      'options': ['be-', 'na-', 'me-', 'mi-'],
+      'question': 'What prefix is required for present tense in Persian?',
+      'options': ['be-', 'na-', 'me-', '-dan'],
       'correctAnswer': 2,
-      'explanation': '"me-" (or "mi-") is added to indicate present/imperfect aspect.',
+      'explanation': '"me-" is added to indicate present/imperfect aspect.',
     },
     {
       'question': 'How do you say "I eat" in Persian?',
       'options': ['می‌خوری', 'می‌خورم', 'می‌خورد', 'می‌خوریم'],
       'correctAnswer': 1,
-      'explanation': '"می‌خورم" (me-xor-am) is the first person singular conjugation.',
+      'explanation': '"می‌خورم" (me-xoram) is the first person singular conjugation.',
     },
     {
       'question': 'What suffix is added for "you (singular)"?',
-      'options': ['-am', '-i', '-ad', '-im'],
+      'options': ['-ed', '-î', '-ad', '-em'],
       'correctAnswer': 1,
-      'explanation': 'The suffix "-i" is added for second person singular.',
+      'explanation': 'The suffix "-î" is added for second person singular.',
     },
     {
       'question': 'How do you say "they eat" in Persian?',
       'options': ['می‌خورند', 'می‌خوریم', 'می‌خورید', 'می‌خورد'],
       'correctAnswer': 0,
-      'explanation': '"می‌خورند" (me-xor-and) is the third person plural conjugation.',
+      'explanation': '"می‌خورند" (me-xorand) is the third person plural conjugation.',
     },
     {
       'question': 'What is the present stem of "xâbîdan" (to sleep)?',
@@ -59,25 +59,25 @@ class _VerbPracticePageState extends State<VerbPracticePage> {
       'question': 'How do you say "we work" in Persian?',
       'options': ['می‌کنیم', 'می‌کنند', 'می‌کنید', 'می‌کنم'],
       'correctAnswer': 0,
-      'explanation': '"می‌کنیم" (me-kun-em) is the first person plural of "kardan" (to do/work).',
+      'explanation': '"می‌کنیم" (me-kunem) is the first person plural of "kardan" (to do/work).',
     },
     {
       'question': 'How do you form negative verbs in Persian present tense?',
-      'options': ['Add "na-" at the end', 'Add "ne-" before "me-"', 'Remove "me-" prefix', 'Add "nî-" suffix'],
+      'options': ['Add "ne" at the end', 'Add "na" before "me-"', 'Remove "me-" prefix', 'Add "ne-" preffix'],
       'correctAnswer': 1,
-      'explanation': 'Add "ne-" prefix before the "me-" prefix: ne-me-xor-am (I do not eat).',
+      'explanation': 'Add "na" prefix before the "me-" prefix: na me-xoram (I do not eat).',
     },
     {
       'question': 'How do you say "I do not drink" in Persian?',
       'options': ['می‌نوشم', 'نمی‌نوشم', 'می‌نوشم نه', 'نوشم نمی'],
       'correctAnswer': 1,
-      'explanation': '"نمی‌نوشم" (ne-me-noš-am) - "ne-" before "me-" creates the negative.',
+      'explanation': '"نمی‌نوشم" (na me-nošam) - "na" before "me-" creates the negative.',
     },
     {
-      'question': 'Which is the correct negative form of "me-xâb-ad" (he sleeps)?',
+      'question': 'Which is the correct negative form of "me-xâbad" (he sleeps)?',
       'options': ['می‌خوابد نه', 'نمی‌خوابد', 'می‌خوابد ن', 'خوابد نمی'],
       'correctAnswer': 1,
-      'explanation': '"نمی‌خوابد" (ne-me-xâb-ad) means "he does not sleep".',
+      'explanation': '"نمی‌خوابد" (na me-xâbad) means "he does not sleep".',
     },
   ];
 
@@ -229,8 +229,8 @@ class _VerbPracticePageState extends State<VerbPracticePage> {
                   children: [
                     ElevatedButton.icon(
                       onPressed: _currentQuestion > 0 ? _previousQuestion : null,
-                      icon: const Icon(Icons.arrow_back),
-                      label: const Text('Previous'),
+                      icon: const Icon(Icons.arrow_back, color: Colors.white),
+                      label: const Text('Previous', style: TextStyle(color: Colors.white),),
                     ),
                     if (_currentQuestion < _questions.length - 1)
                       ElevatedButton.icon(
@@ -238,8 +238,8 @@ class _VerbPracticePageState extends State<VerbPracticePage> {
                             _userAnswers[_currentQuestion] != null
                                 ? _nextQuestion
                                 : null,
-                        icon: const Icon(Icons.arrow_forward),
-                        label: const Text('Next'),
+                        icon: const Icon(Icons.arrow_forward, color: Colors.white),
+                        label: const Text('Next', style: TextStyle(color: Colors.white),),
                         style: ElevatedButton.styleFrom(
                           backgroundColor: Colors.blue,
                         ),
@@ -250,8 +250,8 @@ class _VerbPracticePageState extends State<VerbPracticePage> {
                             _userAnswers[_currentQuestion] != null
                                 ? _completeQuiz
                                 : null,
-                        icon: const Icon(Icons.quiz),
-                        label: const Text('Finish Quiz'),
+                        icon: const Icon(Icons.quiz, color: Colors.white),
+                        label: const Text('Finish Quiz', style: TextStyle(color: Colors.white),),
                         style: ElevatedButton.styleFrom(
                           backgroundColor: Colors.green,
                         ),

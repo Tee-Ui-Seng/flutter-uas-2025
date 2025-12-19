@@ -9,23 +9,23 @@ class MoreVocabularyPage extends StatelessWidget {
     {
       'category': 'Colors',
       'words': [
-        {'english': 'red', 'persian': 'sorx', 'script': 'سرخ'},
+        {'english': 'red', 'persian': 'surx', 'script': 'سرخ'},
         {'english': 'blue', 'persian': 'âbî', 'script': 'آبی'},
         {'english': 'green', 'persian': 'sabz', 'script': 'سبز'},
         {'english': 'yellow', 'persian': 'zard', 'script': 'زرد'},
         {'english': 'black', 'persian': 'siyâh', 'script': 'سیاه'},
-        {'english': 'white', 'persian': 'sefîd', 'script': 'سفید'},
+        {'english': 'white', 'persian': 'safed', 'script': 'سفید'},
       ]
     },
     {
       'category': 'Family',
       'words': [
-        {'english': 'father', 'persian': 'pedar', 'script': 'پدر'},
+        {'english': 'father', 'persian': 'padar', 'script': 'پدر'},
         {'english': 'mother', 'persian': 'mâdar', 'script': 'مادر'},
         {'english': 'brother', 'persian': 'barâdar', 'script': 'برادر'},
         {'english': 'sister', 'persian': 'xâhar', 'script': 'خواهر'},
-        {'english': 'son', 'persian': 'pesar', 'script': 'پسر'},
-        {'english': 'daughter', 'persian': 'doxtar', 'script': 'دختر'},
+        {'english': 'son', 'persian': 'pisar', 'script': 'پسر'},
+        {'english': 'daughter', 'persian': 'duxtar', 'script': 'دختر'},
       ]
     },
     {
@@ -33,11 +33,29 @@ class MoreVocabularyPage extends StatelessWidget {
       'words': [
         {'english': 'bread', 'persian': 'nân', 'script': 'نان'},
         {'english': 'water', 'persian': 'âb', 'script': 'آب'},
-        {'english': 'rice', 'persian': 'berenj', 'script': 'برنج'},
-        {'english': 'meat', 'persian': 'gušt', 'script': 'گوشت'},
-        {'english': 'fruit', 'persian': 'mêva', 'script': 'میوه'},
+        {'english': 'rice', 'persian': 'birinj', 'script': 'برنج'},
+        {'english': 'meat', 'persian': 'gošt', 'script': 'گوشت'},
+        {'english': 'fruit', 'persian': 'meva', 'script': 'میوه'},
         {'english': 'vegetable', 'persian': 'sabzî', 'script': 'سبزی'},
       ]
+    },
+  ];
+
+  final List<Map<String, String>> examples = const [
+    {
+      'english': 'My father likes red apples',
+      'persian': 'padar-am seb-i surx râ dost dârad',
+      'script': 'پدرم سیب سرخ را دوست دارد',
+    },
+    {
+      'english': 'We eat rice with vegetables',
+      'persian': 'mâ birinj bâ sabzî me-xorem',
+      'script': 'ما برنج با سبزی می‌خوریم',
+    },
+    {
+      'english': 'Her brother drinks water',
+      'persian': 'barâdar-aš âb me-nošad',
+      'script': 'برادرش آب می‌نوشد',
     },
   ];
 
@@ -107,7 +125,7 @@ class MoreVocabularyPage extends StatelessWidget {
                             crossAxisCount: 2,
                             crossAxisSpacing: 12,
                             mainAxisSpacing: 12,
-                            childAspectRatio: 2.5,
+                            childAspectRatio: 2,
                           ),
                           itemCount: (category['words'] as List).length,
                           itemBuilder: (context, wordIndex) {
@@ -163,57 +181,64 @@ class MoreVocabularyPage extends StatelessWidget {
               },
             ),
 
-            // PRACTICE AREA
+            // PRACTICE SENTENCES AREA
             Container(
-              padding: const EdgeInsets.all(12),
-              margin: const EdgeInsets.only(bottom: 16),
+              padding: const EdgeInsets.all(16),
+              margin: const EdgeInsets.only(bottom: 20),
               decoration: BoxDecoration(
                 color: Colors.green.shade50,
-                borderRadius: BorderRadius.circular(8),
+                borderRadius: BorderRadius.circular(12),
                 border: Border.all(color: Colors.green),
               ),
-              child: Column(
-                crossAxisAlignment: CrossAxisAlignment.start,
-                children: [
-                  const Text(
-                    'Practice Sentences:',
-                    style: TextStyle(
-                      fontWeight: FontWeight.bold,
-                      color: Colors.green,
-                    ),
-                  ),
-                  const SizedBox(height: 8),
-
-                  _buildSentence(
-                      'My father likes red apples', 'pedaram sib-e sorx râ dûst dârad'),
-                  _buildSentence(
-                      'We eat rice with vegetables', 'mâ berenj bâ sabzî mixorîm'),
-                  _buildSentence(
-                      'Her brother drinks water', 'barâdaraš âb minûšad'),
-                ],
-              ),
+              child:
+                _buildExampleTable(),
             ),
 
             const SizedBox(height: 24),
 
-            // NAV BUTTONS
+            // NAVIGATION BUTTONS
             Row(
               mainAxisAlignment: MainAxisAlignment.spaceBetween,
               children: [
-                ElevatedButton(
+                OutlinedButton(
                   onPressed: () => Navigator.pop(context),
-                  style: ElevatedButton.styleFrom(backgroundColor: Colors.grey),
-                  child: const Text('Back'),
-                ),
-                ElevatedButton(
-                  onPressed: () => Navigator.push(
-                    context,
-                    MaterialPageRoute(
-                      builder: (context) => const VocabularyQuizPage(),
+                  style: OutlinedButton.styleFrom(
+                    padding: const EdgeInsets.symmetric(horizontal: 24, vertical: 12),
+                    side: BorderSide(color: Colors.amber),
+                    shape: RoundedRectangleBorder(
+                      borderRadius: BorderRadius.circular(12),
                     ),
                   ),
-                  style: ElevatedButton.styleFrom(backgroundColor: Colors.amber),
-                  child: const Text('Take Quiz'),
+                  child: const Text(
+                    'Back',
+                    style: TextStyle(color: Colors.amber),
+                  ),
+                ),
+                ElevatedButton(
+                  onPressed: () {
+                    Navigator.push(
+                      context,
+                      MaterialPageRoute(builder: (_) => const VocabularyQuizPage()),
+                    );
+                  },
+                  style: ElevatedButton.styleFrom(
+                    backgroundColor: Colors.amber,
+                    padding: const EdgeInsets.symmetric(horizontal: 24, vertical: 12),
+                    shape: RoundedRectangleBorder(
+                      borderRadius: BorderRadius.circular(12),
+                    ),
+                    elevation: 0,
+                  ),
+                  child: const Row(
+                    children: [
+                      Text(
+                        'Next: Take Quiz',
+                        style: TextStyle(color: Colors.white),
+                      ),
+                      SizedBox(width: 8),
+                      Icon(Icons.quiz, size: 16, color: Colors.white),
+                    ],
+                  ),
                 ),
               ],
             ),
@@ -224,17 +249,73 @@ class MoreVocabularyPage extends StatelessWidget {
     );
   }
 
-  Widget _buildSentence(String english, String persian) {
-    return Padding(
-      padding: const EdgeInsets.only(bottom: 8),
-
-      child: Column(
-        crossAxisAlignment: CrossAxisAlignment.start,
+  Widget _buildExampleTable() {
+    return  Column(
+    crossAxisAlignment: CrossAxisAlignment.start,
+    children: [
+      Row(
         children: [
-          Text(english),
-          Text(persian, style: const TextStyle(fontStyle: FontStyle.italic)),
+          Icon(Icons.translate, color: Colors.green, size: 20),
+          const SizedBox(width: 8),
+          Text(
+            'Practice Sentences',
+            style: TextStyle(
+              fontSize: 18,
+              fontWeight: FontWeight.bold,
+              color: Colors.green.shade700,
+            ),
+          ),
         ],
       ),
+      const SizedBox(height: 12),
+
+      Column(
+        children: List.generate(examples.length, (index) {
+          final example = examples[index];
+          final isLast = index == examples.length - 1;
+
+          return Padding(
+            padding: EdgeInsets.only(bottom: isLast ? 0 : 12),
+            child: SizedBox(
+              width: double.infinity,
+              child: Column(
+                crossAxisAlignment: CrossAxisAlignment.start,
+                children: [
+                  Text(
+                    example['script']!,
+                    textDirection: TextDirection.rtl,
+                    style: const TextStyle(
+                      fontSize: 20,
+                      fontFamily: 'NotoNastaliqUrdu',
+                      height: 1.6,
+                    ),
+                  ),
+                  const SizedBox(height: 4),
+                  Text(
+                    example['persian']!,
+                    style: TextStyle(
+                      color: Colors.grey.shade700,
+                      fontSize: 15,
+                      fontStyle: FontStyle.italic,
+                      height: 1.3,
+                    ),
+                  ),
+                  const SizedBox(height: 4),
+                  Text(
+                    example['english']!,
+                    style: TextStyle(
+                      color: Colors.black,
+                      fontSize: 15,
+                      height: 1.3,
+                    ),
+                  ),
+                ],
+              ),
+            ),
+          );
+        }),
+      ),
+    ],
     );
   }
 }

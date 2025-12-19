@@ -27,14 +27,14 @@ class _DragDropGamePageState extends State<DragDropGamePage> {
       'numbers': [
         {'digit': '34', 'persian': 'sî u cahâr'},
         {'digit': '67', 'persian': 'šast u haft'},
-        {'digit': '12', 'persian': 'davâzdah'},
+        {'digit': '12', 'persian': 'duvâzdah'},
         {'digit': '89', 'persian': 'haštâd u noh'},
       ],
       'distractors': [
         'panjâh u se',
-        'hastâd u yek',
-        'sad u bist',
-        'nohâd u noh',
+        'hastâd u yak',
+        'sad u bîst',
+        'nuzdah',
       ],
     },
     2: {
@@ -47,10 +47,10 @@ class _DragDropGamePageState extends State<DragDropGamePage> {
         {'digit': '888', 'persian': 'hašt sad u haštâd u hašt'},
       ],
       'distractors': [
-        'do sad u panjâh u yek',
-        'haft sad u nawad',
-        'noh sad u bist u panj',
-        'sî sad u bist',
+        'du sad u panjâh u yak',
+        'haft sad u navad',
+        'noh sad u bîst u panj',
+        'sî sad u bîst',
       ],
     },
     3: {
@@ -59,14 +59,14 @@ class _DragDropGamePageState extends State<DragDropGamePage> {
       'numbers': [
         {'digit': '2168', 'persian': 'du hazâr u sad u šast u hašt'},
         {'digit': '5000', 'persian': 'panj hazâr'},
-        {'digit': '1234', 'persian': 'yek hazâr u do sad u sî u cahâr'},
-        {'digit': '7890', 'persian': 'haft hazâr u hašt sad u nawad'},
+        {'digit': '1234', 'persian': 'yak hazâr u du sad u sî u cahâr'},
+        {'digit': '7890', 'persian': 'haft hazâr u hašt sad u navad'},
       ],
       'distractors': [
-        'panj hazâr u sad u bist',
+        'panj hazâr u sad u bîst',
         'haft hazâr u panj sad',
-        'yek hazâr u noh sad',
-        'do hazâr u hašt sad u hašt',
+        'yak hazâr u noh sad',
+        'du hazâr u hašt sad u hašt',
       ],
     },
   };
@@ -579,10 +579,19 @@ class _DragDropGamePageState extends State<DragDropGamePage> {
               children: [
                 ElevatedButton.icon(
                   onPressed: _resetLevel,
-                  icon: const Icon(Icons.refresh),
-                  label: const Text('Reset Level'),
+                  icon: Icon(
+                    Icons.refresh,
+                    color: Colors.white, 
+                  ),
+                  label: const Text(
+                    'Reset Level',
+                    style: TextStyle(color: Colors.white),
+                  ),
                   style: ElevatedButton.styleFrom(
                     backgroundColor: Colors.blue,
+                    shape: RoundedRectangleBorder(
+                      borderRadius: BorderRadius.circular(12),
+                    ),
                   ),
                 ),
                 
@@ -590,9 +599,15 @@ class _DragDropGamePageState extends State<DragDropGamePage> {
                   ElevatedButton.icon(
                     onPressed: _nextLevel,
                     icon: const Icon(Icons.arrow_forward),
-                    label: const Text('Next Level'),
+                    label: const Text(
+                      'Next Level',
+                      style: TextStyle(color: Colors.white),
+                    ),
                     style: ElevatedButton.styleFrom(
                       backgroundColor: Colors.green,
+                      shape: RoundedRectangleBorder(
+                        borderRadius: BorderRadius.circular(12),
+                      ),
                     ),
                   )
                 else if (gameCompleted)
@@ -605,14 +620,46 @@ class _DragDropGamePageState extends State<DragDropGamePage> {
                         ),
                       );
                     },
-                    icon: const Icon(Icons.arrow_forward),
-                    label: const Text('Continue'),
+                    icon: Icon(
+                      Icons.arrow_forward,
+                      color: Colors.white,
+                    ),
+                    label: const Text(
+                      'Continue',
+                      style: TextStyle(color: Colors.white),
+                    ),
                     style: ElevatedButton.styleFrom(
                       backgroundColor: Colors.green,
+                      shape: RoundedRectangleBorder(
+                        borderRadius: BorderRadius.circular(12),
+                      ),
                     ),
                   )
                 else
-                  Container(), // Empty container to maintain layout
+                  ElevatedButton.icon(
+                    onPressed: () {
+                      Navigator.push(
+                        context,
+                        MaterialPageRoute(
+                          builder: (context) => const AdverbsPlacePage(),
+                        ),
+                      );
+                    },
+                    icon: Icon(
+                      Icons.arrow_forward,
+                      color: Colors.white,
+                    ),
+                    label: const Text(
+                      'Skip',
+                      style: TextStyle(color: Colors.white),
+                    ),
+                    style: ElevatedButton.styleFrom(
+                      backgroundColor: Colors.amber,
+                      shape: RoundedRectangleBorder(
+                        borderRadius: BorderRadius.circular(12),
+                      ),
+                    ),
+                  ), // Empty container to maintain layout
                 
                 // Level selector
                 PopupMenuButton<int>(

@@ -6,14 +6,14 @@ class IntroductionsPage extends StatelessWidget {
   const IntroductionsPage({super.key});
 
   final List<Map<String, String>> introductions = const [
-    {'english': 'My name is ...', 'persian': 'ism man ... ast', 'script': 'اسم من ... است'},
-    {'english': 'What is your name?', 'persian': 'ism-e šumâ ci ast?', 'script': 'اسم شما چه است؟'},
-    {'english': 'I\'m from ...', 'persian': 'man az ... astam', 'script': 'من از ... استم'},
-    {'english': 'Where are you from?', 'persian': 'šumâ az kojâ hasted?', 'script': 'شما از کجا هستید؟'},
-    {'english': 'Nice to meet you', 'persian': 'az dîdan-e tân xošhâl astam', 'script': 'از دیدن تان خوشحال استم'},
+    {'english': 'My name is ...', 'persian': 'nâm man ... ast', 'script': 'نام من ... است'},
+    {'english': 'What is your name?', 'persian': 'nâm-i šumâ ci ast?', 'script': 'نام شما چه است؟'},
+    {'english': 'I’m from ...', 'persian': 'man az ... astam', 'script': 'من از ... استم'},
+    {'english': 'Where are you from?', 'persian': 'šumâ az kujâ asted?', 'script': 'شما از کجا استید؟'},
+    {'english': 'Nice to meet you', 'persian': 'az dîdan-i-tân xušhâl astam', 'script': 'از دیدن تان خوشحال استم'},
     {'english': 'Likewise / Me too', 'persian': 'man ham', 'script': 'من هم'},
-    {'english': 'What do you do?', 'persian': 'šumâ ci kâr mîkoned?', 'script': 'شما چه کار می‌کنید؟'},
-    {'english': 'I am a student', 'persian': 'man dânešju hastam', 'script': 'من دانشجو هستم'},
+    {'english': 'What do you do?', 'persian': 'šumâ ci kâr me-kuned?', 'script': 'شما چه کار می‌کنید؟'},
+    {'english': 'I am a student', 'persian': 'man dânišjû astam', 'script': 'من دانشجو استم'},
   ];
 
   @override
@@ -55,7 +55,7 @@ class IntroductionsPage extends StatelessWidget {
                   crossAxisCount: 2,
                   crossAxisSpacing: 12,
                   mainAxisSpacing: 12,
-                  childAspectRatio: 1.2,
+                  childAspectRatio: 1,
                 ),
                 itemCount: introductions.length,
                 itemBuilder: (context, index) {
@@ -80,7 +80,7 @@ class IntroductionsPage extends StatelessWidget {
                           Text(
                             intro['persian']!,
                             style: const TextStyle(
-                              fontSize: 12,
+                              fontSize: 14,
                               fontWeight: FontWeight.bold,
                             ),
                             textAlign: TextAlign.center,
@@ -89,7 +89,7 @@ class IntroductionsPage extends StatelessWidget {
                           Text(
                             intro['script']!,
                             style: const TextStyle(
-                              fontSize: 16,
+                              fontSize: 20,
                               fontFamily: 'NotoNastaliqUrdu',
                             ),
                             textAlign: TextAlign.center,
@@ -102,12 +102,49 @@ class IntroductionsPage extends StatelessWidget {
                 },
               ),
 
-              const SizedBox(height: 20),
+              const SizedBox(height: 16),
+
+              // NOTE SECTION
+              Container(
+                padding: const EdgeInsets.all(16),
+                margin: const EdgeInsets.only(bottom: 20),
+                decoration: BoxDecoration(
+                  color: Colors.amber.shade50,
+                  borderRadius: BorderRadius.circular(12),
+                  border: Border.all(color: Colors.amber),
+                ),
+                child: Column(
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  children: [
+                    Row(
+                      children: [
+                        Icon(Icons.tips_and_updates, color: Colors.amber, size: 20),
+                        const SizedBox(width: 8),
+                        Text(
+                          'Usage Tips',
+                          style: TextStyle(
+                            fontSize: 18,
+                            fontWeight: FontWeight.bold,
+                            color: Colors.amber,
+                          ),
+                        ),
+                      ],
+                    ),
+                    const SizedBox(height: 8),
+                    Text(
+                      '• In Iran, the word for "name" is "ism" (اسم) instead of "nâm" (نام).\n'
+                      '• The word "ci ast" (چه است) may be shortened into "cîst" (چیست).',
+                      style: const TextStyle(fontSize: 14, height: 1.5),
+                    ),
+                  ],
+                ),
+              ),
+
+              const SizedBox(height: 10),
 
               // Sample Conversation
               Container(
                 padding: const EdgeInsets.all(12),
-                margin: const EdgeInsets.only(bottom: 16),
                 decoration: BoxDecoration(
                   color: Colors.green.shade50,
                   borderRadius: BorderRadius.circular(8),
@@ -116,20 +153,27 @@ class IntroductionsPage extends StatelessWidget {
                 child: Column(
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
-                    const Text(
-                      'Sample Conversation:',
-                      style: TextStyle(
-                        fontWeight: FontWeight.bold,
-                        color: Colors.green,
-                      ),
+                    Row(
+                      children: [
+                        Icon(Icons.message, color: Colors.green, size: 20),
+                        const SizedBox(width: 8),
+                        Text(
+                          'Sample Conversation',
+                          style: TextStyle(
+                            fontSize: 18,
+                            fontWeight: FontWeight.bold,
+                            color: Colors.green.shade700,
+                          ),
+                        ),
+                      ],
                     ),
-                    const SizedBox(height: 8),
-                    _buildDialogLine('A:', 'Salâm! ism-e šumâ ci ast?', 'Hello! What is your name?'),
-                    _buildDialogLine('B:', 'Salâm! ism man Ahmed ast.', 'Hello! My name is Ahmed.'),
-                    _buildDialogLine('A:', 'šumâ az kojâ hasted?', 'Where are you from?'),
-                    _buildDialogLine('B:', 'man az Kabul astam.', 'I\'m from Kabul.'),
-                    _buildDialogLine('A:', 'az dîdan-e tân xošhâl astam.', 'Nice to meet you.'),
-                    _buildDialogLine('B:', 'man ham.', 'Likewise.'),
+                    const SizedBox(height: 12),
+                      _buildDialogLine('A:', 'Salâm! nâm-i šumâ cîst?', 'سلام! نام شما چیست؟', 'Hello! What is your name?'),
+                      _buildDialogLine('B:', 'Salâm! nâm-i man Ahmad ast.', 'سلام! نام من احمد است.', 'Hello! My name is Ahmad.'),
+                      _buildDialogLine('A:', 'šumâ az kujâ asted?', 'شما از کجا استید؟', 'Where are you from?'),
+                      _buildDialogLine('B:', 'man az Kâbul astam.', 'من از کابل استم.', 'I’m from Kabul.'),
+                      _buildDialogLine('A:', 'az dîdan-i-tân xušhâl astam.', 'از دیدن تان خوشحال استم.', 'Nice to meet you.'),
+                      _buildDialogLine('B:', 'man ham.', 'من هم.', 'Likewise.'),
                   ],
                 ),
               ),
@@ -140,28 +184,45 @@ class IntroductionsPage extends StatelessWidget {
               Row(
                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
                 children: [
-                  ElevatedButton(
-                    onPressed: () {
-                      Navigator.pop(context);
-                    },
-                    style: ElevatedButton.styleFrom(
-                      backgroundColor: Colors.grey,
+                  OutlinedButton(
+                    onPressed: () => Navigator.pop(context),
+                    style: OutlinedButton.styleFrom(
+                      padding: const EdgeInsets.symmetric(horizontal: 24, vertical: 12),
+                      side: BorderSide(color: Colors.blue),
+                      shape: RoundedRectangleBorder(
+                        borderRadius: BorderRadius.circular(12),
+                      ),
                     ),
-                    child: const Text('Back'),
+                    child: const Text(
+                      'Back',
+                      style: TextStyle(color: Colors.blue),
+                    ),
                   ),
                   ElevatedButton(
                     onPressed: () {
                       Navigator.push(
                         context,
-                        MaterialPageRoute(
-                          builder: (context) => const PolitePhrasesPage(),
-                        ),
+                        MaterialPageRoute(builder: (context) => const PolitePhrasesPage()),
                       );
                     },
                     style: ElevatedButton.styleFrom(
                       backgroundColor: Colors.blue,
+                      padding: const EdgeInsets.symmetric(horizontal: 24, vertical: 12),
+                      shape: RoundedRectangleBorder(
+                        borderRadius: BorderRadius.circular(12),
+                      ),
+                      elevation: 0,
                     ),
-                    child: const Text('Next: Polite Phrases'),
+                    child: const Row(
+                      children: [
+                        Text(
+                          'Next: Polite Phrases',
+                          style: TextStyle(color: Colors.white),
+                        ),
+                        SizedBox(width: 8),
+                        Icon(Icons.arrow_forward_rounded, size: 16, color: Colors.white),
+                      ],
+                    ),
                   ),
                 ],
               ),
@@ -172,32 +233,61 @@ class IntroductionsPage extends StatelessWidget {
     );
   }
 
-  Widget _buildDialogLine(String speaker, String persian, String english) {
+  Widget _buildDialogLine(
+    String speaker,
+    String persian,
+    String script,
+    String english,
+  ) {
     return Padding(
-      padding: const EdgeInsets.only(bottom: 6),
-      child: Column(
+      padding: const EdgeInsets.only(bottom: 8),
+      child: Row(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
-          Text(
-            speaker,
-            style: const TextStyle(fontWeight: FontWeight.bold),
+          SizedBox(
+            width: 30,
+            child: Text(
+              speaker,
+              style: const TextStyle(fontWeight: FontWeight.bold),
+            ),
           ),
-          Row(
-            children: [
-              Expanded(
-                child: Text(
+
+          Expanded(
+            child: Column(
+              crossAxisAlignment: CrossAxisAlignment.start,
+              children: [
+                // Nastaliq
+                Text(
+                  script,
+                  style: const TextStyle(
+                    fontSize: 20,
+                    fontFamily: 'NotoNastaliqUrdu',
+                  ),
+                  textDirection: TextDirection.rtl,
+                ),
+
+                // Romanization
+                Text(
                   persian,
-                  style: const TextStyle(fontStyle: FontStyle.italic),
+                  style: TextStyle(
+                    color: Colors.grey.shade700,
+                    fontSize: 15,
+                    fontStyle: FontStyle.italic,
+                    height: 1.3,
+                  ),
                 ),
-              ),
-              const SizedBox(width: 8),
-              Expanded(
-                child: Text(
+
+                // English
+                Text(
                   english,
-                  style: const TextStyle(color: Colors.grey, fontSize: 12),
+                  style: TextStyle(
+                    color: Colors.black,
+                    fontSize: 15,
+                    height: 1.3,
+                  ),
                 ),
-              ),
-            ],
+              ],
+            ),
           ),
         ],
       ),
