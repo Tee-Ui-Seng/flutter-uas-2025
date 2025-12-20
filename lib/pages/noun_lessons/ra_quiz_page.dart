@@ -210,22 +210,22 @@ class _RaQuizPageState extends State<RaQuizPage> {
               ],
             ),
             
-            const SizedBox(height: 32),
+            const SizedBox(height: 30),
             
             // Explanation (if answered)
             if (_userAnswers[_currentQuestion] != null)
               Container(
-                padding: const EdgeInsets.all(12),
-                margin: const EdgeInsets.only(bottom: 16),
+                margin: const EdgeInsets.only(bottom: 12),
+                padding: const EdgeInsets.all(16),
                 decoration: BoxDecoration(
                   color: _userAnswers[_currentQuestion] == true
-                      ? Colors.green.shade50
-                      : Colors.red.shade50,
-                  borderRadius: BorderRadius.circular(8),
+                      ? Colors.green[50]
+                      : Colors.red[50],
+                  borderRadius: BorderRadius.circular(12),
                   border: Border.all(
                     color: _userAnswers[_currentQuestion] == true
-                        ? Colors.green
-                        : Colors.red,
+                        ? Colors.green[100]!
+                        : Colors.red[100]!,
                   ),
                 ),
                 child: Column(
@@ -233,20 +233,59 @@ class _RaQuizPageState extends State<RaQuizPage> {
                   children: [
                     Text(
                       _userAnswers[_currentQuestion] == true
-                          ? 'Correct! ✅'
-                          : 'Incorrect ❌',
+                          ? '✓ Correct!'
+                          : '✗ Incorrect',
                       style: TextStyle(
                         fontWeight: FontWeight.bold,
+                        fontSize: 18,
                         color: _userAnswers[_currentQuestion] == true
                             ? Colors.green
                             : Colors.red,
                       ),
                     ),
                     const SizedBox(height: 8),
-                    Text(question['explanation']),
+                    Text(
+                      question['explanation'],
+                      style: const TextStyle(fontSize: 16),
+                    ),
                   ],
                 ),
               ),
+            
+            // if (_userAnswers[_currentQuestion] != null)
+            //   Container(
+            //     padding: const EdgeInsets.all(12),
+            //     margin: const EdgeInsets.only(bottom: 16),
+            //     decoration: BoxDecoration(
+            //       color: _userAnswers[_currentQuestion] == true
+            //           ? Colors.green.shade50
+            //           : Colors.red.shade50,
+            //       borderRadius: BorderRadius.circular(8),
+            //       border: Border.all(
+            //         color: _userAnswers[_currentQuestion] == true
+            //             ? Colors.green
+            //             : Colors.red,
+            //       ),
+            //     ),
+            //     child: Column(
+            //       crossAxisAlignment: CrossAxisAlignment.start,
+            //       children: [
+            //         Text(
+            //           _userAnswers[_currentQuestion] == true
+            //               ? 'Correct! ✅'
+            //               : 'Incorrect ❌',
+            //           style: TextStyle(
+            //             fontWeight: FontWeight.bold,
+            //             color: _userAnswers[_currentQuestion] == true
+            //                 ? Colors.green
+            //                 : Colors.red,
+            //           ),
+            //         ),
+            //         const SizedBox(height: 8),
+            //         Text(question['explanation']),
+            //       ],
+            //     ),
+            //   ),
             
             const Spacer(),
             

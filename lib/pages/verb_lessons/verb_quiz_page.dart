@@ -63,14 +63,14 @@ class _VerbPracticePageState extends State<VerbPracticePage> {
     },
     {
       'question': 'How do you form negative verbs in Persian present tense?',
-      'options': ['Add "ne" at the end', 'Add "na" before "me-"', 'Remove "me-" prefix', 'Add "ne-" preffix'],
-      'correctAnswer': 1,
+      'options': ['Add "ne" at the end', 'Remove "me-" prefix', 'Add "ne-" prefix', 'Add "na" before "me-"'],
+      'correctAnswer': 3,
       'explanation': 'Add "na" prefix before the "me-" prefix: na me-xoram (I do not eat).',
     },
     {
       'question': 'How do you say "I do not drink" in Persian?',
-      'options': ['می‌نوشم', 'نمی‌نوشم', 'می‌نوشم نه', 'نوشم نمی'],
-      'correctAnswer': 1,
+      'options': ['می‌نوشم', 'می‌نوشم نه', 'نوشم نمی', 'نمی‌نوشم'],
+      'correctAnswer': 3,
       'explanation': '"نمی‌نوشم" (na me-nošam) - "na" before "me-" creates the negative.',
     },
     {
@@ -104,7 +104,7 @@ class _VerbPracticePageState extends State<VerbPracticePage> {
               LinearProgressIndicator(
                 value: (_currentQuestion + 1) / _questions.length,
                 backgroundColor: Colors.grey[200],
-                color: Colors.blue,
+                color: Colors.green,
                 minHeight: 8,
               ),
               const SizedBox(height: 16),
@@ -213,51 +213,65 @@ class _VerbPracticePageState extends State<VerbPracticePage> {
                     const SizedBox(height: 16),
                     ElevatedButton(
                       onPressed: () {
-                        Navigator.pop(context);
+                        Navigator.of(context).popUntil((route) => route.isFirst);
                       },
                       style: ElevatedButton.styleFrom(
                         backgroundColor: Colors.green,
                         minimumSize: const Size(double.infinity, 48),
                       ),
-                      child: const Text('Finish'),
+                      child: const Text('Back to Home', style: TextStyle(color: Colors.white)),
                     ),
                   ],
                 )
               else
-                Row(
-                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                  children: [
-                    ElevatedButton.icon(
-                      onPressed: _currentQuestion > 0 ? _previousQuestion : null,
-                      icon: const Icon(Icons.arrow_back, color: Colors.white),
-                      label: const Text('Previous', style: TextStyle(color: Colors.white),),
-                    ),
-                    if (_currentQuestion < _questions.length - 1)
-                      ElevatedButton.icon(
-                        onPressed:
-                            _userAnswers[_currentQuestion] != null
-                                ? _nextQuestion
-                                : null,
-                        icon: const Icon(Icons.arrow_forward, color: Colors.white),
-                        label: const Text('Next', style: TextStyle(color: Colors.white),),
-                        style: ElevatedButton.styleFrom(
-                          backgroundColor: Colors.blue,
-                        ),
-                      )
-                    else
-                      ElevatedButton.icon(
-                        onPressed:
-                            _userAnswers[_currentQuestion] != null
-                                ? _completeQuiz
-                                : null,
-                        icon: const Icon(Icons.quiz, color: Colors.white),
-                        label: const Text('Finish Quiz', style: TextStyle(color: Colors.white),),
-                        style: ElevatedButton.styleFrom(
-                          backgroundColor: Colors.green,
-                        ),
-                      ),
-                  ],
+                ElevatedButton(
+                  onPressed: _nextQuestion,
+                  style: ElevatedButton.styleFrom(
+                    backgroundColor: Colors.green,
+                    minimumSize: const Size(double.infinity, 48),
+                  ),
+                  child: Text(
+                    _currentQuestion < _questions.length - 1
+                        ? 'Next Question'
+                        : 'Finish Quiz',
+                    style: TextStyle(color: Colors.white),
+                  ),
                 ),
+
+                // Row(
+                //   mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                //   children: [
+                //     ElevatedButton.icon(
+                //       onPressed: _currentQuestion > 0 ? _previousQuestion : null,
+                //       icon: const Icon(Icons.arrow_back, color: Colors.white),
+                //       label: const Text('Previous', style: TextStyle(color: Colors.white),),
+                //     ),
+                //     if (_currentQuestion < _questions.length - 1)
+                //       ElevatedButton.icon(
+                //         onPressed:
+                //             _userAnswers[_currentQuestion] != null
+                //                 ? _nextQuestion
+                //                 : null,
+                //         icon: const Icon(Icons.arrow_forward, color: Colors.white),
+                //         label: const Text('Next', style: TextStyle(color: Colors.white),),
+                //         style: ElevatedButton.styleFrom(
+                //           backgroundColor: Colors.blue,
+                //         ),
+                //       )
+                //     else
+                //       ElevatedButton.icon(
+                //         onPressed:
+                //             _userAnswers[_currentQuestion] != null
+                //                 ? _completeQuiz
+                //                 : null,
+                //         icon: const Icon(Icons.quiz, color: Colors.white),
+                //         label: const Text('Finish Quiz', style: TextStyle(color: Colors.white),),
+                //         style: ElevatedButton.styleFrom(
+                //           backgroundColor: Colors.green,
+                //         ),
+                //       ),
+                //   ],
+                // ),
             ],
           ),
         ),
@@ -364,16 +378,20 @@ class _VerbPracticePageState extends State<VerbPracticePage> {
   }
 
   void _nextQuestion() {
-    setState(() {
-      _currentQuestion++;
-    });
+    if (_currentQuestion < _questions.length - 1) {
+      setState(() {
+        _currentQuestion++;
+      });
+    } else {
+      _completeQuiz();
+    }
   }
 
-  void _previousQuestion() {
-    setState(() {
-      _currentQuestion--;
-    });
-  }
+  // void _previousQuestion() {
+  //   setState(() {
+  //     _currentQuestion--;
+  //   });
+  // }
 
   Future<void> _completeQuiz() async {
     try {

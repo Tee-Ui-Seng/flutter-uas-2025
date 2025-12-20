@@ -632,7 +632,7 @@ class VerbBasicsPage extends StatelessWidget {
             Container(
               padding: const EdgeInsets.all(16),
               decoration: BoxDecoration(
-                color: Colors.lime[500]!,
+                color: Colors.lime[300]!,
                 borderRadius: BorderRadius.circular(12),
                 border: Border.all(color: Colors.lime[700]!),
               ),
@@ -879,28 +879,57 @@ class VerbBasicsPage extends StatelessWidget {
             Container(
               padding: const EdgeInsets.all(16),
               decoration: BoxDecoration(
-                color: Colors.green[50],
+                color: Colors.blue[50]!,
                 borderRadius: BorderRadius.circular(12),
-                border: Border.all(color: Colors.green[300]!),
+                border: Border.all(color: Colors.blue[300]!),
               ),
-              child: const Column(
+              child: Column(
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
-                  Text(
-                    'Summary:',
-                    style: TextStyle(
-                      fontWeight: FontWeight.bold,
-                      fontSize: 18,
-                      color: Colors.green,
-                    ),
+                  // Header
+                  Row(
+                    children: [
+                      Container(
+                        width: 36,
+                        height: 36,
+                        decoration: BoxDecoration(
+                          color: Colors.white,
+                          shape: BoxShape.circle,
+                          border: Border.all(color: Colors.blue, width: 2),
+                        ),
+                        child: const Center(
+                          child: Icon(
+                            Icons.lightbulb_rounded,
+                            size: 20,
+                            color: Colors.blue,
+                          ),
+                        ),
+                      ),
+                      const SizedBox(width: 12),
+                      Expanded(
+                        child: Text(
+                          'Summary',
+                          style: TextStyle(
+                            fontWeight: FontWeight.bold,
+                            fontSize: 18,
+                            color: Colors.blue[800],
+                          ),
+                        ),
+                      ),
+                    ],
                   ),
-                  SizedBox(height: 8),
+                  const SizedBox(height: 12),
+                  
+                  // Note content
                   Text(
                     '1. Remove "-dan" from infinitive (if whatever remains ends in a vowel, remove it also) to get the stem.\n'
                     '2. Add "me-" prefix to indicate present tense.\n'
                     '3. Add appropriate pronoun suffix (-am, -î, -ad, -em, -ed, -and).\n'
                     '4. Some common verbs have irregular stems that must be memorized.',
-                    style: TextStyle(fontSize: 16),
+                    style: TextStyle(
+                      fontSize: 16,
+                      color: Colors.blue[900],
+                    ),
                   ),
                 ],
               ),

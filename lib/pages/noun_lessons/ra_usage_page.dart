@@ -46,7 +46,7 @@ class RaUsagePage extends StatelessWidget {
                           '"Râ" (را) is a postposition that marks the direct object '
                           'in a Persian sentence. It comes after the direct object.',
                       examples: [
-                        _lingangu(
+                        _exampleRa(
                           persian: 'man kitâb râ dîdam',
                           script: 'من کتاب را دیدم',
                           english: 'I saw the book',
@@ -63,17 +63,17 @@ class RaUsagePage extends StatelessWidget {
                           '2. The direct object is known to both speaker and listener\n'
                           '3. Referring to a particular thing or person',
                       examples: [
-                        _lingangu(
+                        _exampleRa(
                           persian: 'man kitâb râ xândam',
                           script: 'من کتاب را خواندم',
                           english: 'I read the book (specific book)',
                         ),
-                        _lingangu(
+                        _exampleRa(
                           persian: 'ânhâ în televizyun râ me-xarand',
                           script: 'آنها این تلویزیون را می‌خرند',
                           english: 'They buy this TV',
                         ),
-                        _lingangu(
+                        _exampleRa(
                           persian: 'o ân ustâd râ me-šinâsad',
                           script: 'او آن استاد را می‌شناسد',
                           english: 'She knows that teacher',
@@ -90,12 +90,12 @@ class RaUsagePage extends StatelessWidget {
                           '2. Referring to a general category\n'
                           '3. With indefinite articles like "a" or "some"',
                       examples: [
-                        _lingangu(
+                        _exampleRa(
                           persian: 'man kitâb me-xâham',
                           script: 'من کتاب می‌خواهم',
                           english: 'I want a book (any book)',
                         ),
-                        _lingangu(
+                        _exampleRa(
                           persian: 'o seb xarîd',
                           script: 'او سیب خرید',
                           english: 'She bought some apples',
@@ -110,7 +110,7 @@ class RaUsagePage extends StatelessWidget {
                       content: '"Râ" always comes immediately after the direct object, '
                           'before the verb.',
                       examples: [
-                        _lingangu(
+                        _exampleRa(
                           persian: 'man (I) + kitâb (book)\n+ râ + dîdam (saw)', 
                           script: 'من کتاب را دیدم', 
                           english: 'Subject + Object + râ + Verb'
@@ -261,7 +261,7 @@ class RaUsagePage extends StatelessWidget {
     );
   }
 
-  Widget _lingangu({
+  Widget _exampleRa({
     required String persian,
     required String script,
     required String english,

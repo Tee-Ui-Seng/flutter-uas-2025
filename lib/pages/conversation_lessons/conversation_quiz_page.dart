@@ -25,7 +25,7 @@ class _ConversationQuizPageState extends State<ConversationQuizPage> {
     },
     {
       'question': 'What is the appropriate response to "Citor astî!"?',
-      'options': ['Tašakkur', 'Salâm!', 'Bebaxšîn', 'Xub astam'],
+      'options': ['Tašakkur', 'Salâm!', 'Me-baxšed', 'Xub astam'],
       'correctAnswer': 3,
       'explanation': 'The typical response to "Citor astî!" (how are you) is "Xub astam" (I am good)',
     },
@@ -43,15 +43,15 @@ class _ConversationQuizPageState extends State<ConversationQuizPage> {
     },
     {
       'question': 'How do you say "Thank you" in Persian?',
-      'options': ['Bebaxšîn', 'Lotfan', 'Xub', 'Tašakkur'],
+      'options': ['Me-baxšed', 'Lutfan', 'Xub', 'Tašakkur'],
       'correctAnswer': 3,
       'explanation': '"Thank you" is "Tašakkur" (تشکر)',
     },
     {
       'question': 'What is the appropriate response to "Tašakkur"?',
-      'options': ['Lotfan', 'Qâbel nîst', 'Bale', 'Xub'],
+      'options': ['Lutfan', 'Qâbil nîst', 'Bale', 'Xub'],
       'correctAnswer': 1,
-      'explanation': 'The response to "Thank you" is "Qâbel nîst" (قابل نیست) meaning "You\'re welcome"',
+      'explanation': 'The response to "Thank you" is "Qâbil nîst" (قابل نیست) meaning "You\'re welcome"',
     },
     {
       'question': 'How do you say "Good morning" in Persian?',

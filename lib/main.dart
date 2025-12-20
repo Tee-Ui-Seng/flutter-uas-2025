@@ -1,9 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:firebase_core/firebase_core.dart';
-import 'package:flutter_application_uas/pages/verb_lessons/verb_conjugation_page.dart';
 import 'package:flutter_application_uas/pages/verb_lessons/verb_intro_page.dart';
-import 'package:flutter_application_uas/pages/verb_lessons/verb_practice_page.dart';
-import 'package:flutter_application_uas/pages/verb_lessons/verb_quiz_page.dart';
 import 'package:flutter_application_uas/pages/pronunciation_lessons/pronunciation_intro_page.dart'; // Add this
 import 'package:flutter_application_uas/pages/vocabulary_lessons/vocabulary_intro_page.dart';
 import 'firebase_options.dart';
@@ -52,9 +49,6 @@ class MyApp extends StatelessWidget {
           );
         },
         '/verb-intro': (context) => const VerbIntroPage(),
-        '/verb-conjugation': (context) => const VerbConjugationPage(),
-        '/verb-practice': (context) => const ConjugationPracticePage(),
-        '/verb-quiz': (context) => const VerbPracticePage(),
         '/pronunciation-intro': (context) => const PronunciationIntroPage(), // Add this
         '/vocabulary-intro': (context) => const VocabularyIntroPage(),
       },

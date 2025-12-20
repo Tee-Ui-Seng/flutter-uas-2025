@@ -44,7 +44,7 @@ class _ConversationPracticePageState extends State<ConversationPracticePage> {
         {'role': 'Stranger', 'text': 'bale?', 'english': 'Yes?'},
         {'role': 'You', 'text': 'lutfan, mi-toned kumak-am kuned?', 'english': 'Please, can you help me?'},
         {'role': 'Stranger', 'text': 'bale, ci me-xâhî?', 'english': 'Yes, what do you need?'},
-        {'role': 'You', 'text': 'me-xâham ba dukân biravam.', 'english': 'I want to go to the shop.'},
+        {'role': 'You', 'text': 'me-xâham ba dukân bîravam.', 'english': 'I want to go to the shop.'},
         {'role': 'Stranger', 'text': 'ânjâ ast.', 'english': 'It’s there.'},
         {'role': 'You', 'text': 'bisyâr tašakur!', 'english': 'Thank you very much!'},
         {'role': 'Stranger', 'text': 'qâbil-î na dârad.', 'english': 'You’re welcome.'},

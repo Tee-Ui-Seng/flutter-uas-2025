@@ -620,36 +620,36 @@ class VerbConjugationPage extends StatelessWidget {
     );
   }
 
-  Widget _buildKeyPoint(String text) {
-    return Padding(
-      padding: const EdgeInsets.only(bottom: 8),
-      child: Row(
-        crossAxisAlignment: CrossAxisAlignment.start,
-        children: [
-          Container(
-            width: 24,
-            height: 24,
-            decoration: BoxDecoration(
-              color: Colors.green,
-              shape: BoxShape.circle,
-            ),
-            child: const Center(
-              child: Icon(
-                Icons.check,
-                color: Colors.white,
-                size: 16,
-              ),
-            ),
-          ),
-          const SizedBox(width: 12),
-          Expanded(
-            child: Text(
-              text,
-              style: const TextStyle(fontSize: 15, height: 1.4),
-            ),
-          ),
-        ],
-      ),
-    );
-  }
+  // Widget _buildKeyPoint(String text) {
+  //   return Padding(
+  //     padding: const EdgeInsets.only(bottom: 8),
+  //     child: Row(
+  //       crossAxisAlignment: CrossAxisAlignment.start,
+  //       children: [
+  //         Container(
+  //           width: 24,
+  //           height: 24,
+  //           decoration: BoxDecoration(
+  //             color: Colors.green,
+  //             shape: BoxShape.circle,
+  //           ),
+  //           child: const Center(
+  //             child: Icon(
+  //               Icons.check,
+  //               color: Colors.white,
+  //               size: 16,
+  //             ),
+  //           ),
+  //         ),
+  //         const SizedBox(width: 12),
+  //         Expanded(
+  //           child: Text(
+  //             text,
+  //             style: const TextStyle(fontSize: 15, height: 1.4),
+  //           ),
+  //         ),
+  //       ],
+  //     ),
+  //   );
+  // }
 }

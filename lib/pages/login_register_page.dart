@@ -71,14 +71,14 @@ class _LoginRegisterPageState extends State<LoginRegisterPage> {
                             style: const TextStyle(
                               fontSize: 24,
                               fontWeight: FontWeight.bold,
-                              color: Colors.blue,
+                              color: Colors.red,
                             ),
                             textAlign: TextAlign.center,
                           ),
                           const SizedBox(height: 8),
                           Text(
                             _isLogin 
-                                ? 'Sign in to continue to Quiz App'
+                                ? 'Sign in to continue to Learn Persian 101'
                                 : 'Sign up to start your journey',
                             style: const TextStyle(
                               color: Colors.grey,
@@ -211,7 +211,7 @@ class _LoginRegisterPageState extends State<LoginRegisterPage> {
                               alignment: Alignment.centerRight,
                               child: TextButton(
                                 onPressed: _resetPassword,
-                                child: const Text('Forgot Password?'),
+                                child: const Text('Forgot Password?', style: TextStyle(color: Colors.red),),
                               ),
                             ),
                             const SizedBox(height: 8),
@@ -246,6 +246,8 @@ class _LoginRegisterPageState extends State<LoginRegisterPage> {
                           ElevatedButton(
                             onPressed: _isLoading ? null : _submitForm,
                             style: ElevatedButton.styleFrom(
+                              backgroundColor: Colors.red, // ✅ button color
+                              foregroundColor: Colors.white, // ✅ text & icon color
                               padding: const EdgeInsets.symmetric(vertical: 16),
                               shape: RoundedRectangleBorder(
                                 borderRadius: BorderRadius.circular(8),
@@ -299,6 +301,7 @@ class _LoginRegisterPageState extends State<LoginRegisterPage> {
                                   _isLogin ? 'Sign Up' : 'Sign In',
                                   style: const TextStyle(
                                     fontWeight: FontWeight.bold,
+                                    color: Colors.red,
                                   ),
                                 ),
                               ),
@@ -312,7 +315,7 @@ class _LoginRegisterPageState extends State<LoginRegisterPage> {
                 
                 // Demo Account Info
                 const SizedBox(height: 24),
-                _buildDemoInfo(),
+                // _buildDemoInfo(),
               ],
             ),
           ),
@@ -328,22 +331,25 @@ class _LoginRegisterPageState extends State<LoginRegisterPage> {
           width: 80,
           height: 80,
           decoration: BoxDecoration(
-            color: Colors.blue,
+            color: Colors.red,
             borderRadius: BorderRadius.circular(20),
           ),
-          child: const Icon(
-            Icons.quiz,
-            size: 50,
-            color: Colors.white,
+          child: SizedBox(
+            width: 50,
+            height: 50,
+            child: Image.asset(
+              'assets/images/farsi_icon.png',
+              fit: BoxFit.contain,
+            ),
           ),
         ),
         const SizedBox(height: 16),
         const Text(
-          'Quiz Master',
+          'Learn Persian 101',
           style: TextStyle(
             fontSize: 32,
             fontWeight: FontWeight.bold,
-            color: Colors.blue,
+            color: Colors.red,
           ),
         ),
         const SizedBox(height: 8),

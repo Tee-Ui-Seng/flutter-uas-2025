@@ -120,7 +120,7 @@ class PluralizationPage extends StatelessWidget {
 
                             const SizedBox(height: 16),
 
-                            // ⭐ COMPARISON TABLE ⭐
+                            // ⭐ PLURAL TRANSFORMATION ⭐
                             Container(
                               padding: const EdgeInsets.all(12),
                               margin: const EdgeInsets.only(bottom: 12),

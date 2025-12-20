@@ -157,37 +157,97 @@ class _PronounPluralQuizPageState extends State<PronounPluralQuizPage> {
                 itemBuilder: (context, index) {
                   final isSelected = _userAnswers[_currentQuestion] != null &&
                       index == _getSelectedIndex();
-                  final isCorrect = index == question['correctAnswer'];
+                  final isCorrect = index == question['correctAnswer'];    
                   
-                  Color backgroundColor = Colors.transparent;
-                  Color borderColor = Colors.grey;
+                  Color backgroundColor = Colors.white;
+                  Color borderColor = Colors.grey[300]!;
+                  Color textColor = Colors.black;
                   
                   if (isSelected) {
                     backgroundColor = isCorrect ? Colors.green.shade50 : Colors.red.shade50;
                     borderColor = isCorrect ? Colors.green : Colors.red;
+                    textColor = isCorrect ? Colors.green.shade800 : Colors.red.shade800;
                   }
-                  
-                  return Card(
-                    color: backgroundColor,
-                    shape: RoundedRectangleBorder(
-                      side: BorderSide(color: borderColor, width: 1),
-                      borderRadius: BorderRadius.circular(8),
-                    ),
-                    child: ListTile(
-                      title: Text(question['options'][index]),
-                      onTap: () {
+
+                  return Container(
+                    margin: const EdgeInsets.only(bottom: 12),
+                    child: ElevatedButton(
+                      onPressed: () {
                         if (_userAnswers[_currentQuestion] == null) {
                           _submitAnswer(index);
                         }
                       },
-                      trailing: isSelected
-                          ? Icon(
-                              isCorrect ? Icons.check : Icons.close,
-                              color: isCorrect ? Colors.green : Colors.red,
-                            )
-                          : null,
+                      style: ElevatedButton.styleFrom(
+                        backgroundColor: backgroundColor,
+                        foregroundColor: textColor,
+                        padding: const EdgeInsets.symmetric(vertical: 16, horizontal: 12),
+                        shape: RoundedRectangleBorder(
+                          borderRadius: BorderRadius.circular(12),
+                          side: BorderSide(color: borderColor, width: 2),
+                        ),
+                        elevation: 0,
+                      ),
+                      child: Row(
+                        children: [
+                          Container(
+                            width: 32,
+                            height: 32,
+                            decoration: BoxDecoration(
+                              shape: BoxShape.circle,
+                              border: Border.all(color: borderColor, width: 2),
+                              color: Colors.white,
+                            ),
+                            child: Center(
+                              child: Text(
+                                String.fromCharCode(65 + index), // A, B, C, D
+                                style: TextStyle(
+                                  fontWeight: FontWeight.bold,
+                                  color: textColor,
+                                ),
+                              ),
+                            ),
+                          ),
+                          const SizedBox(width: 16),
+                          Expanded(
+                            child: Text(
+                              question['options'][index],
+                              style: TextStyle(
+                                fontSize: 16,
+                                fontFamily: index == 2 || index == 1 ? 'NotoNaskhArabic' : null,
+                                fontWeight: FontWeight.bold,
+                              ),
+                            ),
+                          ),      
+                          if (isSelected && isCorrect)
+                            const Icon(Icons.check_circle, color: Colors.green),
+                          if (isSelected && !isCorrect)
+                            const Icon(Icons.cancel, color: Colors.red),
+                        ],
+                      ),
                     ),
                   );
+                  
+                  // return Card(
+                  //   color: backgroundColor,
+                  //   shape: RoundedRectangleBorder(
+                  //     side: BorderSide(color: borderColor, width: 1),
+                  //     borderRadius: BorderRadius.circular(8),
+                  //   ),
+                  //   child: ListTile(
+                  //     title: Text(question['options'][index]),
+                  //     onTap: () {
+                  //       if (_userAnswers[_currentQuestion] == null) {
+                  //         _submitAnswer(index);
+                  //       }
+                  //     },
+                  //     trailing: isSelected
+                  //         ? Icon(
+                  //             isCorrect ? Icons.check : Icons.close,
+                  //             color: isCorrect ? Colors.green : Colors.red,
+                  //           )
+                  //         : null,
+                  //   ),
+                  // );
                 },
               ),
             ),
@@ -195,18 +255,48 @@ class _PronounPluralQuizPageState extends State<PronounPluralQuizPage> {
             // Explanation (if answered)
             if (_userAnswers[_currentQuestion] != null)
               Container(
-                padding: const EdgeInsets.all(12),
-                margin: const EdgeInsets.only(bottom: 16),
+                margin: const EdgeInsets.only(top: 24),
+                padding: const EdgeInsets.all(16),
                 decoration: BoxDecoration(
-                  color: Colors.teal.shade50,
-                  borderRadius: BorderRadius.circular(8),
-                  border: Border.all(color: Colors.teal),
+                  color: _userAnswers[_currentQuestion] ==
+                          question['correctAnswer']
+                      ? Colors.green[50]
+                      : Colors.red[50],
+                  borderRadius: BorderRadius.circular(12),
+                  border: Border.all(
+                    color: _userAnswers[_currentQuestion] ==
+                            question['correctAnswer']
+                        ? Colors.green[100]!
+                        : Colors.red[100]!,
+                  ),
                 ),
-                child: Text(
-                  question['explanation'],
-                  style: const TextStyle(fontSize: 14),
+                child: Column(
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  children: [
+                    Text(
+                      _userAnswers[_currentQuestion] ==
+                              question['correctAnswer']
+                          ? '✓ Correct!'
+                          : '✗ Incorrect',
+                      style: TextStyle(
+                        fontWeight: FontWeight.bold,
+                        fontSize: 18,
+                        color: _userAnswers[_currentQuestion] ==
+                                question['correctAnswer']
+                            ? Colors.green
+                            : Colors.red,
+                      ),
+                    ),
+                    const SizedBox(height: 8),
+                    Text(
+                      question['explanation'],
+                      style: const TextStyle(fontSize: 16),
+                    ),
+                  ],
                 ),
               ),
+
+            const SizedBox(height: 20),
             
             // Next/Finish button
             if (_quizCompleted)
@@ -264,6 +354,8 @@ class _PronounPluralQuizPageState extends State<PronounPluralQuizPage> {
       ),
     );
   }
+
+
 
   int? _getSelectedIndex() => _userAnswers[_currentQuestion];
 }
