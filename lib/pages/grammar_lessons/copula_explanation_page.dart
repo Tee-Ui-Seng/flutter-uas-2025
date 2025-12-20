@@ -24,6 +24,7 @@ class CopulaExplanationPage extends StatelessWidget {
       appBar: AppBar(
         title: const Text('The Copula'),
         backgroundColor: Colors.red,
+        foregroundColor: Colors.white,
       ),
       body: Padding(
         padding: const EdgeInsets.all(16.0),

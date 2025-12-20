@@ -101,6 +101,7 @@ class PrepositionsPage extends StatelessWidget {
       appBar: AppBar(
         title: const Text('Common Prepositions'),
         backgroundColor: Colors.red,
+        foregroundColor: Colors.white,
       ),
 
       // Everything scrolls together

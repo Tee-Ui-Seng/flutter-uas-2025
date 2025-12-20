@@ -22,6 +22,7 @@ class FarewellsPage extends StatelessWidget {
       appBar: AppBar(
         title: const Text('Farewells'),
         backgroundColor: Colors.blue,
+        foregroundColor: Colors.white,
       ),
 
       // ★★★ EVERYTHING scrolls together! ★★★

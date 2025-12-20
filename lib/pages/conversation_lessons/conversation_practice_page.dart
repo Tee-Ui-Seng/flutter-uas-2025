@@ -60,6 +60,7 @@ class _ConversationPracticePageState extends State<ConversationPracticePage> {
       appBar: AppBar(
         title: const Text('Practice Conversations'),
         backgroundColor: Colors.blue,
+        foregroundColor: Colors.white,
       ),
 
       // 🔥 EVERYTHING scrolls together now

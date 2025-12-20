@@ -148,6 +148,7 @@ class _ConjugationPracticePageState extends State<ConjugationPracticePage> {
       appBar: AppBar(
         title: const Text('Conjugation Practice'),
         backgroundColor: Colors.deepPurple,
+        foregroundColor: Colors.white,
         actions: [
           IconButton(
             icon: const Icon(Icons.help_outline),

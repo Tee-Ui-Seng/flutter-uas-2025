@@ -39,6 +39,7 @@ class _NounIntroPageState extends State<NounIntroPage> {
       appBar: AppBar(
         title: const Text('Nouns - Level 1'),
         backgroundColor: Colors.teal,
+        foregroundColor: Colors.white,
       ),
       body: Column(
         children: [

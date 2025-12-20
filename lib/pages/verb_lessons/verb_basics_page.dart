@@ -12,6 +12,7 @@ class VerbBasicsPage extends StatelessWidget {
       appBar: AppBar(
         title: const Text('Present Tense Basics'),
         backgroundColor: Colors.green,
+        foregroundColor: Colors.white,
         leading: IconButton(
           icon: const Icon(Icons.arrow_back),
           onPressed: () => Navigator.pop(context),
@@ -928,7 +929,7 @@ class VerbBasicsPage extends StatelessWidget {
                     '4. Some common verbs have irregular stems that must be memorized.',
                     style: TextStyle(
                       fontSize: 16,
-                      color: Colors.blue[900],
+                      color: Colors.black,
                     ),
                   ),
                 ],

@@ -51,6 +51,7 @@ class PluralizationPage extends StatelessWidget {
       appBar: AppBar(
         title: const Text('Pluralizing Nouns'),
         backgroundColor: Colors.teal,
+        foregroundColor: Colors.white,
       ),
       body: Column(
         children: [

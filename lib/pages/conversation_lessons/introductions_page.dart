@@ -22,6 +22,7 @@ class IntroductionsPage extends StatelessWidget {
       appBar: AppBar(
         title: const Text('Introductions'),
         backgroundColor: Colors.blue,
+        foregroundColor: Colors.white,
       ),
       body: SingleChildScrollView(
         child: Padding(

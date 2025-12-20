@@ -15,7 +15,7 @@ class _GrammarQuizPageState extends State<GrammarQuizPage> {
   int _currentQuestion = 0;
   int _score = 0;
   bool _quizCompleted = false;
-  List<bool?> _userAnswers = List.filled(8, null);
+  List<int?> _userAnswers = List.filled(8, null);
 
   final List<Map<String, dynamic>> _questions = [
     {
@@ -66,10 +66,10 @@ class _GrammarQuizPageState extends State<GrammarQuizPage> {
       'explanation': '"Bâ" (با) means "with", so "bâ dost" means "with friend".',
     },
     {
-      'question': 'imroz barâdar kitâb ...',
-      'options': ['xânand', 'xânî', 'xâned', 'xânad'],
+      'question': 'barâdar meva ... gošt me-xorad.',
+      'options': ['agar', 'amâ', 'cûnki', 'va'],
       'correctAnswer': 3,
-      'explanation': 'The sentence translates to "Today brother reads book".',
+      'explanation': 'The sentence translates to "Brother eats fruit and meat".',
     },
   ];
 
@@ -77,10 +77,9 @@ class _GrammarQuizPageState extends State<GrammarQuizPage> {
     if (_userAnswers[_currentQuestion] != null) return;
 
     setState(() {
-      _userAnswers[_currentQuestion] = selectedIndex == 
-          _questions[_currentQuestion]['correctAnswer'];
-      
-      if (_userAnswers[_currentQuestion] == true) {
+      _userAnswers[_currentQuestion] = selectedIndex;
+
+      if (selectedIndex == _questions[_currentQuestion]['correctAnswer']) {
         _score++;
       }
     });
@@ -122,11 +121,13 @@ class _GrammarQuizPageState extends State<GrammarQuizPage> {
   @override
   Widget build(BuildContext context) {
     final question = _questions[_currentQuestion];
+    final isCorrect = _userAnswers[_currentQuestion] == question['correctAnswer'];
 
     return Scaffold(
       appBar: AppBar(
         title: const Text('Grammar Quiz'),
         backgroundColor: Colors.red,
+        foregroundColor: Colors.white,
       ),
       body: Padding(
         padding: const EdgeInsets.all(16.0),
@@ -180,36 +181,85 @@ class _GrammarQuizPageState extends State<GrammarQuizPage> {
               child: ListView.builder(
                 itemCount: (question['options'] as List).length,
                 itemBuilder: (context, index) {
-                  final isSelected = _userAnswers[_currentQuestion] != null;
-                  final isCorrect = index == question['correctAnswer'];
+                  final hasAnswered = _userAnswers[_currentQuestion] != null;
+                  final isCorrect = index == question['correctAnswer'];  
+                  final isSelected = index == _userAnswers[_currentQuestion]; 
                   
-                  Color backgroundColor = Colors.transparent;
-                  Color borderColor = Colors.grey;
-                  
-                  if (isSelected) {
-                    backgroundColor = isCorrect ? Colors.green.shade50 : Colors.red.shade50;
-                    borderColor = isCorrect ? Colors.green : Colors.red;
+                  Color backgroundColor = Colors.white;
+                  Color borderColor = Colors.grey[300]!;
+                  Color textColor = Colors.black;
+
+                  if (hasAnswered) {
+                    if (isCorrect) {
+                      backgroundColor = Colors.green.shade50;
+                      borderColor = Colors.green;
+                      textColor = Colors.green.shade800;
+                    }
+
+                    if (isSelected && !isCorrect) {
+                      backgroundColor = Colors.red.shade50;
+                      borderColor = Colors.red;
+                      textColor = Colors.red.shade800;
+                    }
                   }
-                  
-                  return Card(
-                    color: backgroundColor,
-                    shape: RoundedRectangleBorder(
-                      side: BorderSide(color: borderColor, width: 1),
-                      borderRadius: BorderRadius.circular(8),
-                    ),
-                    child: ListTile(
-                      title: Text(question['options'][index]),
-                      onTap: () {
+
+                  return Container(
+                    margin: const EdgeInsets.only(bottom: 12),
+                    child: ElevatedButton(
+                      onPressed: () {
                         if (_userAnswers[_currentQuestion] == null) {
                           _submitAnswer(index);
                         }
                       },
-                      trailing: isSelected
-                          ? Icon(
-                              isCorrect ? Icons.check : Icons.close,
-                              color: isCorrect ? Colors.green : Colors.red,
-                            )
-                          : null,
+                      style: ElevatedButton.styleFrom(
+                        backgroundColor: backgroundColor,
+                        foregroundColor: textColor,
+                        padding: const EdgeInsets.symmetric(vertical: 16, horizontal: 12),
+                        shape: RoundedRectangleBorder(
+                          borderRadius: BorderRadius.circular(12),
+                          side: BorderSide(color: borderColor, width: 2),
+                        ),
+                        elevation: 0,
+                      ),
+                      child: Row(
+                        children: [
+                          Container(
+                            width: 32,
+                            height: 32,
+                            decoration: BoxDecoration(
+                              shape: BoxShape.circle,
+                              border: Border.all(color: borderColor, width: 2),
+                              color: Colors.white,
+                            ),
+                            child: Center(
+                              child: Text(
+                                String.fromCharCode(65 + index), // A, B, C, D
+                                style: TextStyle(
+                                  fontWeight: FontWeight.bold,
+                                  color: textColor,
+                                ),
+                              ),
+                            ),
+                          ),
+                          const SizedBox(width: 16),
+                          Expanded(
+                            child: Text(
+                              question['options'][index],
+                              style: TextStyle(
+                                fontSize: 16,
+                                fontFamily: index == 2 || index == 1 ? 'NotoNaskhArabic' : null,
+                                fontWeight: FontWeight.bold,
+                              ),
+                            ),
+                          ),
+                          
+                          if (hasAnswered && isCorrect)
+                            const Icon(Icons.check_circle, color: Colors.green),
+
+                          if (hasAnswered && isSelected && !isCorrect)
+                            const Icon(Icons.cancel, color: Colors.red),
+                        ],
+                      ),
                     ),
                   );
                 },
@@ -219,38 +269,35 @@ class _GrammarQuizPageState extends State<GrammarQuizPage> {
             // Explanation (if answered)
             if (_userAnswers[_currentQuestion] != null)
               Container(
-                padding: const EdgeInsets.all(12),
-                margin: const EdgeInsets.only(bottom: 16),
+                margin: const EdgeInsets.only(top: 24),
+                padding: const EdgeInsets.all(16),
                 decoration: BoxDecoration(
-                  color: _userAnswers[_currentQuestion] == true
-                      ? Colors.green.shade50
-                      : Colors.red.shade50,
-                  borderRadius: BorderRadius.circular(8),
+                  color: isCorrect ? Colors.green[50] : Colors.red[50],
+                  borderRadius: BorderRadius.circular(12),
                   border: Border.all(
-                    color: _userAnswers[_currentQuestion] == true
-                        ? Colors.green
-                        : Colors.red,
+                    color: isCorrect ? Colors.green[100]! : Colors.red[100]!,
                   ),
                 ),
                 child: Column(
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
-                    Text(
-                      _userAnswers[_currentQuestion] == true
-                          ? 'Correct! ✅'
-                          : 'Incorrect ❌',
+                    Text(isCorrect ? '✓ Correct!' : '✗ Incorrect',
                       style: TextStyle(
                         fontWeight: FontWeight.bold,
-                        color: _userAnswers[_currentQuestion] == true
-                            ? Colors.green
-                            : Colors.red,
+                        fontSize: 18,
+                        color: isCorrect ? Colors.green : Colors.red,
                       ),
                     ),
                     const SizedBox(height: 8),
-                    Text(question['explanation']),
+                    Text(
+                      question['explanation'],
+                      style: const TextStyle(fontSize: 16),
+                    ),
                   ],
                 ),
               ),
+
+            const SizedBox(height: 20),
             
             // Next/Finish button
             if (_quizCompleted)

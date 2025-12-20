@@ -34,6 +34,7 @@ class PronounTablePage extends StatelessWidget {
       appBar: AppBar(
         title: const Text('Persian Pronouns'),
         backgroundColor: Colors.teal,
+        foregroundColor: Colors.white,
       ),
       body: Column(
         children: [

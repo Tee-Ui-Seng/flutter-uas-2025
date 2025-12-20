@@ -78,7 +78,7 @@ class _LoginRegisterPageState extends State<LoginRegisterPage> {
                           const SizedBox(height: 8),
                           Text(
                             _isLogin 
-                                ? 'Sign in to continue to Learn Persian 101'
+                                ? 'Sign in to continue to Learn Farsi 101'
                                 : 'Sign up to start your journey',
                             style: const TextStyle(
                               color: Colors.grey,
@@ -345,7 +345,7 @@ class _LoginRegisterPageState extends State<LoginRegisterPage> {
         ),
         const SizedBox(height: 16),
         const Text(
-          'Learn Persian 101',
+          'Learn Farsi 101',
           style: TextStyle(
             fontSize: 32,
             fontWeight: FontWeight.bold,

@@ -40,6 +40,7 @@ class _PronunciationIntroPageState extends State<PronunciationIntroPage> {
       appBar: AppBar(
         title: const Text('Pronunciation - Level 1'),
         backgroundColor: Colors.deepPurple,
+        foregroundColor: Colors.white,
       ),
       body: Column(
         children: [

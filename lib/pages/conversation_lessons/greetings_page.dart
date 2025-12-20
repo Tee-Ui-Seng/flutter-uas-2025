@@ -62,6 +62,7 @@ class GreetingsPage extends StatelessWidget {
       appBar: AppBar(
         title: const Text('Basic Greetings'),
         backgroundColor: Colors.blue,
+        foregroundColor: Colors.white,
       ),
 
       body: SingleChildScrollView(

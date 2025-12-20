@@ -139,296 +139,561 @@ class _VowelsPageState extends State<VowelsPage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(
-        title: const Text('Persian Vowels'),
-        backgroundColor: Colors.deepPurple,
-      ),
-      body: Padding(
-        padding: const EdgeInsets.all(16.0),
-        child: Column(
-          children: [
-            const Text(
-              'Persian Vowel Sounds',
-              style: TextStyle(
-                fontSize: 24,
-                fontWeight: FontWeight.bold,
-                color: Colors.deepPurple,
-              ),
-            ),
-            const SizedBox(height: 8),
-            const Text(
-              'Comparison across Persian dialects with IPA notation',
-              textAlign: TextAlign.center,
-              style: TextStyle(
-                fontSize: 16,
-                color: Colors.grey,
-              ),
-            ),
-            const SizedBox(height: 16),
-            
-            // Horizontal Scrollable Table
-            Expanded(
-              child: SingleChildScrollView(
-                scrollDirection: Axis.horizontal,
-                child: SingleChildScrollView(
-                  scrollDirection: Axis.vertical,
-                  child: DataTable(
-                    headingRowHeight: 80,
-                    columnSpacing: 12,
-                    dataRowMinHeight: 60,
-                    dataRowMaxHeight: 80,
-                    columns: const [
-                      DataColumn(
-                        label: Text('Vowel', style: TextStyle(fontWeight: FontWeight.bold)),
-                        numeric: false,
-                      ),
-                      DataColumn(
-                        label: Column(
-                          children: [
-                            Text('Classical', style: TextStyle(fontWeight: FontWeight.bold)),
-                            Text('Persian', style: TextStyle(fontWeight: FontWeight.bold)),
-                          ],
+      body: Container(
+        decoration: const BoxDecoration(
+          gradient: LinearGradient(
+            begin: Alignment.topCenter,
+            end: Alignment.bottomCenter,
+            colors: [
+              Color(0xFFEDE7F6),
+              Color(0xFFF3E5F5),
+              Colors.white,
+            ],
+          ),
+        ),
+        child: SafeArea(
+          child: Padding(
+            padding: const EdgeInsets.all(16.0),
+            child: Column(
+              children: [
+                // Header
+                Row(
+                  children: [
+                    IconButton(
+                      onPressed: () => Navigator.pop(context),
+                      icon: const Icon(Icons.arrow_back_rounded, color: Color(0xFF5E35B1)),
+                    ),
+                    Expanded(
+                      child: Text(
+                        'Persian Vowel Sounds',
+                        style: TextStyle(
+                          fontSize: 28,
+                          fontWeight: FontWeight.bold,
+                          color: Color(0xFF5E35B1),
+                          letterSpacing: -0.5,
                         ),
                       ),
-                      DataColumn(
-                        label: Column(
-                          children: [
-                            Text('Dari', style: TextStyle(fontWeight: FontWeight.bold)),
+                    ),
+                    Container(
+                      padding: const EdgeInsets.all(8),
+                      decoration: BoxDecoration(
+                        color: Color(0xFF5E35B1).withOpacity(0.1),
+                        borderRadius: BorderRadius.circular(12),
+                      ),
+                      child: Icon(
+                        Icons.graphic_eq_outlined,
+                        color: Color(0xFF5E35B1),
+                        size: 24,
+                      ),
+                    ),
+                  ],
+                ),
+                
+                const SizedBox(height: 8),
+                
+                Text(
+                  'Comparison across Persian dialects with IPA notation',
+                  textAlign: TextAlign.center,
+                  style: TextStyle(
+                    fontSize: 16,
+                    color: Colors.grey.shade700,
+                    fontWeight: FontWeight.w500,
+                  ),
+                ),
+                
+                const SizedBox(height: 24),
+
+                // Styled Table
+                Expanded(
+                  child: SingleChildScrollView(
+                    scrollDirection: Axis.horizontal,
+                    child: SingleChildScrollView(
+                      scrollDirection: Axis.vertical,
+                      child: Container(
+                        decoration: BoxDecoration(
+                          borderRadius: BorderRadius.circular(16),
+                          border: Border.all(color: Colors.grey.shade200),
+                          boxShadow: [
+                            BoxShadow(
+                              color: Colors.grey.withOpacity(0.1),
+                              blurRadius: 20,
+                              offset: const Offset(0, 4),
+                            ),
                           ],
                         ),
-                      ),
-                      DataColumn(
-                        label: Column(
-                          children: [
-                            Text('Hazaragi', style: TextStyle(fontWeight: FontWeight.bold)),
-                          ],
+                        child: ClipRRect(
+                          borderRadius: BorderRadius.circular(16),
+                          child: Table(
+                            border: TableBorder(
+                              horizontalInside: BorderSide(
+                                color: Colors.grey.shade200,
+                                width: 1,
+                              ),
+                              verticalInside: BorderSide(
+                                color: Colors.grey.shade200,
+                                width: 1,
+                              ),
+                              left: BorderSide.none,
+                              right: BorderSide.none,
+                              top: BorderSide.none,
+                              bottom: BorderSide.none,
+                            ),
+                            columnWidths: const {
+                              0: FixedColumnWidth(70),
+                              1: FixedColumnWidth(100),
+                              2: FixedColumnWidth(100),
+                              3: FixedColumnWidth(100),
+                              4: FixedColumnWidth(100),
+                              5: FixedColumnWidth(100),
+                              6: FixedColumnWidth(80),
+                            },
+                            children: [
+                              // Header Row
+                              TableRow(
+                                decoration: BoxDecoration(
+                                  color: Color(0xFF5E35B1),
+                                  borderRadius: const BorderRadius.only(
+                                    topLeft: Radius.circular(16),
+                                    topRight: Radius.circular(16),
+                                  ),
+                                ),
+                                children: [
+                                  _buildHeaderCell('Vowel'),
+                                  _buildHeaderCell('Classical\nPersian'),
+                                  _buildHeaderCell('Dari'),
+                                  _buildHeaderCell('Hazaragi'),
+                                  _buildHeaderCell('Tajik'),
+                                  _buildHeaderCell('Iranian'),
+                                  _buildHeaderCell('Note'),
+                                ],
+                              ),
+                              
+                              // Data Rows
+                              ...vowels.map((vowel) {
+                                final index = vowels.indexOf(vowel);
+                                return TableRow(
+                                  decoration: BoxDecoration(
+                                    color: index.isOdd ? Colors.grey.shade50 : Colors.white,
+                                  ),
+                                  children: [
+                                    _buildVowelCell(vowel['vowel']),
+                                    _buildClassicalCell(vowel['classical']),
+                                    _buildDialectCell(vowel['dari']),
+                                    _buildDialectCell(vowel['hazaragi']),
+                                    _buildDialectCell(vowel['tajik']),
+                                    _buildDialectCell(vowel['iran']),
+                                    _buildNoteCell(vowel['note']),
+                                  ],
+                                );
+                              }).toList(),
+                            ],
+                          ),
                         ),
                       ),
-                      DataColumn(
-                        label: Column(
-                          children: [
-                            Text('Tajik', style: TextStyle(fontWeight: FontWeight.bold)),
-                          ],
-                        ),
-                      ),
-                      DataColumn(
-                        label: Column(
-                          children: [
-                            Text('Iran', style: TextStyle(fontWeight: FontWeight.bold)),
-                          ],
-                        ),
-                      ),
-                      DataColumn(
-                        label: Text('Note', style: TextStyle(fontWeight: FontWeight.bold)),
+                    ),
+                  ),
+                ),
+
+                const SizedBox(height: 24),
+
+                // Notes Section
+                Container(
+                  decoration: BoxDecoration(
+                    borderRadius: BorderRadius.circular(16),
+                    color: Colors.white,
+                    boxShadow: [
+                      BoxShadow(
+                        color: Colors.grey.withOpacity(0.1),
+                        blurRadius: 8,
+                        offset: const Offset(0, 2),
                       ),
                     ],
-                    rows: vowels.map((vowel) {
-                      return DataRow(
-                        cells: [
-                          DataCell(
-                            Center(
-                              child: Text(
-                                vowel['vowel'],
-                                style: const TextStyle(
-                                  fontWeight: FontWeight.bold,
-                                  fontSize: 16,
-                                ),
-                              ),
-                            ),
-                          ),
-                          DataCell(
-                            Column(
-                              mainAxisAlignment: MainAxisAlignment.center,
-                              children: [
-                                Text(vowel['classical']['example']!,
-                                  style: const TextStyle(
-                                    fontSize: 20,
-                                    fontFamily: 'NotoNastaliqUrdu',
-                                  ),
-                                  textDirection: TextDirection.rtl,
-                                ),
-                                Text(vowel['classical']['ipa']!),
-                              ],
-                            ),
-                          ),
-                          DataCell(
-                            Column(
-                              mainAxisAlignment: MainAxisAlignment.center,
-                              children: [
-                                Text(vowel['dari']['ipa']!),
-                                IconButton(
-                                  icon: const Icon(Icons.play_arrow, size: 16),
-                                  onPressed: () => _playSound(vowel['dari']['audio']!),
-                                ),
-                              ],
-                            ),
-                          ),
-                          DataCell(
-                            Column(
-                              mainAxisAlignment: MainAxisAlignment.center,
-                              children: [
-                                Text(vowel['hazaragi']['ipa']!),
-                                IconButton(
-                                  icon: const Icon(Icons.play_arrow, size: 16),
-                                  onPressed: () => _playSound(vowel['hazaragi']['audio']!),
-                                ),
-                              ],
-                            ),
-                          ),
-                          DataCell(
-                            Column(
-                              mainAxisAlignment: MainAxisAlignment.center,
-                              children: [
-                                Text(vowel['tajik']['ipa']!),
-                                IconButton(
-                                  icon: const Icon(Icons.play_arrow, size: 16),
-                                  onPressed: () => _playSound(vowel['tajik']['audio']!),
-                                ),
-                              ],
-                            ),
-                          ),
-                          DataCell(
-                            Column(
-                              mainAxisAlignment: MainAxisAlignment.center,
-                              children: [
-                                Text(vowel['iran']['ipa']!),
-                                IconButton(
-                                  icon: const Icon(Icons.play_arrow, size: 16),
-                                  onPressed: () => _playSound(vowel['iran']['audio']!),
-                                ),
-                              ],
-                            ),
-                          ),
-                          DataCell(
-                            Center(child: Text(vowel['note'])),
-                          ),
-                        ],
-                      );
-                    }).toList(),
                   ),
-                ),
-              ),
-            ),
-            
-            // Notes Section
-            const SizedBox(height: 16),
-            Card(
-              child: ExpansionTile(
-                title: const Text(
-                  'Notes',
-                  style: TextStyle(
-                    fontWeight: FontWeight.bold,
-                    color: Colors.deepPurple,
-                  ),
-                ),
-                initiallyExpanded: false,
-                onExpansionChanged: (expanded) {
-                  setState(() {
-                    _showNotes = expanded;
-                  });
-                },
-                children: [
-                  Padding(
-                    padding: const EdgeInsets.all(16.0),
-                    child: Column(
-                      crossAxisAlignment: CrossAxisAlignment.start,
+                  child: ExpansionTile(
+                    shape: RoundedRectangleBorder(
+                      borderRadius: BorderRadius.circular(16),
+                    ),
+                    collapsedShape: RoundedRectangleBorder(
+                      borderRadius: BorderRadius.circular(16),
+                    ),
+                    title: Row(
                       children: [
-                        const Text(
-                          '[1] Pronounced [u] in Hazaragi if:',
-                          style: TextStyle(fontWeight: FontWeight.bold),
-                        ),
-                        const SizedBox(height: 8),
-                        const Padding(
-                          padding: EdgeInsets.only(left: 16),
-                          child: Column(
-                            crossAxisAlignment: CrossAxisAlignment.start,
-                            children: [
-                              Text('• The next vowel is [i]'),
-                              Text('• "o" as in the word او'),
-                            ],
+                        Container(
+                          padding: const EdgeInsets.all(6),
+                          decoration: BoxDecoration(
+                            color: Color(0xFF5E35B1).withOpacity(0.1),
+                            borderRadius: BorderRadius.circular(8),
+                          ),
+                          child: Icon(
+                            Icons.info_outline_rounded,
+                            color: Color(0xFF5E35B1),
+                            size: 20,
                           ),
                         ),
-                        const SizedBox(height: 16),
-                        const Text(
-                          '[2] ô is only used if all the followings are true:',
-                          style: TextStyle(fontWeight: FontWeight.bold),
-                        ),
-                        const SizedBox(height: 8),
-                        const Padding(
-                          padding: EdgeInsets.only(left: 16),
-                          child: Column(
-                            crossAxisAlignment: CrossAxisAlignment.start,
-                            children: [
-                              Text('• Pronounced [u] in Hazaragi'),
-                              Text('• Cognate with Dari [o] / Tajik [ɵ]'),
-                              Text('• The next vowel is not [i]'),
-                              Text('• The word is not او'),
-                            ],
+                        const SizedBox(width: 12),
+                        Text(
+                          'Pronunciation Notes',
+                          style: TextStyle(
+                            fontWeight: FontWeight.bold,
+                            color: Color(0xFF5E35B1),
+                            fontSize: 18,
                           ),
-                        ),
-                        const SizedBox(height: 16),
-                        const Text(
-                          '[3] If the word ends in a silent he dôcašmaeh (ه)',
-                          style: TextStyle(fontWeight: FontWeight.bold),
                         ),
                       ],
                     ),
-                  ),
-                ],
-              ),
-            ),
-            
-            const SizedBox(height: 24),
-            
-            // Navigation buttons
-            Row(
-              mainAxisAlignment: MainAxisAlignment.spaceBetween,
-              children: [
-                OutlinedButton(
-                  onPressed: () => Navigator.pop(context),
-                  style: OutlinedButton.styleFrom(
-                    padding: const EdgeInsets.symmetric(horizontal: 24, vertical: 12),
-                    side: BorderSide(color: Colors.deepPurple),
-                    shape: RoundedRectangleBorder(
-                      borderRadius: BorderRadius.circular(12),
-                    ),
-                  ),
-                  child: const Text(
-                    'Back',
-                    style: TextStyle(color: Colors.deepPurple),
-                  ),
-                ),
-                ElevatedButton(
-                  onPressed: () {
-                    Navigator.push(
-                      context,
-                      MaterialPageRoute(builder: (context) => const ConsonantsPage()),
-                    );
-                  },
-                  style: ElevatedButton.styleFrom(
-                    backgroundColor: Colors.deepPurple,
-                    padding: const EdgeInsets.symmetric(horizontal: 24, vertical: 12),
-                    shape: RoundedRectangleBorder(
-                      borderRadius: BorderRadius.circular(12),
-                    ),
-                    elevation: 0,
-                  ),
-                  child: const Row(
+                    initiallyExpanded: false,
+                    onExpansionChanged: (expanded) {
+                      setState(() {
+                        _showNotes = expanded;
+                      });
+                    },
                     children: [
-                      Text(
-                        'Next: Consonants',
-                        style: TextStyle(color: Colors.white),
+                      SizedBox(
+                        height: 300,
+                        child: SingleChildScrollView(
+                          padding: const EdgeInsets.all(20.0),
+                          child: Column(
+                            crossAxisAlignment: CrossAxisAlignment.start,
+                            children: [
+                              _buildNoteItem(
+                                number: '[1]',
+                                title: 'Pronounced [u] in Hazaragi if:',
+                                items: [
+                                  'The next vowel is [i]',
+                                  '"o" as in the word او',
+                                ],
+                              ),
+                              
+                              const SizedBox(height: 24),
+                              
+                              _buildNoteItem(
+                                number: '[2]',
+                                title: 'ô is only used if all the followings are true:',
+                                items: [
+                                  'Pronounced [u] in Hazaragi',
+                                  'Cognate with Dari [o] / Tajik [ɵ]',
+                                  'The next vowel is not [i]',
+                                  'The word is not او',
+                                ],
+                              ),
+                              
+                              const SizedBox(height: 24),
+                              
+                              _buildNoteItem(
+                                number: '[3]',
+                                title: 'If the word ends in a silent he dôcašmaeh (ه)',
+                                items: [],
+                              ),
+                            ],
+                          ),
+                        ),
                       ),
-                      SizedBox(width: 8),
-                      Icon(Icons.arrow_forward_rounded, size: 16, color: Colors.white),
                     ],
                   ),
                 ),
+
+                const SizedBox(height: 32),
+
+                // Navigation buttons
+                Row(
+                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                  children: [
+                    OutlinedButton(
+                      onPressed: () => Navigator.pop(context),
+                      style: OutlinedButton.styleFrom(
+                        padding: const EdgeInsets.symmetric(horizontal: 24, vertical: 12),
+                        side: BorderSide(color: Color(0xFF5E35B1)),
+                        shape: RoundedRectangleBorder(
+                          borderRadius: BorderRadius.circular(12),
+                        ),
+                      ),
+                      child: const Text(
+                        'Back',
+                        style: TextStyle(color: Color(0xFF5E35B1)),
+                      ),
+                    ),
+                    ElevatedButton(
+                      onPressed: () {
+                        Navigator.push(
+                          context,
+                          MaterialPageRoute(builder: (context) => const ConsonantsPage()),
+                        );
+                      },
+                      style: ElevatedButton.styleFrom(
+                        backgroundColor: Color(0xFF5E35B1),
+                        padding: const EdgeInsets.symmetric(horizontal: 24, vertical: 12),
+                        shape: RoundedRectangleBorder(
+                          borderRadius: BorderRadius.circular(12),
+                        ),
+                        elevation: 0,
+                      ),
+                      child: const Row(
+                        children: [
+                          Text(
+                            'Next: Consonants',
+                            style: TextStyle(color: Colors.white),
+                          ),
+                          SizedBox(width: 8),
+                          Icon(Icons.arrow_forward_rounded, size: 16, color: Colors.white),
+                        ],
+                      ),
+                    ),
+                  ],
+                ),
+                
+                // const SizedBox(height: 20),
               ],
+            ),
+          ),
+        ),
+      ),
+    );
+  }
+
+  Widget _buildHeaderCell(String text) {
+    return Container(
+      padding: const EdgeInsets.all(12),
+      child: Text(
+        text,
+        style: const TextStyle(
+          color: Colors.white,
+          fontWeight: FontWeight.w600,
+          fontSize: 12,
+        ),
+        textAlign: TextAlign.center,
+      ),
+    );
+  }
+
+  Widget _buildVowelCell(String vowel) {
+    return Container(
+      padding: const EdgeInsets.all(12),
+      child: Center(
+        child: Container(
+          width: 36,
+          height: 36,
+          decoration: BoxDecoration(
+            color: Color(0xFF5E35B1).withOpacity(0.1),
+            shape: BoxShape.circle,
+          ),
+          child: Center(
+            child: Text(
+              vowel,
+              style: TextStyle(
+                fontSize: 16,
+                fontWeight: FontWeight.bold,
+                color: Color(0xFF5E35B1),
+              ),
+            ),
+          ),
+        ),
+      ),
+    );
+  }
+
+  Widget _buildClassicalCell(Map<String, String> data) {
+    return Container(
+      padding: const EdgeInsets.all(8),
+      child: Column(
+        mainAxisAlignment: MainAxisAlignment.center,
+        children: [
+          Text(
+            data['example']!,
+            style: const TextStyle(
+              fontSize: 18,
+              fontFamily: 'NotoNastaliqUrdu',
+              height: 1.2,
+            ),
+            textDirection: TextDirection.rtl,
+            textAlign: TextAlign.center,
+          ),
+          const SizedBox(height: 4),
+          Container(
+            padding: const EdgeInsets.symmetric(horizontal: 8, vertical: 2),
+            decoration: BoxDecoration(
+              color: Colors.grey.shade100,
+              borderRadius: BorderRadius.circular(4),
+            ),
+            child: Text(
+              data['ipa']!,
+              style: const TextStyle(
+                fontSize: 12,
+                fontFamily: 'Courier',
+                color: Colors.grey,
+              ),
+            ),
+          ),
+        ],
+      ),
+    );
+  }
+
+  Widget _buildDialectCell(Map<String, String> data) {
+    return Container(
+      padding: const EdgeInsets.all(8),
+      child: Column(
+        mainAxisAlignment: MainAxisAlignment.center,
+        children: [
+          Container(
+            padding: const EdgeInsets.symmetric(horizontal: 8, vertical: 4),
+            decoration: BoxDecoration(
+              color: Color(0xFF5E35B1).withOpacity(0.05),
+              borderRadius: BorderRadius.circular(8),
+              border: Border.all(color: Color(0xFF5E35B1).withOpacity(0.1)),
+            ),
+            child: Text(
+              data['ipa']!,
+              style: TextStyle(
+                fontSize: 14,
+                fontFamily: 'Courier',
+                color: Color(0xFF5E35B1),
+                fontWeight: FontWeight.w500,
+              ),
+            ),
+          ),
+          const SizedBox(height: 8),
+          InkWell(
+            onTap: () => _playSound(data['audio']!),
+            borderRadius: BorderRadius.circular(20),
+            child: Container(
+              width: 32,
+              height: 32,
+              decoration: BoxDecoration(
+                color: Color(0xFF5E35B1).withOpacity(0.1),
+                shape: BoxShape.circle,
+              ),
+              child: Icon(
+                Icons.play_arrow_rounded,
+                size: 16,
+                color: Color(0xFF5E35B1),
+              ),
+            ),
+          ),
+        ],
+      ),
+    );
+  }
+
+  Widget _buildNoteCell(String note) {
+    return Container(
+      padding: const EdgeInsets.all(8),
+      child: Center(
+        child: note == '-'
+            ? Container(
+                width: 20,
+                height: 20,
+                decoration: BoxDecoration(
+                  color: Colors.grey.shade200,
+                  shape: BoxShape.circle,
+                ),
+                child: const Center(
+                  child: Text(
+                    '-',
+                    style: TextStyle(
+                      fontSize: 12,
+                      color: Colors.grey,
+                    ),
+                  ),
+                ),
+              )
+            : Container(
+                padding: const EdgeInsets.symmetric(horizontal: 8, vertical: 4),
+                decoration: BoxDecoration(
+                  color: Color(0xFFFFF8E1),
+                  borderRadius: BorderRadius.circular(6),
+                  border: Border.all(color: Color(0xFFFFD54F)),
+                ),
+                child: Text(
+                  note,
+                  style: const TextStyle(
+                    fontSize: 12,
+                    fontWeight: FontWeight.w500,
+                    color: Color(0xFFF57C00),
+                  ),
+                ),
+              ),
+      ),
+    );
+  }
+
+  Widget _buildNoteItem({
+    required String number,
+    required String title,
+    required List<String> items,
+  }) {
+    return Column(
+      crossAxisAlignment: CrossAxisAlignment.start,
+      children: [
+        Row(
+          children: [
+            Container(
+              width: 28,
+              height: 28,
+              decoration: BoxDecoration(
+                color: Color(0xFF5E35B1),
+                borderRadius: BorderRadius.circular(6),
+              ),
+              child: Center(
+                child: Text(
+                  number,
+                  style: const TextStyle(
+                    color: Colors.white,
+                    fontSize: 12,
+                    fontWeight: FontWeight.bold,
+                  ),
+                ),
+              ),
+            ),
+            const SizedBox(width: 12),
+            Expanded(
+              child: Text(
+                title,
+                style: TextStyle(
+                  fontWeight: FontWeight.bold,
+                  color: Color(0xFF5E35B1),
+                  fontSize: 16,
+                ),
+              ),
             ),
           ],
         ),
-      ),
+        if (items.isNotEmpty) ...[
+          const SizedBox(height: 12),
+          Padding(
+            padding: const EdgeInsets.only(left: 40),
+            child: Column(
+              crossAxisAlignment: CrossAxisAlignment.start,
+              children: items.map((item) {
+                return Padding(
+                  padding: const EdgeInsets.only(bottom: 4),
+                  child: Row(
+                    children: [
+                      Container(
+                        width: 6,
+                        height: 6,
+                        decoration: BoxDecoration(
+                          color: Color(0xFF5E35B1),
+                          shape: BoxShape.circle,
+                        ),
+                      ),
+                      const SizedBox(width: 12),
+                      Expanded(
+                        child: Text(
+                          '• $item',
+                          style: TextStyle(
+                            color: Colors.grey.shade800,
+                            fontSize: 14,
+                          ),
+                        ),
+                      ),
+                    ],
+                  ),
+                );
+              }).toList(),
+            ),
+          ),
+        ],
+      ],
     );
   }
 }

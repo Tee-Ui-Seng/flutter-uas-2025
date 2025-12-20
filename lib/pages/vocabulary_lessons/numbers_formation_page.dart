@@ -45,15 +45,49 @@ class NumbersFormationPage extends StatelessWidget {
                 child: Column(
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
-                    const Text(
-                      'The Key Rule:',
-                      style: TextStyle(
-                        fontSize: 18,
-                        fontWeight: FontWeight.bold,
-                        color: Colors.amber,
-                      ),
+                    // Step header
+                    Row(
+                      children: [
+                        Container(
+                          width: 36,
+                          height: 36,
+                          decoration: BoxDecoration(
+                            color: Colors.white,
+                            shape: BoxShape.circle,
+                            border: Border.all(color: Colors.amber, width: 2),
+                          ),
+                          child: const Center(
+                            child: Icon(
+                              Icons.lightbulb_rounded,
+                              size: 20,
+                              color: Colors.amber,
+                            ),
+                          ),
+                        ),
+                        const SizedBox(width: 12),
+                        Expanded(
+                          child: Text(
+                            'The Key Rule',
+                            style: TextStyle(
+                              fontWeight: FontWeight.bold,
+                              fontSize: 18,
+                              color: Colors.amber[800],
+                            ),
+                          ),
+                        ),
+                      ],
                     ),
-                    const SizedBox(height: 8),
+                    const SizedBox(height: 12),
+
+                    // const Text(
+                    //   'The Key Rule:',
+                    //   style: TextStyle(
+                    //     fontSize: 18,
+                    //     fontWeight: FontWeight.bold,
+                    //     color: Colors.amber,
+                    //   ),
+                    // ),
+                    // const SizedBox(height: 8),
 
                     const Text(
                       'All the tables contain basic numerals to remember before forming any numbers in Persian. '
@@ -87,14 +121,49 @@ class NumbersFormationPage extends StatelessWidget {
                 child: Column(
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
-                    const Text(
-                      'Example 1: 5294',
-                      style: TextStyle(
-                        fontSize: 18,
-                        fontWeight: FontWeight.bold,
-                        color: Colors.green,
-                      ),
+                    Row(
+                      children: [
+                        Container(
+                          width: 36,
+                          height: 36,
+                          decoration: BoxDecoration(
+                            color: Colors.white,
+                            shape: BoxShape.circle,
+                            border: Border.all(color: Colors.green, width: 2),
+                          ),
+                          child: Center(
+                            child: Text(
+                              '1',
+                              style: const TextStyle(
+                                fontWeight: FontWeight.bold,
+                                fontSize: 18,
+                                color: Colors.green,
+                              ),
+                            ),
+                          ),
+                        ),
+                        const SizedBox(width: 12),
+                        Expanded(
+                          child: Text(
+                            'Example 1: 5294',
+                            style: TextStyle(
+                              fontWeight: FontWeight.bold,
+                              fontSize: 18,
+                              color: Colors.green[800],
+                            ),
+                          ),
+                        ),
+                      ],
                     ),
+
+                    // const Text(
+                    //   'Example 1: 5294',
+                    //   style: TextStyle(
+                    //     fontSize: 18,
+                    //     fontWeight: FontWeight.bold,
+                    //     color: Colors.green,
+                    //   ),
+                    // ),
                     const SizedBox(height: 8),
 
                     _buildNumberBreakdown(
@@ -126,14 +195,49 @@ class NumbersFormationPage extends StatelessWidget {
                 child: Column(
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
-                    const Text(
-                      'Example 2: 8031',
-                      style: TextStyle(
-                        fontSize: 18,
-                        fontWeight: FontWeight.bold,
-                        color: Colors.blue,
-                      ),
+                    Row(
+                      children: [
+                        Container(
+                          width: 36,
+                          height: 36,
+                          decoration: BoxDecoration(
+                            color: Colors.white,
+                            shape: BoxShape.circle,
+                            border: Border.all(color: Colors.blue, width: 2),
+                          ),
+                          child: Center(
+                            child: Text(
+                              '2',
+                              style: const TextStyle(
+                                fontWeight: FontWeight.bold,
+                                fontSize: 18,
+                                color: Colors.blue,
+                              ),
+                            ),
+                          ),
+                        ),
+                        const SizedBox(width: 12),
+                        Expanded(
+                          child: Text(
+                            'Example 2: 8031',
+                            style: TextStyle(
+                              fontWeight: FontWeight.bold,
+                              fontSize: 18,
+                              color: Colors.blue[800],
+                            ),
+                          ),
+                        ),
+                      ],
                     ),
+
+                    // const Text(
+                    //   'Example 2: 8031',
+                    //   style: TextStyle(
+                    //     fontSize: 18,
+                    //     fontWeight: FontWeight.bold,
+                    //     color: Colors.blue,
+                    //   ),
+                    // ),
                     const SizedBox(height: 8),
 
                     _buildNumberBreakdown(
@@ -163,8 +267,24 @@ class NumbersFormationPage extends StatelessWidget {
               child: Padding(
                 padding: const EdgeInsets.all(16),
                 child: Column(
-                  crossAxisAlignment: CrossAxisAlignment.start,
-                  children: [
+                    crossAxisAlignment: CrossAxisAlignment.start,
+                    children: [
+                    Row(
+                      children: [
+                        Icon(Icons.translate, color: Colors.green, size: 20),
+                        const SizedBox(width: 8),
+                        Text(
+                          'Example Sentences',
+                          style: TextStyle(
+                            fontSize: 18,
+                            fontWeight: FontWeight.bold,
+                            color: Colors.green.shade700,
+                          ),
+                        ),
+                      ],
+                    ),
+                    const SizedBox(height: 12),
+
                     const Text(
                       'Try it Yourself:',
                       style: TextStyle(
@@ -248,16 +368,16 @@ class NumbersFormationPage extends StatelessWidget {
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
         Row(children: [
-          Text('$number = ', style: const TextStyle(fontWeight: FontWeight.bold)),
-          Text(breakdown),
+          Text('$number = ', style: const TextStyle(fontWeight: FontWeight.bold, fontSize: 20)),
+          Text(breakdown, style: TextStyle(fontSize: 20)),
         ]),
         const SizedBox(height: 4),
-        Text('Persian: $persian'),
+        Text('Persian: $persian', style: TextStyle(fontStyle: FontStyle.italic)),
         Text(
-          'Script: $script',
+          script,
           textDirection: TextDirection.rtl,
           style: const TextStyle(
-            fontSize: 18,
+            fontSize: 20,
             fontFamily: 'NotoNastaliqUrdu',
           ),
         ),
@@ -286,7 +406,7 @@ class NumbersFormationPage extends StatelessWidget {
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
-          Text('$number = $breakdown', style: const TextStyle(fontWeight: FontWeight.bold)),
+          Text('$number = $breakdown', style: const TextStyle(fontWeight: FontWeight.bold, fontSize: 18)),
           const Text('Try to say it in Persian!'),
         ],
       ),

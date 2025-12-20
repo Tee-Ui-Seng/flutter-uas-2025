@@ -41,6 +41,7 @@ class _GrammarIntroPageState extends State<GrammarIntroPage> {
       appBar: AppBar(
         title: const Text('Grammar - Level 1'),
         backgroundColor: Colors.red,
+        foregroundColor: Colors.white,
       ),
       body: Column(
         children: [

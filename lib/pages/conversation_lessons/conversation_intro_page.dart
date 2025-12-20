@@ -57,6 +57,7 @@ class _ConversationIntroPageState extends State<ConversationIntroPage> {
       appBar: AppBar(
         title: const Text('Conversation - Level 1'),
         backgroundColor: Colors.blue,
+        foregroundColor: Colors.white,
       ),
       body: Column(
         children: [

@@ -204,19 +204,20 @@ class HomePage extends StatelessWidget {
 
     return Scaffold(
       appBar: AppBar(
-        title: const Text('Persian Learning App'),
+        title: const Text('Learn Farsi 101'),
         centerTitle: true,
         elevation: 2,
+        leading: 
+          IconButton(
+            icon: const Icon(Icons.person_outline),
+            onPressed: () => Navigator.pushNamed(context, '/profile'),
+            tooltip: 'Profile',
+          ),
         actions: [
           IconButton(
             icon: const Icon(Icons.leaderboard_outlined),
             onPressed: () => Navigator.pushNamed(context, '/leaderboard'),
             tooltip: 'Leaderboard',
-          ),
-          IconButton(
-            icon: const Icon(Icons.person_outline),
-            onPressed: () => Navigator.pushNamed(context, '/profile'),
-            tooltip: 'Profile',
           ),
           IconButton(
             icon: const Icon(Icons.logout_outlined),

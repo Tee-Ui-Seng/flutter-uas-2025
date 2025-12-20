@@ -22,6 +22,7 @@ class PolitePhrasesPage extends StatelessWidget {
       appBar: AppBar(
         title: const Text('Polite Phrases'),
         backgroundColor: Colors.blue,
+        foregroundColor: Colors.white,
       ),
       body: SingleChildScrollView(
         padding: const EdgeInsets.all(16.0),

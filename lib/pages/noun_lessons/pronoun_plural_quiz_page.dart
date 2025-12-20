@@ -14,7 +14,7 @@ class _PronounPluralQuizPageState extends State<PronounPluralQuizPage> {
   int _currentQuestion = 0;
   int _score = 0;
   bool _quizCompleted = false;
-  List<int?> _userAnswers = List.filled(5, null);
+  List<int?> _userAnswers = List.filled(10, null);
 
   final List<Map<String, dynamic>> _questions = [
     {
@@ -36,16 +36,46 @@ class _PronounPluralQuizPageState extends State<PronounPluralQuizPage> {
       'explanation': 'Use "-ân" for some animate beings like trees.',
     },
     {
-      'question': 'Which suffix is used for Arabic loanwords?',
+      'question': 'Which suffix is used for jobs or titles?',
       'options': ['-hâ', '-ân', '-ât', '-in'],
-      'correctAnswer': 2,
-      'explanation': 'Arabic loanwords often use "-ât" suffix.',
+      'correctAnswer': 1,
+      'explanation': 'Jobs or titles often use "-ân" suffix.',
     },
     {
       'question': 'How do you pluralize "zan" (woman)?',
       'options': ['zanhâ', 'zanân', 'zanât', 'zanin'],
       'correctAnswer': 1,
       'explanation': '"Zan" uses "-ân" suffix.',
+    },
+    {
+      'question': 'What is the plural of "gošt" (book)?',
+      'options': ['gošt-hâ', 'goštân', 'goštât', 'gošt'],
+      'correctAnswer': 0,
+      'explanation': 'Use "-hâ" for most inanimate objects like meats.',
+    },
+    {
+      'question': 'How do you say "peoples" in Persian?',
+      'options': ['mardum-hâ', 'mardumân', 'mardumât', 'mardumyân'],
+      'correctAnswer': 1,
+      'explanation': 'Use "-ân" for animate beings like students.',
+    },
+    {
+      'question': 'What is the correct plural of "masjid" (mosque)?',
+      'options': ['masjid-hâ', 'masjidân', 'masjidât', 'masâjid'],
+      'correctAnswer': 3,
+      'explanation': 'The plural for "masjid" is irregular.',
+    },
+    {
+      'question': 'How do you say "fruits" in Persian?',
+      'options': ['meva-hâ', 'mevân', 'mevât', 'mevajât'],
+      'correctAnswer': 1,
+      'explanation': 'The word "meva" uses "-jân" for collective plural.',
+    },
+    {
+      'question': 'How do you pluralize "hayvân" (animal)?',
+      'options': ['hayvân-hâ', 'hayvânân', 'hayvânât', 'hayvân'],
+      'correctAnswer': 2,
+      'explanation': '"Hayvân" uses "-ât" suffix.',
     },
   ];
 
@@ -102,6 +132,7 @@ class _PronounPluralQuizPageState extends State<PronounPluralQuizPage> {
       appBar: AppBar(
         title: const Text('Pluralization Quiz'),
         backgroundColor: Colors.teal,
+        foregroundColor: Colors.white,
       ),
       body: Padding(
         padding: const EdgeInsets.all(16.0),
@@ -155,18 +186,30 @@ class _PronounPluralQuizPageState extends State<PronounPluralQuizPage> {
               child: ListView.builder(
                 itemCount: (question['options'] as List).length,
                 itemBuilder: (context, index) {
-                  final isSelected = _userAnswers[_currentQuestion] != null &&
-                      index == _getSelectedIndex();
-                  final isCorrect = index == question['correctAnswer'];    
+                  final selectedIndex = _userAnswers[_currentQuestion];
+                  final hasAnswered = selectedIndex != null;
+
+                  final isUserSelection = index == selectedIndex;
+                  final isCorrectAnswer = index == question['correctAnswer'];  
                   
                   Color backgroundColor = Colors.white;
                   Color borderColor = Colors.grey[300]!;
                   Color textColor = Colors.black;
-                  
-                  if (isSelected) {
-                    backgroundColor = isCorrect ? Colors.green.shade50 : Colors.red.shade50;
-                    borderColor = isCorrect ? Colors.green : Colors.red;
-                    textColor = isCorrect ? Colors.green.shade800 : Colors.red.shade800;
+
+                  if (hasAnswered) {
+                    if (isCorrectAnswer) {
+                      // Always highlight correct answer
+                      backgroundColor = Colors.green.shade50;
+                      borderColor = Colors.green;
+                      textColor = Colors.green.shade800;
+                    }
+
+                    if (isUserSelection && !isCorrectAnswer) {
+                      // Highlight user's wrong choice
+                      backgroundColor = Colors.red.shade50;
+                      borderColor = Colors.red;
+                      textColor = Colors.red.shade800;
+                    }
                   }
 
                   return Container(
@@ -217,10 +260,12 @@ class _PronounPluralQuizPageState extends State<PronounPluralQuizPage> {
                                 fontWeight: FontWeight.bold,
                               ),
                             ),
-                          ),      
-                          if (isSelected && isCorrect)
+                          ),  
+                          
+                          if (hasAnswered && isCorrectAnswer)
                             const Icon(Icons.check_circle, color: Colors.green),
-                          if (isSelected && !isCorrect)
+
+                          if (hasAnswered && isUserSelection && !isCorrectAnswer)
                             const Icon(Icons.cancel, color: Colors.red),
                         ],
                       ),

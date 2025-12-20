@@ -89,6 +89,7 @@ class _VerbPracticePageState extends State<VerbPracticePage> {
       appBar: AppBar(
         title: const Text('Practice Exercises'),
         backgroundColor: Colors.green,
+        foregroundColor: Colors.white,
         leading: IconButton(
           icon: const Icon(Icons.arrow_back),
           onPressed: () => Navigator.pop(context),
@@ -223,7 +224,7 @@ class _VerbPracticePageState extends State<VerbPracticePage> {
                     ),
                   ],
                 )
-              else
+              else if (_userAnswers[_currentQuestion] != null)
                 ElevatedButton(
                   onPressed: _nextQuestion,
                   style: ElevatedButton.styleFrom(

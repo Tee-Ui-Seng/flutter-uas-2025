@@ -77,6 +77,7 @@ class TimeGreetingsPage extends StatelessWidget {
       appBar: AppBar(
         title: const Text('Time-Specific Greetings'),
         backgroundColor: Colors.blue,
+        foregroundColor: Colors.white,
       ),
       body: Padding(
         padding: const EdgeInsets.all(16.0),

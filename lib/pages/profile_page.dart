@@ -2,6 +2,7 @@ import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter_application_uas/models/quiz_result.dart';
+import 'package:flutter_application_uas/pages/login_register_page.dart';
 import '../services/database_service.dart';
 import '../services/auth_service.dart';
 import '../models/user_profile.dart';
@@ -15,7 +16,77 @@ class ProfilePage extends StatelessWidget {
     final database = DatabaseService();
 
     return Scaffold(
-      appBar: AppBar(title: const Text('My Profile')),
+      appBar: AppBar(
+        title: const Text('My Profile'),
+        // actions: [
+        //   IconButton(
+        //     icon: const Icon(Icons.logout_outlined),
+        //     onPressed: () async {
+        //       final shouldLogout = await showDialog<bool>(
+        //         context: context,
+        //         builder: (context) => AlertDialog(
+        //           icon: const Icon(Icons.logout, color: Colors.red, size: 48,),
+        //           title: const Text(
+        //             "Confirm Logout",
+        //             style: TextStyle(color: Colors.red, fontSize: 20, fontWeight: FontWeight.bold,),
+        //           ),
+        //           content: const Column(
+        //             mainAxisSize: MainAxisSize.min,
+        //             children: [
+        //               Text(
+        //                 "Are you sure you want to log out?",
+        //                 textAlign: TextAlign.center,
+        //               ),
+        //             ],
+        //           ),
+        //           actions: [
+        //             Row(
+        //               mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+        //               children: [
+        //                 TextButton(
+        //                   style: TextButton.styleFrom(
+        //                     backgroundColor: Colors.blueGrey[50],
+        //                     shape: RoundedRectangleBorder(
+        //                       borderRadius: BorderRadius.circular(10),
+        //                     ),
+        //                   ),
+        //                   onPressed: () => Navigator.pop(context, false),
+        //                   child: const Text('Cancel', style: TextStyle(color: Colors.blue)),
+        //                 ),
+        //                 ElevatedButton(
+        //                   style: ElevatedButton.styleFrom(
+        //                     backgroundColor: Colors.red,
+        //                     shape: RoundedRectangleBorder(
+        //                       borderRadius: BorderRadius.circular(10),
+        //                     ),
+        //                   ),
+        //                   onPressed: () => Navigator.pop(context, true),
+        //                   child: const Text('Logout', style: TextStyle(color: Colors.white)),
+        //                 ),
+        //               ],
+        //             ),
+        //           ],
+        //         ),
+        //       );
+
+        //       if (shouldLogout == true) {
+        //         await AuthService().signOut();
+
+        //         if (!context.mounted) return;
+
+        //         Navigator.pushAndRemoveUntil(
+        //           context,
+        //           MaterialPageRoute(
+        //             builder: (context) => const LoginRegisterPage(),
+        //           ),
+        //           (route) => false, // removes all previous routes
+        //         );
+        //       }
+        //     },
+        //     tooltip: 'Logout',
+        //   ),
+        // ],
+      ),
       body: StreamBuilder<UserProfile>(
         stream: database.getUserProfileStream(userId),
         builder: (context, snapshot) {

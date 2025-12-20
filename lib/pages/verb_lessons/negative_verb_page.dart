@@ -12,6 +12,7 @@ class NegativeVerbPage extends StatelessWidget {
       appBar: AppBar(
         title: const Text('Negative Verbs'),
         backgroundColor: Colors.deepPurple,
+        foregroundColor: Colors.white,
         leading: IconButton(
           icon: const Icon(Icons.arrow_back),
           onPressed: () => Navigator.pop(context),

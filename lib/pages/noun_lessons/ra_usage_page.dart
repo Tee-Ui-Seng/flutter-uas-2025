@@ -10,6 +10,7 @@ class RaUsagePage extends StatelessWidget {
       appBar: AppBar(
         title: const Text('Using "râ" (را)'),
         backgroundColor: Colors.teal,
+        foregroundColor: Colors.white,
       ),
       body: Padding(
         padding: const EdgeInsets.all(16.0),

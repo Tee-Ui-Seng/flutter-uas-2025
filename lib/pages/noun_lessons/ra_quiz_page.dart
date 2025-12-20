@@ -122,6 +122,7 @@ class _RaQuizPageState extends State<RaQuizPage> {
       appBar: AppBar(
         title: const Text('"Râ" Usage Quiz'),
         backgroundColor: Colors.teal,
+        foregroundColor: Colors.white,
       ),
       body: Padding(
         padding: const EdgeInsets.all(16.0),

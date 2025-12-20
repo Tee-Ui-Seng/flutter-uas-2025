@@ -62,6 +62,7 @@ class ConjunctionsPage extends StatelessWidget {
       appBar: AppBar(
         title: const Text('Common Conjunctions'),
         backgroundColor: Colors.red,
+        foregroundColor: Colors.white,
       ),
       body: SingleChildScrollView(
         padding: const EdgeInsets.all(16),

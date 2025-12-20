@@ -12,6 +12,7 @@ class VerbConjugationPage extends StatelessWidget {
       appBar: AppBar(
         title: const Text('Verb Conjugation Table'),
         backgroundColor: Colors.green,
+        foregroundColor: Colors.white,
         leading: IconButton(
           icon: const Icon(Icons.arrow_back),
           onPressed: () => Navigator.pushReplacement(

@@ -51,6 +51,7 @@ class _VerbIntroPageState extends State<VerbIntroPage> {
       appBar: AppBar(
         title: const Text('Verbs - Level 1'),
         backgroundColor: Colors.green,
+        foregroundColor: Colors.white,
       ),
       body: Column(
         children: [

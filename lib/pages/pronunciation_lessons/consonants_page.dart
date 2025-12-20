@@ -60,223 +60,523 @@ class _ConsonantsPageState extends State<ConsonantsPage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(
-        title: const Text('Persian Consonants'),
-        backgroundColor: Colors.deepPurple,
-      ),
-      body: Padding(
-        padding: const EdgeInsets.all(16.0),
-        child: Column(
-          children: [
-            const Text(
-              'Persian Consonant Sounds',
-              style: TextStyle(
-                fontSize: 24,
-                fontWeight: FontWeight.bold,
-                color: Colors.deepPurple,
-              ),
-            ),
-            const SizedBox(height: 8),
-            const Text(
-              'Complete consonant chart with IPA and dialect notes',
-              textAlign: TextAlign.center,
-              style: TextStyle(
-                fontSize: 16,
-                color: Colors.grey,
-              ),
-            ),
-            const SizedBox(height: 16),
-            
-            // Consonants Table
-            Expanded(
-              child: ListView.builder(
-                itemCount: consonants.length,
-                itemBuilder: (context, index) {
-                  final consonant = consonants[index];
-                  return Card(
-                    margin: const EdgeInsets.only(bottom: 8),
-                    child: Padding(
-                      padding: const EdgeInsets.all(12.0),
-                      child: Row(
-                        children: [
-                          // Letter column
-                          Container(
-                            width: 60,
-                            alignment: Alignment.center,
-                            child: Text(
-                              consonant['letter']!,
-                              style: const TextStyle(
-                                fontSize: 18,
-                                fontWeight: FontWeight.bold,
-                              ),
-                            ),
-                          ),
-                          
-                          // IPA column
-                          Container(
-                            width: 60,
-                            alignment: Alignment.center,
-                            child: Text(
-                              consonant['ipa']!,
-                              style: const TextStyle(
-                                fontFamily: 'monospace',
-                                fontSize: 14,
-                              ),
-                            ),
-                          ),
-                          
-                          // Sound button
-                          Container(
-                            width: 40,
-                            alignment: Alignment.center,
-                            child: IconButton(
-                              icon: const Icon(Icons.play_arrow),
-                              onPressed: () => _playSound(consonant['audio']!),
-                            ),
-                          ),
-                          
-                          // Nastaliq script
-                          Expanded(
-                            child: Container(
-                              alignment: Alignment.center,
-                              child: Text(
-                                consonant['nastaliq']!,
-                                style: const TextStyle(
-                                  fontSize: 28,
-                                  fontFamily: 'NotoNastaliqUrdu',
-                                ),
-                                textDirection: TextDirection.rtl,
-                              ),
-                            ),
-                          ),
-                          
-                          // Note
-                          Expanded(
-                            child: Padding(
-                              padding: const EdgeInsets.only(left: 8),
-                              child: Text(
-                                consonant['note']!,
-                                style: const TextStyle(fontSize: 12),
-                              ),
-                            ),
-                          ),
-                        ],
+      body: Container(
+        decoration: const BoxDecoration(
+          gradient: LinearGradient(
+            begin: Alignment.topCenter,
+            end: Alignment.bottomCenter,
+            colors: [
+              Color(0xFFE3F2FD),
+              Color(0xFFE8EAF6),
+              Colors.white,
+            ],
+          ),
+        ),
+        child: SafeArea(
+          child: Padding(
+            padding: const EdgeInsets.all(16.0),
+            child: Column(
+              children: [
+                // Header
+                Row(
+                  children: [
+                    IconButton(
+                      onPressed: () => Navigator.pop(context),
+                      icon: const Icon(Icons.arrow_back_rounded, color: Color(0xFF3949AB)),
+                    ),
+                    Expanded(
+                      child: Text(
+                        'Persian Consonants',
+                        style: TextStyle(
+                          fontSize: 28,
+                          fontWeight: FontWeight.bold,
+                          color: Color(0xFF3949AB),
+                          letterSpacing: -0.5,
+                        ),
                       ),
                     ),
-                  );
-                },
-              ),
-            ),
-            
-            // Notes Section
-            const SizedBox(height: 16),
-            Card(
-              child: ExpansionTile(
-                title: const Text(
-                  'Important Notes',
+                    Container(
+                      padding: const EdgeInsets.all(8),
+                      decoration: BoxDecoration(
+                        color: Color(0xFF3949AB).withOpacity(0.1),
+                        borderRadius: BorderRadius.circular(12),
+                      ),
+                      child: Icon(
+                        Icons.phonelink_ring_outlined,
+                        color: Color(0xFF3949AB),
+                        size: 24,
+                      ),
+                    ),
+                  ],
+                ),
+                
+                const SizedBox(height: 8),
+                
+                Text(
+                  'Complete consonant chart with IPA and dialect notes',
+                  textAlign: TextAlign.center,
                   style: TextStyle(
-                    fontWeight: FontWeight.bold,
-                    color: Colors.deepPurple,
+                    fontSize: 16,
+                    color: Colors.grey.shade700,
+                    fontWeight: FontWeight.w500,
                   ),
                 ),
-                initiallyExpanded: false,
-                onExpansionChanged: (expanded) {
-                  setState(() {
-                    _showNotes = expanded;
-                  });
-                },
-                children: [
-                  Padding(
-                    padding: const EdgeInsets.all(16.0),
+                
+                const SizedBox(height: 24),
+
+                // Styled Table
+                Expanded(
+                  child: Container(
+                    decoration: BoxDecoration(
+                      borderRadius: BorderRadius.circular(16),
+                      color: Colors.white,
+                      boxShadow: [
+                        BoxShadow(
+                          color: Colors.grey.withOpacity(0.1),
+                          blurRadius: 20,
+                          offset: const Offset(0, 4),
+                        ),
+                      ],
+                    ),
                     child: Column(
-                      crossAxisAlignment: CrossAxisAlignment.start,
                       children: [
-                        const Text(
-                          'Aspiration Rules:',
-                          style: TextStyle(fontWeight: FontWeight.bold),
+                        // Table Header
+                        Container(
+                          padding: const EdgeInsets.all(16),
+                          decoration: BoxDecoration(
+                            color: Color(0xFF3949AB),
+                            borderRadius: const BorderRadius.only(
+                              topLeft: Radius.circular(16),
+                              topRight: Radius.circular(16),
+                            ),
+                          ),
+                          child: const Row(
+                            children: [
+                              Expanded(
+                                flex: 1,
+                                child: Text(
+                                  'Letter',
+                                  style: TextStyle(
+                                    color: Colors.white,
+                                    fontWeight: FontWeight.w600,
+                                  ),
+                                  textAlign: TextAlign.center,
+                                ),
+                              ),
+                              Expanded(
+                                flex: 1,
+                                child: Text(
+                                  'IPA',
+                                  style: TextStyle(
+                                    color: Colors.white,
+                                    fontWeight: FontWeight.w600,
+                                  ),
+                                  textAlign: TextAlign.center,
+                                ),
+                              ),
+                              Expanded(
+                                flex: 1,
+                                child: Text(
+                                  'Sound',
+                                  style: TextStyle(
+                                    color: Colors.white,
+                                    fontWeight: FontWeight.w600,
+                                  ),
+                                  textAlign: TextAlign.center,
+                                ),
+                              ),
+                              Expanded(
+                                flex: 1,
+                                child: Text(
+                                  'Script',
+                                  style: TextStyle(
+                                    color: Colors.white,
+                                    fontWeight: FontWeight.w600,
+                                  ),
+                                  textAlign: TextAlign.center,
+                                ),
+                              ),
+                              Expanded(
+                                flex: 3,
+                                child: Text(
+                                  'Notes',
+                                  style: TextStyle(
+                                    color: Colors.white,
+                                    fontWeight: FontWeight.w600,
+                                  ),
+                                  textAlign: TextAlign.center,
+                                ),
+                              ),
+                            ],
+                          ),
                         ),
-                        const SizedBox(height: 4),
-                        const Text(
-                          'The consonants [pʰ], [tʰ], [kʰ], and [t͡ʃʰ] are aspirated in initial position.',
-                        ),
-                        const SizedBox(height: 16),
-                        const Text(
-                          '/h/ Pronunciation:',
-                          style: TextStyle(fontWeight: FontWeight.bold),
-                        ),
-                        const SizedBox(height: 4),
-                        const Text(
-                          'The consonant /h/ is pronounced [ɦ] between vowels (except Hazaragi). '
-                          'In Hazaragi, it\'s silent [Ø] between vowels and glottal [ʔ] on initial.',
-                        ),
-                        const SizedBox(height: 16),
-                        const Text(
-                          '/ʔ/ Pronunciation:',
-                          style: TextStyle(fontWeight: FontWeight.bold),
-                        ),
-                        const SizedBox(height: 4),
-                        const Text(
-                          'The consonant /ʔ/ is silent [Ø] finally in Hazaragi. '
-                          'Hamza (ء) can be written alone (سوء) or on top (مسئله).',
+                        
+                        // Table Body
+                        Expanded(
+                          child: ListView.builder(
+                            itemCount: consonants.length,
+                            itemBuilder: (context, index) {
+                              final consonant = consonants[index];
+                              return Container(
+                                padding: const EdgeInsets.symmetric(vertical: 12, horizontal: 16),
+                                decoration: BoxDecoration(
+                                  color: index.isOdd ? Colors.grey.shade50 : Colors.white,
+                                  border: Border(
+                                    bottom: BorderSide(
+                                      color: Colors.grey.shade200,
+                                      width: 1,
+                                    ),
+                                  ),
+                                ),
+                                child: Row(
+                                  children: [
+                                    // Letter column
+                                    Expanded(
+                                      flex: 1,
+                                      child: Center(
+                                        child: Container(
+                                          width: 40,
+                                          height: 40,
+                                          decoration: BoxDecoration(
+                                            color: Color(0xFF3949AB).withOpacity(0.1),
+                                            borderRadius: BorderRadius.circular(8),
+                                          ),
+                                          child: Center(
+                                            child: Text(
+                                              consonant['letter']!,
+                                              style: TextStyle(
+                                                fontSize: 18,
+                                                fontWeight: FontWeight.bold,
+                                                color: Color(0xFF3949AB),
+                                              ),
+                                            ),
+                                          ),
+                                        ),
+                                      ),
+                                    ),
+                                    
+                                    // IPA column
+                                    Expanded(
+                                      flex: 1,
+                                      child: Center(
+                                        child: Container(
+                                          padding: const EdgeInsets.symmetric(horizontal: 8, vertical: 4),
+                                          decoration: BoxDecoration(
+                                            color: Colors.grey.shade100,
+                                            borderRadius: BorderRadius.circular(6),
+                                          ),
+                                          child: Text(
+                                            consonant['ipa']!,
+                                            style: const TextStyle(
+                                              fontFamily: 'Courier',
+                                              fontSize: 14,
+                                              fontWeight: FontWeight.w500,
+                                            ),
+                                          ),
+                                        ),
+                                      ),
+                                    ),
+                                    
+                                    // Sound button
+                                    Expanded(
+                                      flex: 1,
+                                      child: Center(
+                                        child: InkWell(
+                                          onTap: () => _playSound(consonant['audio']!),
+                                          borderRadius: BorderRadius.circular(20),
+                                          child: Container(
+                                            width: 36,
+                                            height: 36,
+                                            decoration: BoxDecoration(
+                                              color: Color(0xFF3949AB).withOpacity(0.1),
+                                              shape: BoxShape.circle,
+                                            ),
+                                            child: Icon(
+                                              Icons.play_arrow_rounded,
+                                              size: 18,
+                                              color: Color(0xFF3949AB),
+                                            ),
+                                          ),
+                                        ),
+                                      ),
+                                    ),
+                                    
+                                    // Nastaliq script
+                                    Expanded(
+                                      flex: 1,
+                                      child: Center(
+                                        child: Text(
+                                          consonant['nastaliq']!,
+                                          style: TextStyle(
+                                            fontSize: 32,
+                                            fontFamily: 'NotoNastaliqUrdu',
+                                            color: Color(0xFF3949AB),
+                                          ),
+                                          textDirection: TextDirection.rtl,
+                                        ),
+                                      ),
+                                    ),
+                                    
+                                    // Note
+                                    Expanded(
+                                      flex: 3,
+                                      child: Padding(
+                                        padding: const EdgeInsets.symmetric(horizontal: 8),
+                                        child: consonant['note'] == '-'
+                                            ? Center(
+                                                child: Container(
+                                                  width: 24,
+                                                  height: 24,
+                                                  decoration: BoxDecoration(
+                                                    color: Colors.grey.shade200,
+                                                    shape: BoxShape.circle,
+                                                  ),
+                                                  child: const Center(
+                                                    child: Text(
+                                                      '-',
+                                                      style: TextStyle(
+                                                        fontSize: 14,
+                                                        color: Colors.grey,
+                                                        fontWeight: FontWeight.bold,
+                                                      ),
+                                                    ),
+                                                  ),
+                                                ),
+                                              )
+                                            : Container(
+                                                padding: const EdgeInsets.symmetric(horizontal: 12, vertical: 6),
+                                                decoration: BoxDecoration(
+                                                  color: consonant['note']!.contains('See Notes') 
+                                                      ? Color(0xFFFFF8E1)
+                                                      : Color(0xFFE8F5E9).withOpacity(0.5),
+                                                  borderRadius: BorderRadius.circular(8),
+                                                  border: Border.all(
+                                                    color: consonant['note']!.contains('See Notes')
+                                                        ? Color(0xFFFFD54F)
+                                                        : Color(0xFF81C784).withOpacity(0.3),
+                                                  ),
+                                                ),
+                                                child: Text(
+                                                  consonant['note']!,
+                                                  style: TextStyle(
+                                                    fontSize: 12,
+                                                    color: consonant['note']!.contains('See Notes')
+                                                        ? Color(0xFFF57C00)
+                                                        : Colors.grey.shade800,
+                                                    height: 1.3,
+                                                  ),
+                                                ),
+                                              ),
+                                      ),
+                                    ),
+                                  ],
+                                ),
+                              );
+                            },
+                          ),
                         ),
                       ],
                     ),
                   ),
-                ],
-              ),
-            ),
-            
-            const SizedBox(height: 24),
-            
-            // Navigation buttons
-            Row(
-              mainAxisAlignment: MainAxisAlignment.spaceBetween,
-              children: [
-                OutlinedButton(
-                  onPressed: () => Navigator.pop(context),
-                  style: OutlinedButton.styleFrom(
-                    padding: const EdgeInsets.symmetric(horizontal: 24, vertical: 12),
-                    side: BorderSide(color: Colors.deepPurple),
-                    shape: RoundedRectangleBorder(
-                      borderRadius: BorderRadius.circular(12),
-                    ),
-                  ),
-                  child: const Text(
-                    'Back',
-                    style: TextStyle(color: Colors.deepPurple),
-                  ),
                 ),
-                ElevatedButton(
-                  onPressed: () {
-                    Navigator.push(
-                      context,
-                      MaterialPageRoute(builder: (context) => const PronunciationQuizPage()),
-                    );
-                  },
-                  style: ElevatedButton.styleFrom(
-                    backgroundColor: Colors.deepPurple,
-                    padding: const EdgeInsets.symmetric(horizontal: 24, vertical: 12),
-                    shape: RoundedRectangleBorder(
-                      borderRadius: BorderRadius.circular(12),
-                    ),
-                    elevation: 0,
-                  ),
-                  child: const Row(
-                    children: [
-                      Text(
-                        'Take Quiz',
-                        style: TextStyle(color: Colors.white),
+
+                const SizedBox(height: 24),
+
+                // Notes Section
+                Container(
+                  decoration: BoxDecoration(
+                    borderRadius: BorderRadius.circular(16),
+                    color: Colors.white,
+                    boxShadow: [
+                      BoxShadow(
+                        color: Colors.grey.withOpacity(0.1),
+                        blurRadius: 8,
+                        offset: const Offset(0, 2),
                       ),
-                      SizedBox(width: 8),
-                      Icon(Icons.quiz, size: 16, color: Colors.white),
+                    ],
+                  ),
+                  child: ExpansionTile(
+                    shape: RoundedRectangleBorder(
+                      borderRadius: BorderRadius.circular(16),
+                    ),
+                    collapsedShape: RoundedRectangleBorder(
+                      borderRadius: BorderRadius.circular(16),
+                    ),
+                    title: Row(
+                      children: [
+                        Container(
+                          padding: const EdgeInsets.all(6),
+                          decoration: BoxDecoration(
+                            color: Color(0xFF3949AB).withOpacity(0.1),
+                            borderRadius: BorderRadius.circular(8),
+                          ),
+                          child: Icon(
+                            Icons.info_outline_rounded,
+                            color: Color(0xFF3949AB),
+                            size: 20,
+                          ),
+                        ),
+                        const SizedBox(width: 12),
+                        Text(
+                          'Important Notes',
+                          style: TextStyle(
+                            fontWeight: FontWeight.bold,
+                            color: Color(0xFF3949AB),
+                            fontSize: 18,
+                          ),
+                        ),
+                      ],
+                    ),
+                    initiallyExpanded: false,
+                    onExpansionChanged: (expanded) {
+                      setState(() {
+                        _showNotes = expanded;
+                      });
+                    },
+                    children: [
+                      SizedBox(
+                        height: 300,
+                        child: SingleChildScrollView(
+                          padding: const EdgeInsets.all(20.0),
+                          child: Column(
+                            crossAxisAlignment: CrossAxisAlignment.start,
+                            children: [
+                              _buildNoteSection(
+                                icon: Icons.volume_up_outlined,
+                                title: 'Aspiration Rules:',
+                                content: 'The consonants [pʰ], [tʰ], [kʰ], and [t͡ʃʰ] are aspirated in initial position.',
+                              ),
+                              
+                              const SizedBox(height: 20),
+                              
+                              _buildNoteSection(
+                                icon: Icons.record_voice_over_outlined,
+                                title: '/h/ Pronunciation:',
+                                content: 'The consonant /h/ is pronounced [ɦ] between vowels (except Hazaragi). '
+                                    'In Hazaragi, it\'s silent [Ø] between vowels and glottal [ʔ] on initial.',
+                              ),
+                              
+                              const SizedBox(height: 20),
+                              
+                              _buildNoteSection(
+                                icon: Icons.text_fields_outlined,
+                                title: '/ʔ/ Pronunciation:',
+                                content: 'The consonant /ʔ/ is silent [Ø] finally in Hazaragi. '
+                                    'Hamza (ء) can be written alone (سوء) or on top (مسئله).',
+                              ),
+                            ],
+                          ),
+                        ),
+                      ),
                     ],
                   ),
                 ),
+
+                const SizedBox(height: 32),
+
+                // Navigation buttons
+                Row(
+                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                  children: [
+                    OutlinedButton(
+                      onPressed: () => Navigator.pop(context),
+                      style: OutlinedButton.styleFrom(
+                        padding: const EdgeInsets.symmetric(horizontal: 24, vertical: 12),
+                        side: BorderSide(color: Color(0xFF3949AB)),
+                        shape: RoundedRectangleBorder(
+                          borderRadius: BorderRadius.circular(12),
+                        ),
+                      ),
+                      child: const Text(
+                        'Back',
+                        style: TextStyle(color: Color(0xFF3949AB)),
+                      ),
+                    ),
+                    ElevatedButton(
+                      onPressed: () {
+                        Navigator.push(
+                          context,
+                          MaterialPageRoute(builder: (context) => const PronunciationQuizPage()),
+                        );
+                      },
+                      style: ElevatedButton.styleFrom(
+                        backgroundColor: Color(0xFF3949AB),
+                        padding: const EdgeInsets.symmetric(horizontal: 24, vertical: 12),
+                        shape: RoundedRectangleBorder(
+                          borderRadius: BorderRadius.circular(12),
+                        ),
+                        elevation: 0,
+                      ),
+                      child: const Row(
+                        children: [
+                          Text(
+                            'Take Quiz',
+                            style: TextStyle(color: Colors.white),
+                          ),
+                          SizedBox(width: 8),
+                          Icon(Icons.quiz, size: 16, color: Colors.white),
+                        ],
+                      ),
+                    ),
+                  ],
+                ),
+                
+                // const SizedBox(height: 20),
               ],
             ),
-          ],
+          ),
         ),
       ),
+    );
+  }
+
+  Widget _buildNoteSection({
+    required IconData icon,
+    required String title,
+    required String content,
+  }) {
+    return Row(
+      crossAxisAlignment: CrossAxisAlignment.start,
+      children: [
+        Container(
+          width: 36,
+          height: 36,
+          decoration: BoxDecoration(
+            color: Color(0xFF3949AB).withOpacity(0.1),
+            borderRadius: BorderRadius.circular(8),
+          ),
+          child: Icon(
+            icon,
+            color: Color(0xFF3949AB),
+            size: 20,
+          ),
+        ),
+        const SizedBox(width: 12),
+        Expanded(
+          child: Column(
+            crossAxisAlignment: CrossAxisAlignment.start,
+            children: [
+              Text(
+                title,
+                style: TextStyle(
+                  fontWeight: FontWeight.bold,
+                  color: Color(0xFF3949AB),
+                  fontSize: 16,
+                ),
+              ),
+              const SizedBox(height: 4),
+              Text(
+                content,
+                style: TextStyle(
+                  color: Colors.grey.shade800,
+                  fontSize: 14,
+                  height: 1.5,
+                ),
+              ),
+            ],
+          ),
+        ),
+      ],
     );
   }
 }
