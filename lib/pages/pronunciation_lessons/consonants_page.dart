@@ -98,7 +98,7 @@ class _ConsonantsPageState extends State<ConsonantsPage> {
                     Container(
                       padding: const EdgeInsets.all(8),
                       decoration: BoxDecoration(
-                        color: Color(0xFF3949AB).withOpacity(0.1),
+                        color: Color(0xFF3949AB).withValues(alpha: 0.1),
                         borderRadius: BorderRadius.circular(12),
                       ),
                       child: Icon(
@@ -132,7 +132,7 @@ class _ConsonantsPageState extends State<ConsonantsPage> {
                       color: Colors.white,
                       boxShadow: [
                         BoxShadow(
-                          color: Colors.grey.withOpacity(0.1),
+                          color: Colors.grey.withValues(alpha: 0.1),
                           blurRadius: 20,
                           offset: const Offset(0, 4),
                         ),
@@ -238,7 +238,7 @@ class _ConsonantsPageState extends State<ConsonantsPage> {
                                           width: 40,
                                           height: 40,
                                           decoration: BoxDecoration(
-                                            color: Color(0xFF3949AB).withOpacity(0.1),
+                                            color: Color(0xFF3949AB).withValues(alpha: 0.1),
                                             borderRadius: BorderRadius.circular(8),
                                           ),
                                           child: Center(
@@ -288,7 +288,7 @@ class _ConsonantsPageState extends State<ConsonantsPage> {
                                             width: 36,
                                             height: 36,
                                             decoration: BoxDecoration(
-                                              color: Color(0xFF3949AB).withOpacity(0.1),
+                                              color: Color(0xFF3949AB).withValues(alpha: 0.1),
                                               shape: BoxShape.circle,
                                             ),
                                             child: Icon(
@@ -348,12 +348,12 @@ class _ConsonantsPageState extends State<ConsonantsPage> {
                                                 decoration: BoxDecoration(
                                                   color: consonant['note']!.contains('See Notes') 
                                                       ? Color(0xFFFFF8E1)
-                                                      : Color(0xFFE8F5E9).withOpacity(0.5),
+                                                      : Color(0xFFE8F5E9).withValues(alpha: 0.5),
                                                   borderRadius: BorderRadius.circular(8),
                                                   border: Border.all(
                                                     color: consonant['note']!.contains('See Notes')
                                                         ? Color(0xFFFFD54F)
-                                                        : Color(0xFF81C784).withOpacity(0.3),
+                                                        : Color(0xFF81C784).withValues(alpha: 0.3),
                                                   ),
                                                 ),
                                                 child: Text(
@@ -389,7 +389,7 @@ class _ConsonantsPageState extends State<ConsonantsPage> {
                     color: Colors.white,
                     boxShadow: [
                       BoxShadow(
-                        color: Colors.grey.withOpacity(0.1),
+                        color: Colors.grey.withValues(alpha: 0.1),
                         blurRadius: 8,
                         offset: const Offset(0, 2),
                       ),
@@ -407,7 +407,7 @@ class _ConsonantsPageState extends State<ConsonantsPage> {
                         Container(
                           padding: const EdgeInsets.all(6),
                           decoration: BoxDecoration(
-                            color: Color(0xFF3949AB).withOpacity(0.1),
+                            color: Color(0xFF3949AB).withValues(alpha: 0.1),
                             borderRadius: BorderRadius.circular(8),
                           ),
                           child: Icon(
@@ -542,7 +542,7 @@ class _ConsonantsPageState extends State<ConsonantsPage> {
           width: 36,
           height: 36,
           decoration: BoxDecoration(
-            color: Color(0xFF3949AB).withOpacity(0.1),
+            color: Color(0xFF3949AB).withValues(alpha: 0.1),
             borderRadius: BorderRadius.circular(8),
           ),
           child: Icon(

@@ -37,9 +37,9 @@ class _VerbIntroPageState extends State<VerbIntroPage> {
     {
       'title': 'Course Structure',
       'subtitle': 'Level 1 contains 3 main sections:',
-      'content': '1. **Present Tense Basics** - Learn the 3-step conjugation process\n'
-          '2. **Conjugation Tables** - Practice with different verb patterns\n'
-          '3. **Practice Exercises** - Apply what you\'ve learned\n\n'
+      'content': '1. [Present Tense Basics] - Learn the 3-step conjugation process\n'
+          '2. [Conjugation Tables] - Practice with different verb patterns\n'
+          '3. [Practice Exercises] - Apply what you\'ve learned\n\n'
           'Each section includes examples and interactive exercises.',
       'icon': Icons.list,
     },

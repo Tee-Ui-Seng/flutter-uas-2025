@@ -38,15 +38,15 @@ class _VocabularyIntroPageState extends State<VocabularyIntroPage> {
     {
       'title': 'Course Structure',
       'subtitle': 'Level 1 contains 8 main sections:',
-      'content': '1. **Numbers 0-9** - Basic numerals\n'
-          '2. **Numbers 10-19** - Teens\n'
-          '3. **Numbers 20-1000** - Tens and hundreds\n'
-          '4. **Number Formation** - Building complex numbers\n'
-          '5. **Drag & Drop Game** - Interactive practice\n'
-          '6. **Adverbs of Place** - Location words\n'
-          '7. **Adverbs of Time** - Temporal words\n'
-          '8. **Additional Vocabulary** - Essential words\n'
-          '9. **Final Quiz** - Test your knowledge',
+      'content': '1. [Numbers 0-9] - Basic numerals\n'
+          '2. [Numbers 10-19] - Teens\n'
+          '3. [Numbers 20-1000] - Tens and hundreds\n'
+          '4. [Number Formation] - Building complex numbers\n'
+          '5. [Drag & Drop Game] - Interactive practice\n'
+          '6. [Adverbs of Place] - Location words\n'
+          '7. [Adverbs of Time] - Temporal words\n'
+          '8. [Additional Vocabulary] - Essential words\n'
+          '9. [Final Quiz] - Test your knowledge',
       'icon': Icons.list,
     },
   ];

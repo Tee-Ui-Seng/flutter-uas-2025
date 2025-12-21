@@ -40,13 +40,13 @@ class _ConversationIntroPageState extends State<ConversationIntroPage> {
     {
       'title': 'Course Structure',
       'subtitle': 'Level 1 contains 7 main sections:',
-      'content': '1. **Basic Greetings** - Hello, how are you?\n'
-          '2. **Introductions** - My name is..., I\'m from...\n'
-          '3. **Polite Phrases** - Thank you, excuse me, please\n'
-          '4. **Time Greetings** - Good morning, good night\n'
-          '5. **Farewells** - Goodbye, see you later\n'
-          '6. **Practice Conversations** - Real-life scenarios\n'
-          '7. **Final Quiz** - Test your conversation skills',
+      'content': '1. [Basic Greetings] - Hello, how are you?\n'
+          '2. [Introductions] - My name is..., I\'m from...\n'
+          '3. [Polite Phrases] - Thank you, excuse me, please\n'
+          '4. [Time Greetings] - Good morning, good night\n'
+          '5. [Farewells] - Goodbye, see you later\n'
+          '6. [Practice Conversations] - Real-life scenarios\n'
+          '7. [Final Quiz] - Test your conversation skills',
       'icon': Icons.list,
     },
   ];

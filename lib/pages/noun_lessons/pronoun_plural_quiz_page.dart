@@ -42,13 +42,13 @@ class _PronounPluralQuizPageState extends State<PronounPluralQuizPage> {
       'explanation': 'Jobs or titles often use "-ân" suffix.',
     },
     {
-      'question': 'How do you pluralize "zan" (woman)?',
-      'options': ['zanhâ', 'zanân', 'zanât', 'zanin'],
-      'correctAnswer': 1,
-      'explanation': '"Zan" uses "-ân" suffix.',
+      'question': 'How do you pluralize "paranda" (bird)?',
+      'options': ['parandâ-hâ', 'parandân', 'parandât', 'parandagân'],
+      'correctAnswer': 3,
+      'explanation': 'The plural of "Paranda" is "parandagân" which is irregular.',
     },
     {
-      'question': 'What is the plural of "gošt" (book)?',
+      'question': 'What is the plural of "gošt" (meat)?',
       'options': ['gošt-hâ', 'goštân', 'goštât', 'gošt'],
       'correctAnswer': 0,
       'explanation': 'Use "-hâ" for most inanimate objects like meats.',
@@ -67,8 +67,8 @@ class _PronounPluralQuizPageState extends State<PronounPluralQuizPage> {
     },
     {
       'question': 'How do you say "fruits" in Persian?',
-      'options': ['meva-hâ', 'mevân', 'mevât', 'mevajât'],
-      'correctAnswer': 1,
+      'options': ['meva-hâ', 'mevân', 'mevât', 'mevajân'],
+      'correctAnswer': 3,
       'explanation': 'The word "meva" uses "-jân" for collective plural.',
     },
     {
@@ -399,8 +399,6 @@ class _PronounPluralQuizPageState extends State<PronounPluralQuizPage> {
       ),
     );
   }
-
-
 
   int? _getSelectedIndex() => _userAnswers[_currentQuestion];
 }

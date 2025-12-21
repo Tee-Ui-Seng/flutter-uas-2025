@@ -239,12 +239,19 @@ class TimeGreetingsPage extends StatelessWidget {
                 child: const Column(
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
-                    Text(
-                      'Usage Tips:',
-                      style: TextStyle(
-                        fontWeight: FontWeight.bold,
-                        color: Colors.purple,
-                      ),
+                    Row(
+                      children: [
+                        Icon(Icons.access_time, color: Colors.purple, size: 20),
+                        SizedBox(width: 8),
+                        Text(
+                          'Usage Tips',
+                          style: TextStyle(
+                            fontSize: 18,
+                            fontWeight: FontWeight.bold,
+                            color: Colors.purple,
+                          ),
+                        ),
+                      ],
                     ),
                     SizedBox(height: 4),
                     Text(

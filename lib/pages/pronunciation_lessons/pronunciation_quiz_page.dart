@@ -18,16 +18,16 @@ class _PronunciationQuizPageState extends State<PronunciationQuizPage> {
 
   final List<Map<String, dynamic>> _questions = [
     {
-      'question': 'How is "a" pronounced in Iranian Persian?',
-      'options': ['[a]', '[æ]', '[ɑ]', '[e]'],
-      'correctAnswer': 1,
-      'explanation': 'In Iranian Persian, "a" is pronounced as [æ] (like "cat" in English).',
+      'question': 'Which of these letters are NOT pronounced as [z]?',
+      'options': ['ز', 'ذ', 'ظ', 'ط'],
+      'correctAnswer': 3,
+      'explanation': 'In Persian, the letters ز, ذ, and ظ are pronounced as [z], while ط is pronounced as [t].',
     },
     {
-      'question': 'Which dialect pronounces "w" as [v]?',
-      'options': ['Classical Persian only', 'Dari only', 'Iran and Tajik', 'Hazaragi only'],
+      'question': 'Which dialect pronounces و as [v]?',
+      'options': ['Iranian only', 'Dari only', 'Iran and Tajik', 'Hazaragi only'],
       'correctAnswer': 2,
-      'explanation': 'In Iranian and Tajik Persian, "w" (و) is pronounced as [v].',
+      'explanation': 'In Iranian and Tajik Persian, "v" (و) is pronounced as [v].',
     },
     {
       'question': 'What is the IPA for "š" (ش) in Persian?',
@@ -42,10 +42,10 @@ class _PronunciationQuizPageState extends State<PronunciationQuizPage> {
       'explanation': 'In Dari, "â" is pronounced as [ɑː] (like "a" in "father").',
     },
     {
-      'question': 'Which consonant is aspirated in initial position?',
-      'options': ['[p] only', '[p], [t], [k], [t͡ʃ]', '[b], [d], [g]', 'None are aspirated'],
-      'correctAnswer': 1,
-      'explanation': '[pʰ], [tʰ], [kʰ], and [t͡ʃʰ] are aspirated in initial position.',
+      'question': 'Which consonant is NOT aspirated in initial position?',
+      'options': ['ت', 'ک', 'چ', 'ق'],
+      'correctAnswer': 3,
+      'explanation': 'Only [pʰ] (پ), [tʰ] (ت), [kʰ] (ک), and [t͡ʃʰ] (چ) are aspirated in initial position.',
     },
     {
       'question': 'How is "x" (خ) pronounced in Tajik?',

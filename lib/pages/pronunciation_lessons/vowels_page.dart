@@ -177,7 +177,7 @@ class _VowelsPageState extends State<VowelsPage> {
                     Container(
                       padding: const EdgeInsets.all(8),
                       decoration: BoxDecoration(
-                        color: Color(0xFF5E35B1).withOpacity(0.1),
+                        color: Color(0xFF5E35B1).withValues(alpha: 0.1),
                         borderRadius: BorderRadius.circular(12),
                       ),
                       child: Icon(
@@ -215,7 +215,7 @@ class _VowelsPageState extends State<VowelsPage> {
                           border: Border.all(color: Colors.grey.shade200),
                           boxShadow: [
                             BoxShadow(
-                              color: Colors.grey.withOpacity(0.1),
+                              color: Colors.grey.withValues(alpha: 0.1),
                               blurRadius: 20,
                               offset: const Offset(0, 4),
                             ),
@@ -303,7 +303,7 @@ class _VowelsPageState extends State<VowelsPage> {
                     color: Colors.white,
                     boxShadow: [
                       BoxShadow(
-                        color: Colors.grey.withOpacity(0.1),
+                        color: Colors.grey.withValues(alpha: 0.1),
                         blurRadius: 8,
                         offset: const Offset(0, 2),
                       ),
@@ -321,7 +321,7 @@ class _VowelsPageState extends State<VowelsPage> {
                         Container(
                           padding: const EdgeInsets.all(6),
                           decoration: BoxDecoration(
-                            color: Color(0xFF5E35B1).withOpacity(0.1),
+                            color: Color(0xFF5E35B1).withValues(alpha: 0.1),
                             borderRadius: BorderRadius.circular(8),
                           ),
                           child: Icon(
@@ -381,7 +381,7 @@ class _VowelsPageState extends State<VowelsPage> {
                               
                               _buildNoteItem(
                                 number: '[3]',
-                                title: 'If the word ends in a silent he dôcašmaeh (ه)',
+                                title: 'In Persian, if a word ends with /a/, then it would be written with "he dôcašma" (ه)',
                                 items: [],
                               ),
                             ],
@@ -473,7 +473,7 @@ class _VowelsPageState extends State<VowelsPage> {
           width: 36,
           height: 36,
           decoration: BoxDecoration(
-            color: Color(0xFF5E35B1).withOpacity(0.1),
+            color: Color(0xFF5E35B1).withValues(alpha: 0.1),
             shape: BoxShape.circle,
           ),
           child: Center(
@@ -537,9 +537,9 @@ class _VowelsPageState extends State<VowelsPage> {
           Container(
             padding: const EdgeInsets.symmetric(horizontal: 8, vertical: 4),
             decoration: BoxDecoration(
-              color: Color(0xFF5E35B1).withOpacity(0.05),
+              color: Color(0xFF5E35B1).withValues(alpha: 0.05),
               borderRadius: BorderRadius.circular(8),
-              border: Border.all(color: Color(0xFF5E35B1).withOpacity(0.1)),
+              border: Border.all(color: Color(0xFF5E35B1).withValues(alpha: 0.1)),
             ),
             child: Text(
               data['ipa']!,
@@ -559,7 +559,7 @@ class _VowelsPageState extends State<VowelsPage> {
               width: 32,
               height: 32,
               decoration: BoxDecoration(
-                color: Color(0xFF5E35B1).withOpacity(0.1),
+                color: Color(0xFF5E35B1).withValues(alpha: 0.1),
                 shape: BoxShape.circle,
               ),
               child: Icon(

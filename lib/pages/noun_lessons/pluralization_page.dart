@@ -22,6 +22,11 @@ class PluralizationPage extends StatelessWidget {
       'meaning': 'student → students',
       'scriptFrom': 'دانشجو',
       'scriptTo': 'دانشجویان',
+      'exampleFrom2': 'daraxt',
+      'exampleTo2': 'daraxtân',
+      'meaning2': 'tree → trees',
+      'scriptFrom2': 'درخت',
+      'scriptTo2': 'درختان',
     },
     {
       'rule': 'Arabic loanwords',
@@ -31,7 +36,12 @@ class PluralizationPage extends StatelessWidget {
       'meaning': 'word → words',
       'scriptFrom': 'کلمه',
       'scriptTo': 'کلمات',
-      'notes': 'Note: The form kalima-hâ (کلمه‌ها) can also be found mostly in Tajik.',
+      'exampleFrom2': 'haivân',
+      'exampleTo2': 'haivânât',
+      'meaning2': 'animal → animals',
+      'scriptFrom2': 'حیوان',
+      'scriptTo2': 'حیوانات',
+      'notes': 'Note: The form kalima-hâ (کلمه‌ها), haivân-hâ (حیوان‌ها) can also be found mostly in Tajik.',
     },
     {
       'rule': 'Irregular plurals',
@@ -41,7 +51,22 @@ class PluralizationPage extends StatelessWidget {
       'meaning': 'object → objects',
       'scriptFrom': 'شیء',
       'scriptTo': 'اشیاء',
-      'notes': 'Note: The form šay’-hâ (شیءها) can also be found mostly in Tajik.',
+      'exampleFrom2': 'masjid',
+      'exampleTo2': 'masâjid',
+      'meaning2': 'mosque → mosques',
+      'scriptFrom2': 'مسجد',
+      'scriptTo2': 'مساجد',
+      'exampleFrom3': 'qânun',
+      'exampleTo3': 'qawânin',
+      'meaning3': 'law → laws',
+      'scriptFrom3': 'قانون',
+      'scriptTo3': 'قوانين',
+      'exampleFrom4': 'jazîra',
+      'exampleTo4': 'jazâ’ir',
+      'meaning4': 'island → islands',
+      'scriptFrom4': 'جزیره',
+      'scriptTo4': 'جزایر',
+      'notes': 'Note: The form šay’-hâ (شیءها), masjid-hâ (مسجدها), qânun-hâ (قانون‌ها), jazîra-hâ (جزیره‌ها) can also be found mostly in Tajik.',
     },
   ];
 
@@ -122,94 +147,43 @@ class PluralizationPage extends StatelessWidget {
                             const SizedBox(height: 16),
 
                             // ⭐ PLURAL TRANSFORMATION ⭐
-                            Container(
-                              padding: const EdgeInsets.all(12),
-                              margin: const EdgeInsets.only(bottom: 12),
-                              decoration: BoxDecoration(
-                                color: Colors.white,
-                                borderRadius: BorderRadius.circular(8),
-                                boxShadow: [
-                                  BoxShadow(
-                                    color: Colors.black.withValues(alpha: 0.1),
-                                    blurRadius: 4,
-                                    offset: const Offset(0, 2),
-                                  ),
-                                ],
-                              ),
-                              child: Column(
-                                children: [
-                                  // Latin script transformation
-                                  Row(
-                                    mainAxisAlignment: MainAxisAlignment.center,
-                                    children: [
-                                      Text(
-                                        rule['exampleFrom'],
-                                        style: const TextStyle(
-                                          fontFamily: 'Courier',
-                                          fontSize: 16,
-                                          fontWeight: FontWeight.bold,
-                                          color: Colors.teal,
-                                        ),
-                                      ),
-                                      const SizedBox(width: 8),
-                                      const Icon(Icons.arrow_forward, size: 16, color: Colors.grey),
-                                      const SizedBox(width: 8),
-                                      Text(
-                                        rule['exampleTo'],
-                                        style: const TextStyle(
-                                          fontFamily: 'Courier',
-                                          fontSize: 16,
-                                          fontWeight: FontWeight.bold,
-                                          color: Colors.teal,
-                                        ),
-                                      ),
-                                    ],
-                                  ),
-
-                                  const SizedBox(height: 8),
-
-                                  // Persian script transformation
-                                  Row(
-                                    mainAxisAlignment: MainAxisAlignment.center,
-                                    children: [
-                                      Text(
-                                        rule['scriptFrom'],
-                                        style: const TextStyle(
-                                          fontSize: 24,
-                                          fontWeight: FontWeight.bold,
-                                          fontFamily: 'NotoNastaliqUrdu',
-                                        ),
-                                        textDirection: TextDirection.rtl,
-                                      ),
-                                      const SizedBox(width: 8),
-                                      const Icon(Icons.arrow_forward, size: 16, color: Colors.grey),
-                                      const SizedBox(width: 8),
-                                      Text(
-                                        rule['scriptTo'],
-                                        style: const TextStyle(
-                                          fontSize: 24,
-                                          fontWeight: FontWeight.bold,
-                                          fontFamily: 'NotoNastaliqUrdu',
-                                        ),
-                                        textDirection: TextDirection.rtl,
-                                      ),
-                                    ],
-                                  ),
-
-                                  const SizedBox(height: 6),
-
-                                  // Meaning
-                                  Text(
-                                    rule['meaning'],
-                                    style: TextStyle(
-                                      fontSize: 16,
-                                      color: Colors.grey[700],
-                                      fontStyle: FontStyle.italic,
-                                    ),
-                                  ),
-                                ],
-                              ),
+                            _moreExample(
+                              exampleFrom: rule['exampleFrom'],
+                              exampleTo: rule['exampleTo'],
+                              scriptFrom: rule['scriptFrom'],
+                              scriptTo: rule['scriptTo'],
+                              meaning: rule['meaning'],
                             ),
+
+                            if (rule['exampleFrom2'] != null) ...[
+                              _moreExample(
+                                exampleFrom: rule['exampleFrom2'],
+                                exampleTo: rule['exampleTo2'],
+                                scriptFrom: rule['scriptFrom2'],
+                                scriptTo: rule['scriptTo2'],
+                                meaning: rule['meaning2'],
+                              ),
+                            ],
+
+                            if (rule['exampleFrom3'] != null) ...[
+                              _moreExample(
+                                exampleFrom: rule['exampleFrom3'],
+                                exampleTo: rule['exampleTo3'],
+                                scriptFrom: rule['scriptFrom3'],
+                                scriptTo: rule['scriptTo3'],
+                                meaning: rule['meaning3'],
+                              ),
+                            ],
+
+                            if (rule['exampleFrom4'] != null) ...[
+                              _moreExample(
+                                exampleFrom: rule['exampleFrom4'],
+                                exampleTo: rule['exampleTo4'],
+                                scriptFrom: rule['scriptFrom4'],
+                                scriptTo: rule['scriptTo4'],
+                                meaning: rule['meaning4'],
+                              ),
+                            ],
 
                             // const SizedBox(height: 8),
 
@@ -345,6 +319,103 @@ class PluralizationPage extends StatelessWidget {
           ),
 
           // const SizedBox(height: 16),
+        ],
+      ),
+    );
+  }
+
+  Widget _moreExample({
+    required String exampleFrom,
+    required String exampleTo,
+    required String scriptFrom,
+    required String scriptTo,
+    required String meaning,
+  }) {
+    return Container(
+      padding: const EdgeInsets.all(12),
+      margin: const EdgeInsets.only(bottom: 12),
+      decoration: BoxDecoration(
+        color: Colors.white,
+        borderRadius: BorderRadius.circular(8),
+        boxShadow: [
+          BoxShadow(
+            color: Colors.black.withValues(alpha: 0.1),
+            blurRadius: 4,
+            offset: const Offset(0, 2),
+          ),
+        ],
+      ),
+      child: Column(
+        children: [
+          // Latin script transformation
+          Row(
+            mainAxisAlignment: MainAxisAlignment.center,
+            children: [
+              Text(
+                exampleFrom,
+                style: const TextStyle(
+                  fontFamily: 'Courier',
+                  fontSize: 16,
+                  fontWeight: FontWeight.bold,
+                  color: Colors.teal,
+                ),
+              ),
+              const SizedBox(width: 8),
+              const Icon(Icons.arrow_forward, size: 16, color: Colors.grey),
+              const SizedBox(width: 8),
+              Text(
+                exampleTo,
+                style: const TextStyle(
+                  fontFamily: 'Courier',
+                  fontSize: 16,
+                  fontWeight: FontWeight.bold,
+                  color: Colors.teal,
+                ),
+              ),
+            ],
+          ),
+
+          const SizedBox(height: 8),
+
+          // Persian script transformation
+          Row(
+            mainAxisAlignment: MainAxisAlignment.center,
+            children: [
+              Text(
+                scriptFrom,
+                style: const TextStyle(
+                  fontSize: 24,
+                  fontWeight: FontWeight.bold,
+                  fontFamily: 'NotoNastaliqUrdu',
+                ),
+                textDirection: TextDirection.rtl,
+              ),
+              const SizedBox(width: 8),
+              const Icon(Icons.arrow_forward, size: 16, color: Colors.grey),
+              const SizedBox(width: 8),
+              Text(
+                scriptTo,
+                style: const TextStyle(
+                  fontSize: 24,
+                  fontWeight: FontWeight.bold,
+                  fontFamily: 'NotoNastaliqUrdu',
+                ),
+                textDirection: TextDirection.rtl,
+              ),
+            ],
+          ),
+
+          const SizedBox(height: 6),
+
+          // Meaning
+          Text(
+            meaning,
+            style: TextStyle(
+              fontSize: 16,
+              color: Colors.grey[700],
+              fontStyle: FontStyle.italic,
+            ),
+          ),
         ],
       ),
     );
