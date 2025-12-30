@@ -292,7 +292,7 @@ class NegativeCopulaPage extends StatelessWidget {
     final pairs = [
       {'pos': 'man astam', 'neg': 'man nestam'},
       {'pos': 'tu astî', 'neg': 'to nestî'},
-      {'pos': 'u ast', 'neg': 'u nest'},
+      {'pos': 'o ast', 'neg': 'o nest'},
     ];
 
     return pairs.map((pair) {
@@ -368,6 +368,7 @@ class NegativeCopulaPage extends StatelessWidget {
                 Expanded(
                   child: Text(
                     'English',
+                    textAlign: TextAlign.center,
                     style: TextStyle(
                       color: Colors.white,
                       fontWeight: FontWeight.w600,
@@ -377,6 +378,7 @@ class NegativeCopulaPage extends StatelessWidget {
                 Expanded(
                   child: Text(
                     'Pronunciation',
+                    textAlign: TextAlign.center,
                     style: TextStyle(
                       color: Colors.white,
                       fontWeight: FontWeight.w600,
@@ -386,6 +388,7 @@ class NegativeCopulaPage extends StatelessWidget {
                 Expanded(
                   child: Text(
                     'Persian',
+                    textAlign: TextAlign.center,
                     style: TextStyle(
                       color: Colors.white,
                       fontWeight: FontWeight.w600,

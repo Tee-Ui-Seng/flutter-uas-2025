@@ -36,7 +36,7 @@ class _ConversationQuizPageState extends State<ConversationQuizPage> {
       'explanation': '"What is your name?" is "Nâm-i šumâ ci ast?" (اسم شما چه است؟)',
     },
     {
-      'question': 'What does "az dîdan-i-tân xušhâl astam" mean?',
+      'question': 'What does "az dîdan-itân xušhâl astam" mean?',
       'options': ['Thank you', 'Nice to meet you', 'Excuse me', 'Goodbye'],
       'correctAnswer': 1,
       'explanation': 'It means "Nice to meet you" (از دیدن تان خوشحال استم)',

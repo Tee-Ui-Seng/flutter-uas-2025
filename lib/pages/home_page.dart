@@ -64,7 +64,7 @@ class HomePage extends StatelessWidget {
         {
           'level': 2,
           'title': 'Level 2: Advanced Nouns',
-          'subtitle': 'Compound nouns, ezafe construction',
+          'subtitle': 'Izâfa construction, compound nouns, possessives',
           'color': Colors.deepPurple,
         },
         {

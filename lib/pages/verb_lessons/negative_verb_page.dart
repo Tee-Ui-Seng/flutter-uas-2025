@@ -701,7 +701,7 @@ class NegativeVerbPage extends StatelessWidget {
                         pronoun: 'آنها',
                         persian: 'نمی‌خورند',
                         pronunciation: 'na me-xorand',
-                        latin: 'âmhâ',
+                        latin: 'ânhâ',
                         enpro: 'They',
                         english: 'They do not eat',
                         backgroundColor: Colors.deepPurple.shade100,
@@ -1175,9 +1175,9 @@ class NegativeVerbPage extends StatelessWidget {
               children: [
                 Text(
                   latin,
-                  style: const TextStyle(
+                  style: TextStyle(
                     fontSize: 12,
-                    color: Colors.grey,
+                    color: Colors.grey.shade700,
                     fontStyle: FontStyle.italic,
                   ),
                 ),

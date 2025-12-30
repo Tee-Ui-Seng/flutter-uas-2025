@@ -129,7 +129,7 @@ class _ConjugationPracticePageState extends State<ConjugationPracticePage> {
     {'persian': 'او', 'latin': 'o', 'english': 'He/She', 'suffix': 'د'},
     {'persian': 'ما', 'latin': 'mâ', 'english': 'We', 'suffix': 'یم'},
     {'persian': 'شما', 'latin': 'šumâ', 'english': 'You (plural)', 'suffix': 'ید'},
-    {'persian': 'آنها', 'latin': 'âmhâ', 'english': 'They', 'suffix': 'ند'},
+    {'persian': 'آنها', 'latin': 'ânhâ', 'english': 'They', 'suffix': 'ند'},
   ];
 
   @override
@@ -748,7 +748,7 @@ class _ConjugationPracticePageState extends State<ConjugationPracticePage> {
               Text('   • He/She (o) → add "-ad"'),
               Text('   • We (mâ) → add "-em"'),
               Text('   • You plural (šumâ) → add "-ed"'),
-              Text('   • They (âmhâ) → add "-and"'),
+              Text('   • They (ânhâ) → add "-and"'),
               SizedBox(height: 12),
               Text(
                 'Example for "nošîdan" (to drink):',

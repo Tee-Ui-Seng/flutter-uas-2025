@@ -11,7 +11,7 @@ class PositiveCopulaPage extends StatelessWidget {
     {'english': 'He/she is', 'pronunciation': 'o ast', 'persian': 'او است'},
     {'english': 'We are', 'pronunciation': 'mâ astem', 'persian': 'ما استیم'},
     {'english': 'You (pl) are', 'pronunciation': 'šumâ asted*', 'persian': 'شما استید'},
-    {'english': 'They are', 'pronunciation': 'âmhâ astand', 'persian': 'آنها استند'},
+    {'english': 'They are', 'pronunciation': 'ânhâ astand', 'persian': 'آنها استند'},
   ];
 
   final List<Map<String, String>> examples = const [
@@ -20,6 +20,15 @@ class PositiveCopulaPage extends StatelessWidget {
     {'english': 'He is at home', 'pronunciation': 'o dar xâna ast', 'persian': 'او در خانه است'},
   ];
 
+  final List<Map<String, String>> shortForms = const [
+    {'english': 'I am\nsmart', 'full': 'hošyâr astam', 'short': 'hošyâr-am', 'persian': 'من هوشیارم'},
+    {'english': 'You are\nsmart', 'full': 'hošyâr astî', 'short': 'hošyâr-î', 'persian': 'تو هوشیاری'},
+    {'english': 'He is\nsmart', 'full': 'hošyâr ast', 'short': 'hošyâr ast', 'persian': 'او هوشیار است'},
+    {'english': 'We are\nsmart', 'full': 'hošyâr astem', 'short': 'hošyâr-em', 'persian': 'ما هوشیاریم'},
+    {'english': 'You (pl) are\nsmart', 'full': 'hošyâr asted', 'short': 'hošyâr-ed', 'persian': 'شما هوشیارید'},
+    {'english': 'They are\nsmart', 'full': 'hošyâr astand', 'short': 'hošyâr-and', 'persian': 'آنها هوشیارند'},
+  ];
+ 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -103,7 +112,7 @@ class PositiveCopulaPage extends StatelessWidget {
                       colors: [
                         Color(0xFF2E7D32).withValues(alpha: 0.1),
                         Color(0xFF388E3C).withValues(alpha: 0.05),
-                      ],
+                    ],
                     ),
                     borderRadius: BorderRadius.circular(20),
                     border: Border.all(color: Color(0xFF2E7D32).withValues(alpha: 0.2)),
@@ -197,7 +206,7 @@ class PositiveCopulaPage extends StatelessWidget {
                               'Pronunciation Note',
                               style: TextStyle(
                                 fontWeight: FontWeight.bold,
-                                color: Color(0xFF2E7D32),
+                                color: Color(0xFFF57C00),
                               ),
                             ),
                             const SizedBox(height: 4),
@@ -224,7 +233,233 @@ class PositiveCopulaPage extends StatelessWidget {
                 
                 ...examples.map((example) => _buildExampleCard(example)).toList(),
 
-                const SizedBox(height: 20),
+                const SizedBox(height: 32),
+
+                // Short Forms Table
+                _buildSectionHeader('Short Forms of Copula'),
+                const SizedBox(height: 8),
+                
+                Container(
+                  margin: const EdgeInsets.only(bottom: 12),
+                  padding: const EdgeInsets.all(16),
+                  decoration: BoxDecoration(
+                    color: Colors.blue.shade50,
+                    borderRadius: BorderRadius.circular(12),
+                    border: Border.all(color: Colors.blue.shade200),
+                  ),
+                  child: Column(
+                    crossAxisAlignment: CrossAxisAlignment.start,
+                    children: [
+                      Row(
+                        children: [
+                          Icon(
+                            Icons.shortcut_outlined,
+                            color: Colors.blue.shade800,
+                            size: 20,
+                          ),
+                          const SizedBox(width: 8),
+                          Text(
+                            'Contraction Rule',
+                            style: TextStyle(
+                              fontSize: 16,
+                              fontWeight: FontWeight.bold,
+                              color: Colors.blue.shade800,
+                            ),
+                          ),
+                        ],
+                      ),
+                      const SizedBox(height: 8),
+                      Text(
+                        'The copula (astan) can be (informally) contracted and attached to adjectives or nouns:',
+                        style: TextStyle(
+                          fontSize: 14,
+                          color: Colors.grey.shade800,
+                          height: 1.4,
+                        ),
+                      ),
+                      const SizedBox(height: 4),
+                      Text(
+                        'Example: "man hošyâr astam" → "man hošyâr-am"',
+                        style: TextStyle(
+                          fontSize: 14,
+                          color: Colors.blue.shade700,
+                          fontWeight: FontWeight.w500,
+                        ),
+                      ),
+                    ],
+                  ),
+                ),
+
+                // Short Forms Table
+                Container(
+                  decoration: BoxDecoration(
+                    borderRadius: BorderRadius.circular(16),
+                    boxShadow: [
+                      BoxShadow(
+                        color: Colors.grey.withValues(alpha: 0.1),
+                        blurRadius: 8,
+                        offset: const Offset(0, 2),
+                      ),
+                    ],
+                  ),
+                  child: ClipRRect(
+                    borderRadius: BorderRadius.circular(16),
+                    child: _buildShortFormsTable(shortForms),
+                  ),
+                ),
+
+                const SizedBox(height: 16),
+
+                // Note Box
+                Container(
+                  padding: const EdgeInsets.all(16),
+                  decoration: BoxDecoration(
+                    color: Color(0xFFFFF8E1),
+                    borderRadius: BorderRadius.circular(12),
+                    border: Border.all(color: Color(0xFFFFD54F)),
+                  ),
+                  child: Row(
+                    children: [
+                      Icon(
+                        Icons.info_outline_rounded,
+                        color: Color(0xFFF57C00),
+                      ),
+                      const SizedBox(width: 12),
+                      Expanded(
+                        child: Column(
+                          crossAxisAlignment: CrossAxisAlignment.start,
+                          children: [
+                            Text(
+                              'About: Short forms after vowels',
+                              style: TextStyle(
+                                fontWeight: FontWeight.bold,
+                                color: Color(0xFFF57C00),
+                              ),
+                            ),
+                            const SizedBox(height: 4),
+                            Text(
+                              'The use of short forms are generally avoided after words ending in vowels.',
+                              style: TextStyle(
+                                fontSize: 14,
+                                color: Colors.grey.shade800,
+                                fontStyle: FontStyle.italic,
+                              ),
+                            ),
+                          ],
+                        ),
+                      ),
+                    ],
+                  ),
+                ),
+
+                const SizedBox(height: 16),
+
+                // Note about short forms
+                Container(
+                  padding: const EdgeInsets.all(16),
+                  decoration: BoxDecoration(
+                    color: Color(0xFFE3F2FD),
+                    borderRadius: BorderRadius.circular(12),
+                    border: Border.all(color: Colors.blue.shade300),
+                  ),
+                  child: Row(
+                    crossAxisAlignment: CrossAxisAlignment.start,
+                    children: [
+                      Icon(
+                        Icons.warning_amber_rounded,
+                        color: Colors.blue.shade800,
+                        size: 20,
+                      ),
+                      const SizedBox(width: 12),
+                      Expanded(
+                        child: Column(
+                          crossAxisAlignment: CrossAxisAlignment.start,
+                          children: [
+                            Text(
+                              'Important Note about Short Forms',
+                              style: TextStyle(
+                                fontWeight: FontWeight.bold,
+                                color: Colors.blue.shade800,
+                                fontSize: 15,
+                              ),
+                            ),
+                            const SizedBox(height: 6),
+                            Text(
+                              'The short form can NOT be used in:',
+                              style: TextStyle(
+                                fontSize: 14,
+                                color: Colors.grey.shade800,
+                                fontWeight: FontWeight.w500,
+                              ),
+                            ),
+                            const SizedBox(height: 6),
+                            Padding(
+                              padding: const EdgeInsets.only(left: 8),
+                              child: Column(
+                                crossAxisAlignment: CrossAxisAlignment.start,
+                                children: [
+                                  Row(
+                                    crossAxisAlignment: CrossAxisAlignment.start,
+                                    children: [
+                                      const Text('• ', style: TextStyle(fontSize: 16, fontWeight: FontWeight.bold)),
+                                      Expanded(
+                                        child: Text(
+                                          'Negative sentences',
+                                          style: TextStyle(
+                                            fontSize: 14,
+                                            color: Colors.grey.shade800,
+                                            height: 1.4,
+                                          ),
+                                        ),
+                                      ),
+                                    ],
+                                  ),
+                                  const SizedBox(height: 4),
+                                  Row(
+                                    crossAxisAlignment: CrossAxisAlignment.start,
+                                    children: [
+                                      const Text('• ', style: TextStyle(fontSize: 16, fontWeight: FontWeight.bold)),
+                                      Expanded(
+                                        child: Text(
+                                          'With proper nouns (names of people, places)',
+                                          style: TextStyle(
+                                            fontSize: 14,
+                                            color: Colors.grey.shade800,
+                                            height: 1.4,
+                                          ),
+                                        ),
+                                      ),
+                                    ],
+                                  ),
+                                ],
+                              ),
+                            ),
+                            const SizedBox(height: 8),
+                            Container(
+                              padding: const EdgeInsets.all(8),
+                              decoration: BoxDecoration(
+                                color: Colors.white,
+                                borderRadius: BorderRadius.circular(8),
+                                border: Border.all(color: Colors.blue.shade200),
+                              ),
+                              child: Text(
+                                'I am Nilufar = man ali nîlûfar.\n'
+                                'We are not happy = mâ xušhâl nestem.',
+                                style: TextStyle(
+                                  fontSize: 14,
+                                  color: Colors.blue.shade800,
+                                  fontStyle: FontStyle.italic,
+                                ),
+                              ),
+                            ),
+                          ],
+                        ),
+                      ),
+                    ],
+                  ),
+                ),
+
+                const SizedBox(height: 32),
 
                 // Navigation Buttons
                 Row(
@@ -275,7 +510,7 @@ class PositiveCopulaPage extends StatelessWidget {
                   ],
                 ),
                 
-                // const SizedBox(height: 20),
+                const SizedBox(height: 20),
               ],
             ),
           ),
@@ -319,6 +554,7 @@ class PositiveCopulaPage extends StatelessWidget {
                 Expanded(
                   child: Text(
                     'English',
+                    textAlign: TextAlign.center,
                     style: TextStyle(
                       color: Colors.white,
                       fontWeight: FontWeight.w600,
@@ -328,6 +564,7 @@ class PositiveCopulaPage extends StatelessWidget {
                 Expanded(
                   child: Text(
                     'Pronunciation',
+                    textAlign: TextAlign.center,
                     style: TextStyle(
                       color: Colors.white,
                       fontWeight: FontWeight.w600,
@@ -337,6 +574,7 @@ class PositiveCopulaPage extends StatelessWidget {
                 Expanded(
                   child: Text(
                     'Persian',
+                    textAlign: TextAlign.center,
                     style: TextStyle(
                       color: Colors.white,
                       fontWeight: FontWeight.w600,
@@ -380,7 +618,7 @@ class PositiveCopulaPage extends StatelessWidget {
                       row['persian']!,
                       textDirection: TextDirection.rtl,
                       style: const TextStyle(
-                        fontSize: 18,
+                        fontSize: 20,
                         fontFamily: 'NotoNastaliqUrdu',
                         color: Color(0xFF2E7D32),
                       ),
@@ -391,6 +629,242 @@ class PositiveCopulaPage extends StatelessWidget {
             );
           }).toList(),
         ],
+      ),
+    );
+  }
+
+  Widget _buildShortFormsTable(List<Map<String, String>> rows) {
+    return Container(
+      decoration: BoxDecoration(
+        borderRadius: BorderRadius.circular(12),
+        border: Border.all(color: Colors.grey.shade200),
+      ),
+      child: Column(
+        children: [
+          // Header
+          Container(
+            padding: const EdgeInsets.symmetric(horizontal: 6, vertical: 16),
+            decoration: BoxDecoration(
+              color: Colors.blue,
+              borderRadius: const BorderRadius.only(
+                topLeft: Radius.circular(16),
+                topRight: Radius.circular(16),
+              ),
+            ),
+            child: const Row(
+              children: [
+                Expanded(
+                  flex: 2,
+                  child: Text(
+                    'English',
+                    textAlign: TextAlign.center,
+                    style: TextStyle(
+                      color: Colors.white,
+                      fontWeight: FontWeight.w600,
+                    ),
+                  ),
+                ),
+                Expanded(
+                  flex: 3,
+                  child: Text(
+                    'Copula',
+                    textAlign: TextAlign.center,
+                    style: TextStyle(
+                      color: Colors.white,
+                      fontWeight: FontWeight.w600,
+                    ),
+                  ),
+                ),
+                Expanded(
+                  flex: 3,
+                  child: Text(
+                    'Persian',
+                    textAlign: TextAlign.center,
+                    style: TextStyle(
+                      color: Colors.white,
+                      fontWeight: FontWeight.w600,
+                    ),
+                  ),
+                ),
+              ],
+            ),
+          ),
+          
+          // Rows
+          ...rows.map((row) {
+            return Container(
+              padding: const EdgeInsets.all(6),
+              decoration: BoxDecoration(
+                border: Border(top: BorderSide(color: Colors.grey.shade200)),
+                color: rows.indexOf(row).isOdd ? Colors.grey.shade50 : Colors.white,
+              ),
+              child: Row(
+                children: [
+                  Expanded(
+                    flex: 2,
+                    child: Text(
+                      row['english']!,
+                      style: TextStyle(
+                        color: Colors.grey.shade900,
+                        fontWeight: FontWeight.w500,
+                      ),
+                      textAlign: TextAlign.center,
+                    ),
+                  ),
+                  Padding(
+                    padding: const EdgeInsets.symmetric(horizontal: 8),
+                    child: Expanded(
+                      flex: 3,
+                      child: Container(
+                        padding: const EdgeInsets.symmetric(horizontal: 8, vertical: 8),
+                        decoration: BoxDecoration(
+                          color: Color(0xFF2E7D32).withValues(alpha: 0.1),
+                          borderRadius: BorderRadius.circular(8),
+                          border: Border.all(color: Color(0xFF2E7D32).withValues(alpha: 0.3)),
+                        ),
+                        child: Column(
+                          children: [
+                            // SHORT FORM (top, bigger)
+                            _highlightAdjective(
+                              row['short']!,
+                              isShort: true,
+                            ),
+                            const SizedBox(height: 6),
+                            // FULL FORM (below, smaller)
+                            _highlightAdjective(
+                              row['full']!,
+                              isShort: false,
+                            ),
+                          ],
+                        ),
+                      ),
+                    ),
+                  ),
+                  Expanded(
+                    flex: 3,
+                    child: Text(
+                      row['persian']!,
+                      textDirection: TextDirection.rtl,
+                      style: const TextStyle(
+                        fontSize: 20,
+                        fontFamily: 'NotoNastaliqUrdu',
+                        color: Colors.blue,
+                      ),
+                      textAlign: TextAlign.center,
+                    ),
+                  ),
+                  // Expanded(
+                  //   child: Container(
+                  //     padding: const EdgeInsets.symmetric(horizontal: 8, vertical: 4),
+                  //     decoration: BoxDecoration(
+                  //       color: Colors.blue.shade50,
+                  //       borderRadius: BorderRadius.circular(6),
+                  //       border: Border.all(color: Colors.blue.shade100),
+                  //     ),
+                  //     child: Text(
+                  //       row['full']!,
+                  //       style: TextStyle(
+                  //         color: Colors.blue.shade800,
+                  //         fontStyle: FontStyle.italic,
+                  //         fontSize: 13,
+                  //       ),
+                  //       textAlign: TextAlign.center,
+                  //     ),
+                  //   ),
+                  // ),
+                  // Expanded(
+                  //   child: Container(
+                  //     padding: const EdgeInsets.symmetric(horizontal: 8, vertical: 4),
+                  //     decoration: BoxDecoration(
+                  //       color: Color(0xFF2E7D32).withValues(alpha: 0.1),
+                  //       borderRadius: BorderRadius.circular(6),
+                  //       border: Border.all(color: Color(0xFF2E7D32).withValues(alpha: 0.3)),
+                  //     ),
+                  //     child: Text(
+                  //       row['short']!,
+                  //       style: TextStyle(
+                  //         color: Color(0xFF2E7D32),
+                  //         fontWeight: FontWeight.bold,
+                  //         fontSize: 14,
+                  //       ),
+                  //       textAlign: TextAlign.center,
+                  //     ),
+                  //   ),
+                  // ),
+                ],
+              ),
+            );
+          }).toList(),
+        ],
+      ),
+    );
+  }
+
+  Widget _highlightAdjective(String text, {required bool isShort}) {
+    final parts = text.split(' ');
+
+    return RichText(
+      textAlign: TextAlign.center,
+      text: TextSpan(
+        children: parts.map((word) {
+          const target = 'hošyâr';
+
+          if (!word.contains(target)) {
+            // Normal word
+            return TextSpan(
+              text: '$word ',
+              style: TextStyle(
+                fontSize: isShort ? 16 : 13,
+                fontWeight: isShort ? FontWeight.bold : FontWeight.w500,
+                color: const Color(0xFF2E7D32),
+                fontStyle: isShort ? FontStyle.normal : FontStyle.italic,
+              ),
+            );
+          }
+
+          final start = word.indexOf(target);
+          final before = word.substring(0, start);
+          final after = word.substring(start + target.length);
+
+          return TextSpan(
+            children: [
+              if (before.isNotEmpty)
+                TextSpan(
+                  text: before,
+                  style: TextStyle(
+                    fontSize: isShort ? 16 : 13,
+                    fontWeight: isShort ? FontWeight.bold : FontWeight.w500,
+                    color: const Color(0xFF2E7D32),
+                    fontStyle: isShort ? FontStyle.normal : FontStyle.italic,
+                  ),
+                ),
+
+              // 🔴 highlighted "hošyâr"
+              TextSpan(
+                text: target,
+                style: TextStyle(
+                  fontSize: isShort ? 16 : 13,
+                  fontWeight: FontWeight.bold,
+                  color: Colors.black,
+                  fontStyle: FontStyle.normal,
+                ),
+              ),
+
+              if (after.isNotEmpty)
+                TextSpan(
+                  text: after,
+                  style: TextStyle(
+                    fontSize: isShort ? 16 : 13,
+                    fontWeight: isShort ? FontWeight.bold : FontWeight.w500,
+                    color: const Color(0xFF2E7D32),
+                    fontStyle: isShort ? FontStyle.normal : FontStyle.italic,
+                  ),
+                ),
+
+              const TextSpan(text: ' '),
+            ],
+          );
+        }).toList(),
       ),
     );
   }

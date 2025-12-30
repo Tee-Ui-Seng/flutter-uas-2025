@@ -8,12 +8,12 @@ class CopulaExplanationPage extends StatelessWidget {
   final List<Map<String, String>> examples = const [
     {
       'english': 'These houses are big',
-      'persian': 'in xâna-hâ buzurg astand',
+      'persian': 'în xâna-hâ buzurg astand',
       'script': 'این خانه ها بزرگ استند',
     },
     {
       'english': 'This is a book',
-      'persian': 'in yak kitâb ast',
+      'persian': 'în yak kitâb ast',
       'script': 'این یک کتاب است',
     },
   ];
@@ -102,7 +102,7 @@ class CopulaExplanationPage extends StatelessWidget {
                             ),
                             const SizedBox(height: 12),
                             _buildComparisonRow(
-                              'Iran',
+                              'Iran & Tajikistan',
                               'Only the form "hastan" (هستن) is used',
                               'هستن',
                             ),

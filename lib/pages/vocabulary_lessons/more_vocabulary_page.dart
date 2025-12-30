@@ -181,6 +181,44 @@ class MoreVocabularyPage extends StatelessWidget {
               },
             ),
 
+            // Tips
+            Container(
+              padding: const EdgeInsets.all(16),
+              margin: const EdgeInsets.only(bottom: 20),
+              decoration: BoxDecoration(
+                color: Colors.amber.shade50,
+                borderRadius: BorderRadius.circular(12),
+                border: Border.all(color: Colors.amber),
+              ),
+              child: Column(
+                crossAxisAlignment: CrossAxisAlignment.start,
+                children: [
+                  Row(
+                    children: [
+                      Icon(Icons.tips_and_updates, color: Colors.amber, size: 20),
+                      const SizedBox(width: 8),
+                      Text(
+                        'Important Tips',
+                        style: TextStyle(
+                          fontSize: 18,
+                          fontWeight: FontWeight.bold,
+                          color: Colors.amber,
+                        ),
+                      ),
+                    ],
+                  ),
+                  const SizedBox(height: 8),
+                  Text(
+                    '• The noun meva and sabzî takes the special plural suffix -jât. The plural -hâ is still accepted.\n'
+                    '• Fruit = meva (میوه), fruits = mevâjât (میوجات)\n'
+                    '• Vegetable = sabzî (سبزی), vegetables = sabzîjât (سبزیجات)\n'
+                    '• In Afghanistan, the word "nân" can be used to refer to food colloquially.\n',
+                    style: const TextStyle(fontSize: 14, height: 1.5),
+                  ),
+                ],
+              ),
+            ),
+
             // PRACTICE SENTENCES AREA
             Container(
               padding: const EdgeInsets.all(16),

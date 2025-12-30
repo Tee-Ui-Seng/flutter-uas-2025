@@ -76,7 +76,7 @@ class AdverbsPlacePage extends StatelessWidget {
                         Text(
                           adverb['english']!,
                           style: const TextStyle(
-                            fontSize: 16,
+                            fontSize: 18,
                             fontWeight: FontWeight.bold,
                             color: Colors.blue,
                           ),
@@ -85,7 +85,7 @@ class AdverbsPlacePage extends StatelessWidget {
                         Text(
                           adverb['persian']!,
                           style: const TextStyle(
-                            fontSize: 14,
+                            fontSize: 16,
                             fontWeight: FontWeight.bold,
                           ),
                         ),

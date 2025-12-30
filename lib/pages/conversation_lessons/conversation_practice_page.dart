@@ -21,7 +21,7 @@ class _ConversationPracticePageState extends State<ConversationPracticePage> {
         {'role': 'Friend', 'text': 'Salâm!', 'english': 'Hello!'},
         {'role': 'You', 'text': 'nâm-i šumâ ci ast?', 'english': 'What is your name?'},
         {'role': 'Friend', 'text': 'nâm man Sara ast.', 'english': 'My name is Sara.'},
-        {'role': 'You', 'text': 'az dîdan-i-tân xušhâl astam.', 'english': 'Nice to meet you.'},
+        {'role': 'You', 'text': 'az dîdan-itân xušhâl astam.', 'english': 'Nice to meet you.'},
       ]
     },
     {

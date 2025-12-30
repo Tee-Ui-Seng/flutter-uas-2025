@@ -61,13 +61,19 @@ class RaUsagePage extends StatelessWidget {
                       title: 'When to use "râ"',
                       content: 'Use "râ" when:\n'
                           '1. The direct object is definite (specific)\n'
-                          '2. The direct object is known to both speaker and listener\n'
-                          '3. Referring to a particular thing or person',
+                          '2. The direct object is a personal pronoun\n'
+                          '3. The direct object is known to both speaker and listener\n'
+                          '4. Referring to a particular thing or person',
                       examples: [
                         _exampleRa(
                           persian: 'man kitâb râ xândam',
                           script: 'من کتاب را خواندم',
                           english: 'I read the book (specific book)',
+                        ),
+                        _exampleRa(
+                          persian: 'man šumâ râ me-bînam',
+                          script: 'من شما را می‌بینم',
+                          english: 'I see you ',
                         ),
                         _exampleRa(
                           persian: 'ânhâ în televizyun râ me-xarand',
@@ -292,6 +298,7 @@ class RaUsagePage extends StatelessWidget {
                   ' râ ': Colors.red,
                   ' în ': Colors.red.shade900,
                   ' ân ': Colors.red.shade900,
+                  ' šumâ': Colors.blue,
                 },
                 baseStyle: const TextStyle(
                   fontFamily: 'Courier',
@@ -312,6 +319,7 @@ class RaUsagePage extends StatelessWidget {
                   ' را ': Colors.red,
                   ' این ': Colors.red.shade900,
                   ' آن ': Colors.red.shade900,
+                  'شما': Colors.blue,
                 },
                 baseStyle: TextStyle(
                   fontSize: 24,
@@ -329,6 +337,7 @@ class RaUsagePage extends StatelessWidget {
               ' the ': Colors.blue,
               ' this ': Colors.blue,
               ' that ': Colors.blue,
+              ' you ': Colors.blue,
               ' râ ': Colors.red,
             },
             baseStyle: TextStyle(

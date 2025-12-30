@@ -10,7 +10,7 @@ class FarewellsPage extends StatelessWidget {
     {'english': 'Bye (casual)', 'persian': 'xudâ nigahdâr', 'script': 'خدا نگهدار', 'usage': 'Casual goodbye'},
     {'english': 'See you later', 'persian': 'badan me-bînam-at', 'script': 'بعداً می‌بینمت', 'usage': 'When you’ll see someone again'},
     {'english': 'See you tomorrow', 'persian': 'fardâ me-bînam-at', 'script': 'فردا می‌بینمت', 'usage': 'Meeting tomorrow'},
-    {'english': 'Take care', 'persian': 'muvâzib-i-tân bâšed', 'script': 'مواظب تان باشید', 'usage': 'Wishing someone well'},
+    {'english': 'Take care', 'persian': 'muvâzib-itân bâšed', 'script': 'مواظب تان باشید', 'usage': 'Wishing someone well'},
     {'english': 'Have a good one', 'persian': 'ba xair bâšed', 'script': 'به خیر باشید', 'usage': 'General well-wishing'},
     {'english': 'Until next time', 'persian': 'tâ bad', 'script': 'تا بعد', 'usage': 'Farewell until next meeting'},
     {'english': 'I have to go', 'persian': 'bâyad biravam', 'script': 'باید بروم', 'usage': 'Announcing departure'},

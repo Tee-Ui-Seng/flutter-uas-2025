@@ -39,7 +39,7 @@ class VerbBasicsPage extends StatelessWidget {
             // Introduction
             RichText(
               text: const TextSpan(
-                style: TextStyle(fontSize: 16, color: Colors.black, height: 1.5),
+                style: TextStyle(fontSize: 16, color: Colors.black),
                 children: [
                   TextSpan(
                     text: 'In Persian, different pronouns require different endings on the verb.\n\n',
@@ -47,7 +47,7 @@ class VerbBasicsPage extends StatelessWidget {
                 ],
               ),
             ),
-            const SizedBox(height: 10),
+            // const SizedBox(height: 10), 
 
             // Example Section
             const Text(

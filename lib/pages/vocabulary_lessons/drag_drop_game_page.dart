@@ -598,7 +598,10 @@ class _DragDropGamePageState extends State<DragDropGamePage> {
                 if (levelCompleted && !gameCompleted)
                   ElevatedButton.icon(
                     onPressed: _nextLevel,
-                    icon: const Icon(Icons.arrow_forward),
+                    icon: Icon(
+                      Icons.arrow_forward,
+                      color: Colors.white, 
+                      ), 
                     label: const Text(
                       'Next Level',
                       style: TextStyle(color: Colors.white),

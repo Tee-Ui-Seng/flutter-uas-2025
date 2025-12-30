@@ -31,7 +31,7 @@ class VerbConjugationPage extends StatelessWidget {
             // Title
             const Center(
               child: Text(
-                'Conjugation of "xurdan" (to eat)',
+                'Regular Conjugation of "xordan" (to eat)',
                 style: TextStyle(
                   fontSize: 24,
                   fontWeight: FontWeight.bold,
@@ -73,7 +73,7 @@ class VerbConjugationPage extends StatelessWidget {
                               'Pronoun',
                               style: TextStyle(
                                 fontWeight: FontWeight.bold,
-                                fontSize: 16,
+                                fontSize: 15,
                                 color: Colors.blue.shade800,
                               ),
                               textAlign: TextAlign.center,
@@ -82,10 +82,10 @@ class VerbConjugationPage extends StatelessWidget {
                           Expanded(
                             flex: 3,
                             child: Text(
-                              'Persian Script',
+                              'Script',
                               style: TextStyle(
                                 fontWeight: FontWeight.bold,
-                                fontSize: 16,
+                                fontSize: 15,
                                 color: Colors.blue.shade800,
                               ),
                               textAlign: TextAlign.center,
@@ -94,10 +94,10 @@ class VerbConjugationPage extends StatelessWidget {
                           Expanded(
                             flex: 3,
                             child: Text(
-                              'Pronunciation',
+                              'Persian',
                               style: TextStyle(
                                 fontWeight: FontWeight.bold,
-                                fontSize: 16,
+                                fontSize: 15,
                                 color: Colors.blue.shade800,
                               ),
                               textAlign: TextAlign.center,
@@ -159,7 +159,7 @@ class VerbConjugationPage extends StatelessWidget {
                       persian: 'می‌خورند',
                       pronunciation: 'me-xor-and',
                       backgroundColor: Colors.grey[50]!,
-                      latin: 'âmhâ',
+                      latin: 'ânhâ',
                       enpro: 'they',
                       english: 'they eat',
                     ),
@@ -201,6 +201,94 @@ class VerbConjugationPage extends StatelessWidget {
             ),
             const SizedBox(height: 12),
             _buildIrregularVerbCard(
+              infinitive: 'kardan',
+              infinitiveScript: 'کردن',
+              meaning: 'to do/work',
+              presentStem: 'کن',
+              stemPronunciation: 'kun',
+              firstPerson: 'می‌کنم',
+              firstPersonPronunciation: 'me-kun-am',
+            ),
+            const SizedBox(height: 12),
+            _buildIrregularVerbCard(
+              infinitive: 'šudan',
+              infinitiveScript: 'شدن',
+              meaning: 'to become',
+              presentStem: 'شو',
+              stemPronunciation: 'šav',
+              firstPerson: 'می‌شوم',
+              firstPersonPronunciation: 'me-šav-am',
+            ),
+            const SizedBox(height: 12),
+            _buildIrregularVerbCard(
+              infinitive: 'dâdan',
+              infinitiveScript: 'دادن',
+              meaning: 'to give',
+              presentStem: 'ده',
+              stemPronunciation: 'dih',
+              firstPerson: 'می‌دهم',
+              firstPersonPronunciation: 'me-dih-am',
+            ),
+            const SizedBox(height: 12),
+
+            // Important note - Updated Card Style
+            Container(
+              padding: const EdgeInsets.all(16),
+              decoration: BoxDecoration(
+                color: Colors.orange[100]!,
+                borderRadius: BorderRadius.circular(12),
+                border: Border.all(color: Colors.orange[300]!),
+              ),
+              child: Column(
+                crossAxisAlignment: CrossAxisAlignment.start,
+                children: [
+                  // Header
+                  Row(
+                    children: [
+                      Container(
+                        width: 36,
+                        height: 36,
+                        decoration: BoxDecoration(
+                          color: Colors.white,
+                          shape: BoxShape.circle,
+                          border: Border.all(color: Colors.orange, width: 2),
+                        ),
+                        child: const Center(
+                          child: Icon(
+                            Icons.warning,
+                            size: 20,
+                            color: Colors.orange,
+                          ),
+                        ),
+                      ),
+                      const SizedBox(width: 12),
+                      Expanded(
+                        child: Text(
+                          'About: Verbs ending in -tan',
+                          style: TextStyle(
+                            fontWeight: FontWeight.bold,
+                            fontSize: 18,
+                            color: Colors.orange[800],
+                          ),
+                        ),
+                      ),
+                    ],
+                  ),
+                  const SizedBox(height: 12),
+                  
+                  // Note content
+                  Text(
+                    'All verbs inding in -tan are irregular. Their present stems do not follow the regular pattern and must be memorized individually.',
+                    style: TextStyle(
+                      fontSize: 16,
+                      color: Colors.orange[900],
+                    ),
+                  ),
+                ],
+              ),
+            ),
+            const SizedBox(height: 12),
+            _buildIrregularVerbCard(
               infinitive: 'raftan',
               infinitiveScript: 'رفتن',
               meaning: 'to go',
@@ -208,6 +296,36 @@ class VerbConjugationPage extends StatelessWidget {
               stemPronunciation: 'rav',
               firstPerson: 'می‌روم',
               firstPersonPronunciation: 'me-rav-am',
+            ),
+            const SizedBox(height: 12),
+            _buildIrregularVerbCard(
+              infinitive: 'guftan',
+              infinitiveScript: 'گفتن',
+              meaning: 'to say',
+              presentStem: 'گوی',
+              stemPronunciation: 'goy',
+              firstPerson: 'می‌گویم',
+              firstPersonPronunciation: 'me-goy-am',
+            ),
+            const SizedBox(height: 12),
+            _buildIrregularVerbCard(
+              infinitive: 'xâstan',
+              infinitiveScript: 'خواستن',
+              meaning: 'to want',
+              presentStem: 'خواه',
+              stemPronunciation: 'xâh',
+              firstPerson: 'می‌خواهم',
+              firstPersonPronunciation: 'me-xâh-am',
+            ),
+            const SizedBox(height: 12),
+            _buildIrregularVerbCard(
+              infinitive: 'dânistan',
+              infinitiveScript: 'دانستن',
+              meaning: 'to know',
+              presentStem: 'دان',
+              stemPronunciation: 'dân',
+              firstPerson: 'می‌دانم',
+              firstPersonPronunciation: 'me-dân-am',
             ),
             const SizedBox(height: 12),
             _buildIrregularVerbCard(
@@ -221,53 +339,171 @@ class VerbConjugationPage extends StatelessWidget {
             ),
             const SizedBox(height: 12),
             _buildIrregularVerbCard(
-              infinitive: 'kardan',
-              infinitiveScript: 'کردن',
-              meaning: 'to do/work',
-              presentStem: 'کن',
-              stemPronunciation: 'kun',
-              firstPerson: 'می‌کنم',
-              firstPersonPronunciation: 'me-kun-am',
+              infinitive: 'dâštan',
+              infinitiveScript: 'داشتن',
+              meaning: 'to have',
+              presentStem: 'داش',
+              stemPronunciation: 'dâr',
+              firstPerson: 'دارم',
+              firstPersonPronunciation: 'dâr-am',
+            ),
+            const SizedBox(height: 12),
+
+            // Important note - Updated Card Style
+            Container(
+              padding: const EdgeInsets.all(16),
+              decoration: BoxDecoration(
+                color: Colors.orange[100]!,
+                borderRadius: BorderRadius.circular(12),
+                border: Border.all(color: Colors.orange[300]!),
+              ),
+              child: Column(
+                crossAxisAlignment: CrossAxisAlignment.start,
+                children: [
+                  // Header
+                  Row(
+                    children: [
+                      Container(
+                        width: 36,
+                        height: 36,
+                        decoration: BoxDecoration(
+                          color: Colors.white,
+                          shape: BoxShape.circle,
+                          border: Border.all(color: Colors.orange, width: 2),
+                        ),
+                        child: const Center(
+                          child: Icon(
+                            Icons.warning,
+                            size: 20,
+                            color: Colors.orange,
+                          ),
+                        ),
+                      ),
+                      const SizedBox(width: 12),
+                      Expanded(
+                        child: Text(
+                          'About the verb: dâštan (داشتن - to have)',
+                          style: TextStyle(
+                            fontWeight: FontWeight.bold,
+                            fontSize: 18,
+                            color: Colors.orange[800],
+                          ),
+                        ),
+                      ),
+                    ],
+                  ),
+                  const SizedBox(height: 12),
+                  
+                  // Note content
+                  Text(
+                    'Unlike most other verbs, the simple present form of داشتن does not use the durative prefix میـ (me-).',
+                    style: TextStyle(
+                      fontSize: 16,
+                      color: Colors.orange[900],
+                    ),
+                  ),
+                ],
+              ),
             ),
             const SizedBox(height: 30),
 
             // Key Points
             Container(
               padding: const EdgeInsets.all(16),
-              margin: const EdgeInsets.only(bottom: 20),
               decoration: BoxDecoration(
-                color: Colors.amber.shade50,
+                color: Colors.blue[50]!,
                 borderRadius: BorderRadius.circular(12),
-                border: Border.all(color: Colors.amber),
+                border: Border.all(color: Colors.blue[300]!),
               ),
               child: Column(
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
+                  // Header
                   Row(
                     children: [
-                      Icon(Icons.tips_and_updates, color: Colors.amber, size: 20),
-                      const SizedBox(width: 8),
-                      Text(
-                        'Key Points to Remember:',
-                        style: TextStyle(
-                          fontSize: 18,
-                          fontWeight: FontWeight.bold,
-                          color: Colors.amber,
+                      Container(
+                        width: 36,
+                        height: 36,
+                        decoration: BoxDecoration(
+                          color: Colors.white,
+                          shape: BoxShape.circle,
+                          border: Border.all(color: Colors.blue, width: 2),
+                        ),
+                        child: const Center(
+                          child: Icon(
+                            Icons.lightbulb_rounded,
+                            size: 20,
+                            color: Colors.blue,
+                          ),
+                        ),
+                      ),
+                      const SizedBox(width: 12),
+                      Expanded(
+                        child: Text(
+                          'Key Points to Remember:',
+                          style: TextStyle(
+                            fontWeight: FontWeight.bold,
+                            fontSize: 18,
+                            color: Colors.blue[800],
+                          ),
                         ),
                       ),
                     ],
                   ),
-                  const SizedBox(height: 8),
+                  const SizedBox(height: 12),
+                  
+                  // Note content
                   Text(
                     '• The verb stem (without -dan) is called "reša" (ریشه).\n'
                     '• Some verbs have irregular stems that need to be memorized.\n'
                     '• The pronoun determines the conjugation pattern.\n'
                     '• Negative form uses "na" before "me-" (نمی‌خورم = na me-xoram).',
-                    style: const TextStyle(fontSize: 14, height: 1.5),
+                    style: TextStyle(
+                      fontSize: 16,
+                      color: Colors.black,
+                    ),
                   ),
                 ],
               ),
             ),
+            const SizedBox(height: 30),
+
+            // Container(
+            //   padding: const EdgeInsets.all(16),
+            //   margin: const EdgeInsets.only(bottom: 20),
+            //   decoration: BoxDecoration(
+            //     color: Colors.amber.shade50,
+            //     borderRadius: BorderRadius.circular(12),
+            //     border: Border.all(color: Colors.amber),
+            //   ),
+            //   child: Column(
+            //     crossAxisAlignment: CrossAxisAlignment.start,
+            //     children: [
+            //       Row(
+            //         children: [
+            //           Icon(Icons.tips_and_updates, color: Colors.amber, size: 20),
+            //           const SizedBox(width: 8),
+            //           Text(
+            //             'Key Points to Remember:',
+            //             style: TextStyle(
+            //               fontSize: 18,
+            //               fontWeight: FontWeight.bold,
+            //               color: Colors.amber,
+            //             ),
+            //           ),
+            //         ],
+            //       ),
+            //       const SizedBox(height: 8),
+            //       Text(
+            //         '• The verb stem (without -dan) is called "reša" (ریشه).\n'
+            //         '• Some verbs have irregular stems that need to be memorized.\n'
+            //         '• The pronoun determines the conjugation pattern.\n'
+            //         '• Negative form uses "na" before "me-" (نمی‌خورم = na me-xoram).',
+            //         style: const TextStyle(fontSize: 14, height: 1.5),
+            //       ),
+            //     ],
+            //   ),
+            // ),
 
             // Card(
             //   elevation: 3,

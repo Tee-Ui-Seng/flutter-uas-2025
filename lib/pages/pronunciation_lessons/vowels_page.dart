@@ -115,7 +115,7 @@ class _VowelsPageState extends State<VowelsPage> {
       'note': '-',
     },
     {
-      'vowel': 'aeh',
+      'vowel': '-a',
       'classical': {'example': 'میوه', 'ipa': '/a/'},
       'dari': {'ipa': '[a]', 'audio': 'a'},
       'hazaragi': {'ipa': '[a]', 'audio': 'a'},
@@ -381,7 +381,7 @@ class _VowelsPageState extends State<VowelsPage> {
                               
                               _buildNoteItem(
                                 number: '[3]',
-                                title: 'In Persian, if a word ends with /a/, then it would be written with "he dôcašma" (ه)',
+                                title: 'In Persian, if a word ends with /a/, then it would be written with "he dôcašma" (ه). In Iranian Persian, this /a/ sound is often pronounced as [e].',
                                 items: [],
                               ),
                             ],
