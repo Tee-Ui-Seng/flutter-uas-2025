@@ -34,8 +34,8 @@ class PrepositionsPage extends StatelessWidget {
       'persian': 'به',
       'pronunciation': 'ba',
       'english': 'to',
-      'example': 'be madrasaeh',
-      'script': 'به مدرسه',
+      'example': 'ba maktab',
+      'script': 'به مکتب',
       'meaning': 'to school',
     },
     {
@@ -75,8 +75,8 @@ class PrepositionsPage extends StatelessWidget {
   final List<Map<String, String>> examples = const [
     {
       'english': 'I am at the office',
-      'persian': 'man dar kâr xâna astam', 
-      'script': 'من در کار خانه هستم',
+      'persian': 'man dar daftar astam', 
+      'script': 'من در دفتر هستم',
     },
     {
       'english': 'He is going with his father',
@@ -84,14 +84,14 @@ class PrepositionsPage extends StatelessWidget {
       'script': 'او با پدرش می‌رود',
     },
     {
-      'english': 'This book is from Tehran',
-      'persian': 'in kitâb az tehrân ast', 
-      'script': 'این کتاب از تهران است',
+      'english': 'This lion is from Tehran',
+      'persian': 'în šer az tehrân ast', 
+      'script': 'این شیر از تهران است',
     },
     {
       'english': 'We go to school',
-      'persian': 'mâ ba madrasa me-ravem',
-      'script': 'ما به مدرسه می‌رویم',
+      'persian': 'mâ ba maktab me-ravem',
+      'script': 'ما به مکتب می‌رویم',
     },
   ];
 

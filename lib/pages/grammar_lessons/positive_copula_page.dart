@@ -443,7 +443,7 @@ class PositiveCopulaPage extends StatelessWidget {
                                 border: Border.all(color: Colors.blue.shade200),
                               ),
                               child: Text(
-                                'I am Nilufar = man ali nîlûfar.\n'
+                                'I am Nilufar = man nîlûfar astam.\n'
                                 'We are not happy = mâ xušhâl nestem.',
                                 style: TextStyle(
                                   fontSize: 14,
@@ -510,7 +510,7 @@ class PositiveCopulaPage extends StatelessWidget {
                   ],
                 ),
                 
-                const SizedBox(height: 20),
+                // const SizedBox(height: 20),
               ],
             ),
           ),

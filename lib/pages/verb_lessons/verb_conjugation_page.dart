@@ -201,6 +201,16 @@ class VerbConjugationPage extends StatelessWidget {
             ),
             const SizedBox(height: 12),
             _buildIrregularVerbCard(
+              infinitive: 'âmadan',
+              infinitiveScript: 'آمدن',
+              meaning: 'to come',
+              presentStem: 'آی',
+              stemPronunciation: 'ây',
+              firstPerson: 'می‌آیم',
+              firstPersonPronunciation: 'me-ây-am',
+            ),
+            const SizedBox(height: 12),
+            _buildIrregularVerbCard(
               infinitive: 'kardan',
               infinitiveScript: 'کردن',
               meaning: 'to do/work',
@@ -278,7 +288,7 @@ class VerbConjugationPage extends StatelessWidget {
                   
                   // Note content
                   Text(
-                    'All verbs inding in -tan are irregular. Their present stems do not follow the regular pattern and must be memorized individually.',
+                    'All verbs ending in -tan are irregular.',
                     style: TextStyle(
                       fontSize: 16,
                       color: Colors.orange[900],
@@ -326,6 +336,16 @@ class VerbConjugationPage extends StatelessWidget {
               stemPronunciation: 'dân',
               firstPerson: 'می‌دانم',
               firstPersonPronunciation: 'me-dân-am',
+            ),
+            const SizedBox(height: 12),
+            _buildIrregularVerbCard(
+              infinitive: 'tavânistan',
+              infinitiveScript: 'توانستن',
+              meaning: 'to be able',
+              presentStem: 'توان',
+              stemPronunciation: 'tavân',
+              firstPerson: 'می‌توانم',
+              firstPersonPronunciation: 'me-tavân-am',
             ),
             const SizedBox(height: 12),
             _buildIrregularVerbCard(
@@ -733,18 +753,53 @@ class VerbConjugationPage extends StatelessWidget {
                 Container(
                   padding: const EdgeInsets.symmetric(horizontal: 8, vertical: 4),
                   decoration: BoxDecoration(
-                    color: Colors.orange.shade100,
+                    color: Colors.orange.shade50,
                     borderRadius: BorderRadius.circular(12),
                     border: Border.all(color: Colors.orange),
                   ),
-                  child: const Text(
-                    'Irregular',
-                    style: TextStyle(
-                      fontSize: 12,
-                      fontWeight: FontWeight.bold,
-                      color: Colors.orange,
-                    ),
+                  child: Column(
+                    crossAxisAlignment: CrossAxisAlignment.start,
+                    children: [
+                      Text(
+                        'Present Stem:',
+                        style: TextStyle(
+                          fontSize: 12,
+                          color: Colors.grey.shade600,
+                          fontWeight: FontWeight.bold,
+                        ),
+                      ),
+                      Row(
+                        children: [
+                          Text(
+                            presentStem,
+                            style: const TextStyle(
+                              fontSize: 18,
+                              fontFamily: 'NotoNaskhArabic',
+                              fontWeight: FontWeight.bold,
+                              color: Colors.orange,
+                            ),
+                          ),
+                          const SizedBox(width: 8),
+                          Text(
+                            '($stemPronunciation)',
+                            style: const TextStyle(
+                              fontSize: 14,
+                              color: Colors.orange,
+                              fontStyle: FontStyle.italic,
+                            ),
+                          ),
+                        ],
+                      ),
+                    ],
                   ),
+                  // child: const Text(
+                  //   'Irregular',
+                  //   style: TextStyle(
+                  //     fontSize: 12,
+                  //     fontWeight: FontWeight.bold,
+                  //     color: Colors.orange,
+                  //   ),
+                  // ),
                 ),
               ],
             ),
@@ -752,58 +807,58 @@ class VerbConjugationPage extends StatelessWidget {
             const SizedBox(height: 12),
             
             // Stem information
-            Container(
-              padding: const EdgeInsets.all(12),
-              decoration: BoxDecoration(
-                color: Colors.orange.shade50,
-                borderRadius: BorderRadius.circular(8),
-              ),
-              child: Row(
-                children: [
-                  const Icon(Icons.info_outline, color: Colors.orange, size: 20),
-                  const SizedBox(width: 8),
-                  Expanded(
-                    child: Column(
-                      crossAxisAlignment: CrossAxisAlignment.start,
-                      children: [
-                        const Text(
-                          'Present Stem:',
-                          style: TextStyle(
-                            fontSize: 12,
-                            color: Colors.grey,
-                            fontWeight: FontWeight.bold,
-                          ),
-                        ),
-                        Row(
-                          children: [
-                            Text(
-                              presentStem,
-                              style: const TextStyle(
-                                fontSize: 18,
-                                fontFamily: 'NotoNaskhArabic',
-                                fontWeight: FontWeight.bold,
-                                color: Colors.orange,
-                              ),
-                            ),
-                            const SizedBox(width: 8),
-                            Text(
-                              '($stemPronunciation)',
-                              style: const TextStyle(
-                                fontSize: 14,
-                                color: Colors.orange,
-                                fontStyle: FontStyle.italic,
-                              ),
-                            ),
-                          ],
-                        ),
-                      ],
-                    ),
-                  ),
-                ],
-              ),
-            ),
+            // Container(
+            //   padding: const EdgeInsets.all(12),
+            //   decoration: BoxDecoration(
+            //     color: Colors.orange.shade50,
+            //     borderRadius: BorderRadius.circular(8),
+            //   ),
+            //   child: Row(
+            //     children: [
+            //       const Icon(Icons.info_outline, color: Colors.orange, size: 20),
+            //       const SizedBox(width: 8),
+            //       Expanded(
+            //         child: Column(
+            //           crossAxisAlignment: CrossAxisAlignment.start,
+            //           children: [
+            //             const Text(
+            //               'Present Stem:',
+            //               style: TextStyle(
+            //                 fontSize: 12,
+            //                 color: Colors.grey,
+            //                 fontWeight: FontWeight.bold,
+            //               ),
+            //             ),
+            //             Row(
+            //               children: [
+            //                 Text(
+            //                   presentStem,
+            //                   style: const TextStyle(
+            //                     fontSize: 18,
+            //                     fontFamily: 'NotoNaskhArabic',
+            //                     fontWeight: FontWeight.bold,
+            //                     color: Colors.orange,
+            //                   ),
+            //                 ),
+            //                 const SizedBox(width: 8),
+            //                 Text(
+            //                   '($stemPronunciation)',
+            //                   style: const TextStyle(
+            //                     fontSize: 14,
+            //                     color: Colors.orange,
+            //                     fontStyle: FontStyle.italic,
+            //                   ),
+            //                 ),
+            //               ],
+            //             ),
+            //           ],
+            //         ),
+            //       ),
+            //     ],
+            //   ),
+            // ),
             
-            const SizedBox(height: 12),
+            // const SizedBox(height: 12),
             
             // Example conjugation
             Container(
@@ -840,17 +895,17 @@ class VerbConjugationPage extends StatelessWidget {
               ),
             ),
             
-            const SizedBox(height: 8),
+            // const SizedBox(height: 8),
             
             // Note
-            Text(
-              'Note: The stem "$stemPronunciation" is irregular and must be memorized.',
-              style: TextStyle(
-                fontSize: 12,
-                color: Colors.grey.shade600,
-                fontStyle: FontStyle.italic,
-              ),
-            ),
+            // Text(
+            //   'Note: The stem "$stemPronunciation" is irregular and must be memorized.',
+            //   style: TextStyle(
+            //     fontSize: 12,
+            //     color: Colors.grey.shade600,
+            //     fontStyle: FontStyle.italic,
+            //   ),
+            // ),
           ],
         ),
       ),

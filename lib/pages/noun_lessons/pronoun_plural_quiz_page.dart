@@ -67,9 +67,9 @@ class _PronounPluralQuizPageState extends State<PronounPluralQuizPage> {
     },
     {
       'question': 'How do you say "fruits" in Persian?',
-      'options': ['meva-hâ', 'mevân', 'mevât', 'mevajân'],
+      'options': ['meva-hâ', 'mevân', 'mevât', 'mevajât'],
       'correctAnswer': 3,
-      'explanation': 'The word "meva" uses "-jân" for collective plural.',
+      'explanation': 'The word "meva" uses "-jât" for collective plural.',
     },
     {
       'question': 'How do you pluralize "hayvân" (animal)?',

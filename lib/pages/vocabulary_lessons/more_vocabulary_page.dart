@@ -5,9 +5,10 @@ import 'vocabulary_quiz_page.dart';
 class MoreVocabularyPage extends StatelessWidget {
   const MoreVocabularyPage({super.key});
 
-  final List<Map<String, dynamic>> vocabulary = const [
+  static const List<Map<String, dynamic>> vocabulary = [
     {
-      'category': 'Colors',
+      'category': 'Colors (rang-hâ)',
+      'categoryfa': 'رنگ‌ها',
       'words': [
         {'english': 'red', 'persian': 'surx', 'script': 'سرخ'},
         {'english': 'blue', 'persian': 'âbî', 'script': 'آبی'},
@@ -18,7 +19,8 @@ class MoreVocabularyPage extends StatelessWidget {
       ]
     },
     {
-      'category': 'Family',
+      'category': 'Family (xânavâda)',
+      'categoryfa': 'خانواده',
       'words': [
         {'english': 'father', 'persian': 'padar', 'script': 'پدر'},
         {'english': 'mother', 'persian': 'mâdar', 'script': 'مادر'},
@@ -29,19 +31,32 @@ class MoreVocabularyPage extends StatelessWidget {
       ]
     },
     {
-      'category': 'Food',
+      'category': 'Food (ğazâ)',
+      'categoryfa': 'غذا',
       'words': [
         {'english': 'bread', 'persian': 'nân', 'script': 'نان'},
-        {'english': 'water', 'persian': 'âb', 'script': 'آب'},
         {'english': 'rice', 'persian': 'birinj', 'script': 'برنج'},
         {'english': 'meat', 'persian': 'gošt', 'script': 'گوشت'},
+        {'english': 'pilaf', 'persian': 'palaw', 'script': 'پلو'},
         {'english': 'fruit', 'persian': 'meva', 'script': 'میوه'},
         {'english': 'vegetable', 'persian': 'sabzî', 'script': 'سبزی'},
       ]
     },
+    {
+      'category': 'Drinks (nušîdanî)',
+      'categoryfa': 'نوشیدنی',
+      'words': [
+        {'english': 'water', 'persian': 'âb', 'script': 'آب'},
+        {'english': 'tea', 'persian': 'cây', 'script': 'چای'},
+        {'english': 'milk', 'persian': 'šîr', 'script': 'شیر'},
+        {'english': 'doogh', 'persian': 'doğ', 'script': 'دوغ'},
+        {'english': 'coffee', 'persian': 'qahva', 'script': 'قهوه'},
+        {'english': 'ice cream', 'persian': 'šîryax', 'script': 'شیریخ'},
+      ]
+    },
   ];
 
-  final List<Map<String, String>> examples = const [
+  static const List<Map<String, String>> examples = [
     {
       'english': 'My father likes red apples',
       'persian': 'padar-am seb-i surx râ dost dârad',
@@ -107,13 +122,28 @@ class MoreVocabularyPage extends StatelessWidget {
                     child: Column(
                       crossAxisAlignment: CrossAxisAlignment.start,
                       children: [
-                        Text(
-                          category['category']!,
-                          style: const TextStyle(
-                            fontSize: 20,
-                            fontWeight: FontWeight.bold,
-                            color: Colors.amber,
-                          ),
+                        Row(
+                          mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                          children: [
+                            Text(
+                              category['category']!,
+                              style: TextStyle(
+                                fontSize: 20,
+                                fontWeight: FontWeight.bold,
+                                color: Colors.amber.shade600,
+                              ),
+                            ),
+                            Text(
+                              category['categoryfa']!,
+                              style: TextStyle(
+                                fontSize: 20,
+                                fontWeight: FontWeight.bold,
+                                color: Colors.amber.shade600,
+                                fontFamily: 'NotoNastaliqUrdu',
+                              ),
+                              textDirection: TextDirection.rtl,
+                            ),
+                          ],
                         ),
                         const SizedBox(height: 12),
 
@@ -155,8 +185,7 @@ class MoreVocabularyPage extends StatelessWidget {
                                   const SizedBox(height: 4),
 
                                   Row(
-                                    mainAxisAlignment:
-                                        MainAxisAlignment.spaceBetween,
+                                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
                                     children: [
                                       Text(word['persian']!),
                                       Text(
@@ -209,10 +238,12 @@ class MoreVocabularyPage extends StatelessWidget {
                   ),
                   const SizedBox(height: 8),
                   Text(
-                    '• The noun meva and sabzî takes the special plural suffix -jât. The plural -hâ is still accepted.\n'
-                    '• Fruit = meva (میوه), fruits = mevâjât (میوجات)\n'
+                    '• The noun meva and sabzî takes the special collective plural suffix -jât. The usage of -hâ is still accepted.\n'
+                    '• Fruit = meva (میوه), fruits = mevajât (میوه‌جات)\n'
                     '• Vegetable = sabzî (سبزی), vegetables = sabzîjât (سبزیجات)\n'
-                    '• In Afghanistan, the word "nân" can be used to refer to food colloquially.\n',
+                    '• In Afghanistan, the word "nân" can be used to refer to food colloquially.\n'
+                    '• In Afghanistan, the word for son/ boy is "baca" (بچه).\n'
+                    '• The word for ice cream is different depending on the country. It is "bastanî" (بستنی) in Iran, "šîryax" (شیریخ) in Afghanistan, and "yaxmâs" in Tajikistan.',
                     style: const TextStyle(fontSize: 14, height: 1.5),
                   ),
                 ],

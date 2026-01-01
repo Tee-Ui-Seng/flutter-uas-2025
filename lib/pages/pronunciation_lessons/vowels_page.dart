@@ -381,8 +381,23 @@ class _VowelsPageState extends State<VowelsPage> {
                               
                               _buildNoteItem(
                                 number: '[3]',
-                                title: 'In Persian, if a word ends with /a/, then it would be written with "he dôcašma" (ه). In Iranian Persian, this /a/ sound is often pronounced as [e].',
-                                items: [],
+                                title: 'In Persian, if a word ends in -a, then that /a/ is written with "he dôcašma" (ه). In Iran, for syllables ending in /a/ (open syllable), the sound /a/ is often pronounced as [e]. Example:',
+                                items: [
+                                  'میوه [miː.ve] (fruit)',
+                                  'پدر [pʰe.d̪ǽɹ] (father)', 
+                                  'مدرسه [mæd̪.ɹe.sé] (school)',
+                                ],
+                              ),
+                              
+                              const SizedBox(height: 24),
+                              
+                              _buildNoteItem(
+                                number: ' ',
+                                title: 'Compare the following example: \nba xâna-i padar va madrasa \n(به خانه پدر و مدرسه) \n= to father’s house and school.',
+                                items: [
+                                  'Iran: [be xɒː.né je pʰe.d̪ǽɹ ʋæ mæd̪.ɹe.sé]',
+                                  'Dari: [ba xɑː.ná jɪ pʰä.d̪áɾ wä mäd̪.ɾä.sá]',
+                                ],
                               ),
                             ],
                           ),
@@ -679,7 +694,7 @@ class _VowelsPageState extends State<VowelsPage> {
                       const SizedBox(width: 12),
                       Expanded(
                         child: Text(
-                          '• $item',
+                          item,
                           style: TextStyle(
                             color: Colors.grey.shade800,
                             fontSize: 14,

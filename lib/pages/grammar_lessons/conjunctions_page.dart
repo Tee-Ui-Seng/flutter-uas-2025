@@ -32,9 +32,9 @@ class ConjunctionsPage extends StatelessWidget {
     },
     {
       'persian': 'چونکه / زیرا',
-      'pronunciation': 'zerâ / čûnki',
+      'pronunciation': 'zerâ / cûnki',
       'english': 'because',
-      'example': 'na me-ravam čunki bemâram',
+      'example': 'na me-ravam cûnki bemâram',
       'script': 'نمی‌روم چونکه بیمارم',
       'meaning': 'I am not going because I am sick',
     },
@@ -42,8 +42,8 @@ class ConjunctionsPage extends StatelessWidget {
       'persian': 'اگر',
       'pronunciation': 'agar',
       'english': 'if',
-      'example': 'agar mexâhî, biraw!',
-      'script': '!اگر میخواهی برو',
+      'example': 'agar me-xâhî, biraw!',
+      'script': '!اگر می‌خواهی برو',
       'meaning': 'If you want, go!',
     },
     {
@@ -171,13 +171,13 @@ class ConjunctionsPage extends StatelessWidget {
                   ),
                   _buildDialogLine(
                     'A:',
-                    'čarâ?',
+                    'carâ?',
                     'چرا؟',
                     'Why?',
                   ),
                   _buildDialogLine(
                     'B:',
-                    'čûnki kâr dâram',
+                    'cûnki kâr dâram',
                     'چونکه کار دارم',
                     'Because I have work',
                   ),

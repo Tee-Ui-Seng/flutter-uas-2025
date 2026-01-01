@@ -16,7 +16,7 @@ class NegativeCopulaPage extends StatelessWidget {
   final List<Map<String, String>> examples = const [
     {'english': 'I am not sick', 'pronunciation': 'man bemâr nestam', 'persian': 'من بیمار نیستم'},
     {'english': 'You are not tall', 'pronunciation': 'tu qad buland nestî', 'persian': 'تو قد بلند نیستی'},
-    {'english': 'He is not here', 'pronunciation': 'o injâ nest', 'persian': 'او اینجا نیست'},
+    {'english': 'He is not here', 'pronunciation': 'o înjâ nest', 'persian': 'او اینجا نیست'},
   ];
 
   @override
@@ -198,7 +198,7 @@ class NegativeCopulaPage extends StatelessWidget {
                       const SizedBox(width: 12),
                       Expanded(
                         child: Text(
-                          'Note: Some speakers say colloquially: "šomâ nistin" (شما نیستین).',
+                          'Note: Some speakers say colloquially: "šumâ nesten" (شما نیستین).',
                           style: TextStyle(
                             fontSize: 14,
                             color: Colors.grey.shade800,
