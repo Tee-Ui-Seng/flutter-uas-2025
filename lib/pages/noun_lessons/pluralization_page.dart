@@ -15,7 +15,7 @@ class PluralizationPage extends StatelessWidget {
       'scriptTo': 'کتاب‌ها',
     },
     {
-      'rule': 'Some animate words',
+      'rule': 'Most animate words',
       'suffix': '-ân / -gân (after -a) / -yân (other vowels)',
       'exampleFrom': 'daraxt',
       'exampleTo': 'daraxtân',
@@ -76,12 +76,12 @@ class PluralizationPage extends StatelessWidget {
       'scriptFrom2': 'مسجد',
       'scriptTo2': 'مساجد',
       'exampleFrom3': 'qânun',
-      'exampleTo3': 'qawânin',
+      'exampleTo3': 'qavânin',
       'meaning3': 'law → laws',
       'scriptFrom3': 'قانون',
       'scriptTo3': 'قوانين',
       'exampleFrom4': 'jazîra',
-      'exampleTo4': 'jazâ’ir',
+      'exampleTo4': 'jazâir',
       'meaning4': 'island → islands',
       'scriptFrom4': 'جزیره',
       'scriptTo4': 'جزایر',
@@ -243,42 +243,177 @@ class PluralizationPage extends StatelessWidget {
 
                   // PRACTICE TIPS (now scrollable)
                   Container(
-                    margin: const EdgeInsets.symmetric(horizontal: 15, vertical: 16),
+                    margin: const EdgeInsets.only(bottom: 12),
                     padding: const EdgeInsets.all(16),
                     decoration: BoxDecoration(
+                      color: Colors.blue.shade50,
                       borderRadius: BorderRadius.circular(12),
-                      border: Border.all(color: Colors.amber),
-                      color: Colors.amber.shade50,
+                      border: Border.all(color: Colors.blue.shade200),
                     ),
                     child: Column(
                       crossAxisAlignment: CrossAxisAlignment.start,
                       children: [
                         Row(
                           children: [
-                            const Icon(Icons.tips_and_updates,
-                                color: Colors.amber, size: 20),
+                            Icon(
+                              Icons.shortcut_outlined,
+                              color: Colors.blue.shade800,
+                              size: 20,
+                            ),
                             const SizedBox(width: 8),
                             Text(
-                              'Practice Tips',
+                              'Plural Usage Rule',
                               style: TextStyle(
-                                fontSize: 18,
+                                fontSize: 16,
                                 fontWeight: FontWeight.bold,
-                                color: Colors.amber[800],
+                                color: Colors.blue.shade800,
                               ),
                             ),
                           ],
                         ),
                         const SizedBox(height: 8),
-                        const Text(
-                          '• Use "-hâ" for most inanimate objects\n'
-                          '• Use "-ân" for animate beings & people\n'
-                          '• Some nouns have irregular plurals\n'
-                          '• Do NOT pluralize a noun if the number is specified',
-                          style: TextStyle(fontSize: 14, height: 1.5),
+                        Text(
+                          'Unlike in English, pluralization is not used if the amount is described:',
+                          style: TextStyle(
+                            fontSize: 14,
+                            color: Colors.grey.shade800,
+                            height: 1.4,
+                          ),
+                        ),
+                        const SizedBox(height: 8),
+                        Container(
+                          padding: const EdgeInsets.all(8),
+                          decoration: BoxDecoration(
+                            color: Colors.white,
+                            borderRadius: BorderRadius.circular(8),
+                            border: Border.all(color: Colors.blue.shade200),
+                          ),
+                          child: Column(
+                            crossAxisAlignment: CrossAxisAlignment.start,
+                            children: [   
+                              _buildDialogLine(
+                                '1',
+                                'man panj sag dâram.',
+                                'من پنج سگ دارم.',
+                                'I have five dogs.',
+                              ),
+                              _buildDialogLine(
+                                '2',
+                                'man cand dâna sag dâram.',
+                                'من چند دانه سگ دارم.',
+                                'I have some dogs.',
+                              ),
+                              _buildDialogLine(
+                                '3',
+                                'man sag-hâ dâram.',
+                                'من سگ‌ها دارم.',
+                                'I have dogs.',
+                              ),
+                            ],
+                          ),
+                        ),
+                        const SizedBox(height: 8),
+                        Text(
+                          'Unlike in English, plural nouns don’t require plural demonstratives:',
+                          style: TextStyle(
+                            fontSize: 14,
+                            color: Colors.grey.shade800,
+                            height: 1.4,
+                          ),
+                        ),
+                        const SizedBox(height: 8),
+                        Container(
+                          padding: const EdgeInsets.all(8),
+                          decoration: BoxDecoration(
+                            color: Colors.white,
+                            borderRadius: BorderRadius.circular(8),
+                            border: Border.all(color: Colors.blue.shade200),
+                          ),
+                          child: Column(
+                            crossAxisAlignment: CrossAxisAlignment.start,
+                            children: [   
+                              _buildDialogLine(
+                                '1',
+                                'în kitâb-hâ naw astand.',
+                                'این کتاب‌ها نو استند.',
+                                'These books are new.',
+                              ),
+                              _buildDialogLine(
+                                '2',
+                                'înhâ naw astand.',
+                                'این‌ها نو استند.',
+                                'These (things) are new.',
+                              ),
+                            ],
+                          ),
+                        ),
+                        const SizedBox(height: 8),
+                        Container(
+                          padding: const EdgeInsets.all(8),
+                          decoration: BoxDecoration(
+                            color: Colors.white,
+                            borderRadius: BorderRadius.circular(8),
+                            border: Border.all(color: Colors.blue.shade200),
+                          ),
+                          child: Column(
+                            crossAxisAlignment: CrossAxisAlignment.start,
+                            children: [     
+                              _buildDialogLine(
+                                '1',
+                                'ân kitâb-hâ naw astand.',
+                                'آن کتاب‌ها نو استند.',
+                                'Those books are new.',
+                              ),
+                              _buildDialogLine(
+                                '2',
+                                'ânhâ naw astand.',
+                                'آن‌ها نو استند.',
+                                'Those (things) are new.',
+                              ),
+                            ],
+                          ),
                         ),
                       ],
                     ),
                   ),
+
+                  // Container(
+                  //   margin: const EdgeInsets.symmetric(horizontal: 15, vertical: 16),
+                  //   padding: const EdgeInsets.all(16),
+                  //   decoration: BoxDecoration(
+                  //     borderRadius: BorderRadius.circular(12),
+                  //     border: Border.all(color: Colors.amber),
+                  //     color: Colors.amber.shade50,
+                  //   ),
+                  //   child: Column(
+                  //     crossAxisAlignment: CrossAxisAlignment.start,
+                  //     children: [
+                  //       Row(
+                  //         children: [
+                  //           const Icon(Icons.tips_and_updates,
+                  //               color: Colors.amber, size: 20),
+                  //           const SizedBox(width: 8),
+                  //           Text(
+                  //             'Practice Tips',
+                  //             style: TextStyle(
+                  //               fontSize: 18,
+                  //               fontWeight: FontWeight.bold,
+                  //               color: Colors.amber[800],
+                  //             ),
+                  //           ),
+                  //         ],
+                  //       ),
+                  //       const SizedBox(height: 8),
+                  //       const Text(
+                  //         '• Use "-hâ" for most inanimate objects\n'
+                  //         '• Use "-ân" for animate beings & people\n'
+                  //         '• Some nouns have irregular plurals\n'
+                  //         '• Do NOT pluralize a noun if the number is specified',
+                  //         style: TextStyle(fontSize: 14, height: 1.5),
+                  //       ),
+                  //     ],
+                  //   ),
+                  // ),
                   ],                  
                 ),
               ),
@@ -433,6 +568,68 @@ class PluralizationPage extends StatelessWidget {
               fontSize: 16,
               color: Colors.grey[700],
               fontStyle: FontStyle.italic,
+            ),
+          ),
+        ],
+      ),
+    );
+  }
+
+  // DIALOG LINES
+  Widget _buildDialogLine(
+    String speaker,
+    String persian,
+    String script,
+    String english,
+  ) {
+    return Padding(
+      padding: const EdgeInsets.only(bottom: 8, left: 8),
+      child: Row(
+        crossAxisAlignment: CrossAxisAlignment.start,
+        children: [
+          SizedBox(
+            width: 30,
+            child: Text(
+              speaker,
+              style: const TextStyle(fontWeight: FontWeight.bold, fontSize: 16),
+            ),
+          ),
+
+          Expanded(
+            child: Column(
+              crossAxisAlignment: CrossAxisAlignment.start,
+              children: [
+                // Nastaliq
+                Text(
+                  script,
+                  style: const TextStyle(
+                    fontSize: 20,
+                    fontFamily: 'NotoNastaliqUrdu',
+                  ),
+                  textDirection: TextDirection.rtl,
+                ),
+
+                // Romanization
+                Text(
+                  persian,
+                  style: TextStyle(
+                    color: Colors.blue.shade700,
+                    fontSize: 15,
+                    fontStyle: FontStyle.italic,
+                    height: 1.3,
+                  ),
+                ),
+
+                // English
+                Text(
+                  english,
+                  style: TextStyle(
+                    color: Colors.black,
+                    fontSize: 15,
+                    height: 1.3,
+                  ),
+                ),
+              ],
             ),
           ),
         ],

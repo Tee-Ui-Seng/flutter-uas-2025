@@ -242,7 +242,7 @@ class MoreVocabularyPage extends StatelessWidget {
                     '• Fruit = meva (میوه), fruits = mevajât (میوه‌جات)\n'
                     '• Vegetable = sabzî (سبزی), vegetables = sabzîjât (سبزیجات)\n'
                     '• In Afghanistan, the word "nân" can be used to refer to food colloquially.\n'
-                    '• In Afghanistan, the word for son/ boy is "baca" (بچه).\n'
+                    '• In Afghanistan, the word for son/ boy is "baca" (بچه). In Iran and Tajikistan, this word means "child/ kid".\n'
                     '• The word for ice cream is different depending on the country. It is "bastanî" (بستنی) in Iran, "šîryax" (شیریخ) in Afghanistan, and "yaxmâs" in Tajikistan.',
                     style: const TextStyle(fontSize: 14, height: 1.5),
                   ),

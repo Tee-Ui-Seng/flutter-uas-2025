@@ -387,7 +387,7 @@ class VerbBasicsPage extends StatelessWidget {
                       border: Border.all(color: Colors.orange[200]!),
                     ),
                     child: Text(
-                      'Note: This rule doesn\'t apply to irregular verbs. Example: "kardan" becomes "kun" not "*kar".',
+                      'Note: This rule doesn’t apply to irregular verbs. Example: "kardan" becomes "kun" not "*kar".',
                       style: TextStyle(
                         fontSize: 14,
                         color: Colors.orange[800],
@@ -729,7 +729,7 @@ class VerbBasicsPage extends StatelessWidget {
                                 const Icon(Icons.arrow_forward, size: 16, color: Colors.grey),
                                 const SizedBox(width: 8),
                                 const Text(
-                                  'me-xor-am',
+                                  'me-xoram',
                                   style: TextStyle(
                                     fontFamily: 'Courier',
                                     fontSize: 16,
@@ -744,7 +744,7 @@ class VerbBasicsPage extends StatelessWidget {
                               mainAxisAlignment: MainAxisAlignment.center,
                               children: [
                                 Text(
-                                  'می‌خور + ام',
+                                  'می‌خور + م',
                                   style: TextStyle(
                                     fontSize: 20,
                                     fontWeight: FontWeight.bold,
@@ -820,7 +820,7 @@ class VerbBasicsPage extends StatelessWidget {
                                 const Icon(Icons.arrow_forward, size: 16, color: Colors.grey),
                                 const SizedBox(width: 8),
                                 const Text(
-                                  'me-noš-am',
+                                  'me-nošam',
                                   style: TextStyle(
                                     fontFamily: 'Courier',
                                     fontSize: 16,
@@ -835,7 +835,7 @@ class VerbBasicsPage extends StatelessWidget {
                               mainAxisAlignment: MainAxisAlignment.center,
                               children: [
                                 Text(
-                                  'می‌نوش + ام',
+                                  'می‌نوش + م',
                                   style: TextStyle(
                                     fontSize: 20,
                                     fontWeight: FontWeight.bold,
@@ -874,15 +874,15 @@ class VerbBasicsPage extends StatelessWidget {
                 ],
               ),
             ),
-            const SizedBox(height: 30),
+            const SizedBox(height: 20),
 
             // Summary
             Container(
               padding: const EdgeInsets.all(16),
               decoration: BoxDecoration(
-                color: Colors.blue[50]!,
+                color: Colors.amber[50]!,
                 borderRadius: BorderRadius.circular(12),
-                border: Border.all(color: Colors.blue[300]!),
+                border: Border.all(color: Colors.amber[300]!),
               ),
               child: Column(
                 crossAxisAlignment: CrossAxisAlignment.start,
@@ -896,24 +896,24 @@ class VerbBasicsPage extends StatelessWidget {
                         decoration: BoxDecoration(
                           color: Colors.white,
                           shape: BoxShape.circle,
-                          border: Border.all(color: Colors.blue, width: 2),
+                          border: Border.all(color: Colors.amber, width: 2),
                         ),
                         child: const Center(
                           child: Icon(
                             Icons.lightbulb_rounded,
                             size: 20,
-                            color: Colors.blue,
+                            color: Colors.amber,
                           ),
                         ),
                       ),
                       const SizedBox(width: 12),
                       Expanded(
                         child: Text(
-                          'Summary',
+                          'Persian Verb Syntax',
                           style: TextStyle(
                             fontWeight: FontWeight.bold,
                             fontSize: 18,
-                            color: Colors.blue[800],
+                            color: Colors.amber[800],
                           ),
                         ),
                       ),
@@ -922,14 +922,261 @@ class VerbBasicsPage extends StatelessWidget {
                   const SizedBox(height: 12),
                   
                   // Note content
+                  // Text(
+                  //   '1. Remove "-dan" from infinitive (if whatever remains ends in a vowel, remove it also) to get the stem.\n'
+                  //   '2. Add "me-" prefix to indicate present tense.\n'
+                  //   '3. Add appropriate pronoun suffix (-am, -î, -ad, -em, -ed, -and).\n'
+                  //   '4. Some common verbs have irregular stems that must be memorized.',
+                  //   style: TextStyle(
+                  //     fontSize: 16,
+                  //     color: Colors.black,
+                  //   ),
+                  // ),
+                  
+                  // Note content
                   Text(
-                    '1. Remove "-dan" from infinitive (if whatever remains ends in a vowel, remove it also) to get the stem.\n'
-                    '2. Add "me-" prefix to indicate present tense.\n'
-                    '3. Add appropriate pronoun suffix (-am, -î, -ad, -em, -ed, -and).\n'
-                    '4. Some common verbs have irregular stems that must be memorized.',
+                    'Unlike English, which is a Subject + Verb + Object (SVO) language, Persian is a Subject + Object + Verb (SOV) language.',
                     style: TextStyle(
                       fontSize: 16,
                       color: Colors.black,
+                    ),
+                  ),
+                  const SizedBox(height: 10),
+
+                  // Syntax demo
+                  Container(
+                    padding: const EdgeInsets.all(12),
+                    decoration: BoxDecoration(
+                      color: Colors.white,
+                      borderRadius: BorderRadius.circular(8),
+                      boxShadow: [
+                        BoxShadow(
+                          color: Colors.black.withValues(alpha: 0.1),
+                          blurRadius: 4,
+                          offset: const Offset(0, 2),
+                        ),
+                      ],
+                    ),
+                    child: Column(
+                      children: [
+                        Row(
+                          mainAxisAlignment: MainAxisAlignment.center,
+                          children: [
+                            // labeledText(text: 'subject (fâil)', fontFamily: 'Courier', fontSize: 16, color: Colors.black,),
+                            labeledText(text: 'subject (fâil)', spacing: 0,),
+                          ],
+                        ),
+                        Row(
+                          mainAxisAlignment: MainAxisAlignment.center,
+                          children: [
+                            // const SizedBox(width: 8),
+                            const Icon(Icons.add, size: 16, color: Colors.grey),
+                            const SizedBox(width: 8),
+                            labeledText(text: 'time (zamân)', color: Colors.blue,),
+                            const Icon(Icons.add, size: 16, color: Colors.grey),
+                            const SizedBox(width: 8),
+                            labeledText(text: 'object (maf’ûl)', color: Colors.green, spacing: 0,),
+                          ],
+                        ),
+                        Row(
+                          mainAxisAlignment: MainAxisAlignment.center,
+                          children: [
+                            // const SizedBox(width: 8),
+                            const Icon(Icons.add, size: 16, color: Colors.grey),
+                            const SizedBox(width: 8),
+                            labeledText(text: 'location (makân)', color: Colors.orange,),
+                            const Icon(Icons.add, size: 16, color: Colors.grey),
+                            const SizedBox(width: 8),
+                            labeledText(text: 'verb (fe’l)', color: Colors.red, spacing: 0,),
+                          ],
+                        ),
+                        const SizedBox(height: 8),
+                        Row(
+                          mainAxisAlignment: MainAxisAlignment.center,
+                          children: [
+                            labeledText(text: 'زمان', color: Colors.blue, fontSize: 20, fontFamily: 'NotoNastaliqUrdu', spacing: 6,),
+                            const Icon(Icons.add, size: 16, color: Colors.grey),
+                            const SizedBox(width: 6),
+                            labeledText(text: 'فاعل', color: Colors.black, fontSize: 20, fontFamily: 'NotoNastaliqUrdu', spacing: 0,),
+                          ],
+                        ),
+                        Row(
+                          mainAxisAlignment: MainAxisAlignment.center,
+                          children: [
+                            labeledText(text: 'فعل', color: Colors.red, fontSize: 20, fontFamily: 'NotoNastaliqUrdu', spacing: 6,),
+                            const Icon(Icons.add, size: 16, color: Colors.grey),
+                            const SizedBox(width: 6),
+                            labeledText(text: 'مکان', color: Colors.orange, fontSize: 20, fontFamily: 'NotoNastaliqUrdu', spacing: 6,),
+                            const Icon(Icons.add, size: 16, color: Colors.grey),
+                            const SizedBox(width: 6),
+                            labeledText(text: 'مفعول', color: Colors.green, fontSize: 20, fontFamily: 'NotoNastaliqUrdu', spacing: 0,),
+                            const Icon(Icons.add, size: 16, color: Colors.grey),
+                            // const SizedBox(width: 6),
+                          ],
+                        ),
+                        const SizedBox(height: 4),
+                        Text(
+                          'Personal pronoun is optional. '
+                          'The time adverb can be located before or after the entire sentence although less common.',
+                          style: TextStyle(
+                            fontSize: 12,
+                            color: Colors.grey[600],
+                            fontStyle: FontStyle.italic,
+                          ),
+                        ),
+                      ],
+                    ),
+                  ),
+                  const SizedBox(height: 16),
+                      
+                  // Syntax example 1
+                  Container(
+                    padding: const EdgeInsets.all(12),
+                    decoration: BoxDecoration(
+                      color: Colors.white,
+                      borderRadius: BorderRadius.circular(8),
+                      boxShadow: [
+                        BoxShadow(
+                          color: Colors.black.withValues(alpha: 0.1),
+                          blurRadius: 4,
+                          offset: const Offset(0, 2),
+                        ),
+                      ],
+                    ),
+                    child: Column(
+                      children: [
+                        Row(
+                          mainAxisAlignment: MainAxisAlignment.center,
+                          children: [
+                            labeledText(text: 'today', color: Colors.blue,),
+                            labeledText(text: 'mother', color: Colors.black,),
+                            labeledText(text: 'has', color: Colors.red,),
+                            labeledText(text: 'apples', color: Colors.green,),
+                            labeledText(text: 'at home', color: Colors.orange, spacing: 0,),
+                          ],
+                        ),
+                        const SizedBox(height: 8),
+                        Row(
+                          mainAxisAlignment: MainAxisAlignment.center,
+                          children: [
+                            labeledText(text: 'mâdar', color: Colors.black,),
+                            const Icon(Icons.add, size: 16, color: Colors.grey),
+                            const SizedBox(width: 8),
+                            labeledText(text: 'imroz', color: Colors.blue,),
+                            const Icon(Icons.add, size: 16, color: Colors.grey),
+                            const SizedBox(width: 8),
+                            labeledText(text: 'seb-hâ', color: Colors.green, spacing: 0,),
+                          ],
+                        ),
+                        Row(
+                          mainAxisAlignment: MainAxisAlignment.center,
+                          children: [
+                            // const SizedBox(width: 8),
+                            const Icon(Icons.add, size: 16, color: Colors.grey),
+                            const SizedBox(width: 8),
+                            labeledText(text: 'dar xâna', color: Colors.orange,),
+                            const Icon(Icons.add, size: 16, color: Colors.grey),
+                            const SizedBox(width: 8),
+                            labeledText(text: 'dârad', color: Colors.red, spacing: 0,),
+                          ],
+                        ),
+                        const SizedBox(height: 8),
+                        Row(
+                          mainAxisAlignment: MainAxisAlignment.center,
+                          children: [
+                            labeledText(text: 'دارد', color: Colors.red, fontSize: 20, fontFamily: 'NotoNastaliqUrdu',),
+                            labeledText(text: 'در خانه', color: Colors.orange, fontSize: 20, fontFamily: 'NotoNastaliqUrdu',),
+                            labeledText(text: 'سیب‌ها', color: Colors.green, fontSize: 20, fontFamily: 'NotoNastaliqUrdu',),
+                            labeledText(text: 'امروز', color: Colors.blue, fontSize: 20, fontFamily: 'NotoNastaliqUrdu',),
+                            labeledText(text: 'مادر', color: Colors.black, fontSize: 20, fontFamily: 'NotoNastaliqUrdu', spacing: 0,),
+                          ],
+                        ),
+                        const SizedBox(height: 4),
+                        Text(
+                          'Mother + today + apples + at home + has.',
+                          style: TextStyle(
+                            fontSize: 12,
+                            color: Colors.grey[600],
+                            fontStyle: FontStyle.italic,
+                          ),
+                        ),
+                      ],
+                    ),
+                  ),
+                  const SizedBox(height: 16),
+                      
+                  // Syntax example 2
+                  Container(
+                    padding: const EdgeInsets.all(12),
+                    decoration: BoxDecoration(
+                      color: Colors.white,
+                      borderRadius: BorderRadius.circular(8),
+                      boxShadow: [
+                        BoxShadow(
+                          color: Colors.black.withValues(alpha: 0.1),
+                          blurRadius: 4,
+                          offset: const Offset(0, 2),
+                        ),
+                      ],
+                    ),
+                    child: Column(
+                      children: [
+                        Row(
+                          mainAxisAlignment: MainAxisAlignment.center,
+                          children: [
+                            labeledText(text: 'my dad', color: Colors.black,),
+                            labeledText(text: 'is', color: Colors.red,),
+                            labeledText(text: 'now', color: Colors.blue,),
+                            labeledText(text: 'at Herat', color: Colors.orange,),
+                            labeledText(text: 'with brother', color: Colors.black, spacing: 0,),
+                          ],
+                        ),
+                        const SizedBox(height: 8),
+                        Row(
+                          mainAxisAlignment: MainAxisAlignment.center,
+                          children: [
+                            labeledText(text: 'padar-am', color: Colors.black,),
+                            const Icon(Icons.add, size: 16, color: Colors.grey),
+                            const SizedBox(width: 8),
+                            labeledText(text: 'bâ barâdar-am', color: Colors.black, spacing: 0,),
+                          ],
+                        ),
+                        Row(
+                          mainAxisAlignment: MainAxisAlignment.center,
+                          children: [
+                            // const SizedBox(width: 8),
+                            const Icon(Icons.add, size: 16, color: Colors.grey),
+                            const SizedBox(width: 8),
+                            labeledText(text: 'aknûn', color: Colors.blue,),
+                            const Icon(Icons.add, size: 16, color: Colors.grey),
+                            const SizedBox(width: 8),
+                            labeledText(text: 'dar Harât', color: Colors.orange,),
+                            const Icon(Icons.add, size: 16, color: Colors.grey),
+                            const SizedBox(width: 8),
+                            labeledText(text: 'astand', color: Colors.red, spacing: 0,),
+                          ],
+                        ),
+                        const SizedBox(height: 8),
+                        Row(
+                          mainAxisAlignment: MainAxisAlignment.center,
+                          children: [
+                            labeledText(text: 'استند', color: Colors.red, fontSize: 18, fontFamily: 'NotoNastaliqUrdu',),
+                            labeledText(text: 'در هرات', color: Colors.orange, fontSize: 18, fontFamily: 'NotoNastaliqUrdu',),
+                            labeledText(text: 'اکنون', color: Colors.blue, fontSize: 18, fontFamily: 'NotoNastaliqUrdu',),
+                            labeledText(text: 'با برادرم', color: Colors.black, fontSize: 18, fontFamily: 'NotoNastaliqUrdu',),
+                            labeledText(text: 'پدرم', color: Colors.black, fontSize: 18, fontFamily: 'NotoNastaliqUrdu', spacing: 0,),
+                          ],
+                        ),
+                        const SizedBox(height: 4),
+                        Text(
+                          'My dad + with my brother + now + at Herat + are.',
+                          style: TextStyle(
+                            fontSize: 12,
+                            color: Colors.grey[600],
+                            fontStyle: FontStyle.italic,
+                          ),
+                        ),
+                      ],
                     ),
                   ),
                 ],
@@ -986,6 +1233,30 @@ class VerbBasicsPage extends StatelessWidget {
           ],
         ),
       ),
+    );
+  }
+
+  Widget labeledText({
+    required String text,
+    String fontFamily = 'Courier',
+    double fontSize = 16,
+    Color color = Colors.black,
+    double spacing = 8,
+  }) {
+    return Row(
+      mainAxisSize: MainAxisSize.min,
+      children: [
+        Text(
+          text,
+          style: TextStyle(
+            fontFamily: fontFamily,
+            fontSize: fontSize,
+            fontWeight: FontWeight.bold,
+            color: color,
+          ),
+        ),
+        SizedBox(width: spacing),
+      ],
     );
   }
 }

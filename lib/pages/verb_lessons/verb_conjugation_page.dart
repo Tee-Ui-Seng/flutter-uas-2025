@@ -43,7 +43,7 @@ class VerbConjugationPage extends StatelessWidget {
 
             // Introduction
             const Text(
-              'Here is the complete present tense conjugation table for the verb "xordan" (to eat):',
+              'Here is the complete present tense conjugation table for the verb "xordan" (to eat) for every pronouns:',
               style: TextStyle(fontSize: 16, height: 1.5),
             ),
             const SizedBox(height: 20),
@@ -112,7 +112,7 @@ class VerbConjugationPage extends StatelessWidget {
                     _buildTableRow(
                       pronoun: 'من',
                       persian: 'می‌خورم',
-                      pronunciation: 'me-xor-am',
+                      pronunciation: 'am',
                       backgroundColor: Colors.white,
                       latin: 'man',
                       enpro: 'I',
@@ -121,7 +121,7 @@ class VerbConjugationPage extends StatelessWidget {
                     _buildTableRow(
                       pronoun: 'تو',
                       persian: 'می‌خوری',
-                      pronunciation: 'me-xor-î',
+                      pronunciation: 'î',
                       backgroundColor: Colors.grey[50]!,
                       latin: 'tu',
                       enpro: 'you',
@@ -130,7 +130,7 @@ class VerbConjugationPage extends StatelessWidget {
                     _buildTableRow(
                       pronoun: 'او',
                       persian: 'می‌خورد',
-                      pronunciation: 'me-xor-ad',
+                      pronunciation: 'ad',
                       backgroundColor: Colors.white,
                       latin: 'o',
                       enpro: 'he/she',
@@ -139,7 +139,7 @@ class VerbConjugationPage extends StatelessWidget {
                     _buildTableRow(
                       pronoun: 'ما',
                       persian: 'می‌خوریم',
-                      pronunciation: 'me-xor-em',
+                      pronunciation: 'em',
                       backgroundColor: Colors.grey[50]!,
                       latin: 'mâ',
                       enpro: 'we',
@@ -148,7 +148,7 @@ class VerbConjugationPage extends StatelessWidget {
                     _buildTableRow(
                       pronoun: 'شما',
                       persian: 'می‌خورید',
-                      pronunciation: 'me-xor-ed',
+                      pronunciation: 'ed',
                       backgroundColor: Colors.white,
                       latin: 'šumâ',
                       enpro: 'you pl.',
@@ -157,7 +157,7 @@ class VerbConjugationPage extends StatelessWidget {
                     _buildTableRow(
                       pronoun: 'آنها',
                       persian: 'می‌خورند',
-                      pronunciation: 'me-xor-and',
+                      pronunciation: 'and',
                       backgroundColor: Colors.grey[50]!,
                       latin: 'ânhâ',
                       enpro: 'they',
@@ -240,6 +240,16 @@ class VerbConjugationPage extends StatelessWidget {
               firstPersonPronunciation: 'me-dih-am',
             ),
             const SizedBox(height: 12),
+            _buildIrregularVerbCard(
+              infinitive: 'zadan',
+              infinitiveScript: 'زدن',
+              meaning: 'to play/ hit',
+              presentStem: 'زن',
+              stemPronunciation: 'zan',
+              firstPerson: 'می‌زنم',
+              firstPersonPronunciation: 'me-zan-am',
+            ),
+            const SizedBox(height: 12),
 
             // Important note - Updated Card Style
             Container(
@@ -306,6 +316,16 @@ class VerbConjugationPage extends StatelessWidget {
               stemPronunciation: 'rav',
               firstPerson: 'می‌روم',
               firstPersonPronunciation: 'me-rav-am',
+            ),
+            const SizedBox(height: 12),
+            _buildIrregularVerbCard(
+              infinitive: 'giriftan',
+              infinitiveScript: 'گرفتن',
+              meaning: 'to take',
+              presentStem: 'گیر',
+              stemPronunciation: 'gîr',
+              firstPerson: 'می‌گیرم',
+              firstPersonPronunciation: 'me-gîr-am',
             ),
             const SizedBox(height: 12),
             _buildIrregularVerbCard(
@@ -689,15 +709,28 @@ class VerbConjugationPage extends StatelessWidget {
           ),
           Expanded(
             flex: 3,
-            child: Text(
-              pronunciation,
-              style: const TextStyle(
-                fontSize: 16,
-                fontFamily: 'Courier',
-                color: Colors.blue,
-                fontWeight: FontWeight.bold,
-              ),
-              textAlign: TextAlign.center,
+            child: Row(
+              mainAxisAlignment: MainAxisAlignment.center,
+              children: [
+                Text(
+                  "me-xor",
+                  style: const TextStyle(
+                    fontSize: 16,
+                    fontFamily: 'Courier',
+                    color: Colors.black,
+                    fontWeight: FontWeight.bold,
+                  ),
+                ),
+                Text(
+                  pronunciation,
+                  style: TextStyle(
+                    fontSize: 16,
+                    fontFamily: 'Courier',
+                    color: Colors.blue.shade700,
+                    fontWeight: FontWeight.bold,
+                  ),
+                ),
+              ],
             ),
           ),
         ],

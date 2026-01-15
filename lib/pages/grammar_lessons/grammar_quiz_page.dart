@@ -18,28 +18,22 @@ class _GrammarQuizPageState extends State<GrammarQuizPage> {
   List<int?> _userAnswers = List.filled(8, null);
 
   final List<Map<String, dynamic>> _questions = [
+    // {
+    //   'question': 'What is a copula in Persian grammar?',
+    //   'options': [
+    //     'A word that connects subject and description',
+    //     'A type of verb ending',
+    //     'A preposition',
+    //     'A conjunction'
+    //   ],
+    //   'correctAnswer': 0,
+    //   'explanation': 'A copula connects the subject with words that describe it, like "to be" in English.',
+    // },
     {
-      'question': 'What is a copula in Persian grammar?',
-      'options': [
-        'A word that connects subject and description',
-        'A type of verb ending',
-        'A preposition',
-        'A conjunction'
-      ],
-      'correctAnswer': 0,
-      'explanation': 'A copula connects the subject with words that describe it, like "to be" in English.',
-    },
-    {
-      'question': 'How do you say "I am" in Persian using the copula?',
-      'options': ['man nestam', 'man budam', 'man astam', 'man ast'],
+      'question': 'How do you say "I am not" in Persian using the copula?',
+      'options': ['man na astam', 'man budam', 'man nestam', 'man na budam'],
       'correctAnswer': 2,
-      'explanation': 'The correct form is "man astam" using the "astan" form.',
-    },
-    {
-      'question': 'How do you form the negative of "astam"?',
-      'options': ['Replace "a-" with "ne-"', 'Add "na" at the beginning', 'Add "ne" at the end', 'Remove "a-"'],
-      'correctAnswer': 0,
-      'explanation': 'To form negative, replace the beginning "a-" with "ne-": astam → nestam.',
+      'explanation': 'The correct form is "man na astam" with the form "nest".',
     },
     {
       'question': 'What does "va" mean in Persian?',
@@ -66,10 +60,27 @@ class _GrammarQuizPageState extends State<GrammarQuizPage> {
       'explanation': '"Bâ" (با) means "with", so "bâ dost" means "with friend".',
     },
     {
+      'question': 'man (a) barâdar-am (b) maktab me-ravam',
+      'options': [
+        'a = bâ, b = ba',
+        'a = ba, b = bâ',
+        'a = dar, b = zer',
+        'a = zer, b = dar',
+      ],
+      'correctAnswer': 0,
+      'explanation': 'The sentence translates to "I go (to) school (with) my brother".',
+    },
+    {
       'question': 'barâdar meva ... gošt me-xorad.',
       'options': ['agar', 'amâ', 'cûnki', 'va'],
       'correctAnswer': 3,
       'explanation': 'The sentence translates to "Brother eats fruit and meat".',
+    },
+    {
+      'question': 'xâna-i man ... madrasa ast',
+      'options': ['kanâr', 'zer', 'royi', 'dar'],
+      'correctAnswer': 0,
+      'explanation': 'The sentence translates to "My house is next to the school".',
     },
   ];
 

@@ -34,7 +34,7 @@ class HomePage extends StatelessWidget {
         {
           'level': 2,
           'title': 'Level 2: Past Tense',
-          'subtitle': 'Master past tense conjugations',
+          'subtitle': 'Master past tense and imperative mood conjugations',
           'color': Colors.lime,
         },
         {
@@ -70,7 +70,7 @@ class HomePage extends StatelessWidget {
         {
           'level': 3,
           'title': 'Level 3: Noun Cases',
-          'subtitle': 'Definite/indefinite, possession',
+          'subtitle': 'Definite/indefinite, adjectives',
           'color': Colors.indigo,
         },
       ],
@@ -87,14 +87,14 @@ class HomePage extends StatelessWidget {
         {
           'level': 1,
           'title': 'Level 1: Copula & Basics',
-          'subtitle': 'Learn "astan/hastan" and basic structures',
+          'subtitle': 'Copula, conjunctions, and prepositions',
           'color': Colors.red,
           'introPage': const GrammarIntroPage(),
         },
         {
           'level': 2,
           'title': 'Level 2: Sentence Structure',
-          'subtitle': 'Word order, conjunctions, and prepositions',
+          'subtitle': 'Interrogatives and progressive construction',
           'color': Colors.pinkAccent,
         },
         {
@@ -154,7 +154,7 @@ class HomePage extends StatelessWidget {
         {
           'level': 2,
           'title': 'Level 2: Daily Life',
-          'subtitle': 'Shopping, directions, restaurants, and services',
+          'subtitle': 'Form of address, directions, restaurants, and services',
           'color': Colors.purple,
         },
         {

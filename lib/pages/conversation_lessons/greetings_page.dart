@@ -27,7 +27,7 @@ class GreetingsPage extends StatelessWidget {
       'persian': 'Xub astî?',
       'script': 'خوب استی؟',
       'responseEng': 'I’m fine, thanks.',
-      'response': 'Xub astam, tašakur.',
+      'response': 'Xub astam, tašakkur.',
       'responseScript': 'خوب استم، تشکر.'
     },
     {
@@ -51,7 +51,7 @@ class GreetingsPage extends StatelessWidget {
       'persian': 'Ci tawr me-guzarad?',
       'script': 'چطور میگذرد؟',
       'responseEng': 'Good, thanks.',
-      'response': 'Xub, tašakur.',
+      'response': 'Xub, tašakkur.',
       'responseScript': 'خوب، تشکر.'
     },
   ];

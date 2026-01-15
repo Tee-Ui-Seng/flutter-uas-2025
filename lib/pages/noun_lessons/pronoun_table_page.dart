@@ -16,8 +16,8 @@ class PronounTablePage extends StatelessWidget {
   final List<Map<String, String>> specialPronouns = const [
     {'english': 'He (man)', 'persian': 'o mard', 'script': 'او مرد'},
     {'english': 'She (woman)', 'persian': 'o zan', 'script': 'او زن'},
-    {'english': 'This (proximal)', 'persian': 'în', 'script': 'این'},
-    {'english': 'That (distal)', 'persian': 'ân', 'script': 'آن'}, 
+    {'english': 'This / these (proximal)', 'persian': 'în / înhâ', 'script': 'این‌ها / این'},
+    {'english': 'That / those (distal)', 'persian': 'ân / ânhâ', 'script': 'آن‌ها / آن'}, 
     {'english': 'You', 'persian': 'šumâ', 'script': 'شما', 'formal': '1'},
     {'english': 'He/She', 'persian': 'vay', 'script': 'وی', 'formal': '1'},
     {'english': 'He/She/They', 'persian': 'ešân', 'script': 'ایشان', 'formal': '1'},
@@ -26,7 +26,7 @@ class PronounTablePage extends StatelessWidget {
   final List<Map<String, String>> examples = const [
     {
       'english': 'I am a student',
-      'persian': 'man dânešjû astam',
+      'persian': 'man dânišjû astam',
       'script': 'من دانشجو استم'
     },
     {
@@ -148,6 +148,86 @@ class PronounTablePage extends StatelessWidget {
                         ],
                       ),
                     ),
+                    const SizedBox(height: 16),
+                    
+                    Container(
+                      padding: const EdgeInsets.all(16),
+                      decoration: BoxDecoration(
+                        color: Color(0xFFFFF8E1),
+                        borderRadius: BorderRadius.circular(12),
+                        border: Border.all(color: Color(0xFFFFD54F)),
+                      ),
+                      child: Column(
+                        crossAxisAlignment: CrossAxisAlignment.start,
+                        children: [
+                          Row(
+                            children: [
+                              Icon(Icons.info_outline_rounded, color: Color(0xFFF57C00)),
+                              const SizedBox(width: 8),
+                              Text(
+                                'Colloquial Pronouns in Afghanistan',
+                                style: TextStyle(
+                                  fontWeight: FontWeight.bold,
+                                  color: Color(0xFFF57C00),
+                                  fontSize: 16,
+                                ),
+                              ),
+                            ],
+                          ),
+                          const SizedBox(height: 12),
+                          Column(
+                            children: [
+                              Row(
+                                crossAxisAlignment: CrossAxisAlignment.start,
+                                children: [
+                                  Text(
+                                    '1. ',
+                                    style: TextStyle(
+                                      fontWeight: FontWeight.bold,
+                                      color: Color(0xFFF57C00),
+                                      fontSize: 16,
+                                    ),
+                                  ),
+                                  Expanded(
+                                    child: Text(
+                                      'Man (من) is colloquially written and pronounced as ma (مه) in Afghanistan.',
+                                      style: TextStyle(
+                                        fontSize: 16,
+                                        height: 1.4,
+                                      ),
+                                    ),
+                                  ),
+                                ],
+                              ),
+                              const SizedBox(height: 4),
+                              Row(
+                                crossAxisAlignment: CrossAxisAlignment.start,
+                                children: [
+                                  Text(
+                                    '2. ',
+                                    style: TextStyle(
+                                      fontWeight: FontWeight.bold,
+                                      color: Color(0xFFF57C00),
+                                      fontSize: 16,
+                                    ),
+                                  ),
+                                  Expanded(
+                                    child: Text(
+                                      'O (او), ân (آن‌), în (این‌) are sometimes colloquially pronounced as "û", "û", "î" in Afghanistan.',
+                                      style: TextStyle(
+                                        fontSize: 16,
+                                        height: 1.4,
+                                      ),
+                                    ),
+                                  ),
+                                ],
+                              ),
+                              const SizedBox(height: 4),
+                            ],
+                          ),
+                        ],
+                      ),
+                    ),
 
                     const SizedBox(height: 32),
 
@@ -167,7 +247,7 @@ class PronounTablePage extends StatelessWidget {
                         children: [
                           Row(
                             children: [
-                              Icon(Icons.info_outline_rounded, color: Color(0xFFF57C00)),
+                              Icon(Icons.lightbulb_outline_rounded, color: Color(0xFFF57C00)),
                               const SizedBox(width: 8),
                               Text(
                                 'Formal & Other Pronouns',
@@ -561,7 +641,7 @@ class PronounTablePage extends StatelessWidget {
               child: Padding(
                 padding: const EdgeInsets.symmetric(horizontal: 12),
                 child: Container(
-                  padding: const EdgeInsets.symmetric(horizontal: 8, vertical: 6),
+                  padding: const EdgeInsets.symmetric(horizontal: 4, vertical: 6),
                   decoration: BoxDecoration(
                     color: isFormal ? Color(0xFFFFF3E0) : Color(0xFFE8F5E9),
                     borderRadius: BorderRadius.circular(6),
@@ -573,7 +653,7 @@ class PronounTablePage extends StatelessWidget {
                     pronoun['persian']!,
                     textAlign: TextAlign.center,
                     style: TextStyle(
-                      fontSize: 14,
+                      fontSize: 13,
                       fontWeight: FontWeight.w500,
                       fontStyle: FontStyle.italic,
                       color: isFormal ? Color(0xFFF57C00) : Color(0xFF2E7D32),
@@ -596,7 +676,7 @@ class PronounTablePage extends StatelessWidget {
                   pronoun['script']!,
                   textAlign: TextAlign.center,
                   style: TextStyle(
-                    fontSize: 18,
+                    fontSize: 16,
                     fontFamily: 'NotoNastaliqUrdu',
                     color: isFormal ? Color(0xFFF57C00) : Colors.black87,
                   ),

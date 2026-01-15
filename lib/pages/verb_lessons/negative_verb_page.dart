@@ -132,7 +132,7 @@ class NegativeVerbPage extends StatelessWidget {
                   const Text(
                     'In nastaliq, only add ن before the entire verb to negate it. '
                     'In this course, "na" will be spelled separately instead of being treated as a prefix. '
-                    'In Tajik, the entire verb is spelled in one word without spaces.',
+                    'In Tajik, the entire verb is spelled in one word without spaces or hyphens.',
                     textAlign: TextAlign.center,
                     style: TextStyle(
                       fontSize: 16,
@@ -395,7 +395,7 @@ class NegativeVerbPage extends StatelessWidget {
                   
                   // Step description
                   const Text(
-                    'The "na" goes BEFORE the "me-" prefix.',
+                    'The "na" goes BEFORE the "me-" prefix. In Nastaliq, ن is connected to the verb.',
                     style: TextStyle(fontSize: 16),
                   ),
                   const SizedBox(height: 16),
@@ -459,7 +459,7 @@ class NegativeVerbPage extends StatelessWidget {
                               mainAxisAlignment: MainAxisAlignment.center,
                               children: [
                                 Text(
-                                  'می‌خورم',
+                                  'ن + می‌خورم',
                                   style: TextStyle(
                                     fontSize: 20,
                                     color: Colors.grey[700],
@@ -548,7 +548,7 @@ class NegativeVerbPage extends StatelessWidget {
                               mainAxisAlignment: MainAxisAlignment.center,
                               children: [
                                 Text(
-                                  'می‌خوری',
+                                  'ن + می‌خوری',
                                   style: TextStyle(
                                     fontSize: 20,
                                     color: Colors.grey[700],
@@ -629,7 +629,7 @@ class NegativeVerbPage extends StatelessWidget {
                           style: TextStyle(
                             fontWeight: FontWeight.bold,
                             fontSize: 18,
-                            color: Colors.deepPurple[800],
+                            color: Colors.deepPurple[50],
                           ),
                         ),
                       ),
@@ -639,7 +639,7 @@ class NegativeVerbPage extends StatelessWidget {
                   
                   // Step description
                   const Text(
-                    'Conjugate "xurdan" (to eat) in negative present tense:',
+                    'Conjugation of "xordan" (to eat) in negative present tense:',
                     style: TextStyle(fontSize: 16),
                   ),
                   const SizedBox(height: 16),
@@ -1085,7 +1085,7 @@ class NegativeVerbPage extends StatelessWidget {
                   
                   // Note content
                   Text(
-                    'The "na-" is used for all negative verbs in Persian. '
+                    'The "na" is used for all negative verbs in Persian. '
                     'It is placed before the entire verb including the "me-" prefix.',
                     style: TextStyle(
                       fontSize: 16,

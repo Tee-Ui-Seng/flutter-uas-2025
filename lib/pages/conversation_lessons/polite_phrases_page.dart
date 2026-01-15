@@ -70,8 +70,10 @@ class PolitePhrasesPage extends StatelessWidget {
               title: 'No (Negation)',
               pronunciation: 'na',
               persianIran: 'نه',
-              persianDari: 'نه',
-              notes: [],
+              persianDari: 'نی / نه',
+              notes: [
+                'In Kabul, people use "ne" (نی) formally.',
+              ],
             ),
 
             const SizedBox(height: 28),

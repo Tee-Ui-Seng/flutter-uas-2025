@@ -6,7 +6,7 @@ class IntroductionsPage extends StatelessWidget {
   const IntroductionsPage({super.key});
 
   final List<Map<String, String>> introductions = const [
-    {'english': 'My name is ...', 'persian': 'nâm man ... ast', 'script': 'نام من ... است'},
+    {'english': 'My name is ...', 'persian': 'nâm-i man ... ast', 'script': 'نام من ... است'},
     {'english': 'What is your name?', 'persian': 'nâm-i šumâ ci ast?', 'script': 'نام شما چه است؟'},
     {'english': 'I’m from ...', 'persian': 'man az ... astam', 'script': 'من از ... استم'},
     {'english': 'Where are you from?', 'persian': 'šumâ az kujâ asted?', 'script': 'شما از کجا استید؟'},

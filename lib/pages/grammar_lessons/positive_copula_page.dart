@@ -196,6 +196,7 @@ class PositiveCopulaPage extends StatelessWidget {
                       Icon(
                         Icons.info_outline_rounded,
                         color: Color(0xFFF57C00),
+                        size: 24,
                       ),
                       const SizedBox(width: 12),
                       Expanded(
@@ -207,6 +208,7 @@ class PositiveCopulaPage extends StatelessWidget {
                               style: TextStyle(
                                 fontWeight: FontWeight.bold,
                                 color: Color(0xFFF57C00),
+                                fontSize: 15,
                               ),
                             ),
                             const SizedBox(height: 4),
@@ -270,20 +272,116 @@ class PositiveCopulaPage extends StatelessWidget {
                       ),
                       const SizedBox(height: 8),
                       Text(
-                        'The copula (astan) can be (informally) contracted and attached to adjectives or nouns:',
+                        'The copula (astan) can be (informally) contracted and attached to adjectives:',
                         style: TextStyle(
                           fontSize: 14,
                           color: Colors.grey.shade800,
                           height: 1.4,
                         ),
                       ),
-                      const SizedBox(height: 4),
+                      // const SizedBox(height: 4),
+                      // Text(
+                      //   'Example: "man hošyâr astam" → "man hošyâr-am"',
+                      //   style: TextStyle(
+                      //     fontSize: 14,
+                      //     color: Colors.blue.shade700,
+                      //     fontWeight: FontWeight.w500,
+                      //   ),
+                      // ),
+                      const SizedBox(height: 8),
+                      Container(
+                        padding: const EdgeInsets.all(8),
+                        decoration: BoxDecoration(
+                          color: Colors.white,
+                          borderRadius: BorderRadius.circular(8),
+                          border: Border.all(color: Colors.blue.shade200),
+                        ),
+                        child: Column(
+                          crossAxisAlignment: CrossAxisAlignment.start,
+                          children: [   
+                            _buildDialogLine(
+                              '1',
+                              'ânhâ qad baland astand.',
+                              'آنها قد بلند استند.',
+                              'They are tall. (long form)',
+                            ),
+                            _buildDialogLine(
+                              '2',
+                              'ânha qad baland-and.',
+                              'آنها قد بلندند.',
+                              'They are tall. (short form)',
+                            ),
+                          ],
+                        ),
+                      ),
+                      const SizedBox(height: 8),
                       Text(
-                        'Example: "man hošyâr astam" → "man hošyâr-am"',
+                        'The short forms can also be attached to nouns although this usage is less common:',
                         style: TextStyle(
                           fontSize: 14,
-                          color: Colors.blue.shade700,
-                          fontWeight: FontWeight.w500,
+                          color: Colors.grey.shade800,
+                          height: 1.4,
+                        ),
+                      ),
+                      const SizedBox(height: 8),
+                      Container(
+                        padding: const EdgeInsets.all(8),
+                        decoration: BoxDecoration(
+                          color: Colors.white,
+                          borderRadius: BorderRadius.circular(8),
+                          border: Border.all(color: Colors.blue.shade200),
+                        ),
+                        child: Column(
+                          crossAxisAlignment: CrossAxisAlignment.start,
+                          children: [   
+                            _buildDialogLine(
+                              '1',
+                              'mâ muallim astem.',
+                              'ما معلم استیم.',
+                              'We are teachers. (long form)',
+                            ),
+                            _buildDialogLine(
+                              '2',
+                              'mâ muallim-em.',
+                              'ما معلمیم.',
+                              'We are teachers. (short form)',
+                            ),
+                          ],
+                        ),
+                      ),
+                      const SizedBox(height: 8),
+                      Text(
+                        'The word "ast" (است) has no short form except after â:',
+                        style: TextStyle(
+                          fontSize: 14,
+                          color: Colors.grey.shade800,
+                          height: 1.4,
+                        ),
+                      ),
+                      const SizedBox(height: 8),
+                      Container(
+                        padding: const EdgeInsets.all(8),
+                        decoration: BoxDecoration(
+                          color: Colors.white,
+                          borderRadius: BorderRadius.circular(8),
+                          border: Border.all(color: Colors.blue.shade200),
+                        ),
+                        child: Column(
+                          crossAxisAlignment: CrossAxisAlignment.start,
+                          children: [   
+                            _buildDialogLine(
+                              'â:',
+                              'în aždahâ-st.',
+                              'این اژدهاست.',
+                              'It’s a dragon.',
+                            ),
+                            _buildDialogLine(
+                              'a:',
+                              'în paranda ast.',
+                              'این پرنده است.',
+                              'It’s a bird.',
+                            ),
+                          ],
                         ),
                       ),
                     ],
@@ -311,6 +409,52 @@ class PositiveCopulaPage extends StatelessWidget {
                 const SizedBox(height: 16),
 
                 // Note Box
+                // Container(
+                //   padding: const EdgeInsets.all(16),
+                //   decoration: BoxDecoration(
+                //     color: Color(0xFFFFF8E1),
+                //     borderRadius: BorderRadius.circular(12),
+                //     border: Border.all(color: Color(0xFFFFD54F)),
+                //   ),
+                //   child: Row(
+                //     children: [
+                //       Icon(
+                //         Icons.info_outline_rounded,
+                //         color: Color(0xFFF57C00),
+                //         size: 24,
+                //       ),
+                //       const SizedBox(width: 12),
+                //       Expanded(
+                //         child: Column(
+                //           crossAxisAlignment: CrossAxisAlignment.start,
+                //           children: [
+                //             Text(
+                //               'About: Short forms after vowels',
+                //               style: TextStyle(
+                //                 fontWeight: FontWeight.bold,
+                //                 color: Color(0xFFF57C00),
+                //                 fontSize: 15,
+                //               ),
+                //             ),
+                //             const SizedBox(height: 4),
+                //             Text(
+                //               'The use of short forms are generally avoided after words ending in vowels.',
+                //               style: TextStyle(
+                //                 fontSize: 14,
+                //                 color: Colors.grey.shade800,
+                //                 fontStyle: FontStyle.italic,
+                //               ),
+                //             ),
+                //           ],
+                //         ),
+                //       ),
+                //     ],
+                //   ),
+                // ),
+
+                // const SizedBox(height: 16),
+
+                // Note about short forms
                 Container(
                   padding: const EdgeInsets.all(16),
                   decoration: BoxDecoration(
@@ -318,32 +462,77 @@ class PositiveCopulaPage extends StatelessWidget {
                     borderRadius: BorderRadius.circular(12),
                     border: Border.all(color: Color(0xFFFFD54F)),
                   ),
-                  child: Row(
+                  child: Column(
                     children: [
-                      Icon(
-                        Icons.info_outline_rounded,
-                        color: Color(0xFFF57C00),
+                      Row(
+                        crossAxisAlignment: CrossAxisAlignment.start,
+                        children: [
+                          Icon(
+                            Icons.translate_rounded,
+                            color: Color(0xFFF57C00),
+                            size: 24,
+                          ),
+                          const SizedBox(width: 12),
+                          Expanded(
+                            child: Column(
+                              crossAxisAlignment: CrossAxisAlignment.start,
+                              children: [
+                                Text(
+                                  'About: Short forms after vowels',
+                                  style: TextStyle(
+                                    fontWeight: FontWeight.bold,
+                                    color: Color(0xFFF57C00),
+                                    fontSize: 15,
+                                  ),
+                                ),
+                                const SizedBox(height: 6),
+                                Text(
+                                  'The short form is written with "y" (ی) after "â" (ا) and written separately in Nastaliq after other vowels:',
+                                  style: TextStyle(
+                                    fontSize: 14,
+                                    color: Colors.grey.shade800,
+                                    fontWeight: FontWeight.w500,
+                                  ),
+                                ),
+                              ],
+                            ),
+                          ),
+                        ],
                       ),
-                      const SizedBox(width: 12),
-                      Expanded(
+                      const SizedBox(height: 8),
+                      Container(
+                        padding: const EdgeInsets.all(8),
+                        decoration: BoxDecoration(
+                          color: Colors.white,
+                          borderRadius: BorderRadius.circular(8),
+                          border: Border.all(color: Color(0xFFFFD54F)),
+                        ),
                         child: Column(
                           crossAxisAlignment: CrossAxisAlignment.start,
-                          children: [
-                            Text(
-                              'About: Short forms after vowels',
-                              style: TextStyle(
-                                fontWeight: FontWeight.bold,
-                                color: Color(0xFFF57C00),
-                              ),
+                          children: [   
+                            _buildDialogLine(
+                              'â:',
+                              'man aždahâ-yam.',
+                              'من اژدها‌یم.',
+                              'I am a dragon.',
                             ),
-                            const SizedBox(height: 4),
-                            Text(
-                              'The use of short forms are generally avoided after words ending in vowels.',
-                              style: TextStyle(
-                                fontSize: 14,
-                                color: Colors.grey.shade800,
-                                fontStyle: FontStyle.italic,
-                              ),
+                            _buildDialogLine(
+                              'â:',
+                              'mâ înjâ-yem.',
+                              'ما اینجاییم.',
+                              'We are here.',
+                            ),
+                            _buildDialogLine(
+                              'î:',
+                              'tu afğânistânî-î.',
+                              'تو افغانستانی‌ای',
+                              'You are an Afghan.',
+                            ),
+                            _buildDialogLine(
+                              'a:',
+                              'ânhâ murda-and.',
+                              'آنها مرده‌اند',
+                              'They’re dead.',
                             ),
                           ],
                         ),
@@ -362,95 +551,113 @@ class PositiveCopulaPage extends StatelessWidget {
                     borderRadius: BorderRadius.circular(12),
                     border: Border.all(color: Colors.blue.shade300),
                   ),
-                  child: Row(
-                    crossAxisAlignment: CrossAxisAlignment.start,
+                  child: Column(
                     children: [
-                      Icon(
-                        Icons.warning_amber_rounded,
-                        color: Colors.blue.shade800,
-                        size: 20,
+                      Row(
+                        crossAxisAlignment: CrossAxisAlignment.start,
+                        children: [
+                          Icon(
+                            Icons.lightbulb_rounded,
+                            color: Colors.blue.shade800,
+                            size: 24,
+                          ),
+                          const SizedBox(width: 12),
+                          Expanded(
+                            child: Column(
+                              crossAxisAlignment: CrossAxisAlignment.start,
+                              children: [
+                                Text(
+                                  'Important Note about Short Forms',
+                                  style: TextStyle(
+                                    fontWeight: FontWeight.bold,
+                                    color: Colors.blue.shade800,
+                                    fontSize: 15,
+                                  ),
+                                ),
+                                const SizedBox(height: 6),
+                                Text(
+                                  'The short form can NOT be used in:',
+                                  style: TextStyle(
+                                    fontSize: 14,
+                                    color: Colors.grey.shade800,
+                                    fontWeight: FontWeight.w500,
+                                  ),
+                                ),
+                                const SizedBox(height: 6),
+                                Padding(
+                                  padding: const EdgeInsets.only(left: 8),
+                                  child: Column(
+                                    crossAxisAlignment: CrossAxisAlignment.start,
+                                    children: [
+                                      Row(
+                                        crossAxisAlignment: CrossAxisAlignment.start,
+                                        children: [
+                                          const Text('• ', style: TextStyle(fontSize: 16, fontWeight: FontWeight.bold)),
+                                          Expanded(
+                                            child: Text(
+                                              'Negative sentences',
+                                              style: TextStyle(
+                                                fontSize: 14,
+                                                color: Colors.grey.shade800,
+                                                height: 1.4,
+                                              ),
+                                            ),
+                                          ),
+                                        ],
+                                      ),
+                                      const SizedBox(height: 4),
+                                      Row(
+                                        crossAxisAlignment: CrossAxisAlignment.start,
+                                        children: [
+                                          const Text('• ', style: TextStyle(fontSize: 16, fontWeight: FontWeight.bold)),
+                                          Expanded(
+                                            child: Text(
+                                              'With proper nouns (names of people, places, etc.) except for adjective forms suffixed with -î (e.g., îrânî).',
+                                              style: TextStyle(
+                                                fontSize: 14,
+                                                color: Colors.grey.shade800,
+                                                height: 1.4,
+                                              ),
+                                            ),
+                                          ),
+                                        ],
+                                      ),
+                                    ],
+                                  ),
+                                ),
+                              ],
+                            ),
+                          ),
+                        ],
                       ),
-                      const SizedBox(width: 12),
-                      Expanded(
+                      const SizedBox(height: 8),
+                      Container(
+                        padding: const EdgeInsets.all(8),
+                        decoration: BoxDecoration(
+                          color: Colors.white,
+                          borderRadius: BorderRadius.circular(8),
+                          border: Border.all(color: Colors.blue.shade200),
+                        ),
                         child: Column(
                           crossAxisAlignment: CrossAxisAlignment.start,
-                          children: [
-                            Text(
-                              'Important Note about Short Forms',
-                              style: TextStyle(
-                                fontWeight: FontWeight.bold,
-                                color: Colors.blue.shade800,
-                                fontSize: 15,
-                              ),
+                          children: [   
+                            _buildDialogLine(
+                              '1',
+                              'man nîlûfar astam.',
+                              'من نیلوفر هستم.',
+                              'I am Nilufar.',
                             ),
-                            const SizedBox(height: 6),
-                            Text(
-                              'The short form can NOT be used in:',
-                              style: TextStyle(
-                                fontSize: 14,
-                                color: Colors.grey.shade800,
-                                fontWeight: FontWeight.w500,
-                              ),
+                            _buildDialogLine(
+                              '2',
+                              'mâ xušhâl nestem.',
+                              'ما خوشحال نیستیم.',
+                              'We are not happy.',
                             ),
-                            const SizedBox(height: 6),
-                            Padding(
-                              padding: const EdgeInsets.only(left: 8),
-                              child: Column(
-                                crossAxisAlignment: CrossAxisAlignment.start,
-                                children: [
-                                  Row(
-                                    crossAxisAlignment: CrossAxisAlignment.start,
-                                    children: [
-                                      const Text('• ', style: TextStyle(fontSize: 16, fontWeight: FontWeight.bold)),
-                                      Expanded(
-                                        child: Text(
-                                          'Negative sentences',
-                                          style: TextStyle(
-                                            fontSize: 14,
-                                            color: Colors.grey.shade800,
-                                            height: 1.4,
-                                          ),
-                                        ),
-                                      ),
-                                    ],
-                                  ),
-                                  const SizedBox(height: 4),
-                                  Row(
-                                    crossAxisAlignment: CrossAxisAlignment.start,
-                                    children: [
-                                      const Text('• ', style: TextStyle(fontSize: 16, fontWeight: FontWeight.bold)),
-                                      Expanded(
-                                        child: Text(
-                                          'With proper nouns (names of people, places)',
-                                          style: TextStyle(
-                                            fontSize: 14,
-                                            color: Colors.grey.shade800,
-                                            height: 1.4,
-                                          ),
-                                        ),
-                                      ),
-                                    ],
-                                  ),
-                                ],
-                              ),
-                            ),
-                            const SizedBox(height: 8),
-                            Container(
-                              padding: const EdgeInsets.all(8),
-                              decoration: BoxDecoration(
-                                color: Colors.white,
-                                borderRadius: BorderRadius.circular(8),
-                                border: Border.all(color: Colors.blue.shade200),
-                              ),
-                              child: Text(
-                                'I am Nilufar = man nîlûfar astam.\n'
-                                'We are not happy = mâ xušhâl nestem.',
-                                style: TextStyle(
-                                  fontSize: 14,
-                                  color: Colors.blue.shade800,
-                                  fontStyle: FontStyle.italic,
-                                ),
-                              ),
+                            _buildDialogLine(
+                              '3',
+                              'ânhâ îrânî-and.',
+                              'آنها ایرانی‌اند',
+                              'They’re Iranians.',
                             ),
                           ],
                         ),
@@ -949,6 +1156,68 @@ class PositiveCopulaPage extends StatelessWidget {
                 ),
               ),
             ],
+          ),
+        ],
+      ),
+    );
+  }
+
+  // DIALOG LINES
+  Widget _buildDialogLine(
+    String speaker,
+    String persian,
+    String script,
+    String english,
+  ) {
+    return Padding(
+      padding: const EdgeInsets.only(bottom: 8, left: 8),
+      child: Row(
+        crossAxisAlignment: CrossAxisAlignment.start,
+        children: [
+          SizedBox(
+            width: 30,
+            child: Text(
+              speaker,
+              style: const TextStyle(fontWeight: FontWeight.bold, fontSize: 16),
+            ),
+          ),
+
+          Expanded(
+            child: Column(
+              crossAxisAlignment: CrossAxisAlignment.start,
+              children: [
+                // Nastaliq
+                Text(
+                  script,
+                  style: const TextStyle(
+                    fontSize: 20,
+                    fontFamily: 'NotoNastaliqUrdu',
+                  ),
+                  textDirection: TextDirection.rtl,
+                ),
+
+                // Romanization
+                Text(
+                  persian,
+                  style: TextStyle(
+                    color: Colors.blue.shade700,
+                    fontSize: 15,
+                    fontStyle: FontStyle.italic,
+                    height: 1.3,
+                  ),
+                ),
+
+                // English
+                Text(
+                  english,
+                  style: TextStyle(
+                    color: Colors.black,
+                    fontSize: 15,
+                    height: 1.3,
+                  ),
+                ),
+              ],
+            ),
           ),
         ],
       ),

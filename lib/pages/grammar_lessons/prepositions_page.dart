@@ -7,20 +7,28 @@ class PrepositionsPage extends StatelessWidget {
 
   static const List<Map<String, String>> prepositions = [
     {
-      'persian': 'در',
-      'pronunciation': 'dar',
-      'english': 'in/at',
-      'example': 'dar xâna',
-      'script': 'در خانه',
-      'meaning': 'at home',
-    },
-    {
       'persian': 'با',
       'pronunciation': 'bâ',
       'english': 'with',
       'example': 'bâ dost',
       'script': 'با دوست',
       'meaning': 'with friend',
+    },
+    {
+      'persian': 'بی',
+      'pronunciation': 'be',
+      'english': 'without',
+      'example': 'be dost',
+      'script': 'بی دوست',
+      'meaning': 'without friend',
+    },
+    {
+      'persian': 'برای',
+      'pronunciation': 'barâ-i',
+      'english': 'for',
+      'example': 'barâ-i tu',
+      'script': 'برای تو',
+      'meaning': 'for you',
     },
     {
       'persian': 'از',
@@ -39,36 +47,106 @@ class PrepositionsPage extends StatelessWidget {
       'meaning': 'to school',
     },
     {
-      'persian': 'برای',
-      'pronunciation': 'barâyi',
-      'english': 'for',
-      'example': 'barâyi tu',
-      'script': 'برای تو',
-      'meaning': 'for you',
+      'persian': 'تا',
+      'pronunciation': 'tâ',
+      'english': 'until',
+      'example': 'tâ imsâl',
+      'script': 'تا امسال',
+      'meaning': 'until this year',
     },
     {
+      'persian': 'در',
+      'pronunciation': 'dar',
+      'english': 'in/at',
+      'example': 'dar xâna',
+      'script': 'در خانه',
+      'meaning': 'at home',
+    },
+  ];
+
+  static const List<Map<String, String>> locativeIran = [
+    {
       'persian': 'روی',
-      'pronunciation': 'royi',
+      'pronunciation': 'roy-i',
       'english': 'on',
-      'example': 'royi mez',
+      'example': 'roy-i mez',
       'script': 'روی میز',
       'meaning': 'on the table',
     },
     {
       'persian': 'زیر',
-      'pronunciation': 'zer',
+      'pronunciation': 'zer-i',
       'english': 'under',
-      'example': 'zer mez',
+      'example': 'zer-i mez',
       'script': 'زیر میز',
       'meaning': 'under the table',
     },
     {
       'persian': 'کنار',
-      'pronunciation': 'kanâr',
+      'pronunciation': 'kanâr-i',
       'english': 'next to',
-      'example': 'kanâr daraxt',
+      'example': 'kanâr-i daraxt',
       'script': 'کنار درخت',
       'meaning': 'next to the tree',
+    },
+    {
+      'persian': 'میان',
+      'pronunciation': 'miyân-i',
+      'english': 'between',
+      'example': 'miyân-i daraxt',
+      'script': 'میان درختان',
+      'meaning': 'between the trees',
+    },
+    {
+      'persian': 'میان',
+      'pronunciation': 'miyân-i',
+      'english': 'among',
+      'example': 'miyân-i mardân',
+      'script': 'میان مردان',
+      'meaning': 'among the men',
+    },
+  ];
+
+  static const List<Map<String, String>> locativeAfghan = [
+    {
+      'persian': 'روی',
+      'pronunciation': 'roy-i',
+      'english': 'on',
+      'example': 'dar roy-i mez',
+      'script': 'در روی میز',
+      'meaning': 'on the table',
+    },
+    {
+      'persian': 'زیر',
+      'pronunciation': 'zer-i',
+      'english': 'under',
+      'example': 'dar zer-i mez',
+      'script': 'در زیر میز',
+      'meaning': 'under the table',
+    },
+    {
+      'persian': 'پهلوی',
+      'pronunciation': 'pahlû-i',
+      'english': 'next to',
+      'example': 'dar pahlû-i daraxt',
+      'script': 'در پهلوی درخت',
+      'meaning': 'next to the tree',
+    },
+    {
+      'persian': 'میان',
+      'pronunciation': 'mayân-i',
+      'english': 'between',
+      'example': 'dar mayân-i daraxt',
+      'script': 'در میان درختان',
+      'meaning': 'between the trees',
+    },
+    {
+      'persian': 'مابین',
+      'pronunciation': 'mâbayn-i',
+      'english': 'among',
+      'example': 'dar mâbayn-i mardân',
+      'script': 'در مابین مردان',
+      'meaning': 'among the men',
     },
   ];
 
@@ -134,6 +212,52 @@ class PrepositionsPage extends StatelessWidget {
 
             const SizedBox(height: 24),
 
+            // TITLE
+            const Text(
+              'Locative Prepositions (Iran)',
+              style: TextStyle(
+                fontSize: 24,
+                fontWeight: FontWeight.bold,
+                color: Colors.red,
+              ),
+            ),
+            const SizedBox(height: 8),
+
+            const Text(
+              'The locative prepositions commonly used in Iran.',
+              style: TextStyle(fontSize: 16, color: Colors.grey),
+            ),
+
+            const SizedBox(height: 24),
+
+            // LIST OF PREPOSITION CARDS (using Conjunction styling)
+            ...locativeIran.map((prep) => _buildPrepositionCard(prep)),
+
+            const SizedBox(height: 24),
+
+            // TITLE
+            const Text(
+              'Locative Prepositions (Afghanistan)',
+              style: TextStyle(
+                fontSize: 24,
+                fontWeight: FontWeight.bold,
+                color: Colors.red,
+              ),
+            ),
+            const SizedBox(height: 8),
+
+            const Text(
+              'Unlike in Iran, in Afghanistan, the preposition "dar" (در) is required before any locative prepositions.',
+              style: TextStyle(fontSize: 16, color: Colors.grey),
+            ),
+
+            const SizedBox(height: 24),
+
+            // LIST OF PREPOSITION CARDS (using Conjunction styling)
+            ...locativeAfghan.map((prep) => _buildPrepositionCard(prep)),
+
+            const SizedBox(height: 24),
+
             // USAGE TIPS (unchanged)
             Container(
               padding: const EdgeInsets.all(16),
@@ -163,7 +287,7 @@ class PrepositionsPage extends StatelessWidget {
                   const SizedBox(height: 8),
                   Text(
                     '• Prepositions usually come before the noun they modify\n'
-                    '• barâye + man = barâye man (for me)\n'
+                    '• In Afghanistan people will use the phrase "dar pahlû-i" (در پهلوی) instead of "kanâr" (کنار)\n'
                     '• "در" can mean "in" or "at"\n'
                     '• "از" is used for origin, material, or cause',
                     style: const TextStyle(fontSize: 14, height: 1.5),
